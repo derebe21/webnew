@@ -30,7 +30,7 @@ export function Products() {
         {
             name: 'Check Point',
             color: 'CC0000',
-            logoPath: '/images/partners/checkpoint_logo_professional.png',
+            logoPath: '/images/partners/checkpoint_nodes_logo.svg',
             url: 'https://www.checkpoint.com/quantum/next-generation-firewall/',
             description: 'Enterprise firewall, threat intelligence, and advanced cyber defense.'
         },
