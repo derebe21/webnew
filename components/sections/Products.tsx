@@ -51,7 +51,7 @@ export function Products() {
         {
             name: 'CrowdStrike',
             color: 'FF0000',
-            logoPath: '/images/partners/crowdstrike_logo_professional.png',
+            logoPath: '/images/partners/crowdstrike-falcon.png',
             url: 'https://www.crowdstrike.com/platform/',
             description: 'AI-powered endpoint detection and response (EDR) and threat intelligence.'
         },
@@ -65,7 +65,7 @@ export function Products() {
         {
             name: 'Imperva',
             color: 'E30613',
-            logoPath: '/images/partners/imperva_logo_professional.png',
+            logoPath: '/images/partners/imperva_shield_professional.png',
             url: 'https://www.imperva.com/products/',
             description: 'Web application firewall (WAF), database security, and DDoS protection.'
         }
