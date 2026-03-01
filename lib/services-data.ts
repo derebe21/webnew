@@ -84,7 +84,7 @@ export const servicesData: Service[] = [
     {
         slug: 'data-center-solutions',
         icon: Server,
-        logoImage: '',
+        logoImage: '/images/data-center-final.png',
         sidebarImage: '',
         bannerImage: '/images/data-center-final.png',
         bgColor: '#1E293B',
@@ -102,7 +102,7 @@ export const servicesData: Service[] = [
     {
         slug: 'integrated-security',
         icon: Shield,
-        logoImage: '',
+        logoImage: '/images/partners/hikvision.png',
         sidebarImage: '',
         bannerImage: '/images/custom-cctv.jpg',
         bgColor: '#22C55E',

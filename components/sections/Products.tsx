@@ -9,7 +9,7 @@ export function Products() {
         {
             name: 'Cisco',
             color: '1BA0D7',
-            logoPath: '/images/partners/cisco-final.png',
+            logoPath: '/images/ciscoo.png',
             url: 'https://www.cisco.com/site/us/en/products/security/index.html',
             description: 'Network security, firewalls, intrusion prevention, and secure access solutions.'
         },
@@ -30,7 +30,7 @@ export function Products() {
         {
             name: 'Check Point',
             color: 'CC0000',
-            logoPath: '/images/partners/checkpoint_nodes_logo.svg',
+            logoPath: '/images/checkpointt.logo.PNG',
             url: 'https://www.checkpoint.com/quantum/next-generation-firewall/',
             description: 'Enterprise firewall, threat intelligence, and advanced cyber defense.'
         },
@@ -58,7 +58,7 @@ export function Products() {
         {
             name: 'Darktrace',
             color: '9013FE',
-            logoPath: '/images/partners/darktrace_logo_professional.png',
+            logoPath: '/images/DARKTRACEE.jpg',
             url: 'https://darktrace.com/products',
             description: 'AI-driven threat detection, network visibility, and autonomous response.'
         },
@@ -91,8 +91,8 @@ export function Products() {
     ];
 
     const digitalInfrastructurePartners = [
-        { name: 'Cisco', logo: '/images/partners/cisco-final.png', url: 'https://www.cisco.com/c/en/us/solutions/enterprise-networks/index.html' },
-        { name: 'Huawei', logo: '/images/partners/huawei-logo.svg', url: 'https://e.huawei.com/en/products/enterprise-networking' },
+        { name: 'Cisco', logo: '/images/ciscoo.png', url: 'https://www.cisco.com/c/en/us/solutions/enterprise-networks/index.html' },
+        { name: 'Huawei', logo: '/images/Huaweii.webp', url: 'https://e.huawei.com/en/products/enterprise-networking' },
         { name: 'HPE Aruba', logo: '/images/partners/hpe-logo.svg', url: 'https://www.arubanetworks.com/products/' },
         { name: 'Juniper Networks', logo: '/images/partners/juniper-logo.svg', url: 'https://www.juniper.net/us/en/products.html' },
         { name: 'Ericsson', logo: 'ericsson', url: 'https://www.ericsson.com/en/portfolio' },
@@ -112,7 +112,7 @@ export function Products() {
         { name: 'Dell', logo: 'dell', url: 'https://www.dell.com/en-us/dt/servers/index.htm' },
         { name: 'HPE', logo: '/images/partners/hpe-new.png', url: 'https://www.hpe.com/us/en/servers.html' },
         { name: 'Lenovo', logo: 'lenovo', url: 'https://www.lenovo.com/us/en/servers-storage/' },
-        { name: 'Huawei', logo: '/images/partners/huawei-logo.svg', url: 'https://e.huawei.com/en/products/compute' },
+        { name: 'Huawei', logo: '/images/Huaweii.webp', url: 'https://e.huawei.com/en/products/compute' },
         { name: 'IBM', logo: '/images/partners/ibm-logo.svg', url: 'https://www.ibm.com/it-infrastructure' },
         { name: 'NetApp', logo: 'netapp', url: 'https://www.netapp.com/data-storage/' },
         { name: 'Synology', logo: 'synology', url: 'https://www.synology.com/en-us/products' },
@@ -251,6 +251,35 @@ export function Products() {
                                 </Link>
                             ))}
                         </div>
+                    </div>
+                </div>
+
+                {/* Integrated Security Systems */}
+                <div className="mt-24">
+                    <div className="flex items-center gap-4 mb-12">
+                        <div className="w-1.5 h-10 bg-blue-600 rounded-full" />
+                        <h3 className="text-3xl font-black text-slate-900 dark:text-white uppercase tracking-tight">
+                            Integrated Security Systems
+                        </h3>
+                    </div>
+                    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+                        {integratedSecurityPartners.map((partner) => (
+                            <Link
+                                key={partner.name}
+                                href={partner.url}
+                                target="_blank"
+                                className="group p-8 rounded-2xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800 hover:border-blue-500/30 transition-all text-center flex flex-col items-center hover:-translate-y-1"
+                            >
+                                <div className="w-24 h-24 mb-4 flex items-center justify-center transition-all group-hover:scale-110">
+                                    <img
+                                        src={partner.logo}
+                                        alt={partner.name}
+                                        className="w-full h-full object-contain"
+                                    />
+                                </div>
+                                <span className="text-xs font-bold text-slate-900 dark:text-white uppercase tracking-wider">{partner.name}</span>
+                            </Link>
+                        ))}
                     </div>
                 </div>
             </div>

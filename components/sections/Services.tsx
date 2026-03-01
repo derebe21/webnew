@@ -81,14 +81,14 @@ export function Services({ variant = 'grid' }: ServicesProps) {
                       <Card
                         className={`h-full overflow-hidden border border-white/20 dark:border-slate-800/50 shadow-2xl transition-all duration-700 bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl flex flex-col group-hover:-translate-y-4 group-hover:shadow-[0_20px_40px_rgba(37,99,235,0.2)]`}
                       >
-                        {/* Uniform Image Area - Data Center Image */}
-                        <div className="relative h-64 w-full overflow-hidden flex-shrink-0">
+                        {/* Uniform Image Area - Large Color Logo */}
+                        <div className="relative h-64 w-full overflow-hidden flex-shrink-0 bg-slate-50 dark:bg-slate-900/40 p-12 flex items-center justify-center">
                           <img
-                            src="/images/data-center-final.png"
+                            src={service.logoImage || "/images/data-center-final.png"}
                             alt={service.title}
-                            className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
+                            className="max-w-[80%] max-h-[80%] object-contain transition-transform duration-1000 group-hover:scale-110"
                           />
-                          <div className="absolute inset-0 bg-slate-950/40 transition-colors duration-700 group-hover:bg-slate-950/20" />
+                          <div className="absolute inset-0 bg-slate-950/5 transition-colors duration-700 group-hover:bg-slate-950/0" />
                         </div>
 
                         {/* Text Content Area - Title Only */}
