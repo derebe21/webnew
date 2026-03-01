@@ -58,7 +58,7 @@ export function Products() {
         {
             name: 'Darktrace',
             color: '9013FE',
-            logoPath: '/images/DARKTRACEE.jpg',
+            logoPath: '/images/Darktrace.png',
             url: 'https://darktrace.com/products',
             description: 'AI-driven threat detection, network visibility, and autonomous response.'
         },
