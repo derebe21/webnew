@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Globe, Cloud, Server, Video, Zap, ArrowRight, Monitor, X, ExternalLink, Database, Shield } from 'lucide-react';
+import { Globe, Cloud, Server, Video, Zap, ArrowRight, Monitor, X, ExternalLink } from 'lucide-react';
 import Link from 'next/link';
 
 export function Products() {
@@ -30,7 +30,7 @@ export function Products() {
         {
             name: 'Check Point',
             color: 'CC0000',
-            logoPath: '/images/checkpointt.logo.PNG',
+            logoPath: '/images/partners/checkpoint_nodes_logo.svg',
             url: 'https://www.checkpoint.com/quantum/next-generation-firewall/',
             description: 'Enterprise firewall, threat intelligence, and advanced cyber defense.'
         },
@@ -71,24 +71,20 @@ export function Products() {
             solutions: [
                 {
                     title: 'Application Security',
-                    description: 'Protect applications and APIs anywhere',
-                    details: [
+                    icon: '/images/partners/imperva-app-sec.svg',
+                    features: [
+                        'Protect applications and APIs anywhere',
                         'Mitigate DDoS, bot, API and supply chain attacks',
                         'Comply with PCI 4.0'
-                    ],
-                    icon: 'Monitor',
-                    color: 'from-purple-500 to-indigo-600',
-                    glow: 'shadow-purple-500/50'
+                    ]
                 },
                 {
                     title: 'Data Security',
-                    description: 'Secure sensitive data across on-premises and cloud environments',
-                    details: [
+                    icon: '/images/partners/imperva-data-sec.svg',
+                    features: [
+                        'Secure sensitive data across on-premises and cloud environments',
                         'Simplify compliance and audit reporting'
-                    ],
-                    icon: 'Database',
-                    color: 'from-blue-500 to-cyan-600',
-                    glow: 'shadow-blue-500/50'
+                    ]
                 }
             ]
         }
@@ -263,7 +259,7 @@ export function Products() {
                     />
 
                     {/* Modal Content */}
-                    <div className={`relative bg-white dark:bg-slate-900 w-full ${selectedPartner.solutions ? 'max-w-4xl' : 'max-w-2xl'} max-h-[90vh] overflow-y-auto rounded-3xl shadow-2xl overflow-hidden transform transition-all border border-slate-100 dark:border-slate-800`}>
+                    <div className="relative bg-white dark:bg-slate-900 w-full max-w-2xl rounded-3xl shadow-2xl overflow-hidden transform transition-all border border-slate-100 dark:border-slate-800">
                         <button
                             onClick={() => setSelectedPartner(null)}
                             className="absolute top-6 right-6 p-2 rounded-full bg-slate-50 dark:bg-slate-800 text-slate-500 hover:text-slate-900 dark:hover:text-white transition-colors z-10"
@@ -271,80 +267,70 @@ export function Products() {
                             <X className="w-5 h-5" />
                         </button>
 
-                        <div className="p-0">
-                            <div className="flex flex-col md:flex-row">
-                                {/* Logo Section */}
-                                <div className="md:w-1/3 bg-slate-50 dark:bg-slate-800/50 p-12 flex items-center justify-center">
-                                    <div className="w-48 h-48 relative">
-                                        <img
-                                            src={selectedPartner.logoPath || `https://cdn.simpleicons.org/${selectedPartner.simpleIcon}/${selectedPartner.color}`}
-                                            alt={selectedPartner.name}
-                                            className="w-full h-full object-contain filter drop-shadow-lg"
-                                        />
-                                    </div>
-                                </div>
-
-                                {/* Info Section */}
-                                <div className="md:w-2/3 p-12 flex flex-col justify-center">
-                                    <div className="inline-flex items-center gap-2 text-blue-600 dark:text-blue-400 text-xs font-bold uppercase tracking-widest mb-4">
-                                        <Zap className="w-4 h-4 fill-current" />
-                                        Technology Partner
-                                    </div>
-                                    <h3 className="text-4xl font-black text-slate-900 dark:text-white mb-6 uppercase tracking-tight">
-                                        {selectedPartner.name}
-                                    </h3>
-                                    <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed mb-8">
-                                        {selectedPartner.description}
-                                    </p>
-
-                                    <div className="flex flex-wrap gap-4 mt-auto">
-                                        <Link
-                                            href={selectedPartner.url}
-                                            target="_blank"
-                                            className="inline-flex items-center px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-bold transition-all transform hover:scale-105"
-                                        >
-                                            Visit Official Website <ExternalLink className="ml-2 w-4 h-4" />
-                                        </Link>
-                                    </div>
+                        <div className="flex flex-col md:flex-row h-full">
+                            {/* Logo Section */}
+                            <div className="md:w-1/3 bg-slate-50 dark:bg-slate-800/50 p-12 flex items-center justify-center">
+                                <div className="w-48 h-48 relative">
+                                    <img
+                                        src={selectedPartner.logoPath || `https://cdn.simpleicons.org/${selectedPartner.simpleIcon}/${selectedPartner.color}`}
+                                        alt={selectedPartner.name}
+                                        className="w-full h-full object-contain filter drop-shadow-lg"
+                                    />
                                 </div>
                             </div>
 
-                            {/* Solutions Section */}
-                            {selectedPartner.solutions && (
-                                <div className="p-12 pt-0 pb-16">
-                                    <div className="w-full h-px bg-slate-100 dark:bg-slate-800 mb-12" />
-                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                                        {selectedPartner.solutions.map((sol: any, idx: number) => (
-                                            <div key={idx} className="relative bg-slate-50 dark:bg-slate-800/30 rounded-3xl p-8 border border-slate-100 dark:border-slate-700 flex flex-col items-center text-center group/card transition-all hover:shadow-2xl hover:border-blue-500/20">
-                                                <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${sol.color} ${sol.glow} shadow-xl flex items-center justify-center mb-8 transform transition-transform group-hover/card:scale-110 relative`}>
-                                                    {sol.icon === 'Monitor' ? <Monitor className="w-8 h-8 text-white" /> : <Database className="w-8 h-8 text-white" />}
-                                                    <div className="absolute -bottom-2 -right-2 w-6 h-6 bg-white dark:bg-slate-900 rounded-full flex items-center justify-center shadow-lg border border-slate-100 dark:border-slate-800">
-                                                        <Shield className={`w-3.5 h-3.5 ${idx === 0 ? 'text-purple-600' : 'text-blue-600'} fill-current`} />
-                                                    </div>
-                                                </div>
-
-                                                <h5 className="text-2xl font-bold text-slate-900 dark:text-white mb-3">{sol.title}</h5>
-                                                <p className="text-sm text-slate-600 dark:text-slate-400 mb-6 font-semibold leading-relaxed px-4">
-                                                    {sol.description}
-                                                </p>
-
-                                                <ul className="text-xs text-slate-500 dark:text-slate-500 space-y-3 mb-8 text-center w-full max-w-[240px] mx-auto border-t border-slate-100 dark:border-slate-800/50 pt-6">
-                                                    {sol.details.map((detail: string, dIdx: number) => (
-                                                        <li key={dIdx} className="leading-tight">
-                                                            {detail}
-                                                        </li>
-                                                    ))}
-                                                </ul>
-
-                                                <button className={`mt-auto px-8 py-2.5 rounded-xl border-2 font-black text-xs uppercase tracking-widest transition-all ${idx === 0 ? 'border-purple-200 text-purple-600 hover:bg-purple-600 hover:text-white dark:border-purple-900/50 dark:text-purple-400' : 'border-blue-200 text-blue-600 hover:bg-blue-600 hover:text-white dark:border-blue-900/50 dark:text-blue-400'}`}>
-                                                    Learn more
-                                                </button>
-                                            </div>
-                                        ))}
-                                    </div>
+                            {/* Info Section */}
+                            <div className="md:w-2/3 p-12 flex flex-col justify-center">
+                                <div className="inline-flex items-center gap-2 text-blue-600 dark:text-blue-400 text-xs font-bold uppercase tracking-widest mb-4">
+                                    <Zap className="w-4 h-4 fill-current" />
+                                    Technology Partner
                                 </div>
-                            )}
+                                <h3 className="text-4xl font-black text-slate-900 dark:text-white mb-6 uppercase tracking-tight">
+                                    {selectedPartner.name}
+                                </h3>
+                                <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed mb-8">
+                                    {selectedPartner.description}
+                                </p>
+
+                                <div className="flex flex-wrap gap-4 mt-8">
+                                    <Link
+                                        href={selectedPartner.url}
+                                        target="_blank"
+                                        className="inline-flex items-center px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-bold transition-all transform hover:scale-105"
+                                    >
+                                        Visit Website <ExternalLink className="ml-2 w-4 h-4" />
+                                    </Link>
+                                    <button
+                                        onClick={() => setSelectedPartner(null)}
+                                        className="inline-flex items-center px-6 py-3 bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-white rounded-xl font-bold hover:bg-slate-200 dark:hover:bg-slate-700 transition-all"
+                                    >
+                                        Close Details
+                                    </button>
+                                </div>
+                            </div>
                         </div>
+
+                        {/* Solutions Grid (if available) */}
+                        {selectedPartner.solutions && (
+                            <div className="p-12 pt-0 grid grid-cols-1 md:grid-cols-2 gap-6">
+                                {selectedPartner.solutions.map((sol: any) => (
+                                    <div key={sol.title} className="p-6 rounded-2xl bg-slate-50 dark:bg-slate-800/40 border border-slate-100 dark:border-slate-700 hover:shadow-lg transition-all">
+                                        <div className="w-16 h-16 mb-4 flex items-center justify-center">
+                                            <img src={sol.icon} alt={sol.title} className="w-full h-full object-contain" />
+                                        </div>
+                                        <h4 className="text-xl font-bold text-slate-900 dark:text-white mb-4">{sol.title}</h4>
+                                        <ul className="space-y-2">
+                                            {sol.features.map((f: string) => (
+                                                <li key={f} className="text-sm text-slate-600 dark:text-slate-400 flex items-start gap-2">
+                                                    <span className="w-1.5 h-1.5 bg-blue-500 rounded-full mt-1.5 shrink-0" />
+                                                    {f}
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </div>
+                                ))}
+                            </div>
+                        )}
                     </div>
                 </div>
             )}
