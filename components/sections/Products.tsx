@@ -9,63 +9,63 @@ export function Products() {
         {
             name: 'Cisco',
             color: '1BA0D7',
-            logoPath: '/images/ciscoo.png',
+            logo: '/images/ciscoo.png',
             url: 'https://www.cisco.com/site/us/en/products/security/index.html',
             description: 'Network security, firewalls, intrusion prevention, and secure access solutions.'
         },
         {
             name: 'Palo Alto Networks',
             color: 'FA582D',
-            simpleIcon: 'paloaltonetworks',
+            logo: 'paloaltonetworks',
             url: 'https://www.paloaltonetworks.com/network-security',
             description: 'Next-generation firewalls, advanced threat prevention, and cloud security.'
         },
         {
             name: 'Fortinet',
             color: 'EE3124',
-            simpleIcon: 'fortinet',
+            logo: 'fortinet',
             url: 'https://www.fortinet.com/products',
             description: 'High-performance firewalls, secure SD-WAN, and integrated security platforms.'
         },
         {
             name: 'Check Point',
             color: 'CC0000',
-            logoPath: '/images/checkpointt.logo.PNG',
+            logo: '/images/checkpointt.logo.PNG',
             url: 'https://www.checkpoint.com/quantum/next-generation-firewall/',
             description: 'Enterprise firewall, threat intelligence, and advanced cyber defense.'
         },
         {
             name: 'Sophos',
             color: '0071CE',
-            logoPath: '/images/partners/sophos-shield.jpg',
+            logo: '/images/partners/sophos-shield.jpg',
             url: 'https://www.sophos.com/en-us/products',
             description: 'Endpoint protection, firewall security, and centralized security management.'
         },
         {
             name: 'Trend Micro',
             color: 'D71920',
-            simpleIcon: 'trendmicro',
+            logo: 'trendmicro',
             url: 'https://www.trendmicro.com/en_us/business/products.html',
             description: 'Endpoint, server, and cloud workload security with advanced malware protection.'
         },
         {
             name: 'CrowdStrike',
             color: 'FF0000',
-            logoPath: '/images/partners/crowdstrike-falcon.png',
+            logo: '/images/partners/crowdstrike-falcon.png',
             url: 'https://www.crowdstrike.com/platform/',
             description: 'AI-powered endpoint detection and response (EDR) and threat intelligence.'
         },
         {
             name: 'Darktrace',
             color: '9013FE',
-            logoPath: '/images/partners/Darktrace.png',
+            logo: '/images/partners/Darktrace.png',
             url: 'https://darktrace.com/products',
             description: 'AI-driven threat detection, network visibility, and autonomous response.'
         },
         {
             name: 'Imperva',
             color: 'E30613',
-            logoPath: '/images/partners/imperva_shield_professional.png',
+            logo: '/images/partners/imperva_shield_professional.png',
             url: 'https://www.imperva.com/products/',
             description: 'Web application firewall (WAF), database security, and DDoS protection.',
             solutions: [
@@ -178,7 +178,7 @@ export function Products() {
                                 <div className="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-transparent via-blue-500 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
                                 <div className="w-36 h-36 mb-6 flex items-center justify-center transition-all duration-300 transform group-hover:scale-110">
                                     <img
-                                        src={partner.logoPath || `https://cdn.simpleicons.org/${partner.simpleIcon}/${partner.color}`}
+                                        src={partner.logo.startsWith('/') ? partner.logo : `https://cdn.simpleicons.org/${partner.logo}/${partner.color || '1BA0D7'}`}
                                         alt={partner.name}
                                         className="w-full h-full object-contain"
                                     />
@@ -215,7 +215,7 @@ export function Products() {
 
                                 <div className="w-32 h-32 mb-6 flex items-center justify-center transition-all group-hover:scale-110">
                                     <img
-                                        src={partner.logoPath || (partner.simpleIcon && `https://cdn.simpleicons.org/${partner.simpleIcon}/${partner.color || '1BA0D7'}`)}
+                                        src={partner.logo.startsWith('/') ? partner.logo : `https://cdn.simpleicons.org/${partner.logo}/${partner.color || '1BA0D7'}`}
                                         alt={partner.name}
                                         className="w-full h-full object-contain"
                                     />
@@ -375,15 +375,9 @@ export function Products() {
                             <div className="md:w-1/3 bg-slate-50 dark:bg-slate-800/50 p-12 flex items-center justify-center">
                                 <div className="w-48 h-48 relative">
                                     <img
-                                        src={selectedPartner.logoPath || selectedPartner.logo || `https://cdn.simpleicons.org/${selectedPartner.simpleIcon}/${selectedPartner.color}`}
+                                        src={selectedPartner.logo.startsWith('/') ? selectedPartner.logo : `https://cdn.simpleicons.org/${selectedPartner.logo}/${selectedPartner.color || '1BA0D7'}`}
                                         alt={selectedPartner.name}
                                         className="w-full h-full object-contain filter drop-shadow-lg"
-                                        onError={(e) => {
-                                            const target = e.target as HTMLImageElement;
-                                            if (selectedPartner.logo && !selectedPartner.logo.startsWith('/')) {
-                                                target.src = `https://cdn.simpleicons.org/${selectedPartner.logo}/${selectedPartner.color || '1BA0D7'}`;
-                                            }
-                                        }}
                                     />
                                 </div>
                             </div>
