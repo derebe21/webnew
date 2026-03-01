@@ -9,7 +9,7 @@ export function Products() {
         {
             name: 'Cisco',
             color: '1BA0D7',
-            logoPath: '/images/partners/cisco-logo.svg',
+            logoPath: '/images/partners/cisco-final.png',
             url: 'https://www.cisco.com/site/us/en/products/security/index.html',
             description: 'Network security, firewalls, intrusion prevention, and secure access solutions.'
         },
@@ -37,7 +37,7 @@ export function Products() {
         {
             name: 'Sophos',
             color: '0071CE',
-            logoPath: '/images/partners/sophos_logo_professional.png',
+            logoPath: '/images/partners/sophos-shield.jpg',
             url: 'https://www.sophos.com/en-us/products',
             description: 'Endpoint protection, firewall security, and centralized security management.'
         },
