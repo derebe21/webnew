@@ -128,6 +128,15 @@ export function Products() {
         { name: 'ZKTeco', logo: '/images/partners/zkteco.png', url: 'https://www.zkteco.com/en/product_list/' }
     ];
 
+    const unifiedCommunicationsPartners = [
+        { name: 'Avaya', logo: 'avaya', url: 'https://www.avaya.com/en/products/' },
+        { name: 'Yealink', logo: 'yealink', url: 'https://www.yealink.com/en/product-list' },
+        { name: 'Poly', logo: 'poly', url: 'https://www.hp.com/us-en/poly.html' },
+        { name: 'Microsoft Teams', logo: 'microsoft-teams', url: 'https://www.microsoft.com/en-us/microsoft-teams/group-chat-software' },
+        { name: 'Zoom', logo: 'zoom', url: 'https://zoom.us/products' },
+        { name: 'Cisco Webex', logo: 'cisco-webex', url: 'https://www.webex.com/' }
+    ];
+
     const [selectedPartner, setSelectedPartner] = useState<any>(null);
 
     // Close modal on escape key
@@ -165,8 +174,10 @@ export function Products() {
                             <button
                                 key={partner.name}
                                 onClick={() => setSelectedPartner(partner)}
-                                className="group p-8 rounded-3xl bg-white dark:bg-slate-900/60 border border-slate-100 dark:border-slate-800 hover:border-blue-400/40 transition-all duration-300 hover:shadow-2xl flex flex-col items-center text-center hover:-translate-y-1 w-full"
+                                className="group p-8 rounded-3xl bg-white dark:bg-slate-900/60 border border-slate-100 dark:border-slate-800 hover:border-blue-400/40 transition-all duration-300 hover:shadow-2xl flex flex-col items-center text-center hover:-translate-y-1 w-full relative overflow-hidden"
                             >
+                                {/* Decorative Line */}
+                                <div className="absolute top-0 left-0 w-full h-1.5 bg-gradient-to-r from-transparent via-blue-500 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
                                 <div className="w-36 h-36 mb-6 flex items-center justify-center transition-all duration-300 transform group-hover:scale-110">
                                     <img
                                         src={partner.logoPath || `https://cdn.simpleicons.org/${partner.simpleIcon}/${partner.color}`}
@@ -200,9 +211,12 @@ export function Products() {
                                 key={partner.name}
                                 href={partner.url}
                                 target="_blank"
-                                className="group p-8 rounded-2xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800 hover:border-blue-500/30 transition-all text-center flex flex-col items-center hover:-translate-y-1"
+                                className="group p-8 rounded-2xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800 hover:border-blue-500/30 transition-all text-center flex flex-col items-center hover:-translate-y-1 relative overflow-hidden"
                             >
-                                <div className="w-24 h-24 mb-4 flex items-center justify-center transition-all group-hover:scale-110">
+                                {/* Decorative Line */}
+                                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-blue-500/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+
+                                <div className="w-32 h-32 mb-4 flex items-center justify-center transition-all group-hover:scale-110">
                                     <img
                                         src={partner.logo.startsWith('/') ? partner.logo : `https://cdn.simpleicons.org/${partner.logo}/1BA0D7`}
                                         alt={partner.name}
@@ -225,8 +239,9 @@ export function Products() {
                         </div>
                         <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
                             {cloudVirtualizationPartners.map((p) => (
-                                <Link key={p.name} href={p.url} className="group p-6 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800 hover:shadow-xl transition-all flex flex-col items-center justify-center h-40">
-                                    <div className="w-20 h-20 mb-3 flex items-center justify-center transition-transform group-hover:scale-110">
+                                <Link key={p.name} href={p.url} className="group p-6 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800 hover:shadow-xl transition-all flex flex-col items-center justify-center h-48 relative overflow-hidden">
+                                    <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-blue-500/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                                    <div className="w-24 h-24 mb-3 flex items-center justify-center transition-transform group-hover:scale-110">
                                         <img src={p.logo.startsWith('/') ? p.logo : `https://cdn.simpleicons.org/${p.logo}/3B82F6`} alt={p.name} className="max-w-full max-h-full object-contain" />
                                     </div>
                                     <span className="text-[10px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest">{p.name}</span>
@@ -243,8 +258,9 @@ export function Products() {
                         </div>
                         <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
                             {dataCenterPartners.slice(0, 8).map((p) => (
-                                <Link key={p.name} href={p.url} className="group p-6 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800 hover:shadow-xl transition-all flex flex-col items-center justify-center h-36">
-                                    <div className="w-16 h-16 mb-2 flex items-center justify-center transition-transform group-hover:scale-110">
+                                <Link key={p.name} href={p.url} className="group p-6 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800 hover:shadow-xl transition-all flex flex-col items-center justify-center h-44 relative overflow-hidden">
+                                    <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-blue-500/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                                    <div className="w-20 h-20 mb-2 flex items-center justify-center transition-transform group-hover:scale-110">
                                         <img src={p.logo.startsWith('/') ? p.logo : `https://cdn.simpleicons.org/${p.logo}/006699`} alt={p.name} className="max-w-full max-h-full object-contain" />
                                     </div>
                                     <span className="text-[10px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest">{p.name}</span>
@@ -268,11 +284,42 @@ export function Products() {
                                 key={partner.name}
                                 href={partner.url}
                                 target="_blank"
-                                className="group p-8 rounded-2xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800 hover:border-blue-500/30 transition-all text-center flex flex-col items-center hover:-translate-y-1"
+                                className="group p-8 rounded-2xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800 hover:border-blue-500/30 transition-all text-center flex flex-col items-center hover:-translate-y-1 relative overflow-hidden"
                             >
-                                <div className="w-24 h-24 mb-4 flex items-center justify-center transition-all group-hover:scale-110">
+                                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-blue-500/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                                <div className="w-32 h-32 mb-4 flex items-center justify-center transition-all group-hover:scale-110">
                                     <img
                                         src={partner.logo}
+                                        alt={partner.name}
+                                        className="w-full h-full object-contain"
+                                    />
+                                </div>
+                                <span className="text-xs font-bold text-slate-900 dark:text-white uppercase tracking-wider">{partner.name}</span>
+                            </Link>
+                        ))}
+                    </div>
+                </div>
+
+                {/* Unified Communications Technologies */}
+                <div className="mt-24">
+                    <div className="flex items-center gap-4 mb-12">
+                        <div className="w-1.5 h-10 bg-blue-600 rounded-full" />
+                        <h3 className="text-3xl font-black text-slate-900 dark:text-white uppercase tracking-tight">
+                            Unified Communications Technologies
+                        </h3>
+                    </div>
+                    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+                        {unifiedCommunicationsPartners.map((partner) => (
+                            <Link
+                                key={partner.name}
+                                href={partner.url}
+                                target="_blank"
+                                className="group p-8 rounded-2xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800 hover:border-blue-500/30 transition-all text-center flex flex-col items-center hover:-translate-y-1 relative overflow-hidden"
+                            >
+                                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-blue-500/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                                <div className="w-32 h-32 mb-4 flex items-center justify-center transition-all group-hover:scale-110">
+                                    <img
+                                        src={`https://cdn.simpleicons.org/${partner.logo}/4285F4`}
                                         alt={partner.name}
                                         className="w-full h-full object-contain"
                                     />
