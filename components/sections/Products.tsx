@@ -1,7 +1,7 @@
 'use client';
 
-import { useState } from 'react';
-import { Globe, Cloud, Server, Video, Zap, ArrowRight, Monitor } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { Globe, Cloud, Server, Video, Zap, ArrowRight, Monitor, X, ExternalLink } from 'lucide-react';
 import Link from 'next/link';
 
 export function Products() {
@@ -9,7 +9,7 @@ export function Products() {
         {
             name: 'Cisco',
             color: '1BA0D7',
-            simpleIcon: 'cisco',
+            logoPath: '/images/partners/cisco-logo.svg',
             url: 'https://www.cisco.com/site/us/en/products/security/index.html',
             description: 'Network security, firewalls, intrusion prevention, and secure access solutions.'
         },
@@ -30,14 +30,14 @@ export function Products() {
         {
             name: 'Check Point',
             color: 'CC0000',
-            simpleIcon: 'checkpoint',
+            logoPath: '/images/partners/checkpoint-logo.svg',
             url: 'https://www.checkpoint.com/quantum/next-generation-firewall/',
             description: 'Enterprise firewall, threat intelligence, and advanced cyber defense.'
         },
         {
             name: 'Sophos',
             color: '0071CE',
-            simpleIcon: 'sophos',
+            logoPath: '/images/partners/sophos-logo.svg',
             url: 'https://www.sophos.com/en-us/products',
             description: 'Endpoint protection, firewall security, and centralized security management.'
         },
@@ -51,14 +51,14 @@ export function Products() {
         {
             name: 'CrowdStrike',
             color: 'FF0000',
-            simpleIcon: 'crowdstrike',
+            logoPath: '/images/partners/crowdstrike-logo.svg',
             url: 'https://www.crowdstrike.com/platform/',
             description: 'AI-powered endpoint detection and response (EDR) and threat intelligence.'
         },
         {
             name: 'Darktrace',
             color: '9013FE',
-            simpleIcon: 'darktrace',
+            logoPath: '/images/partners/darktrace-logo.svg',
             url: 'https://darktrace.com/products',
             description: 'AI-driven threat detection, network visibility, and autonomous response.'
         },
@@ -109,6 +109,17 @@ export function Products() {
         { name: 'ZKTeco', logo: '/images/partners/zkteco.png', url: 'https://www.zkteco.com/en/product_list/' }
     ];
 
+    const [selectedPartner, setSelectedPartner] = useState<any>(null);
+
+    // Close modal on escape key
+    useEffect(() => {
+        const handleEsc = (e: KeyboardEvent) => {
+            if (e.key === 'Escape') setSelectedPartner(null);
+        };
+        window.addEventListener('keydown', handleEsc);
+        return () => window.removeEventListener('keydown', handleEsc);
+    }, []);
+
     return (
         <section id="technology" className="py-24 md:py-32 bg-white dark:bg-slate-950 transition-colors duration-500">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -132,15 +143,14 @@ export function Products() {
                     </p>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                         {cyberSecurityPartners.map((partner) => (
-                            <Link
+                            <button
                                 key={partner.name}
-                                href={partner.url}
-                                target="_blank"
-                                className="group p-8 rounded-3xl bg-white dark:bg-slate-900/60 border border-slate-100 dark:border-slate-800 hover:border-blue-400/40 transition-all duration-300 hover:shadow-2xl flex flex-col items-center text-center hover:-translate-y-1"
+                                onClick={() => setSelectedPartner(partner)}
+                                className="group p-8 rounded-3xl bg-white dark:bg-slate-900/60 border border-slate-100 dark:border-slate-800 hover:border-blue-400/40 transition-all duration-300 hover:shadow-2xl flex flex-col items-center text-center hover:-translate-y-1 w-full"
                             >
                                 <div className="w-36 h-36 mb-6 flex items-center justify-center transition-all duration-300 transform group-hover:scale-110">
                                     <img
-                                        src={`https://cdn.simpleicons.org/${partner.simpleIcon}/${partner.color}`}
+                                        src={partner.logoPath || `https://cdn.simpleicons.org/${partner.simpleIcon}/${partner.color}`}
                                         alt={partner.name}
                                         className="w-full h-full object-contain"
                                     />
@@ -149,7 +159,10 @@ export function Products() {
                                 <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed font-medium">
                                     {partner.description}
                                 </p>
-                            </Link>
+                                <div className="mt-4 flex items-center text-xs font-bold text-blue-600 dark:text-blue-400 opacity-0 group-hover:opacity-100 transition-opacity">
+                                    VIEW DETAILS <ArrowRight className="ml-1 w-3 h-3" />
+                                </div>
+                            </button>
                         ))}
                     </div>
                 </div>
@@ -216,6 +229,70 @@ export function Products() {
                     </div>
                 </div>
             </div>
+
+            {/* Partner Detail Modal */}
+            {selectedPartner && (
+                <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+                    {/* Backdrop */}
+                    <div
+                        className="absolute inset-0 bg-slate-950/60 backdrop-blur-sm transition-opacity"
+                        onClick={() => setSelectedPartner(null)}
+                    />
+
+                    {/* Modal Content */}
+                    <div className="relative bg-white dark:bg-slate-900 w-full max-w-2xl rounded-3xl shadow-2xl overflow-hidden transform transition-all border border-slate-100 dark:border-slate-800">
+                        <button
+                            onClick={() => setSelectedPartner(null)}
+                            className="absolute top-6 right-6 p-2 rounded-full bg-slate-50 dark:bg-slate-800 text-slate-500 hover:text-slate-900 dark:hover:text-white transition-colors z-10"
+                        >
+                            <X className="w-5 h-5" />
+                        </button>
+
+                        <div className="flex flex-col md:flex-row h-full">
+                            {/* Logo Section */}
+                            <div className="md:w-1/3 bg-slate-50 dark:bg-slate-800/50 p-12 flex items-center justify-center">
+                                <div className="w-48 h-48 relative">
+                                    <img
+                                        src={selectedPartner.logoPath || `https://cdn.simpleicons.org/${selectedPartner.simpleIcon}/${selectedPartner.color}`}
+                                        alt={selectedPartner.name}
+                                        className="w-full h-full object-contain filter drop-shadow-lg"
+                                    />
+                                </div>
+                            </div>
+
+                            {/* Info Section */}
+                            <div className="md:w-2/3 p-12 flex flex-col justify-center">
+                                <div className="inline-flex items-center gap-2 text-blue-600 dark:text-blue-400 text-xs font-bold uppercase tracking-widest mb-4">
+                                    <Zap className="w-4 h-4 fill-current" />
+                                    Technology Partner
+                                </div>
+                                <h3 className="text-4xl font-black text-slate-900 dark:text-white mb-6 uppercase tracking-tight">
+                                    {selectedPartner.name}
+                                </h3>
+                                <p className="text-lg text-slate-600 dark:text-slate-400 leading-relaxed mb-8">
+                                    {selectedPartner.description}
+                                </p>
+
+                                <div className="flex flex-wrap gap-4 mt-auto">
+                                    <Link
+                                        href={selectedPartner.url}
+                                        target="_blank"
+                                        className="inline-flex items-center px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-bold transition-all transform hover:scale-105"
+                                    >
+                                        Visit Website <ExternalLink className="ml-2 w-4 h-4" />
+                                    </Link>
+                                    <button
+                                        onClick={() => setSelectedPartner(null)}
+                                        className="inline-flex items-center px-6 py-3 bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-white rounded-xl font-bold hover:bg-slate-200 dark:hover:bg-slate-700 transition-all"
+                                    >
+                                        Close Details
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            )}
         </section>
     );
 }
