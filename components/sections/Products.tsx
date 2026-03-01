@@ -129,12 +129,10 @@ export function Products() {
     ];
 
     const unifiedCommunicationsPartners = [
-        { name: 'Avaya', logo: 'avaya', url: 'https://www.avaya.com/en/products/' },
-        { name: 'Yealink', logo: 'yealink', url: 'https://www.yealink.com/en/product-list' },
-        { name: 'Poly', logo: 'poly', url: 'https://www.hp.com/us-en/poly.html' },
-        { name: 'Microsoft Teams', logo: 'microsoft-teams', url: 'https://www.microsoft.com/en-us/microsoft-teams/group-chat-software' },
-        { name: 'Zoom', logo: 'zoom', url: 'https://zoom.us/products' },
-        { name: 'Cisco Webex', logo: 'cisco-webex', url: 'https://www.webex.com/' }
+        { name: 'Cisco', logo: 'cisco', url: 'https://www.cisco.com/c/en/us/solutions/collaboration/index.html' },
+        { name: 'Dinstar', logo: 'dinstar', url: 'https://www.dinstar.com/' },
+        { name: 'VaxVoIP', logo: 'vaxvoip', url: 'https://www.vaxvoip.com/' },
+        { name: 'Grandstream', logo: 'grandstream', url: 'http://www.grandstream.com/' }
     ];
 
     const [selectedPartner, setSelectedPartner] = useState<any>(null);
