@@ -130,9 +130,9 @@ export function Products() {
 
     const unifiedCommunicationsPartners = [
         { name: 'Cisco', logo: '/images/ciscoo.png', url: 'https://www.cisco.com/c/en/us/solutions/collaboration/index.html', color: '1BA0D7', description: 'Comprehensive collaboration, IP telephony, and video conferencing.' },
-        { name: 'Dinstar', logo: '/images/partners/dinstar.png', url: 'https://www.dinstar.com/', description: 'IP unified communications and VoIP gateway solutions.' },
-        { name: 'VaxVoIP', logo: '/images/partners/vaxvoip.png', url: 'https://www.vaxvoip.com/', description: 'Specialized SIP-based voice and video communication technologies.' },
-        { name: 'Grandstream', logo: '/images/partners/grandstream.png', url: 'http://www.grandstream.com/', description: 'High-quality IP voice, video, data, and mobility solutions.' }
+        { name: 'Dinstar', logo: '/images/partners/dinstar_new.png', url: 'https://www.dinstar.com/', description: 'IP unified communications and VoIP gateway solutions.' },
+        { name: 'VaxVoIP', logo: '/images/partners/vaxvoip_new.png', url: 'https://www.vaxvoip.com/', description: 'Specialized SIP-based voice and video communication technologies.' },
+        { name: 'Grandstream', logo: '/images/partners/grandstream_new.png', url: 'http://www.grandstream.com/', description: 'High-quality IP voice, video, data, and mobility solutions.' }
     ];
 
     const [selectedPartner, setSelectedPartner] = useState<any>(null);
