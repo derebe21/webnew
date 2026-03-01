@@ -30,14 +30,14 @@ export function Products() {
         {
             name: 'Check Point',
             color: 'CC0000',
-            logoPath: '/images/partners/checkpoint-logo.svg',
+            logoPath: '/images/partners/checkpoint_logo_professional.png',
             url: 'https://www.checkpoint.com/quantum/next-generation-firewall/',
             description: 'Enterprise firewall, threat intelligence, and advanced cyber defense.'
         },
         {
             name: 'Sophos',
             color: '0071CE',
-            logoPath: '/images/partners/sophos-logo.svg',
+            logoPath: '/images/partners/sophos_logo_professional.png',
             url: 'https://www.sophos.com/en-us/products',
             description: 'Endpoint protection, firewall security, and centralized security management.'
         },
@@ -51,21 +51,21 @@ export function Products() {
         {
             name: 'CrowdStrike',
             color: 'FF0000',
-            logoPath: '/images/partners/crowdstrike-logo.svg',
+            logoPath: '/images/partners/crowdstrike_logo_professional.png',
             url: 'https://www.crowdstrike.com/platform/',
             description: 'AI-powered endpoint detection and response (EDR) and threat intelligence.'
         },
         {
             name: 'Darktrace',
             color: '9013FE',
-            logoPath: '/images/partners/darktrace-logo.svg',
+            logoPath: '/images/partners/darktrace_logo_professional.png',
             url: 'https://darktrace.com/products',
             description: 'AI-driven threat detection, network visibility, and autonomous response.'
         },
         {
             name: 'Imperva',
             color: 'E30613',
-            simpleIcon: 'imperva',
+            logoPath: '/images/partners/imperva_logo_professional.png',
             url: 'https://www.imperva.com/products/',
             description: 'Web application firewall (WAF), database security, and DDoS protection.'
         }
