@@ -91,7 +91,7 @@ export function Products() {
     ];
 
     const digitalInfrastructurePartners = [
-        { name: 'Cisco', logo: '/images/partners/cisco-logo.svg', url: 'https://www.cisco.com/c/en/us/solutions/enterprise-networks/index.html' },
+        { name: 'Cisco', logo: '/images/partners/cisco-final.png', url: 'https://www.cisco.com/c/en/us/solutions/enterprise-networks/index.html' },
         { name: 'Huawei', logo: '/images/partners/huawei-logo.svg', url: 'https://e.huawei.com/en/products/enterprise-networking' },
         { name: 'HPE Aruba', logo: '/images/partners/hpe-logo.svg', url: 'https://www.arubanetworks.com/products/' },
         { name: 'Juniper Networks', logo: '/images/partners/juniper-logo.svg', url: 'https://www.juniper.net/us/en/products.html' },
@@ -112,7 +112,7 @@ export function Products() {
         { name: 'Dell', logo: 'dell', url: 'https://www.dell.com/en-us/dt/servers/index.htm' },
         { name: 'HPE', logo: '/images/partners/hpe-new.png', url: 'https://www.hpe.com/us/en/servers.html' },
         { name: 'Lenovo', logo: 'lenovo', url: 'https://www.lenovo.com/us/en/servers-storage/' },
-        { name: 'Huawei', logo: '/images/partners/huawei-servers.png', url: 'https://e.huawei.com/en/products/compute' },
+        { name: 'Huawei', logo: '/images/partners/huawei-logo.svg', url: 'https://e.huawei.com/en/products/compute' },
         { name: 'IBM', logo: '/images/partners/ibm-logo.svg', url: 'https://www.ibm.com/it-infrastructure' },
         { name: 'NetApp', logo: 'netapp', url: 'https://www.netapp.com/data-storage/' },
         { name: 'Synology', logo: 'synology', url: 'https://www.synology.com/en-us/products' },
@@ -200,13 +200,13 @@ export function Products() {
                                 key={partner.name}
                                 href={partner.url}
                                 target="_blank"
-                                className="group p-6 rounded-2xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800 hover:border-blue-500/30 transition-all text-center flex flex-col items-center"
+                                className="group p-8 rounded-2xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800 hover:border-blue-500/30 transition-all text-center flex flex-col items-center hover:-translate-y-1"
                             >
-                                <div className="w-16 h-16 mb-4 flex items-center justify-center grayscale group-hover:grayscale-0 transition-all">
+                                <div className="w-24 h-24 mb-4 flex items-center justify-center transition-all group-hover:scale-110">
                                     <img
-                                        src={partner.logo.startsWith('/') ? partner.logo : `https://cdn.simpleicons.org/${partner.logo}/4755E9`}
+                                        src={partner.logo.startsWith('/') ? partner.logo : `https://cdn.simpleicons.org/${partner.logo}/1BA0D7`}
                                         alt={partner.name}
-                                        className={`w-full h-full object-contain ${partner.name === 'Cisco' ? '' : 'dark:invert dark:group-hover:invert-0'}`}
+                                        className="w-full h-full object-contain"
                                     />
                                 </div>
                                 <span className="text-xs font-bold text-slate-900 dark:text-white uppercase tracking-wider">{partner.name}</span>
@@ -223,10 +223,13 @@ export function Products() {
                             <Cloud className="w-6 h-6 text-blue-600" />
                             <h3 className="text-xl font-black text-slate-900 dark:text-white uppercase tracking-tight">Cloud & Virtualization</h3>
                         </div>
-                        <div className="grid grid-cols-3 gap-4">
+                        <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
                             {cloudVirtualizationPartners.map((p) => (
-                                <Link key={p.name} href={p.url} className="p-4 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800 hover:shadow-md transition-all flex items-center justify-center h-20 grayscale hover:grayscale-0">
-                                    <img src={p.logo.startsWith('/') ? p.logo : `https://cdn.simpleicons.org/${p.logo}/4755E9`} alt={p.name} className="max-w-[80%] max-h-[80%] object-contain dark:invert dark:hover:invert-0" />
+                                <Link key={p.name} href={p.url} className="group p-6 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800 hover:shadow-xl transition-all flex flex-col items-center justify-center h-40">
+                                    <div className="w-20 h-20 mb-3 flex items-center justify-center transition-transform group-hover:scale-110">
+                                        <img src={p.logo.startsWith('/') ? p.logo : `https://cdn.simpleicons.org/${p.logo}/3B82F6`} alt={p.name} className="max-w-full max-h-full object-contain" />
+                                    </div>
+                                    <span className="text-[10px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest">{p.name}</span>
                                 </Link>
                             ))}
                         </div>
@@ -238,10 +241,13 @@ export function Products() {
                             <Server className="w-6 h-6 text-blue-600" />
                             <h3 className="text-xl font-black text-slate-900 dark:text-white uppercase tracking-tight">Data Center Solutions</h3>
                         </div>
-                        <div className="grid grid-cols-4 gap-4">
+                        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
                             {dataCenterPartners.slice(0, 8).map((p) => (
-                                <Link key={p.name} href={p.url} className="p-4 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800 hover:shadow-md transition-all flex items-center justify-center h-20 grayscale hover:grayscale-0">
-                                    <img src={p.logo.startsWith('/') ? p.logo : `https://cdn.simpleicons.org/${p.logo}/4755E9`} alt={p.name} className="max-w-[80%] max-h-[80%] object-contain dark:invert dark:hover:invert-0" />
+                                <Link key={p.name} href={p.url} className="group p-6 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800 hover:shadow-xl transition-all flex flex-col items-center justify-center h-36">
+                                    <div className="w-16 h-16 mb-2 flex items-center justify-center transition-transform group-hover:scale-110">
+                                        <img src={p.logo.startsWith('/') ? p.logo : `https://cdn.simpleicons.org/${p.logo}/006699`} alt={p.name} className="max-w-full max-h-full object-contain" />
+                                    </div>
+                                    <span className="text-[10px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-widest">{p.name}</span>
                                 </Link>
                             ))}
                         </div>
