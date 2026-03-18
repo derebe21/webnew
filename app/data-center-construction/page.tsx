@@ -1,7 +1,7 @@
 import { Navigation } from '@/components/Navigation';
 import { Footer } from '@/components/Footer';
 import Image from 'next/image';
-import { CheckCircle2, ShieldCore, Server, Cable, Activity } from 'lucide-react';
+import { CheckCircle2, Shield, Server, Cable, Activity } from 'lucide-react';
 
 export default function DataCenterConstruction() {
   return (
@@ -68,7 +68,7 @@ export default function DataCenterConstruction() {
             {/* 2 */}
             <div className="flex flex-col items-center text-center group">
               <div className="w-20 h-20 mb-8 bg-blue-600/20 border border-blue-500/30 rounded-2xl flex items-center justify-center transform group-hover:scale-110 transition-transform duration-300 shadow-[0_0_30px_rgba(37,99,235,0.2)]">
-                <ShieldCore className="w-10 h-10 text-blue-400" />
+                <Shield className="w-10 h-10 text-blue-400" />
               </div>
               <h3 className="text-2xl font-bold mb-4 tracking-tight text-white">Physical Security<br/>Systems</h3>
               <p className="text-slate-400 leading-relaxed text-sm">
