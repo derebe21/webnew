@@ -89,14 +89,14 @@ export const servicesData: Service[] = [
         benefits: [],
     },
     {
-        slug: 'data-center-solutions',
+        slug: 'data-center',
         icon: Server,
         logoImage: '/images/data-center-final.png',
         sidebarImage: '',
         bannerImage: '/images/data-center-final.png',
         bgColor: '#1E293B',
-        title: 'Data Center Solutions',
-        description: 'Comprehensive data center design, power, cooling, and management for maximum uptime and efficiency.',
+        title: 'Data Center Construction Services',
+        description: 'Turnkey fiber, copper, wireless, and physical security infrastructure for mission-critical data centers.',
         longDescription: 'Installation and configuration of high-availability data center facilities and virtualization platforms.',
         features: [
             'Server & Storage Solutions: Performance-optimized server deployment and scalable enterprise storage.',
