@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ITSEC Technology - Premium Cover Page</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #00e5ff;
+            --secondary: #0a192f;
+            --accent: #64ffda;
+            --text-main: #0a192f;
+            --text-sub: #4a5568;
+            --white: #ffffff;
+        }
+
+        @page {
+            size: A4;
+            margin: 0;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--white);
+            -webkit-print-color-adjust: exact;
+        }
+
+        .cover-container {
+            width: 210mm;
+            height: 297mm;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            background: url('C:/Users/DEREBE/.gemini/antigravity/brain/4730a64c-6ee8-41af-8684-2497f595d793/itsec_premium_cover_bg_1772975730551.png') no-repeat center center;
+            background-size: cover;
+        }
+
+        .header {
+            padding: 60px 80px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 10;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo {
+            height: 100px;
+            width: auto;
+        }
+
+        .company-info {
+            text-align: right;
+            color: var(--secondary);
+        }
+
+        .company-name {
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            color: var(--secondary);
+            margin: 0;
+            text-transform: uppercase;
+        }
+
+        .tagline {
+            font-size: 14px;
+            font-weight: 400;
+            color: var(--primary);
+            margin-top: 5px;
+        }
+
+        .main-content {
+            flex: 1;
+            padding: 40px 100px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            z-index: 5;
+        }
+
+        .document-title {
+            font-size: 48px;
+            font-weight: 700;
+            color: var(--secondary);
+            margin: 0;
+            line-height: 1.1;
+            border-left: 8px solid var(--primary);
+            padding-left: 30px;
+        }
+
+        .document-subtitle {
+            font-size: 20px;
+            font-weight: 300;
+            color: var(--text-sub);
+            margin-top: 20px;
+            padding-left: 38px;
+            max-width: 600px;
+        }
+
+        .letter-content {
+            margin-top: 80px;
+            padding-left: 38px;
+        }
+
+        .placeholder-text {
+            color: var(--text-sub);
+            font-style: italic;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 20px;
+            font-size: 16px;
+        }
+
+        .footer {
+            padding: 40px 80px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10;
+            background: rgba(10, 25, 47, 0.03);
+            border-top: 1px solid rgba(0, 229, 255, 0.2);
+        }
+
+        .footer-text {
+            font-size: 12px;
+            color: var(--secondary);
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .accent-bar {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 10px;
+            background: linear-gradient(90deg, var(--secondary), var(--primary));
+        }
+
+        /* Circuit line decoration */
+        .decor-line {
+            position: absolute;
+            background: var(--primary);
+            opacity: 0.3;
+        }
+
+        .line-1 { width: 2px; height: 150px; left: 40px; top: 0; }
+        .line-2 { width: 100px; height: 2px; left: 0; top: 150px; }
+        .circle-1 { 
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            border: 2px solid var(--primary);
+            border-radius: 50%;
+            left: 96px;
+            top: 147px;
+        }
+    </style>
+</head>
+<body>
+    <div class="cover-container">
+        <div class="header">
+            <div class="logo-container">
+                <img src="C:/Users/DEREBE/.gemini/antigravity/brain/4730a64c-6ee8-41af-8684-2497f595d793/itsec_premium_logo_1772975902401.png" alt="ITSEC Technology Logo" class="logo">
+            </div>
+            <div class="company-info">
+                <h2 class="company-name">ITSEC Technology</h2>
+                <div class="tagline">Securing Your Digital Future</div>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <h1 class="document-title">OFFICIAL<br>COMMUNICATION</h1>
+            <p class="document-subtitle">Cybersecurity solutions, digital infrastructure, and integrated security systems for the modern enterprise.</p>
+            
+            <div class="letter-content">
+                <div class="placeholder-text">
+                    This area is reserved for your letter content. The design is optimized for formal correspondence and professional presentation.
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <div class="footer-text">Confidential & Proprietary | ITSEC Technology PLC</div>
+        </div>
+
+        <div class="accent-bar"></div>
+        
+        <!-- Subtle Decor -->
+        <div class="decor-line line-1"></div>
+        <div class="decor-line line-2"></div>
+        <div class="circle-1"></div>
+    </div>
+</body>
+</html>
