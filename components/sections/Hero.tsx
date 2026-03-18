@@ -78,7 +78,7 @@ export function Hero() {
         >
           <Button
             size="lg"
-            onClick={() => window.location.href = '/services/data-center'}
+            onClick={() => window.location.href = '/data-center-construction'}
             className="w-full sm:w-auto bg-blue-600 hover:bg-blue-500 text-white font-black h-18 px-14 rounded-full shadow-[0_20px_40px_rgba(37,99,235,0.4)] transition-all hover:scale-105 active:scale-95 text-xl"
           >
             Get Started

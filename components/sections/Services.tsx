@@ -98,10 +98,9 @@ export function Services({ variant = 'grid' }: ServicesProps) {
                           </CardTitle>
                         </div>
 
+                        {/* Explore Button */}
                         <div className="relative overflow-hidden bg-gradient-to-r from-blue-700 to-blue-500 group-hover:from-blue-600 group-hover:to-blue-400 transition-all py-5 px-8 flex items-center justify-center text-white font-black uppercase tracking-widest text-[16px] gap-3 group/btn cursor-pointer">
-                          <span className="relative z-10">
-                            {service.slug === 'data-center' ? 'Get Started' : 'Explore Service'}
-                          </span>
+                          <span className="relative z-10">Explore Service</span>
                           <ArrowRight className="w-5 h-5 relative z-10 transition-transform group-hover/btn:translate-x-2" />
                         </div>
                       </Card>
@@ -155,10 +154,9 @@ export function Services({ variant = 'grid' }: ServicesProps) {
                           </ul>
                         </div>
 
+                        {/* Explore Domain Button */}
                         <div className="relative overflow-hidden bg-gradient-to-r from-blue-700 to-blue-500 group-hover:from-blue-600 group-hover:to-blue-400 transition-all py-5 px-8 flex items-center justify-center text-white font-black uppercase tracking-widest text-[16px] gap-3 group/btn cursor-pointer">
-                          <span className="relative z-10">
-                            {service.slug === 'data-center' ? 'Get Started' : 'Explore Service'}
-                          </span>
+                          <span className="relative z-10">Explore Service</span>
                           <ArrowRight className="w-5 h-5 relative z-10 transition-transform group-hover/btn:translate-x-2" />
                         </div>
                       </Card>
