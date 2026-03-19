@@ -268,7 +268,7 @@ export default function DataCenterConstruction() {
               </div>
               <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-slate-900 tracking-tight leading-tight">Building Management Systems</h2>
               <p className="text-lg text-slate-600 leading-relaxed">
-                Enhance occupant comfort. We design and integrate smart, scalable platforms that provide real-time monitoring, automated adjustments, and data-driven optimization. The result is a safer, more efficient, and more cost-effective building environment.
+                occupant comfort. We design and integrate smart, scalable platforms that provide real-time monitoring, automated adjustments, and data-driven optimization. The result is a safer, more efficient, and more cost-effective building environment.
               </p>
               <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-5">
                 {[
@@ -293,6 +293,41 @@ export default function DataCenterConstruction() {
                 <div className="absolute inset-0 bg-blue-600/0 group-hover:bg-blue-600/10 transition-colors z-10 duration-500" />
                 {/* Reusing the requested image per user instructions */}
                 <img src="/images/physical-security-door.png" alt="Building Management Systems" className="w-full h-[500px] object-cover transform group-hover:scale-105 transition-transform duration-1000 ease-out" />
+              </div>
+            </div>
+          </div>
+
+          {/* Electrical Power Monitoring Systems */}
+          <div className="flex flex-col lg:flex-row-reverse items-center gap-12 lg:gap-20">
+            <div className="lg:w-1/2 space-y-8">
+              <div className="inline-flex items-center space-x-2 px-4 py-2 bg-slate-200/60 border border-slate-300 text-slate-800 font-bold rounded-full text-xs tracking-widest uppercase">
+                <div className="w-2 h-2 rounded-full bg-slate-800" />
+                <span>Power Quality & Reliability</span>
+              </div>
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-slate-900 tracking-tight leading-tight">Electrical Power Monitoring Systems</h2>
+              <p className="text-lg text-slate-600 leading-relaxed">
+                Our EPMS solutions deliver real-time insight into a facility's electrical infrastructure, helping you track power quality, load distribution, and system performance. By identifying imbalances and inefficiencies early, EPMS improves reliability, prevents downtime, and supports energy cost reduction. We design and integrate scalable EPMS platforms that enhance operational awareness and ensure stable, safe electrical system performance.
+              </p>
+              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-5">
+                {[
+                  'Real-time monitoring of electrical power usage',
+                  'Power quality analysis',
+                  'Alarm and event notifications',
+                  'Energy reporting to support efficiency and cost-reduction',
+                  'Integration with existing facility management',
+                  'Scalable architecture'
+                ].map((item, i) => (
+                  <li key={i} className="flex items-start text-slate-700 font-medium">
+                    <CheckCircle2 className="w-5 h-5 text-slate-800 mr-3 mt-0.5 flex-shrink-0" />
+                    <span className="leading-snug">{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="lg:w-1/2 w-full">
+              <div className="relative rounded-3xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.1)] group">
+                <div className="absolute inset-0 bg-slate-900/0 group-hover:bg-slate-900/10 transition-colors z-10 duration-500" />
+                <img src="/images/rack-stack-cable.png" alt="Electrical Power Monitoring Systems" className="w-full h-[500px] object-cover transform group-hover:scale-105 transition-transform duration-1000 ease-out" />
               </div>
             </div>
           </div>
