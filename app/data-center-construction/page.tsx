@@ -259,6 +259,44 @@ export default function DataCenterConstruction() {
             </div>
           </div>
 
+          {/* Building Management Systems */}
+          <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+            <div className="lg:w-1/2 space-y-8">
+              <div className="inline-flex items-center space-x-2 px-4 py-2 bg-blue-100/50 border border-blue-200 text-blue-700 font-bold rounded-full text-xs tracking-widest uppercase">
+                <div className="w-2 h-2 rounded-full bg-blue-600 animate-pulse" />
+                <span>Facility Optimization</span>
+              </div>
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-slate-900 tracking-tight leading-tight">Building Management Systems</h2>
+              <p className="text-lg text-slate-600 leading-relaxed">
+                Enhance occupant comfort. We design and integrate smart, scalable platforms that provide real-time monitoring, automated adjustments, and data-driven optimization. The result is a safer, more efficient, and more cost-effective building environment.
+              </p>
+              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-5">
+                {[
+                  'IP-based video surveillance systems',
+                  'HVAC Control Sequences',
+                  'Intrusion detection and alarm systems',
+                  'Real-time equipment performance monitoring',
+                  'Data analytics and reporting for efficiency planning'
+                ].map((item, i) => (
+                  <li key={i} className="flex items-start text-slate-700 font-medium">
+                    <CheckCircle2 className="w-5 h-5 text-blue-600 mr-3 mt-0.5 flex-shrink-0" />
+                    <span className="leading-snug">{item}</span>
+                  </li>
+                ))}
+              </ul>
+              <div className="bg-white p-6 rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-slate-100">
+                <p className="text-slate-600 leading-relaxed"><span className="font-bold text-slate-900 text-lg block mb-1">Trusted Partners:</span> Our team integrates solutions from trusted software and hardware partners while adhering to ISA, IEC, and NIST guidelines. This approach ensures interoperability, long-term support, and consistent operational reliability across facilities.</p>
+              </div>
+            </div>
+            <div className="lg:w-1/2 w-full">
+              <div className="relative rounded-3xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.1)] group">
+                <div className="absolute inset-0 bg-blue-600/0 group-hover:bg-blue-600/10 transition-colors z-10 duration-500" />
+                {/* Reusing the requested image per user instructions */}
+                <img src="/images/physical-security-door.png" alt="Building Management Systems" className="w-full h-[500px] object-cover transform group-hover:scale-105 transition-transform duration-1000 ease-out" />
+              </div>
+            </div>
+          </div>
+
         </div>
       </section>
 
