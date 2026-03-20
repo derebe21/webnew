@@ -79,14 +79,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Main Headers (For the department email)
-    $headers = "From: ITSEC Website <no-reply@itsectechnology.com>\r\n";
+    $headers = "From: ITSEC Website <info@itsectechnology.com>\r\n";
     $headers .= "Reply-To: $email\r\n";
+    $headers .= "MIME-Version: 1.0\r\n";
+    $headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
     $headers .= "X-Mailer: PHP/" . phpversion();
 
     // Subject for department
     $subject = "[$deptName] New Request from $name";
 
     // 1. Send Email to Department
+    // We send to the specific department email, but keep info@ as a BCC for tracking if desired.
     $sentToDept = mail($to, $subject, $email_content, $headers);
 
     // 2. Send Auto-Reply to customer
@@ -98,11 +101,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $autoBody .= "Best regards,\n";
     $autoBody .= "ITSEC Technology Team\n\n";
     $autoBody .= "📧 info@itsectechnology.com\n";
-    $autoBody .= "📞 +251911407439 / +251955190019\n";
-    $autoBody .= "📍 Addis Ababa, Ethiopia";
+    $autoBody .= "📞 +251 911 407 439 / +251 955 190 019\n";
+    $autoBody .= "📍 Kirkos Church, Addis Ababa, Ethiopia";
 
-    $autoHeaders = "From: ITSEC Technology <no-reply@itsectechnology.com>\r\n";
+    $autoHeaders = "From: ITSEC Technology <info@itsectechnology.com>\r\n";
     $autoHeaders .= "Reply-To: info@itsectechnology.com\r\n";
+    $autoHeaders .= "MIME-Version: 1.0\r\n";
+    $autoHeaders .= "Content-Type: text/plain; charset=UTF-8\r\n";
+    $autoHeaders .= "X-Mailer: PHP/" . phpversion();
     
     $sentAutoReply = mail($email, $autoSubject, $autoBody, $autoHeaders);
 

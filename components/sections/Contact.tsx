@@ -124,11 +124,19 @@ export function Contact() {
         <div className="grid lg:grid-cols-12 gap-12 items-start">
           <div className="lg:col-span-8">
             <Tabs defaultValue="general" className="w-full" onValueChange={setActiveTab}>
-              <TabsList className="grid grid-cols-2 md:grid-cols-4 h-auto p-1 bg-slate-200/50 mb-8 rounded-2xl">
-                <TabsTrigger value="general" className="rounded-xl py-3 data-[state=active]:bg-white data-[state=active]:text-blue-700 data-[state=active]:shadow-lg"><MessageSquare className="w-4 h-4 mr-2 hidden sm:inline" /> General</TabsTrigger>
-                <TabsTrigger value="support" className="rounded-xl py-3 data-[state=active]:bg-white data-[state=active]:text-red-700 data-[state=active]:shadow-lg"><ShieldAlert className="w-4 h-4 mr-2 hidden sm:inline" /> Support</TabsTrigger>
-                <TabsTrigger value="projects" className="rounded-xl py-3 data-[state=active]:bg-white data-[state=active]:text-emerald-700 data-[state=active]:shadow-lg"><BadgeCheck className="w-4 h-4 mr-2 hidden sm:inline" /> Projects</TabsTrigger>
-                <TabsTrigger value="sales" className="rounded-xl py-3 data-[state=active]:bg-white data-[state=active]:text-amber-700 data-[state=active]:shadow-lg"><BarChart3 className="w-4 h-4 mr-2 hidden sm:inline" /> Sales</TabsTrigger>
+              <TabsList className="grid grid-cols-2 lg:grid-cols-4 h-auto p-2 bg-slate-200/50 mb-8 rounded-2xl gap-2 font-bold">
+                <TabsTrigger value="general" className="rounded-xl py-3 border-2 border-transparent data-[state=active]:bg-blue-600 data-[state=active]:text-white data-[state=active]:shadow-lg hover:bg-white/50 transition-all font-bold uppercase text-xs tracking-wider">
+                  <MessageSquare className="w-4 h-4 mr-2 hidden sm:inline" /> General
+                </TabsTrigger>
+                <TabsTrigger value="support" className="rounded-xl py-3 border-2 border-transparent data-[state=active]:bg-red-600 data-[state=active]:text-white data-[state=active]:shadow-lg hover:bg-white/50 transition-all font-bold uppercase text-xs tracking-wider">
+                  <ShieldAlert className="w-4 h-4 mr-2 hidden sm:inline" /> Support
+                </TabsTrigger>
+                <TabsTrigger value="projects" className="rounded-xl py-3 border-2 border-transparent data-[state=active]:bg-emerald-600 data-[state=active]:text-white data-[state=active]:shadow-lg hover:bg-white/50 transition-all font-bold uppercase text-xs tracking-wider">
+                  <BadgeCheck className="w-4 h-4 mr-2 hidden sm:inline" /> Contact
+                </TabsTrigger>
+                <TabsTrigger value="sales" className="rounded-xl py-3 border-2 border-transparent data-[state=active]:bg-amber-600 data-[state=active]:text-white data-[state=active]:shadow-lg hover:bg-white/50 transition-all font-bold uppercase text-xs tracking-wider">
+                  <BarChart3 className="w-4 h-4 mr-2 hidden sm:inline" /> Sales
+                </TabsTrigger>
               </TabsList>
 
               <Card className="shadow-[0_20px_50px_rgba(0,0,0,0.08)] border-slate-200 overflow-hidden rounded-3xl">
