@@ -195,6 +195,10 @@ export function Contact() {
                         <SelectValue placeholder="Choose a service category..." />
                       </SelectTrigger>
                       <SelectContent>
+                        <SelectItem value="General Question">General Question</SelectItem>
+                        <SelectItem value="Service Request">Service Request</SelectItem>
+                        <SelectItem value="Technical Support">Technical Support</SelectItem>
+                        <SelectItem value="Sales / Pricing">Sales / Pricing</SelectItem>
                         <SelectItem value="Cybersecurity Solutions">Cybersecurity Solutions</SelectItem>
                         <SelectItem value="Network Infrastructure">Network Infrastructure</SelectItem>
                         <SelectItem value="IT Consulting Services">IT Consulting Services</SelectItem>

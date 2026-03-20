@@ -24,8 +24,26 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $contactMethods = implode(", ", $data["contactMethods"]);
     $additionalInfo = strip_tags(trim($data["additionalInfo"]));
 
-    // Recipients
-    $to = "info@itsectechnology.com, contact@itsectechnology.com, support@itsectechnology.com, sales@itsectechnology.com";
+    // Routing Logic
+    switch ($service) {
+        case "General Question":
+            $to = "info@itsectechnology.com";
+            break;
+        case "Service Request":
+            $to = "contact@itsectechnology.com";
+            break;
+        case "Technical Support":
+        case "IT Support & Maintenance":
+            $to = "support@itsectechnology.com";
+            break;
+        case "Sales / Pricing":
+            $to = "sales@itsectechnology.com";
+            break;
+        default:
+            // For specific technical services, send to all departments
+            $to = "info@itsectechnology.com, contact@itsectechnology.com, support@itsectechnology.com, sales@itsectechnology.com";
+            break;
+    }
     
     // Subject
     $subject = "New Service Request: $service from $name";
