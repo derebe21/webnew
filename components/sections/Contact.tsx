@@ -31,25 +31,44 @@ export function Contact() {
     e.preventDefault();
     setIsSubmitting(true);
 
-    setTimeout(() => {
+    try {
+      const response = await fetch('/contact.php', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        toast({
+          title: 'Form Submitted Successfully!',
+          description: "Our engineering team will review your request and get back to you shortly.",
+        });
+        setFormData({
+          name: '',
+          company: '',
+          email: '',
+          phone: '',
+          service: '',
+          setup: '',
+          challenges: '',
+          urgency: '',
+          contactMethods: [],
+          additionalInfo: '',
+        });
+      } else {
+        throw new Error('Failed to send request');
+      }
+    } catch (error) {
       toast({
-        title: 'Form Submitted Successfully!',
-        description: "Our engineering team will review your request and get back to you shortly.",
+        title: 'Error Submitting Request',
+        description: "There was a problem sending your request. Please try again or email us directly.",
+        variant: 'destructive',
       });
-      setFormData({
-        name: '',
-        company: '',
-        email: '',
-        phone: '',
-        service: '',
-        setup: '',
-        challenges: '',
-        urgency: '',
-        contactMethods: [],
-        additionalInfo: '',
-      });
+    } finally {
       setIsSubmitting(false);
-    }, 1500);
+    }
   };
 
   const contactInfo = [
