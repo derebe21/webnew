@@ -101,7 +101,7 @@ export function Contact() {
   };
 
   const contactInfo = [
-    { icon: Phone, label: 'Phone', value: '+251 911 407 439 / 095 519 0019', href: 'tel:+251911407439' },
+    { icon: Phone, label: 'Phone / WhatsApp', value: '+251 911 407 439', href: 'https://wa.me/251911407439' },
     { icon: Mail, label: 'Email', values: ['info@itsectechnology.com', 'contact@itsectechnology.com', 'support@itsectechnology.com', 'sales@itsectechnology.com'] },
     { icon: MapPin, label: 'Address', value: 'Kirkos Church, Addis Ababa, Ethiopia', href: 'https://maps.google.com/?q=Kirkos+Church+Addis+Ababa+Ethiopia' },
   ];
