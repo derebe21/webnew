@@ -1,5 +1,5 @@
 <?php
-// ITSEC Technology - Contact Form Handler
+// ITSEC Technology - Advanced Contact Form Handler with Auto-Replies
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Get JSON data from the request body
@@ -8,71 +8,100 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if (!$data) {
         http_response_code(400);
-        echo json_encode(["status" => "error", "message" => "Invalid data"]);
-        exit;
+        exit(json_encode(["status" => "error", "message" => "Invalid data"]));
     }
 
-    // Form Fields
+    // Shared Fields
     $name = strip_tags(trim($data["name"]));
-    $company = strip_tags(trim($data["company"]));
     $email = filter_var(trim($data["email"]), FILTER_SANITIZE_EMAIL);
     $phone = strip_tags(trim($data["phone"]));
-    $service = strip_tags(trim($data["service"]));
-    $setup = strip_tags(trim($data["setup"]));
-    $challenges = strip_tags(trim($data["challenges"]));
     $urgency = strip_tags(trim($data["urgency"]));
-    $contactMethods = implode(", ", $data["contactMethods"]);
-    $additionalInfo = strip_tags(trim($data["additionalInfo"]));
+    $tab = strip_tags(trim($data["tab"])); // general, support, projects, sales
 
-    // Routing Logic
-    switch ($service) {
-        case "General Question":
-            $to = "info@itsectechnology.com";
-            break;
-        case "Service Request":
-            $to = "contact@itsectechnology.com";
-            break;
-        case "Technical Support":
-        case "IT Support & Maintenance":
+    // Departmental logic
+    $to = "";
+    $deptName = "";
+    $autoMessage = "";
+    $email_content = "ITSEC Technology - New Request Details\n\n";
+    $email_content .= "Submission Type: " . ucfirst($tab) . "\n";
+    $email_content .= "Full Name: $name\n";
+    $email_content .= "Email: $email\n";
+    $email_content .= "Phone: $phone\n";
+    $email_content .= "Urgency: $urgency\n\n";
+
+    switch ($tab) {
+        case "support":
             $to = "support@itsectechnology.com";
+            $deptName = "Technical Support";
+            $autoMessage = "Your technical support request has been received. Our support team is currently reviewing the issue and will assist you shortly.";
+            $email_content .= "Product/Service: " . strip_tags($data["product"]) . "\n";
+            $email_content .= "Issue Description:\n" . strip_tags($data["issueDescription"]) . "\n";
             break;
-        case "Sales / Pricing":
+
+        case "projects":
+            $to = "contact@itsectechnology.com";
+            $deptName = "Service Request / Project";
+            $autoMessage = "Thank you for your project request. Our engineering team is reviewing your requirements and will contact you with the next steps.";
+            $email_content .= "Company: " . strip_tags($data["company"]) . "\n";
+            $email_content .= "Project Type: " . strip_tags($data["projectType"]) . "\n";
+            $email_content .= "Project Description:\n" . strip_tags($data["projectDescription"]) . "\n";
+            break;
+
+        case "sales":
             $to = "sales@itsectechnology.com";
+            $deptName = "Sales / Pricing";
+            $autoMessage = "Thank you for your interest in our services. Our sales team will review your request and provide you with pricing details soon.";
+            $email_content .= "Company: " . strip_tags($data["company"]) . "\n";
+            $email_content .= "Interested Services: " . strip_tags($data["interestedServices"]) . "\n";
+            $email_content .= "Quote Details:\n" . strip_tags($data["quoteDetails"]) . "\n";
             break;
+
+        case "general":
         default:
-            // For specific technical services, send to all departments
-            $to = "info@itsectechnology.com, contact@itsectechnology.com, support@itsectechnology.com, sales@itsectechnology.com";
+            $to = "info@itsectechnology.com";
+            $deptName = "General Inquiry";
+            $autoMessage = "Thank you for your general inquiry. Our team will review your message and get back to you shortly.";
+            $email_content .= "Service: " . strip_tags($data["service"]) . "\n";
+            $email_content .= "Current Setup:\n" . strip_tags($data["setup"]) . "\n";
+            $email_content .= "Challenges:\n" . strip_tags($data["challenges"]) . "\n";
+            $email_content .= "Additional Info:\n" . strip_tags($data["additionalInfo"]) . "\n";
             break;
     }
-    
-    // Subject
-    $subject = "New Service Request: $service from $name";
 
-    // Email Content
-    $email_content = "ITSEC Technology - Service Request Details\n\n";
-    $email_content .= "Full Name: $name\n";
-    $email_content .= "Company: $company\n";
-    $email_content .= "Email: $email\n";
-    $email_content .= "Phone: $phone\n\n";
-    $email_content .= "Service Requested: $service\n";
-    $email_content .= "Urgency Level: $urgency\n";
-    $email_content .= "Preferred Contact: $contactMethods\n\n";
-    $email_content .= "--- IT / Cybersecurity Setup ---\n$setup\n\n";
-    $email_content .= "--- Problems / Challenges ---\n$challenges\n\n";
-    $email_content .= "--- Additional Information ---\n$additionalInfo\n\n";
-
-    // Headers
+    // Main Headers (For the department email)
     $headers = "From: ITSEC Website <no-reply@itsectechnology.com>\r\n";
     $headers .= "Reply-To: $email\r\n";
     $headers .= "X-Mailer: PHP/" . phpversion();
 
-    // Send Email
-    if (mail($to, $subject, $email_content, $headers)) {
+    // Subject for department
+    $subject = "[$deptName] New Request from $name";
+
+    // 1. Send Email to Department
+    $sentToDept = mail($to, $subject, $email_content, $headers);
+
+    // 2. Send Auto-Reply to customer
+    $autoSubject = "Thank You for Contacting ITSEC Technology";
+    $autoBody = "Dear $name,\n\n";
+    $autoBody .= "Thank you for contacting ITSEC Technology.\n\n";
+    $autoBody .= "$autoMessage\n\n";
+    $autoBody .= "We appreciate your interest in our services and will respond as soon as possible.\n\n";
+    $autoBody .= "Best regards,\n";
+    $autoBody .= "ITSEC Technology Team\n\n";
+    $autoBody .= "📧 info@itsectechnology.com\n";
+    $autoBody .= "📞 +251911407439 / +251955190019\n";
+    $autoBody .= "📍 Addis Ababa, Ethiopia";
+
+    $autoHeaders = "From: ITSEC Technology <no-reply@itsectechnology.com>\r\n";
+    $autoHeaders .= "Reply-To: info@itsectechnology.com\r\n";
+    
+    $sentAutoReply = mail($email, $autoSubject, $autoBody, $autoHeaders);
+
+    if ($sentToDept) {
         http_response_code(200);
-        echo json_encode(["status" => "success", "message" => "Request sent successfully"]);
+        echo json_encode(["status" => "success", "message" => "Request sent and auto-reply processed"]);
     } else {
         http_response_code(500);
-        echo json_encode(["status" => "error", "message" => "Failed to send email"]);
+        echo json_encode(["status" => "error", "message" => "Primary email failed"]);
     }
 } else {
     http_response_code(403);
