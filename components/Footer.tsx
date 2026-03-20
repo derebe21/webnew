@@ -117,6 +117,24 @@ export function Footer() {
                 ✉️ info@itsectechnology.com
               </a>
               <a
+                href="mailto:contact@itsectechnology.com"
+                className="text-sm text-slate-400 hover:text-white transition-colors block"
+              >
+                ✉️ contact@itsectechnology.com
+              </a>
+              <a
+                href="mailto:support@itsectechnology.com"
+                className="text-sm text-slate-400 hover:text-white transition-colors block"
+              >
+                ✉️ support@itsectechnology.com
+              </a>
+              <a
+                href="mailto:sales@itsectechnology.com"
+                className="text-sm text-slate-400 hover:text-white transition-colors block"
+              >
+                ✉️ sales@itsectechnology.com
+              </a>
+              <a
                 href="tel:+251911407439"
                 className="text-sm text-slate-400 hover:text-white transition-colors block"
               >
