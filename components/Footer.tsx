@@ -8,9 +8,9 @@ export function Footer() {
   const currentYear = new Date().getFullYear();
 
   const companyLinks = [
+    { label: 'ITSEC Portal', href: '/contact' },
     { label: 'About Us', href: '/#about' },
     { label: 'Our Process', href: '/process' },
-    { label: 'Contact', href: '/contact' },
     { label: 'Technology', href: '#technology' },
   ];
 
