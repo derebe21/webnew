@@ -27,7 +27,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email_content .= "Full Name: $name\n";
     $email_content .= "Email: $email\n";
     $email_content .= "Phone: $phone\n";
-    $email_content .= "Urgency: $urgency\n\n";
+    // Extract contact methods
+    $methods = isset($data["contactMethods"]) ? implode(", ", $data["contactMethods"]) : "Not specified";
+    $email_content .= "Preferred Contact Methods: $methods\n\n";
 
     switch ($tab) {
         case "support":
