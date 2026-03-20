@@ -114,11 +114,12 @@ export function Contact() {
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16">
-        <div className="text-center max-w-3xl mx-auto mb-12">
-          <h2 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tight leading-tight">
-            ITSEC <span className="text-blue-600">Portal</span>
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <h2 className="text-5xl md:text-7xl font-black text-slate-900 tracking-tighter leading-none mb-6">
+            ITSEC <span className="text-blue-600">PORTAL</span>
           </h2>
-          <p className="mt-4 text-xl text-slate-600 font-medium">Select a department to get the specialized support you need.</p>
+          <div className="w-24 h-2 bg-blue-600 mx-auto rounded-full mb-6" />
+          <p className="text-xl md:text-2xl text-slate-600 font-bold">Select a department to get the specialized support you need.</p>
         </div>
 
         <div className="grid lg:grid-cols-12 gap-12 items-start">

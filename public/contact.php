@@ -95,12 +95,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // 2. Send Auto-Reply to customer
     $autoSubject = "Thank You for Contacting ITSEC Technology";
     $autoBody = "Dear $name,\n\n";
-    $autoBody .= "Thank you for contacting ITSEC Technology.\n\n";
+    $autoBody .= "Thank you for contacting ITSEC Technology regarding: $deptName.\n\n";
     $autoBody .= "$autoMessage\n\n";
-    $autoBody .= "We appreciate your interest in our services and will respond as soon as possible.\n\n";
+    $autoBody .= "--- YOUR SUBMISSION DETAILS ---\n";
+    $autoBody .= $email_content . "\n";
+    $autoBody .= "-------------------------------\n\n";
+    $autoBody .= "We appreciate your interest and will respond as soon as possible.\n\n";
     $autoBody .= "Best regards,\n";
     $autoBody .= "ITSEC Technology Team\n\n";
-    $autoBody .= "📧 info@itsectechnology.com\n";
+    $autoBody .= "📧 info\@itsectechnology.com\n";
     $autoBody .= "📞 +251 911 407 439 / +251 955 190 019\n";
     $autoBody .= "📍 Kirkos Church, Addis Ababa, Ethiopia";
 
