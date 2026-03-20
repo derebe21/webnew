@@ -34,7 +34,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $to = "support@itsectechnology.com";
             $deptName = "Technical Support";
             $autoMessage = "Your technical support request has been received. Our support team is currently reviewing the issue and will assist you shortly.";
-            $email_content .= "Product/Service: " . strip_tags($data["product"]) . "\n";
+            $product = strip_tags($data["product"]);
+            if ($product === "Other") $product .= " (" . strip_tags($data["otherProduct"]) . ")";
+            $email_content .= "Product/Service: " . $product . "\n";
             $email_content .= "Issue Description:\n" . strip_tags($data["issueDescription"]) . "\n";
             break;
 
@@ -42,8 +44,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $to = "contact@itsectechnology.com";
             $deptName = "Service Request / Project";
             $autoMessage = "Thank you for your project request. Our engineering team is reviewing your requirements and will contact you with the next steps.";
+            $pType = strip_tags($data["projectType"]);
+            if ($pType === "Other") $pType .= " (" . strip_tags($data["otherProjectType"]) . ")";
             $email_content .= "Company: " . strip_tags($data["company"]) . "\n";
-            $email_content .= "Project Type: " . strip_tags($data["projectType"]) . "\n";
+            $email_content .= "Project Type: " . $pType . "\n";
             $email_content .= "Project Description:\n" . strip_tags($data["projectDescription"]) . "\n";
             break;
 
@@ -51,8 +55,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $to = "sales@itsectechnology.com";
             $deptName = "Sales / Pricing";
             $autoMessage = "Thank you for your interest in our services. Our sales team will review your request and provide you with pricing details soon.";
+            $intService = strip_tags($data["interestedServices"]);
+            if ($intService === "Other") $intService .= " (" . strip_tags($data["otherInterestedService"]) . ")";
             $email_content .= "Company: " . strip_tags($data["company"]) . "\n";
-            $email_content .= "Interested Services: " . strip_tags($data["interestedServices"]) . "\n";
+            $email_content .= "Interested Services: " . $intService . "\n";
             $email_content .= "Quote Details:\n" . strip_tags($data["quoteDetails"]) . "\n";
             break;
 
@@ -61,7 +67,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $to = "info@itsectechnology.com";
             $deptName = "General Inquiry";
             $autoMessage = "Thank you for your general inquiry. Our team will review your message and get back to you shortly.";
-            $email_content .= "Service: " . strip_tags($data["service"]) . "\n";
+            $service = strip_tags($data["service"]);
+            if ($service === "Other") $service .= " (" . strip_tags($data["otherService"]) . ")";
+            $email_content .= "Service: " . $service . "\n";
             $email_content .= "Current Setup:\n" . strip_tags($data["setup"]) . "\n";
             $email_content .= "Challenges:\n" . strip_tags($data["challenges"]) . "\n";
             $email_content .= "Additional Info:\n" . strip_tags($data["additionalInfo"]) . "\n";
