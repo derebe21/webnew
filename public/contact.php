@@ -83,16 +83,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             break;
     }
 
-    // Main Headers (For the department email)
-    $headers = "From: itsec@itsectechnology.com\r\n";
-    $headers .= "Reply-To: $email\r\n";
-    $headers .= "MIME-Version: 1.0\r\n";
-    $headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
-    $headers .= "X-Mailer: PHP/" . phpversion();
+    // LOAD SMTP SETTINGS
+    $smtpConfig = require_once("smtp_config.php");
+    require_once("SMTPHelper.php");
+    $smtp = new SMTPHelper($smtpConfig);
 
     // 1. Send Email to Department
-    // Using -f parameter for envelope sender - critical for cPanel delivery
-    $sentToDept = mail($to, $subject, $email_content, $headers, "-f info@itsectechnology.com");
+    $subject = "[$deptName] New Request from $name";
+    $sentToDept = $smtp->send($to, $subject, $email_content, "ITSEC PORTAL");
 
     // 2. Send Auto-Reply to customer
     $autoSubject = "Thank You - ITSEC Technology";
@@ -108,24 +106,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $autoBody .= "📧 info\@itsectechnology.com\n";
     $autoBody .= "📞 +251 911 407 439 / +251 955 190 019\n";
 
-    $autoHeaders = "From: info@itsectechnology.com\r\n";
-    $autoHeaders .= "Reply-To: info@itsectechnology.com\r\n";
-    $autoHeaders .= "MIME-Version: 1.0\r\n";
-    $autoHeaders .= "Content-Type: text/plain; charset=UTF-8\r\n";
-    $autoHeaders .= "X-Mailer: PHP/" . phpversion();
-    
-    $sentAutoReply = mail($email, $autoSubject, $autoBody, $autoHeaders, "-f info@itsectechnology.com");
+    $sentAutoReply = $smtp->send($email, $autoSubject, $autoBody, "ITSEC TECHNOLOGY");
 
-    // Log the result of mail attempts
-    $mailLog = ($sentToDept ? "SUCCESS" : "FAILED") . " to Dept, " . ($sentAutoReply ? "SUCCESS" : "FAILED") . " Auto-Reply.\n";
+    // Log the result of SMTP attempts
+    $mailLog = ($sentToDept ? "SUCCESS" : "FAILED (Error: " . $smtp->get_error() . ")") . " to Dept, ";
+    $mailLog .= ($sentAutoReply ? "SUCCESS" : "FAILED (Error: " . $smtp->get_error() . ")") . " Auto-Reply.\n";
     file_put_contents("contact_debug.log", "[" . date("Y-m-d H:i:s") . "] STATUS: " . $mailLog, FILE_APPEND);
 
     if ($sentToDept) {
         http_response_code(200);
-        echo json_encode(["status" => "success", "message" => "Request sent and auto-reply processed"]);
+        echo json_encode(["status" => "success", "message" => "Inquiry sent via SMTP"]);
     } else {
         http_response_code(500);
-        echo json_encode(["status" => "error", "message" => "Primary email failed"]);
+        echo json_encode(["status" => "error", "message" => "SMTP Failed: " . $smtp->get_error()]);
     }
 } else {
     http_response_code(403);
