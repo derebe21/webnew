@@ -61,6 +61,14 @@ export function Contact() {
     });
   };
 
+  const copyToClipboard = (text: string) => {
+    navigator.clipboard.writeText(text);
+    toast({
+      title: 'Copied!',
+      description: `${text} copied to clipboard.`,
+    });
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
@@ -75,7 +83,7 @@ export function Contact() {
       if (response.ok) {
         toast({
           title: 'Request Sent Successfully!',
-          description: `Thank you, ${formData.name}. Our ${activeTab} team has received your request and an auto-reply has been sent to your email.`,
+          description: `Thank you, ${formData.name}. A confirmation record has been sent to ${formData.email}. Our ${activeTab} team will follow up shortly.`,
         });
         // Reset form
         setFormData({
@@ -335,15 +343,25 @@ export function Contact() {
                       {info.values ? (
                         <div className="flex flex-col space-y-1.5 pt-1">
                           {info.values.map(email => (
-                            <a key={email} href={`mailto:${email}`} className="font-bold text-slate-800 hover:text-blue-600 transition-colors break-all text-sm leading-tight">
-                              {email}
-                            </a>
+                            <div key={email} className="flex items-center group/item hover:translate-x-1 transition-transform">
+                              <a href={`mailto:${email}`} className="font-bold text-slate-800 hover:text-blue-600 transition-colors break-all text-sm leading-tight mr-2">
+                                {email}
+                              </a>
+                              <button onClick={() => copyToClipboard(email)} className="opacity-0 group-hover/item:opacity-100 transition-opacity p-1 hover:text-blue-600" title="Copy email">
+                                <Send className="w-3 h-3 rotate-45" />
+                              </button>
+                            </div>
                           ))}
                         </div>
                       ) : (
-                        <a href={info.href} className="font-bold text-slate-800 hover:text-blue-600 transition-colors block text-lg">
-                          {info.value}
-                        </a>
+                        <div className="flex items-center group/item">
+                          <a href={info.href} className="font-bold text-slate-800 hover:text-blue-600 transition-colors block text-lg mr-2">
+                            {info.value}
+                          </a>
+                          <button onClick={() => copyToClipboard(info.value)} className="opacity-0 group-hover/item:opacity-100 transition-opacity p-1 hover:text-blue-600" title="Copy to clipboard">
+                            <Send className="w-4 h-4 rotate-45" />
+                          </button>
+                        </div>
                       )}
                     </div>
                   </div>
