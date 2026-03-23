@@ -38,7 +38,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     switch ($tab) {
         case "support":
-            $to = "support@itsectechnology.com";
+            $to = "derebe2121@gmail.com";
             $deptName = "Technical Support";
             $autoMessage = "Your technical support request has been received. Our support team is currently reviewing the issue and will assist you shortly.";
             $product = strip_tags($data["product"]);
@@ -48,7 +48,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             break;
 
         case "projects":
-            $to = "contact@itsectechnology.com";
+            $to = "derebe2121@gmail.com";
             $deptName = "Service Request / Project";
             $autoMessage = "Thank you for your project request. Our engineering team is reviewing your requirements and will contact you with the next steps.";
             $pType = strip_tags($data["projectType"]);
@@ -59,7 +59,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             break;
 
         case "sales":
-            $to = "sales@itsectechnology.com";
+            $to = "derebe2121@gmail.com";
             $deptName = "Sales / Pricing";
             $autoMessage = "Thank you for your interest in our services. Our sales team will review your request and provide you with pricing details soon.";
             $intService = strip_tags($data["interestedServices"]);
@@ -71,7 +71,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         case "general":
         default:
-            $to = "info@itsectechnology.com";
+            $to = "derebe2121@gmail.com";
             $deptName = "General Inquiry";
             $autoMessage = "Thank you for your general inquiry. Our team will review your message and get back to you shortly.";
             $service = strip_tags($data["service"]);
