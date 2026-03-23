@@ -92,7 +92,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $subject = "[$deptName] New Request from $name";
     $sentToDept = $smtp->send($to, $subject, $email_content, "ITSEC PORTAL");
 
-    // 2. Send Auto-Reply to customer
+    /*
+    // 2. Send Auto-Reply to customer (DISABLED PER USER REQUEST)
     $autoSubject = "Thank You - ITSEC Technology";
     $autoBody = "Dear $name,\n\n";
     $autoBody .= "Thank you for contacting ITSEC Technology regarding: $deptName.\n\n";
@@ -111,6 +112,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Log the result of SMTP attempts
     $mailLog = ($sentToDept ? "SUCCESS" : "FAILED (Error: " . $smtp->get_error() . ")") . " to Dept, ";
     $mailLog .= ($sentAutoReply ? "SUCCESS" : "FAILED (Error: " . $smtp->get_error() . ")") . " Auto-Reply.\n";
+    file_put_contents("contact_debug.log", "[" . date("Y-m-d H:i:s") . "] STATUS: " . $mailLog, FILE_APPEND);
+    */
+
+    $mailLog = ($sentToDept ? "SUCCESS" : "FAILED (Error: " . $smtp->get_error() . ")") . " to Dept.\n";
     file_put_contents("contact_debug.log", "[" . date("Y-m-d H:i:s") . "] STATUS: " . $mailLog, FILE_APPEND);
 
     if ($sentToDept) {
