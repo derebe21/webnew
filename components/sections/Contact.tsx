@@ -134,16 +134,16 @@ export function Contact() {
           <div className="lg:col-span-8">
             <Tabs defaultValue="general" className="w-full" onValueChange={setActiveTab}>
               <TabsList className="grid grid-cols-2 lg:grid-cols-4 h-auto p-2 bg-slate-200/50 mb-8 rounded-2xl gap-2 font-bold">
-                <TabsTrigger value="general" className="rounded-xl py-3 border-2 border-transparent data-[state=active]:bg-blue-600 data-[state=active]:text-white data-[state=active]:shadow-lg hover:bg-white/50 transition-all font-bold uppercase text-xs tracking-wider">
+                <TabsTrigger value="general" className="rounded-xl py-3 border-2 border-transparent data-[state=active]:bg-blue-600 data-[state=active]:text-white data-[state=active]:shadow-lg hover:bg-white/50 transition-all font-bold uppercase text-xs tracking-wider data-[state=inactive]:text-blue-600/70 data-[state=inactive]:bg-blue-600/5">
                   <MessageSquare className="w-4 h-4 mr-2 hidden sm:inline" /> General
                 </TabsTrigger>
-                <TabsTrigger value="support" className="rounded-xl py-3 border-2 border-transparent data-[state=active]:bg-red-600 data-[state=active]:text-white data-[state=active]:shadow-lg hover:bg-white/50 transition-all font-bold uppercase text-xs tracking-wider">
+                <TabsTrigger value="support" className="rounded-xl py-3 border-2 border-transparent data-[state=active]:bg-red-600 data-[state=active]:text-white data-[state=active]:shadow-lg hover:bg-white/50 transition-all font-bold uppercase text-xs tracking-wider data-[state=inactive]:text-red-600/70 data-[state=inactive]:bg-red-600/5">
                   <ShieldAlert className="w-4 h-4 mr-2 hidden sm:inline" /> Support
                 </TabsTrigger>
-                <TabsTrigger value="projects" className="rounded-xl py-3 border-2 border-transparent data-[state=active]:bg-emerald-600 data-[state=active]:text-white data-[state=active]:shadow-lg hover:bg-white/50 transition-all font-bold uppercase text-xs tracking-wider">
+                <TabsTrigger value="projects" className="rounded-xl py-3 border-2 border-transparent data-[state=active]:bg-emerald-600 data-[state=active]:text-white data-[state=active]:shadow-lg hover:bg-white/50 transition-all font-bold uppercase text-xs tracking-wider data-[state=inactive]:text-emerald-600/70 data-[state=inactive]:bg-emerald-600/5">
                   <BadgeCheck className="w-4 h-4 mr-2 hidden sm:inline" /> Contact
                 </TabsTrigger>
-                <TabsTrigger value="sales" className="rounded-xl py-3 border-2 border-transparent data-[state=active]:bg-amber-600 data-[state=active]:text-white data-[state=active]:shadow-lg hover:bg-white/50 transition-all font-bold uppercase text-xs tracking-wider">
+                <TabsTrigger value="sales" className="rounded-xl py-3 border-2 border-transparent data-[state=active]:bg-amber-600 data-[state=active]:text-white data-[state=active]:shadow-lg hover:bg-white/50 transition-all font-bold uppercase text-xs tracking-wider data-[state=inactive]:text-amber-600/70 data-[state=inactive]:bg-amber-600/5">
                   <BarChart3 className="w-4 h-4 mr-2 hidden sm:inline" /> Sales
                 </TabsTrigger>
               </TabsList>
@@ -165,8 +165,16 @@ export function Contact() {
 
                     <div className="p-8 pt-6 space-y-8">
                       {/* Department Context Information */}
-                      <div className="flex items-center space-x-3 text-sm font-bold text-blue-600 uppercase tracking-widest">
-                        <div className="w-8 h-px bg-blue-200" />
+                      <div className={`flex items-center space-x-3 text-sm font-black uppercase tracking-widest ${
+                        activeTab === 'general' ? 'text-blue-600' : 
+                        activeTab === 'support' ? 'text-red-600' : 
+                        activeTab === 'projects' ? 'text-emerald-600' : 'text-amber-600'
+                      }`}>
+                        <div className={`w-12 h-1 rounded-full ${
+                          activeTab === 'general' ? 'bg-blue-600' : 
+                          activeTab === 'support' ? 'bg-red-600' : 
+                          activeTab === 'projects' ? 'bg-emerald-600' : 'bg-amber-600'
+                        }`} />
                         <span>Department: {activeTab === 'general' ? 'General Inquiry' : activeTab === 'support' ? 'Technical Support' : activeTab === 'projects' ? 'Engineering & Projects' : 'Sales & Pricing'}</span>
                       </div>
 
