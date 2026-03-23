@@ -66,7 +66,7 @@ export function Hero() {
             >
               <div className="p-1 px-4 border-l-4 border-blue-600 bg-white/5 backdrop-blur-md rounded-r-xl">
                 <p className="text-xl sm:text-2xl text-slate-200 leading-relaxed font-medium tracking-wide py-4">
-                  Empowering modern businesses with robust digital infrastructure, elite security, and professional electrical engineering.
+                  Empowering modern businesses with robust digital infrastructure, elite security, and **targeted Google Advertising** to drive growth.
                 </p>
               </div>
             </div>

@@ -23,7 +23,7 @@ export function About() {
           {[
             {
               title: 'About Us',
-              description: 'We design, deploy, and install end-to-end ICT infrastructure that enables organizations to operate with maximum efficiency, security, and reliability. Our expertise ensures business continuity and digital transformation.',
+              description: 'We design and deploy end-to-end ICT infrastructure and **targeted Google advertising** that enables organizations to operate with maximum efficiency, visibility, and security.',
               icon: Rocket,
               color: 'blue',
               number: '01'
