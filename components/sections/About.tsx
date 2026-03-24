@@ -23,7 +23,7 @@ export function About() {
           {[
             {
               title: 'About Us',
-              description: 'We design and deploy comprehensive end-to-end ICT infrastructure solutions that empower organizations worldwide to operate with maximum efficiency, reliability, and security.',
+              description: 'We design and deploy comprehensive end-to-end ICT infrastructure solutions that empower organizations worldwide to operate with maximum efficiency, reliability, and security. By combining cutting-edge technology with expert guidance, we help businesses modernize operations, protect critical assets, and scale for sustainable growth.',
               icon: Rocket,
               color: 'blue',
               number: '01'
