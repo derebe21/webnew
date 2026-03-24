@@ -208,17 +208,11 @@ export function Contact() {
                             <Select required onValueChange={(v) => updateField('service', v)}>
                               <SelectTrigger className="bg-white"><SelectValue placeholder="Choose a service..." /></SelectTrigger>
                               <SelectContent>
-                                {['Security Audit & Compliance', 'Digital Transformation & Automation', 'Web Development & Hosting', 'Data Center Solutions', 'Network Infrastructure', 'Fiber Optic Installation', 'IT Consulting Services', 'Cloud Migration', 'Data Backup & Disaster Recovery', 'Other'].map(s => <SelectItem key={s} value={s}>{s}</SelectItem>)}
+                                {['Security Audit & Compliance', 'Digital Transformation & Automation', 'Web Development & Hosting', 'Data Center Solutions', 'Network Infrastructure', 'Fiber Optic Installation', 'IT Consulting Services', 'Cloud Migration', 'Data Backup & Disaster Recovery'].map(s => <SelectItem key={s} value={s}>{s}</SelectItem>)}
                               </SelectContent>
                             </Select>
                           </div>
                         </div>
-                        {formData.service === 'Other' && (
-                          <div className="space-y-2 animate-in fade-in slide-in-from-top-2">
-                            <label className="text-sm font-semibold text-slate-700">Please Specify Service</label>
-                            <Input placeholder="What other service are you looking for?" value={formData.otherService} onChange={(e) => updateField('otherService', e.target.value)} required />
-                          </div>
-                        )}
                         <div className="space-y-2">
                           <label className="text-sm font-semibold text-slate-700">Current IT / Cybersecurity Setup</label>
                           <Textarea placeholder="Describe your systems..." rows={2} value={formData.setup} onChange={(e) => updateField('setup', e.target.value)} />
@@ -241,17 +235,11 @@ export function Contact() {
                             <Select required onValueChange={(v) => updateField('product', v)}>
                               <SelectTrigger className="bg-white"><SelectValue placeholder="Choose product..." /></SelectTrigger>
                               <SelectContent>
-                                {['Network Infrastructure', 'Fiber Network / Fiber Optic System', 'Cybersecurity System', 'Web Hosting / Web Development', 'Cloud Service', 'Other'].map(p => <SelectItem key={p} value={p}>{p}</SelectItem>)}
+                                {['Network Infrastructure', 'Fiber Network / Fiber Optic System', 'Cybersecurity System', 'Web Hosting / Web Development', 'Cloud Service'].map(p => <SelectItem key={p} value={p}>{p}</SelectItem>)}
                               </SelectContent>
                             </Select>
                           </div>
                         </div>
-                        {formData.product === 'Other' && (
-                          <div className="space-y-2 animate-in fade-in slide-in-from-top-2">
-                            <label className="text-sm font-semibold text-slate-700">Please Specify Product</label>
-                            <Input placeholder="Which product needs support?" value={formData.otherProduct} onChange={(e) => updateField('otherProduct', e.target.value)} required />
-                          </div>
-                        )}
                         <div className="space-y-2">
                           <label className="text-sm font-semibold text-slate-700">Description of Issue (Required) *</label>
                           <Textarea placeholder="Tell us exactly what is wrong..." rows={4} value={formData.issueDescription} onChange={(e) => updateField('issueDescription', e.target.value)} required />
@@ -270,17 +258,11 @@ export function Contact() {
                             <Select required onValueChange={(v) => updateField('projectType', v)}>
                               <SelectTrigger className="bg-white"><SelectValue placeholder="Choose project type..." /></SelectTrigger>
                               <SelectContent>
-                                {['Cybersecurity Implementation', 'Network Infrastructure Setup', 'Fiber Optic Installation (Backbone / FTTH / Structured Cabling)', 'Cloud Migration', 'Web Development / Hosting', 'IT Consulting', 'CCTV Surveillance System Installation', 'ACS (Access Control System / Biometrics / Smart Security)', 'Other'].map(p => <SelectItem key={p} value={p}>{p}</SelectItem>)}
+                                {['Security Audit & Compliance', 'Digital Transformation & Automation', 'Web Development & Hosting', 'Data Center Solutions', 'Network Infrastructure', 'Fiber Optic Installation', 'IT Consulting Services', 'Cloud Migration', 'Data Backup & Disaster Recovery'].map(p => <SelectItem key={p} value={p}>{p}</SelectItem>)}
                               </SelectContent>
                             </Select>
                           </div>
                         </div>
-                        {formData.projectType === 'Other' && (
-                          <div className="space-y-2 animate-in fade-in slide-in-from-top-2">
-                            <label className="text-sm font-semibold text-slate-700">Please Specify Project Type</label>
-                            <Input placeholder="What type of project is this?" value={formData.otherProjectType} onChange={(e) => updateField('otherProjectType', e.target.value)} required />
-                          </div>
-                        )}
                         <div className="space-y-2">
                           <label className="text-sm font-semibold text-slate-700">Project Description (Required) *</label>
                           <Textarea placeholder="Give us an overview of your project requirements..." rows={4} value={formData.projectDescription} onChange={(e) => updateField('projectDescription', e.target.value)} required />
@@ -299,17 +281,11 @@ export function Contact() {
                             <Select required onValueChange={(v) => updateField('interestedServices', v)}>
                               <SelectTrigger className="bg-white"><SelectValue placeholder="Interested in..." /></SelectTrigger>
                               <SelectContent>
-                                {['Cybersecurity', 'Network Infrastructure', 'Fiber Installation', 'CCTV', 'ACS / Security Systems', 'Cloud / Web Services', 'Other'].map(s => <SelectItem key={s} value={s}>{s}</SelectItem>)}
+                                {['Security Audit & Compliance', 'Digital Transformation & Automation', 'Web Development & Hosting', 'Data Center Solutions', 'Network Infrastructure', 'Fiber Optic Installation', 'IT Consulting Services', 'Cloud Migration', 'Data Backup & Disaster Recovery'].map(s => <SelectItem key={s} value={s}>{s}</SelectItem>)}
                               </SelectContent>
                             </Select>
                           </div>
                         </div>
-                        {formData.interestedServices === 'Other' && (
-                          <div className="space-y-2 animate-in fade-in slide-in-from-top-2">
-                            <label className="text-sm font-semibold text-slate-700">Please Specify Interest</label>
-                            <Input placeholder="What other services interest you?" value={formData.otherInterestedService} onChange={(e) => updateField('otherInterestedService', e.target.value)} required />
-                          </div>
-                        )}
                         <div className="space-y-2">
                           <label className="text-sm font-semibold text-slate-700">Request Details / Quote Description (Required) *</label>
                           <Textarea placeholder="Ask about pricing or request a formal quote..." rows={4} value={formData.quoteDetails} onChange={(e) => updateField('quoteDetails', e.target.value)} required />
