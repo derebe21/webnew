@@ -270,7 +270,7 @@ export function Contact() {
                             <Select required onValueChange={(v) => updateField('projectType', v)}>
                               <SelectTrigger className="bg-white"><SelectValue placeholder="Choose project type..." /></SelectTrigger>
                               <SelectContent>
-                                {['Cybersecurity Implementation', 'Network Infrastructure Setup', 'Fiber Optic Installation (Backbone / FTTH / Structured Cabling)', 'Cloud Migration', 'Web Development / Hosting', 'IT Consulting', 'CCTV Surveillance System Installation', 'ACS (Access Control System / Biometrics / Smart Security)', 'Google Advertising & SEO', 'Other'].map(p => <SelectItem key={p} value={p}>{p}</SelectItem>)}
+                                {['Cybersecurity Implementation', 'Network Infrastructure Setup', 'Fiber Optic Installation (Backbone / FTTH / Structured Cabling)', 'Cloud Migration', 'Web Development / Hosting', 'IT Consulting', 'CCTV Surveillance System Installation', 'ACS (Access Control System / Biometrics / Smart Security)', 'Other'].map(p => <SelectItem key={p} value={p}>{p}</SelectItem>)}
                               </SelectContent>
                             </Select>
                           </div>
@@ -299,7 +299,7 @@ export function Contact() {
                             <Select required onValueChange={(v) => updateField('interestedServices', v)}>
                               <SelectTrigger className="bg-white"><SelectValue placeholder="Interested in..." /></SelectTrigger>
                               <SelectContent>
-                                {['Cybersecurity', 'Network Infrastructure', 'Fiber Installation', 'CCTV', 'ACS / Security Systems', 'Cloud / Web Services', 'Google Advertising', 'Other'].map(s => <SelectItem key={s} value={s}>{s}</SelectItem>)}
+                                {['Cybersecurity', 'Network Infrastructure', 'Fiber Installation', 'CCTV', 'ACS / Security Systems', 'Cloud / Web Services', 'Other'].map(s => <SelectItem key={s} value={s}>{s}</SelectItem>)}
                               </SelectContent>
                             </Select>
                           </div>
