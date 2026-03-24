@@ -1,7 +1,33 @@
 import Link from 'next/link';
 import { Award, Target, Rocket, Lightbulb } from 'lucide-react';
 
-export function About() {
+export function About({ showOnlyAboutUs = false }: { showOnlyAboutUs?: boolean }) {
+  const allCards = [
+    {
+      title: 'About Us',
+      description: 'We design and deploy comprehensive end-to-end ICT infrastructure solutions that empower organizations worldwide to operate with maximum efficiency, reliability, and security. By combining cutting-edge technology with expert guidance, we help businesses modernize operations, protect critical assets, and scale for sustainable growth.',
+      icon: Rocket,
+      color: 'blue',
+      number: '01'
+    },
+    {
+      title: 'Vision',
+      description: 'To deliver secure, scalable, and high-performance technology infrastructures that ensure long-term digital transformation and regulatory compliance for modern enterprises.',
+      icon: Target,
+      color: 'cyan',
+      number: '02'
+    },
+    {
+      title: 'Mission',
+      description: 'To empower organizations with reliable, future-ready technology infrastructures through technical excellence in networking, data centers, security, and smart building solutions.',
+      icon: Award,
+      color: 'orange',
+      number: '03'
+    }
+  ];
+
+  const cards = showOnlyAboutUs ? [allCards[0]] : allCards;
+
   return (
     <section id="about" className="relative py-24 md:py-32 bg-slate-50 dark:bg-slate-950 overflow-hidden">
       {/* High-Visibility Blue Nexus Identity */}
@@ -19,30 +45,8 @@ export function About() {
         </div>
 
         {/* Info Cards Section */}
-        <div className="grid lg:grid-cols-3 gap-10 max-w-7xl mx-auto mb-20">
-          {[
-            {
-              title: 'About Us',
-              description: 'We design and deploy comprehensive end-to-end ICT infrastructure solutions that empower organizations worldwide to operate with maximum efficiency, reliability, and security. By combining cutting-edge technology with expert guidance, we help businesses modernize operations, protect critical assets, and scale for sustainable growth.',
-              icon: Rocket,
-              color: 'blue',
-              number: '01'
-            },
-            {
-              title: 'Vision',
-              description: 'To deliver secure, scalable, and high-performance technology infrastructures that ensure long-term digital transformation and regulatory compliance for modern enterprises.',
-              icon: Target,
-              color: 'cyan',
-              number: '02'
-            },
-            {
-              title: 'Mission',
-              description: 'To empower organizations with reliable, future-ready technology infrastructures through technical excellence in networking, data centers, security, and smart building solutions.',
-              icon: Award,
-              color: 'orange',
-              number: '03'
-            }
-          ].map((item, index) => (
+        <div className={`grid ${cards.length === 1 ? 'max-w-4xl' : 'lg:grid-cols-3'} gap-10 mx-auto mb-20`}>
+          {cards.map((item, index) => (
             <div key={index} className="relative group perspective-1000">
               {/* Background Glow */}
               <div className={`absolute -inset-1 bg-gradient-to-r ${item.color === 'blue' ? 'from-blue-600 to-indigo-500' :
