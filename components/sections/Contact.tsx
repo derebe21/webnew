@@ -208,7 +208,7 @@ export function Contact() {
                             <Select required onValueChange={(v) => updateField('service', v)}>
                               <SelectTrigger className="bg-white"><SelectValue placeholder="Choose a service..." /></SelectTrigger>
                               <SelectContent>
-                                {['Cybersecurity Solutions', 'Network Infrastructure', 'Fiber Optic Installation', 'IT Consulting Services', 'Cloud Services & Migration', 'Web Development & Hosting', 'IT Support & Maintenance', 'Data Backup & Disaster Recovery', 'Digital Transformation / Automation', 'Security Audit & Compliance', 'Google Advertising & SEO', 'Other'].map(s => <SelectItem key={s} value={s}>{s}</SelectItem>)}
+                                {['Security Audit & Compliance', 'Digital Transformation & Automation', 'Web Development & Hosting', 'Data Center Solutions', 'Network Infrastructure', 'Fiber Optic Installation', 'IT Consulting Services', 'Cloud Migration', 'Data Backup & Disaster Recovery', 'Other'].map(s => <SelectItem key={s} value={s}>{s}</SelectItem>)}
                               </SelectContent>
                             </Select>
                           </div>

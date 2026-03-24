@@ -216,23 +216,5 @@ export const servicesData: Service[] = [
             'Monitoring & Performance Enhancement: Continuous oversight and optimization of infrastructure performance.'
         ],
         benefits: [],
-    },
-    {
-        slug: 'google-advertising',
-        icon: Target,
-        logoImage: '/images/google-ads-logo.png',
-        sidebarImage: '',
-        bannerImage: '/images/google-ads-banner.jpg',
-        bgColor: '#4285F4',
-        title: 'Google Advertising & Search Marketing',
-        description: 'Accelerate your business growth with expert Google Ads management, search engine marketing, and high-conversion advertising strategies.',
-        longDescription: 'Strategic digital advertising solutions designed to put your business in front of the right customers at the perfect moment.',
-        features: [
-            'Google Search Ads: Targeted campaigns that appear when customers search for your specific services.',
-            'Display & Video Ads: Engaging visual and video content across YouTube and millions of partner websites.',
-            'Remarketing Campaigns: Re-engaging past website visitors to increase conversion rates and brand recall.',
-            'Data-Driven Optimization: Continuous analysis and refinement to maximize your return on investment (ROI).'
-        ],
-        benefits: [],
     }
 ];
