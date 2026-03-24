@@ -93,6 +93,10 @@ class SMTPHelper {
             $out .= $str;
             if (substr($str, 3, 1) == " ") break;
         }
+        // Log individual SMTP responses if they indicate error (4xx or 5xx)
+        if (isset($str[0]) && ($str[0] === '4' || $str[0] === '5')) {
+            $this->error .= " SMTP Error: " . trim($str);
+        }
         return $out;
     }
 }

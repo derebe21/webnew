@@ -2,15 +2,25 @@
 // ITSEC Technology - Advanced Contact Form Handler with Auto-Replies
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Set JSON headers
+    header('Content-Type: application/json');
+    header('Access-Control-Allow-Origin: *');
+    header('Access-Control-Allow-Methods: POST, OPTIONS');
+    header('Access-Control-Allow-Headers: Content-Type');
+
+    if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
+        exit();
+    }
+
     // Get JSON data from the request body
     $json = file_get_contents('php://input');
     $data = json_decode($json, true);
 
     if (!$data) {
-        // Log error
-        file_put_contents("contact_debug.log", "[" . date("Y-m-d H:i:s") . "] ERROR: Invalid JSON data received.\n", FILE_APPEND);
+        $error_msg = "Invalid JSON data received.";
+        file_put_contents("contact_debug.log", "[" . date("Y-m-d H:i:s") . "] ERROR: $error_msg\n", FILE_APPEND);
         http_response_code(400);
-        exit(json_encode(["status" => "error", "message" => "Invalid data"]));
+        exit(json_encode(["status" => "error", "message" => $error_msg]));
     }
 
     // Log the incoming request for diagnosis
@@ -83,9 +93,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             break;
     }
 
-    // LOAD SMTP SETTINGS
-    $smtpConfig = require_once("smtp_config.php");
-    require_once("SMTPHelper.php");
+    // LOAD SMTP SETTINGS - Using absolute path
+    $baseDir = dirname(__FILE__);
+    $smtpConfig = require($baseDir . "/smtp_config.php");
+    require_once($baseDir . "/SMTPHelper.php");
     $smtp = new SMTPHelper($smtpConfig);
 
     // 1. Send Email to Department

@@ -76,11 +76,29 @@ export function Contact() {
     try {
       const response = await fetch('/contact.php', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
         body: JSON.stringify({ ...formData, tab: activeTab }),
       });
 
-      if (response.ok) {
+      // Check if response is actually JSON
+      const contentType = response.headers.get('content-type');
+      if (!contentType || !contentType.includes('application/json')) {
+        const text = await response.text();
+        console.error('Non-JSON response received:', text);
+        
+        // If we received PHP code as text, it means PHP is not running on the server
+        if (text.includes('<?php')) {
+          throw new Error('PHP is not active on this server. Please ensure you are hosting on a cPanel or PHP-enabled server.');
+        }
+        throw new Error('The server returned an unexpected response. Please contact support.');
+      }
+
+      const result = await response.json();
+
+      if (response.ok && result.status === 'success') {
         toast({
           title: 'Request Sent Successfully!',
           description: `Thank you, ${formData.name}. A confirmation record has been sent to ${formData.email}. Our ${activeTab} team will follow up shortly.`,
@@ -95,12 +113,12 @@ export function Contact() {
           contactMethods: [], additionalInfo: '',
         });
       } else {
-        throw new Error('Server error');
+        throw new Error(result.message || 'Server error occurred during transmission.');
       }
-    } catch (error) {
+    } catch (error: any) {
       toast({
         title: 'Submission Error',
-        description: 'We encountered a problem. Please try again or email us directly.',
+        description: error.message || 'We encountered a problem. Please try again or email us directly.',
         variant: 'destructive',
       });
     } finally {
