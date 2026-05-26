@@ -3,7 +3,7 @@
 import { Hero } from '@/components/sections/Hero';
 import { Services } from '@/components/sections/Services';
 import { Products } from '@/components/sections/Products';
-import { About } from '@/components/sections/About';
+import { News } from '@/components/sections/News';
 import { Contact } from '@/components/sections/Contact';
 import { Navigation } from '@/components/Navigation';
 import { Footer } from '@/components/Footer';
@@ -13,7 +13,7 @@ export default function Home() {
     <div className="min-h-screen bg-background">
       <Navigation />
       <Hero />
-      <About />
+      <News />
       <Services variant="scroll" />
       <Products />
       <Contact />

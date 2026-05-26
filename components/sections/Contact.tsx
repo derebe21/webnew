@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Phone, Mail, MapPin, Send, MessageSquare, ShieldAlert, BadgeCheck, BarChart3, Clock } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -11,6 +11,7 @@ import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { useToast } from '@/hooks/use-toast';
+import { contactStore, inboxStore } from '@/lib/data-store';
 
 export function Contact() {
   const { toast } = useToast();
@@ -74,7 +75,7 @@ export function Contact() {
     setIsSubmitting(true);
 
     try {
-      const response = await fetch('/contact.php', {
+      const response = await fetch('/api/contact', {
         method: 'POST',
         headers: { 
           'Content-Type': 'application/json',
@@ -83,22 +84,20 @@ export function Contact() {
         body: JSON.stringify({ ...formData, tab: activeTab }),
       });
 
-      // Check if response is actually JSON
-      const contentType = response.headers.get('content-type');
-      if (!contentType || !contentType.includes('application/json')) {
-        const text = await response.text();
-        console.error('Non-JSON response received:', text);
-        
-        // If we received PHP code as text, it means PHP is not running on the server
-        if (text.includes('<?php')) {
-          throw new Error('PHP is not active on this server. Please ensure you are hosting on a cPanel or PHP-enabled server.');
-        }
-        throw new Error('The server returned an unexpected response. Please contact support.');
-      }
-
       const result = await response.json();
 
       if (response.ok && result.status === 'success') {
+        // Save to local inbox store for admin monitoring
+        inboxStore.add({
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          department: activeTab,
+          urgency: formData.urgency,
+          message: formData.issueDescription || formData.projectDescription || formData.quoteDetails || '',
+          details: formData
+        });
+
         toast({
           title: 'Request Sent Successfully!',
           description: `Thank you, ${formData.name}. A confirmation record has been sent to ${formData.email}. Our ${activeTab} team will follow up shortly.`,
@@ -126,11 +125,20 @@ export function Contact() {
     }
   };
 
-  const contactInfo = [
-    { icon: Phone, label: 'Phone / WhatsApp', value: '+251 911 407 439', href: 'https://wa.me/251911407439' },
-    { icon: Mail, label: 'Email', values: ['info@itsectechnology.com', 'contact@itsectechnology.com', 'support@itsectechnology.com', 'sales@itsectechnology.com'] },
-    { icon: MapPin, label: 'Address', value: 'Kirkos Church, Addis Ababa, Ethiopia', href: 'https://maps.google.com/?q=Kirkos+Church+Addis+Ababa+Ethiopia' },
-  ];
+  const [dynamicContactInfo, setDynamicContactInfo] = useState<any[]>([]);
+
+  useEffect(() => {
+    const raw = contactStore.getAll();
+    const phones = raw.filter(c => c.key.startsWith('phone'));
+    const emails = raw.filter(c => c.key.startsWith('email'));
+    const address = raw.find(c => c.key === 'address');
+
+    setDynamicContactInfo([
+      ...phones.map(p => ({ icon: Phone, label: p.label, value: p.value, href: p.href })),
+      { icon: Mail, label: 'Email', values: emails.map(e => e.value) },
+      ...(address ? [{ icon: MapPin, label: address.label, value: address.value, href: address.href }] : [])
+    ]);
+  }, []);
 
   return (
     <section id="contact" className="relative py-20 md:py-32 overflow-hidden bg-slate-50">
@@ -333,7 +341,7 @@ export function Contact() {
           </div>
 
           <div className="lg:col-span-4 space-y-6 lg:sticky lg:top-24">
-            {contactInfo.map((info, index) => (
+            {dynamicContactInfo.map((info, index) => (
               <Card key={index} className="overflow-hidden border-slate-200 shadow-lg rounded-2xl group">
                 <CardContent className="p-6">
                   <div className="flex items-start space-x-4">

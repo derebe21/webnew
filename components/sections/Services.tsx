@@ -1,6 +1,6 @@
 'use client';
 
-import { servicesData } from '@/lib/services-data';
+import { servicesStore } from '@/lib/data-store';
 import { Card, CardTitle } from '@/components/ui/card';
 import { ArrowRight } from 'lucide-react';
 import Link from 'next/link';
@@ -14,6 +14,11 @@ interface ServicesProps {
 export function Services({ variant = 'grid' }: ServicesProps) {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
+  const [servicesData, setServicesData] = useState<any[]>([]);
+
+  useEffect(() => {
+    setServicesData(servicesStore.getAll());
+  }, []);
 
   const handleScroll = () => {
     if (scrollContainerRef.current) {

@@ -1,32 +1,26 @@
+'use client';
+
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { Award, Target, Rocket, Lightbulb } from 'lucide-react';
+import { Award, Target, Rocket, Lightbulb, LucideIcon } from 'lucide-react';
+import { aboutStore, AboutCard } from '@/lib/data-store';
+
+const iconMap: Record<string, LucideIcon> = {
+  Rocket, Target, Award, Lightbulb
+};
 
 export function About({ showOnlyAboutUs = false }: { showOnlyAboutUs?: boolean }) {
-  const allCards = [
-    {
-      title: 'About Us',
-      description: 'We design and deploy comprehensive end-to-end ICT infrastructure solutions that empower organizations worldwide to operate with maximum efficiency, reliability, and security. By combining cutting-edge technology with expert guidance, we help businesses modernize operations, protect critical assets, and scale for sustainable growth.',
-      icon: Rocket,
-      color: 'blue',
-      number: '01'
-    },
-    {
-      title: 'Vision',
-      description: 'To deliver secure, scalable, and high-performance technology infrastructures that ensure long-term digital transformation and regulatory compliance for modern enterprises.',
-      icon: Target,
-      color: 'cyan',
-      number: '02'
-    },
-    {
-      title: 'Mission',
-      description: 'To empower organizations with reliable, future-ready technology infrastructures through technical excellence in networking, data centers, security, and smart building solutions.',
-      icon: Award,
-      color: 'orange',
-      number: '03'
-    }
-  ];
+  const [allCards, setAllCards] = useState<AboutCard[]>([]);
+  const [isLoaded, setIsLoaded] = useState(false);
 
-  const cards = showOnlyAboutUs ? [allCards[0]] : allCards;
+  useEffect(() => {
+    setAllCards(aboutStore.getAll());
+    setIsLoaded(true);
+  }, []);
+
+  const cards = showOnlyAboutUs ? (allCards.length > 0 ? [allCards[0]] : []) : allCards;
+
+  if (!isLoaded) return null;
 
   return (
     <section id="about" className="relative py-24 md:py-32 bg-slate-50 dark:bg-slate-950 overflow-hidden">
@@ -57,7 +51,7 @@ export function About({ showOnlyAboutUs = false }: { showOnlyAboutUs?: boolean }
               <div className="relative h-full p-10 bg-white/80 dark:bg-slate-900/80 backdrop-blur-2xl border border-slate-200/50 dark:border-slate-800/50 rounded-3xl transition-all duration-700 group-hover:-translate-y-4 group-hover:rotate-x-2 group-hover:border-primary/30 flex flex-col">
                 {/* Floating Number Indicator */}
                 <div className="absolute top-8 right-10 text-6xl font-black text-slate-100 dark:text-slate-800/50 select-none pointer-events-none group-hover:text-primary/10 transition-colors duration-700">
-                  {item.number}
+                  {`0${index + 1}`}
                 </div>
 
                 <div className="flex items-center gap-6 mb-8 relative z-10">
@@ -65,7 +59,7 @@ export function About({ showOnlyAboutUs = false }: { showOnlyAboutUs?: boolean }
                     item.color === 'cyan' ? 'bg-cyan-500 shadow-[0_10px_30px_-5px_rgba(6,182,212,0.4)]' :
                       'bg-[#F6A113] shadow-[0_10px_30px_-5px_rgba(246,161,19,0.4)]'
                     }`}>
-                    <item.icon className="w-10 h-10 text-white" />
+                    {iconMap[item.icon] ? (() => { const IconComponent = iconMap[item.icon]; return <IconComponent className="w-10 h-10 text-white" />; })() : <Rocket className="w-10 h-10 text-white" />}
                   </div>
                   <div>
                     <h3 className="text-2xl font-black tracking-tight text-slate-900 dark:text-white uppercase italic leading-none">

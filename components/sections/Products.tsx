@@ -3,137 +3,24 @@
 import { useState, useEffect } from 'react';
 import { Globe, Cloud, Server, Video, Zap, ArrowRight, Monitor, X, ExternalLink } from 'lucide-react';
 import Link from 'next/link';
+import { technologyStore, TechnologyPartner } from '@/lib/data-store';
 
 export function Products() {
-    const cyberSecurityPartners = [
-        {
-            name: 'Cisco',
-            color: '1BA0D7',
-            logo: '/images/ciscoo.png',
-            url: 'https://www.cisco.com/site/us/en/products/security/index.html',
-            description: 'Network security, firewalls, intrusion prevention, and secure access solutions.'
-        },
-        {
-            name: 'Palo Alto Networks',
-            color: 'FA582D',
-            logo: 'paloaltonetworks',
-            url: 'https://www.paloaltonetworks.com/network-security',
-            description: 'Next-generation firewalls, advanced threat prevention, and cloud security.'
-        },
-        {
-            name: 'Fortinet',
-            color: 'EE3124',
-            logo: 'fortinet',
-            url: 'https://www.fortinet.com/products',
-            description: 'High-performance firewalls, secure SD-WAN, and integrated security platforms.'
-        },
-        {
-            name: 'Check Point',
-            color: 'CC0000',
-            logo: '/images/checkpointt.logo.PNG',
-            url: 'https://www.checkpoint.com/quantum/next-generation-firewall/',
-            description: 'Enterprise firewall, threat intelligence, and advanced cyber defense.'
-        },
-        {
-            name: 'Sophos',
-            color: '0071CE',
-            logo: '/images/partners/sophos-shield.jpg',
-            url: 'https://www.sophos.com/en-us/products',
-            description: 'Endpoint protection, firewall security, and centralized security management.'
-        },
-        {
-            name: 'Trend Micro',
-            color: 'D71920',
-            logo: 'trendmicro',
-            url: 'https://www.trendmicro.com/en_us/business/products.html',
-            description: 'Endpoint, server, and cloud workload security with advanced malware protection.'
-        },
-        {
-            name: 'CrowdStrike',
-            color: 'FF0000',
-            logo: '/images/partners/crowdstrike-falcon.png',
-            url: 'https://www.crowdstrike.com/platform/',
-            description: 'AI-powered endpoint detection and response (EDR) and threat intelligence.'
-        },
-        {
-            name: 'Darktrace',
-            color: '9013FE',
-            logo: '/images/partners/Darktrace.png',
-            url: 'https://darktrace.com/products',
-            description: 'AI-driven threat detection, network visibility, and autonomous response.'
-        },
-        {
-            name: 'Imperva',
-            color: 'E30613',
-            logo: '/images/partners/imperva_shield_professional.png',
-            url: 'https://www.imperva.com/products/',
-            description: 'Web application firewall (WAF), database security, and DDoS protection.',
-            solutions: [
-                {
-                    title: 'Application Security',
-                    icon: '/images/partners/imperva-app-sec.svg',
-                    features: [
-                        'Protect applications and APIs anywhere',
-                        'Mitigate DDoS, bot, API and supply chain attacks',
-                        'Comply with PCI 4.0'
-                    ]
-                },
-                {
-                    title: 'Data Security',
-                    icon: '/images/partners/imperva-data-sec.svg',
-                    features: [
-                        'Secure sensitive data across on-premises and cloud environments',
-                        'Simplify compliance and audit reporting'
-                    ]
-                }
-            ]
-        }
-    ];
+    const [cyberSecurityPartners, setCyberSecurityPartners] = useState<TechnologyPartner[]>([]);
+    const [digitalInfrastructurePartners, setDigitalInfrastructurePartners] = useState<TechnologyPartner[]>([]);
+    const [cloudVirtualizationPartners, setCloudVirtualizationPartners] = useState<TechnologyPartner[]>([]);
+    const [dataCenterPartners, setDataCenterPartners] = useState<TechnologyPartner[]>([]);
+    const [integratedSecurityPartners, setIntegratedSecurityPartners] = useState<TechnologyPartner[]>([]);
+    const [unifiedCommunicationsPartners, setUnifiedCommunicationsPartners] = useState<TechnologyPartner[]>([]);
 
-    const digitalInfrastructurePartners = [
-        { name: 'Cisco', logo: '/images/ciscoo.png', url: 'https://www.cisco.com/c/en/us/solutions/enterprise-networks/index.html', description: 'Enterprise networking, routing, switching, and wireless solutions.' },
-        { name: 'Huawei', logo: '/images/Huaweii.webp', url: 'https://e.huawei.com/en/products/enterprise-networking', description: 'Next-generation carrier and enterprise networking infrastructure.' },
-        { name: 'HPE Aruba', logo: '/images/partners/hpe-logo.svg', url: 'https://www.arubanetworks.com/products/', description: 'AI-powered network solutions for edge-to-cloud connectivity.' },
-        { name: 'Juniper Networks', logo: '/images/partners/juniper-logo.svg', url: 'https://www.juniper.net/us/en/products.html', description: 'AI-driven networking, routing, and switching for modern enterprises.' },
-        { name: 'Ericsson', logo: 'ericsson', url: 'https://www.ericsson.com/en/portfolio', color: '002561', description: 'Advanced 5G and mobile network infrastructure solutions.' },
-        { name: 'F5 Networks', logo: 'f5', url: 'https://www.f5.com/products', color: 'E4312F', description: 'Application delivery, security, and multi-cloud networking.' }
-    ];
-
-    const cloudVirtualizationPartners = [
-        { name: 'VMware', logo: '/images/partners/vmware-logo.svg', url: 'https://www.vmware.com/products.html', description: 'Industry-leading multi-cloud services and virtualization platforms.' },
-        { name: 'Proxmox', logo: 'proxmox', url: 'https://www.proxmox.com/en/proxmox-ve', color: 'E57000', description: 'Open-source server virtualization and management platform.' },
-        { name: 'Microsoft Hyper-V', logo: '/images/partners/hyperv-logo.svg', url: 'https://virtualization/hyper-v-on-windows/', description: 'Native Windows-based hardware virtualization and cloud infrastructure.' },
-        { name: 'Oracle Cloud', logo: '/images/partners/oracle-logo.svg', url: 'https://www.oracle.com/cloud/products.html', description: 'Integrated suite of cloud applications and platform services.' },
-        { name: 'IBM Cloud', logo: '/images/partners/ibm-logo.svg', url: 'https://www.ibm.com/it-infrastructure', description: 'Hybrid cloud and AI-ready enterprise infrastructure.' },
-        { name: 'Red Hat', logo: '/images/partners/redhat-logo.svg', url: 'https://all-products', description: 'Enterprise-grade open-source virtualization and cloud solutions.' }
-    ];
-
-    const dataCenterPartners = [
-        { name: 'Dell', logo: 'dell', url: 'https://www.dell.com/en-us/dt/servers/index.htm', color: '006BBFE', description: 'High-performance servers, storage, and data center infrastructure.' },
-        { name: 'HPE', logo: '/images/partners/hpe-new.png', url: 'https://www.hpe.com/us/en/servers.html', description: 'Scalable compute, storage, and networking for modern data centers.' },
-        { name: 'Lenovo', logo: 'lenovo', url: 'https://www.lenovo.com/us/en/servers-storage/', color: 'E2231A', description: 'Reliable enterprise servers and software-defined storage solutions.' },
-        { name: 'Huawei', logo: '/images/Huaweii.webp', url: 'https://e.huawei.com/en/products/compute', description: 'Efficient and intelligent data center compute and storage systems.' },
-        { name: 'IBM', logo: '/images/partners/ibm-logo.svg', url: 'https://www.ibm.com/it-infrastructure', description: 'Robust enterprise mainframes and modernized data center storage.' },
-        { name: 'NetApp', logo: 'netapp', url: 'https://www.netapp.com/data-storage/', color: '0067DA', description: 'Advanced data management and cloud-integrated storage solutions.' },
-        { name: 'Synology', logo: 'synology', url: 'https://www.synology.com/en-us/products', color: '1C1C1C', description: 'Reliable network-attached storage (NAS) and data backup solutions.' },
-        { name: 'Supermicro', logo: 'supermicro', url: 'https://www.supermicro.com/en/products', color: '0078AE', description: 'High-efficiency, green computing server and storage solutions.' }
-    ];
-
-    const integratedSecurityPartners = [
-        { name: 'Hikvision', logo: '/images/partners/hikvision.png', url: 'https://www.hikvision.com/en/products/', description: 'Global leader in video surveillance and smart security solutions.' },
-        { name: 'Dahua', logo: '/images/partners/dahua.png', url: 'https://www. dahuasecurity.com/products', description: 'Innovative video-centric smart IoT solutions and services.' },
-        { name: 'Axis', logo: '/images/partners/axis.png', url: 'https://www.axis.com/products-and-solutions', description: 'Network-based video surveillance, access control and audio systems.' },
-        { name: 'Honeywell', logo: '/images/partners/honeywell.png', url: 'https://buildings.honeywell.com/us/en/products/security', description: 'Integrated building security and advanced fire safety systems.' },
-        { name: 'Suprema', logo: '/images/partners/suprema.png', url: 'https://www.supremainc.com/en/hardware/product-list.asp', description: 'Biometric access control and time & attendance solutions.' },
-        { name: 'ZKTeco', logo: '/images/partners/zkteco.png', url: 'https://www.zkteco.com/en/product_list/', description: 'Global provider of biometric and security management technology.' }
-    ];
-
-    const unifiedCommunicationsPartners = [
-        { name: 'Cisco', logo: '/images/ciscoo.png', url: 'https://www.cisco.com/c/en/us/solutions/collaboration/index.html', color: '1BA0D7', description: 'Comprehensive collaboration, IP telephony, and video conferencing.' },
-        { name: 'Dinstar', logo: '/images/partners/dinstar_new_v2.png', url: 'https://www.dinstar.com/', description: 'IP unified communications and VoIP gateway solutions.' },
-        { name: 'VaxVoIP', logo: '/images/partners/vaxvoip_new_v2.png', url: 'https://www.vaxvoip.com/', description: 'Specialized SIP-based voice and video communication technologies.' },
-        { name: 'Grandstream', logo: '/images/partners/grandstream_new_v2.png', url: 'http://www.grandstream.com/', description: 'High-quality IP voice, video, data, and mobility solutions.' }
-    ];
+    useEffect(() => {
+        setCyberSecurityPartners(technologyStore.getByCategory('cyberSecurity'));
+        setDigitalInfrastructurePartners(technologyStore.getByCategory('digitalInfrastructure'));
+        setCloudVirtualizationPartners(technologyStore.getByCategory('cloudVirtualization'));
+        setDataCenterPartners(technologyStore.getByCategory('dataCenter'));
+        setIntegratedSecurityPartners(technologyStore.getByCategory('integratedSecurity'));
+        setUnifiedCommunicationsPartners(technologyStore.getByCategory('unifiedCommunications'));
+    }, []);
 
     const [selectedPartner, setSelectedPartner] = useState<any>(null);
 
