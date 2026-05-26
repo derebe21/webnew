@@ -12,6 +12,7 @@ interface AdminLoginProps {
 }
 
 export function AdminLogin({ onLogin }: AdminLoginProps) {
+  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const { toast } = useToast();
@@ -22,7 +23,7 @@ export function AdminLogin({ onLogin }: AdminLoginProps) {
 
     // Simulated network delay
     setTimeout(() => {
-      const success = adminAuth.login(password);
+      const success = adminAuth.login(username, password);
       
       if (success) {
         toast({
@@ -57,6 +58,17 @@ export function AdminLogin({ onLogin }: AdminLoginProps) {
         
         <div className="p-8">
           <form onSubmit={handleLogin} className="space-y-6">
+            <div className="space-y-2">
+              <label className="text-xs uppercase tracking-widest font-bold text-slate-500">Admin Username</label>
+              <Input 
+                type="text" 
+                placeholder="Enter username" 
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+                required
+                className="h-12 bg-slate-50 border-slate-200"
+              />
+            </div>
             <div className="space-y-2">
               <label className="text-xs uppercase tracking-widest font-bold text-slate-500">Admin Password</label>
               <Input 

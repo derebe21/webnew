@@ -288,11 +288,20 @@ export const contactStore = {
 };
 
 // --- ADMIN AUTH ---
-const ADMIN_PASSWORD = 'ITSEC@admin2026';
-
 export const adminAuth = {
-  login: (password: string): boolean => {
-    if (password === ADMIN_PASSWORD) {
+  getCredentials: () => {
+    if (typeof window === 'undefined') return { username: 'admin', password: 'ITSEC@admin2026' };
+    const stored = localStorage.getItem('itsec_admin_creds');
+    if (stored) return JSON.parse(stored);
+    return { username: 'admin', password: 'ITSEC@admin2026' }; // Default credentials
+  },
+  updateCredentials: (username: string, password: string): void => {
+    if (typeof window === 'undefined') return;
+    localStorage.setItem('itsec_admin_creds', JSON.stringify({ username, password }));
+  },
+  login: (username: string, password: string): boolean => {
+    const creds = adminAuth.getCredentials();
+    if (username === creds.username && password === creds.password) {
       if (typeof window !== 'undefined') {
         localStorage.setItem('itsec_admin_auth', 'true');
         localStorage.setItem('itsec_admin_auth_time', Date.now().toString());
@@ -324,10 +333,10 @@ export const adminAuth = {
 // --- MONITORING AUTHENTICATION ---
 export const monitoringAuth = {
   getCredentials: () => {
-    if (typeof window === 'undefined') return { username: 'admin', password: 'password123' };
+    if (typeof window === 'undefined') return { username: 'monitor', password: 'ITSEC@monitor2026' };
     const stored = localStorage.getItem('itsec_monitoring_creds');
     if (stored) return JSON.parse(stored);
-    return { username: 'admin', password: 'password123' }; // Default credentials
+    return { username: 'monitor', password: 'ITSEC@monitor2026' }; // Default credentials
   },
   updateCredentials: (username: string, password: string): void => {
     if (typeof window === 'undefined') return;
