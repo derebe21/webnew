@@ -18,8 +18,24 @@ export function Services({ variant = 'grid' }: ServicesProps) {
   const [servicesData, setServicesData] = useState<Service[]>([]);
 
   useEffect(() => {
-    setServicesData(servicesStore.getAll());
-  }, []);
+    if (variant === 'grid') {
+      // Show only the 6 core services requested for the home page
+      const coreSlugs = [
+        'cybersecurity',
+        'digital-infrastructure', // Maps to Network Infrastructure
+        'data-center-solutions',
+        'cloud-virtualization',
+        'unified-communications',
+        'smart-systems'
+      ];
+      const allServices = servicesStore.getAll();
+      setServicesData(
+        coreSlugs.map(slug => allServices.find(s => s.slug === slug)).filter(Boolean) as Service[]
+      );
+    } else {
+      setServicesData(servicesStore.getAll());
+    }
+  }, [variant]);
 
   const handleScroll = () => {
     if (scrollContainerRef.current) {
@@ -85,29 +101,35 @@ export function Services({ variant = 'grid' }: ServicesProps) {
                   <div key={index} className="w-full">
                     <Link href={`/services/${service.slug}`} className="block group h-full">
                       <Card
-                        className={`h-full overflow-hidden border border-white/20 dark:border-slate-800/50 shadow-2xl transition-all duration-700 bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl flex flex-col group-hover:-translate-y-4 group-hover:shadow-[0_20px_40px_rgba(37,99,235,0.2)]`}
+                        className="h-full overflow-hidden border-0 shadow-xl transition-all duration-500 bg-white dark:bg-slate-900 flex flex-col group-hover:-translate-y-2 group-hover:shadow-[0_20px_40px_rgba(0,0,0,0.12)] dark:group-hover:shadow-[0_20px_40px_rgba(34,211,238,0.08)]"
                       >
-                        {/* Uniform Image Area - Large Color Logo */}
-                        <div className="relative h-64 w-full overflow-hidden flex-shrink-0 bg-slate-50 dark:bg-slate-900/40 p-12 flex items-center justify-center">
+                        {/* Rich Image Cover Area */}
+                        <div className="relative h-56 w-full overflow-hidden flex-shrink-0">
                           <img
-                            src={service.logoImage || "/images/data-center-final.png"}
+                            src={service.bannerImage || service.logoImage || "/images/data-center-final.png"}
                             alt={service.title}
-                            className="max-w-[80%] max-h-[80%] object-contain transition-transform duration-1000 group-hover:scale-110"
+                            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                           />
-                          <div className="absolute inset-0 bg-slate-950/5 transition-colors duration-700 group-hover:bg-slate-950/0" />
+                          <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/40 to-transparent transition-opacity duration-500" />
+                          <div className="absolute top-4 left-4 w-10 h-10 rounded-full bg-blue-600/90 backdrop-blur-sm flex items-center justify-center text-white border border-blue-400/30">
+                            {service.icon && <service.icon className="w-5 h-5" />}
+                          </div>
                         </div>
 
-                        {/* Text Content Area - Title Only */}
-                        <div className="flex-grow flex flex-col items-center justify-center p-8 bg-white dark:bg-slate-900/90 z-10 min-h-[140px]">
-                          <CardTitle className="text-2xl font-black tracking-tight text-slate-900 dark:text-white text-center line-clamp-2">
+                        {/* Text Content Area */}
+                        <div className="flex-grow flex flex-col p-6 z-10 relative">
+                          <CardTitle className="text-xl font-bold tracking-tight text-slate-900 dark:text-white mb-3 line-clamp-2">
                             {service.title}
                           </CardTitle>
-                        </div>
-
-                        {/* Explore Button */}
-                        <div className="relative overflow-hidden bg-gradient-to-r from-blue-700 to-blue-500 group-hover:from-blue-600 group-hover:to-blue-400 transition-all py-5 px-8 flex items-center justify-center text-white font-black uppercase tracking-widest text-[16px] gap-3 group/btn cursor-pointer">
-                          <span className="relative z-10">Explore Service</span>
-                          <ArrowRight className="w-5 h-5 relative z-10 transition-transform group-hover/btn:translate-x-2" />
+                          <p className="text-sm text-slate-600 dark:text-slate-400 line-clamp-2 mb-4 flex-grow">
+                            {service.description}
+                          </p>
+                          
+                          {/* Explore Link */}
+                          <div className="flex items-center gap-2 text-sm font-semibold text-blue-600 dark:text-cyan-400 group-hover:text-blue-500 transition-colors mt-auto">
+                            <span>Explore Service</span>
+                            <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                          </div>
                         </div>
                       </Card>
                     </Link>
