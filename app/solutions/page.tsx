@@ -2,7 +2,6 @@
 
 import { Navigation } from '@/components/Navigation';
 import { Footer } from '@/components/Footer';
-import { Card, CardTitle } from '@/components/ui/card';
 import { ArrowRight, Bot, Cloud, ShieldCheck, Building2, DatabaseBackup, Network, RefreshCcw, Activity } from 'lucide-react';
 import Link from 'next/link';
 
