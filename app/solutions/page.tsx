@@ -3,82 +3,77 @@
 import { Navigation } from '@/components/Navigation';
 import { Footer } from '@/components/Footer';
 import { useState } from 'react';
-import { ArrowRight, Bot, Cloud, ShieldCheck, Building2, DatabaseBackup, Network, RefreshCcw, Activity } from 'lucide-react';
+import { ArrowRight, Bot, Cloud, ShieldCheck, Building2, DatabaseBackup, Network, RefreshCcw, Activity, Camera, Zap } from 'lucide-react';
 import Link from 'next/link';
 
 const solutions = [
   {
     title: 'AI & Automation',
     fullTitle: 'AI & Automation Solutions',
-    description: 'Intelligent automation platforms, workflow automation, AI-driven monitoring systems, smart operational technologies, and intelligent data processing.',
+    description: 'Intelligent automation technologies that improve operational efficiency, monitoring, and decision-making.',
     icon: Bot,
-    color: '#1e3a6e',
-    hoverColor: '#22d3ee',
   },
   {
     title: 'Cloud Infrastructure',
     fullTitle: 'Cloud Infrastructure Solutions',
-    description: 'Private and hybrid cloud infrastructure, secure migration services, virtualization platforms, and high availability architectures.',
+    description: 'Secure and scalable cloud platforms, virtualization, and enterprise infrastructure solutions.',
     icon: Cloud,
-    color: '#1e4080',
-    hoverColor: '#22d3ee',
   },
   {
     title: 'Cybersecurity & SOC',
     fullTitle: 'Cybersecurity & SOC Solutions',
-    description: 'Security Operations Center (SOC), threat detection, endpoint protection, Identity & Access Management (IAM), and compliance governance.',
+    description: 'Advanced cybersecurity protection, threat monitoring, and security operations services.',
     icon: ShieldCheck,
-    color: '#1a3570',
-    hoverColor: '#22d3ee',
+  },
+  {
+    title: 'Integrated Security',
+    fullTitle: 'Integrated Security Solutions',
+    description: 'Enterprise surveillance, access control, biometric authentication, and intelligent security systems.',
+    icon: Camera,
+  },
+  {
+    title: 'Critical Power',
+    fullTitle: 'Electrical & Critical Power Solutions',
+    description: 'Reliable UPS, backup power, electrical infrastructure, and critical power management systems.',
+    icon: Zap,
   },
   {
     title: 'Smart Building',
     fullTitle: 'Smart Building & Intelligent Systems',
-    description: 'Smart building technologies, Building Management Systems (BMS), IoT integration, intelligent monitoring, and facility automation.',
+    description: 'Integrated smart technologies for intelligent monitoring, automation, and facility management.',
     icon: Building2,
-    color: '#1e3a6e',
-    hoverColor: '#22d3ee',
   },
   {
     title: 'Data Protection',
     fullTitle: 'Data Protection & Backup Solutions',
-    description: 'Backup and recovery solutions, disaster recovery infrastructure, data encryption, secure storage, and critical data protection platforms.',
+    description: 'Secure backup, disaster recovery, encryption, and business continuity solutions.',
     icon: DatabaseBackup,
-    color: '#1e4080',
-    hoverColor: '#22d3ee',
   },
   {
     title: 'Enterprise Networking',
     fullTitle: 'Enterprise Networking Solutions',
-    description: 'Enterprise network infrastructure, LAN/WAN solutions, wireless networks, fiber optic infrastructure, and secure connectivity platforms.',
+    description: 'Enterprise-grade LAN/WAN, wireless, fiber optic, and secure network infrastructure solutions.',
     icon: Network,
-    color: '#1a3570',
-    hoverColor: '#22d3ee',
   },
   {
     title: 'Digital Transformation',
     fullTitle: 'Digital Transformation Solutions',
-    description: 'Enterprise modernization, intelligent systems integration, business process optimization, and scalable technology transformation strategies.',
+    description: 'Technology modernization and intelligent systems integration for digital business transformation.',
     icon: RefreshCcw,
-    color: '#1e3a6e',
-    hoverColor: '#22d3ee',
   },
   {
     title: 'Business Continuity',
     fullTitle: 'Business Continuity Solutions',
-    description: 'Operational resilience solutions, infrastructure redundancy, disaster recovery planning, and high availability continuity strategies.',
+    description: 'High-availability infrastructure and recovery solutions that ensure operational continuity and resilience.',
     icon: Activity,
-    color: '#1e4080',
-    hoverColor: '#22d3ee',
   },
 ];
 
-const TOTAL = solutions.length;
-const SLICE_ANGLE = 360 / TOTAL;
-const OUTER_R = 280;
-const INNER_R = 90;
-const ICON_R = 195;
-const TEXT_R = 230;
+const TOTAL = solutions.length; // 10
+const SLICE_ANGLE = 360 / TOTAL; // 36 degrees each
+const OUTER_R = 270;
+const INNER_R = 88;
+const LABEL_R = 195;
 
 function polarToCartesian(cx: number, cy: number, r: number, angleDeg: number) {
   const rad = ((angleDeg - 90) * Math.PI) / 180;
@@ -90,9 +85,12 @@ function describeSlice(cx: number, cy: number, outerR: number, innerR: number, s
   const o2 = polarToCartesian(cx, cy, outerR, endAngle);
   const i1 = polarToCartesian(cx, cy, innerR, endAngle);
   const i2 = polarToCartesian(cx, cy, innerR, startAngle);
-  const largeArc = endAngle - startAngle > 180 ? 1 : 0;
-  return `M ${o1.x} ${o1.y} A ${outerR} ${outerR} 0 ${largeArc} 1 ${o2.x} ${o2.y} L ${i1.x} ${i1.y} A ${innerR} ${innerR} 0 ${largeArc} 0 ${i2.x} ${i2.y} Z`;
+  return `M ${o1.x} ${o1.y} A ${outerR} ${outerR} 0 0 1 ${o2.x} ${o2.y} L ${i1.x} ${i1.y} A ${innerR} ${innerR} 0 0 0 ${i2.x} ${i2.y} Z`;
 }
+
+// Two alternating shades of blue
+const sliceColors = ['#1d4ed8', '#1e40af'];
+const sliceActiveColor = '#0e7490';
 
 export default function SolutionsPage() {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
@@ -136,147 +134,162 @@ export default function SolutionsPage() {
             <h2 className="text-3xl md:text-4xl font-black text-white uppercase tracking-tight mb-4">
               Our <span className="text-cyan-400">Solutions</span>
             </h2>
-            <p className="text-slate-400 text-lg max-w-2xl mx-auto">Hover over each segment to explore our enterprise technology solutions</p>
+            <p className="text-slate-400 text-lg max-w-2xl mx-auto">
+              Hover over each segment to explore our enterprise technology solutions
+            </p>
           </div>
 
-          <div className="flex flex-col lg:flex-row items-center justify-center gap-12 lg:gap-20">
+          <div className="flex flex-col lg:flex-row items-center justify-center gap-12 lg:gap-16">
 
-            {/* SVG Circle */}
-            <div className="w-full max-w-[600px] shrink-0">
+            {/* SVG Pie Circle */}
+            <div className="w-full max-w-[580px] shrink-0">
               <svg viewBox="0 0 600 600" className="w-full h-auto drop-shadow-2xl" xmlns="http://www.w3.org/2000/svg">
                 <defs>
-                  <filter id="glow">
-                    <feGaussianBlur stdDeviation="3" result="coloredBlur" />
-                    <feMerge>
-                      <feMergeNode in="coloredBlur" />
-                      <feMergeNode in="SourceGraphic" />
-                    </feMerge>
-                  </filter>
-                  {solutions.map((_, i) => (
-                    <radialGradient key={i} id={`grad${i}`} cx="50%" cy="50%" r="50%">
-                      <stop offset="0%" stopColor={activeIndex === i ? '#0e7490' : '#1d4ed8'} stopOpacity="1" />
-                      <stop offset="100%" stopColor={activeIndex === i ? '#155e75' : '#1e3a8a'} stopOpacity="1" />
-                    </radialGradient>
-                  ))}
                   <radialGradient id="centerGrad" cx="50%" cy="50%" r="50%">
                     <stop offset="0%" stopColor="#e2e8f0" />
-                    <stop offset="100%" stopColor="#cbd5e1" />
+                    <stop offset="100%" stopColor="#94a3b8" />
                   </radialGradient>
                 </defs>
 
                 {/* Outer dark ring */}
-                <circle cx={cx} cy={cy} r={OUTER_R + 8} fill="#0f172a" />
+                <circle cx={cx} cy={cy} r={OUTER_R + 10} fill="#0f172a" />
 
                 {/* Slices */}
                 {solutions.map((sol, i) => {
-                  const startAngle = i * SLICE_ANGLE - 90 + 90;
+                  const startAngle = i * SLICE_ANGLE;
                   const endAngle = startAngle + SLICE_ANGLE;
                   const midAngle = startAngle + SLICE_ANGLE / 2;
-                  const iconPos = polarToCartesian(cx, cy, ICON_R - 30, midAngle);
                   const isActive = activeIndex === i;
+                  const baseColor = sliceColors[i % 2];
+                  const fillColor = isActive ? sliceActiveColor : baseColor;
+
+                  // Push active slice outward
+                  const pushRad = ((midAngle - 90) * Math.PI) / 180;
+                  const pushX = isActive ? Math.cos(pushRad) * 10 : 0;
+                  const pushY = isActive ? Math.sin(pushRad) * 10 : 0;
+
+                  // Icon position (midpoint of slice radius)
+                  const iconPos = polarToCartesian(cx, cy, LABEL_R - 40, midAngle);
+                  // Text line 1
+                  const textPos1 = polarToCartesian(cx, cy, LABEL_R - 5, midAngle);
+                  // Text line 2 (for 2-word titles)
+                  const textPos2 = polarToCartesian(cx, cy, LABEL_R + 13, midAngle);
+
+                  const words = sol.title.split(' ');
+                  const line1 = words.slice(0, 2).join(' ');
+                  const line2 = words.slice(2).join(' ');
 
                   return (
                     <g
                       key={i}
+                      style={{ cursor: 'pointer', transform: `translate(${pushX}px, ${pushY}px)`, transition: 'transform 0.3s ease' }}
                       onMouseEnter={() => setActiveIndex(i)}
                       onMouseLeave={() => setActiveIndex(null)}
                       onClick={() => setActiveIndex(activeIndex === i ? null : i)}
-                      style={{ cursor: 'pointer' }}
                     >
                       <path
                         d={describeSlice(cx, cy, OUTER_R, INNER_R, startAngle, endAngle)}
-                        fill={`url(#grad${i})`}
+                        fill={fillColor}
                         stroke="#0f172a"
-                        strokeWidth="3"
-                        style={{
-                          transition: 'all 0.3s ease',
-                          transform: isActive ? `translate(${(Math.cos(((midAngle - 90) * Math.PI) / 180) * 8)}px, ${(Math.sin(((midAngle - 90) * Math.PI) / 180) * 8)}px)` : 'translate(0,0)',
-                          transformOrigin: `${cx}px ${cy}px`,
-                          filter: isActive ? 'brightness(1.4)' : 'brightness(1)',
-                        }}
+                        strokeWidth="2.5"
+                        style={{ transition: 'fill 0.3s ease' }}
                       />
-                      {/* Small icon inside slice */}
-                      <g transform={`translate(${iconPos.x - 16}, ${iconPos.y - 16})`} style={{ pointerEvents: 'none' }}>
-                        <circle cx="16" cy="16" r="20" fill="rgba(255,255,255,0.12)" />
-                      </g>
-                      {/* Title text along arc */}
+                      {/* Small white icon circle */}
+                      <circle
+                        cx={iconPos.x}
+                        cy={iconPos.y}
+                        r="18"
+                        fill="rgba(255,255,255,0.12)"
+                        stroke={isActive ? '#22d3ee' : 'rgba(255,255,255,0.2)'}
+                        strokeWidth="1"
+                        style={{ transition: 'stroke 0.3s ease' }}
+                      />
+                      {/* Label line 1 */}
                       <text
-                        x={polarToCartesian(cx, cy, TEXT_R - 60, midAngle).x}
-                        y={polarToCartesian(cx, cy, TEXT_R - 60, midAngle).y}
+                        x={textPos1.x}
+                        y={textPos1.y}
                         textAnchor="middle"
                         dominantBaseline="middle"
                         fill={isActive ? '#22d3ee' : 'white'}
-                        fontSize="11"
-                        fontWeight="bold"
-                        fontFamily="sans-serif"
-                        style={{ pointerEvents: 'none', transition: 'fill 0.3s ease' }}
-                      >
-                        {sol.title.split(' ').slice(0, 2).join(' ')}
-                      </text>
-                      <text
-                        x={polarToCartesian(cx, cy, TEXT_R - 60, midAngle).x}
-                        y={polarToCartesian(cx, cy, TEXT_R - 60, midAngle).y + 14}
-                        textAnchor="middle"
-                        dominantBaseline="middle"
-                        fill={isActive ? '#22d3ee' : '#93c5fd'}
                         fontSize="10"
+                        fontWeight="700"
                         fontFamily="sans-serif"
                         style={{ pointerEvents: 'none', transition: 'fill 0.3s ease' }}
                       >
-                        {sol.title.split(' ').slice(2).join(' ')}
+                        {line1}
                       </text>
+                      {/* Label line 2 if exists */}
+                      {line2 && (
+                        <text
+                          x={textPos2.x}
+                          y={textPos2.y}
+                          textAnchor="middle"
+                          dominantBaseline="middle"
+                          fill={isActive ? '#67e8f9' : '#93c5fd'}
+                          fontSize="9"
+                          fontFamily="sans-serif"
+                          style={{ pointerEvents: 'none', transition: 'fill 0.3s ease' }}
+                        >
+                          {line2}
+                        </text>
+                      )}
                     </g>
                   );
                 })}
 
-                {/* Center Circle */}
-                <circle cx={cx} cy={cy} r={INNER_R - 4} fill="url(#centerGrad)" />
-                <circle cx={cx} cy={cy} r={INNER_R - 14} fill="#1e293b" />
+                {/* Center circle */}
+                <circle cx={cx} cy={cy} r={INNER_R - 3} fill="#1e293b" stroke="#334155" strokeWidth="2" />
+                <circle cx={cx} cy={cy} r={INNER_R - 16} fill="#0f172a" />
+
                 {/* Shield icon in center */}
-                <g transform={`translate(${cx - 24}, ${cy - 28})`}>
-                  <path d="M24 2L4 10v12c0 11.1 8.6 21.5 20 24 11.4-2.5 20-12.9 20-24V10L24 2z" fill="#22d3ee" opacity="0.9" />
-                  <path d="M24 10l-12 5v7c0 6.6 5.1 12.8 12 14.4 6.9-1.6 12-7.8 12-14.4v-7L24 10z" fill="#0e7490" />
-                  <path d="M20 22l3 3 7-7" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+                <g transform={`translate(${cx - 22}, ${cy - 26})`}>
+                  <path d="M22 2L4 9v11c0 10.2 7.8 19.7 18 22 10.2-2.3 18-11.8 18-22V9L22 2z" fill="#22d3ee" opacity="0.85" />
+                  <path d="M22 9L10 14v6c0 6 4.6 11.7 12 13.2C29.4 31.7 34 26 34 20v-6L22 9z" fill="#0e7490" />
+                  <path d="M17 21l4 4 8-8" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
                 </g>
-                <text x={cx} y={cy + 36} textAnchor="middle" fill="#94a3b8" fontSize="9" fontFamily="sans-serif" fontWeight="bold">ITSEC</text>
+                <text x={cx} y={cy + 36} textAnchor="middle" fill="#64748b" fontSize="8" fontFamily="sans-serif" fontWeight="bold" letterSpacing="2">
+                  ITSEC
+                </text>
               </svg>
             </div>
 
             {/* Info Panel */}
-            <div className="w-full lg:max-w-md">
+            <div className="w-full lg:max-w-[420px]">
               {activeIndex !== null ? (
-                <div className="bg-slate-900 border border-cyan-500/30 rounded-2xl p-8 shadow-[0_0_40px_rgba(34,211,238,0.1)] transition-all duration-300">
-                  <div className="w-16 h-16 rounded-full bg-blue-900/50 border border-cyan-500/30 flex items-center justify-center mb-6">
+                <div className="bg-slate-900 border border-cyan-500/30 rounded-2xl p-8 shadow-[0_0_40px_rgba(34,211,238,0.08)] animate-fade-in">
+                  <div className="w-16 h-16 rounded-full bg-blue-900/40 border border-cyan-500/30 flex items-center justify-center mb-6 shadow-inner">
                     {(() => {
                       const Icon = solutions[activeIndex].icon;
                       return <Icon className="w-8 h-8 text-cyan-400 stroke-[1.5]" />;
                     })()}
                   </div>
-                  <h3 className="text-2xl font-black text-white mb-4 uppercase tracking-tight">
+                  <div className="w-10 h-0.5 bg-cyan-400 mb-5 rounded-full" />
+                  <h3 className="text-2xl font-black text-white mb-4 uppercase tracking-tight leading-tight">
                     {solutions[activeIndex].fullTitle}
                   </h3>
-                  <p className="text-slate-400 leading-relaxed mb-8">
+                  <p className="text-slate-400 leading-relaxed mb-8 text-base">
                     {solutions[activeIndex].description}
                   </p>
                   <Link
                     href="/contact"
-                    className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white rounded-xl font-black uppercase tracking-widest transition-all transform hover:scale-105 text-sm"
+                    className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white rounded-xl font-black uppercase tracking-widest transition-all transform hover:scale-105 text-sm shadow-lg"
                   >
                     Learn More <ArrowRight className="w-4 h-4" />
                   </Link>
                 </div>
               ) : (
-                <div className="bg-slate-900/50 border border-slate-800 rounded-2xl p-8 text-center">
+                <div className="bg-slate-900/40 border border-slate-800 rounded-2xl p-8 text-center">
                   <div className="w-20 h-20 rounded-full bg-blue-900/20 border border-slate-700 flex items-center justify-center mx-auto mb-6">
                     <ShieldCheck className="w-10 h-10 text-slate-600" />
                   </div>
                   <h3 className="text-xl font-black text-slate-400 uppercase tracking-tight mb-3">
                     Select a Solution
                   </h3>
-                  <p className="text-slate-600 text-sm leading-relaxed">
+                  <p className="text-slate-600 text-sm leading-relaxed mb-8">
                     Hover over any segment of the circle to explore ITSEC Technology enterprise solutions.
                   </p>
-                  <div className="mt-8 grid grid-cols-2 gap-3">
+                  {/* Quick-access list */}
+                  <div className="grid grid-cols-2 gap-2">
                     {solutions.map((sol, i) => {
                       const Icon = sol.icon;
                       return (
@@ -288,7 +301,7 @@ export default function SolutionsPage() {
                           className="flex items-center gap-2 p-3 rounded-xl bg-slate-800/50 hover:bg-slate-800 border border-slate-700 hover:border-cyan-500/30 transition-all text-left group"
                         >
                           <Icon className="w-4 h-4 text-cyan-400 shrink-0 stroke-[1.5]" />
-                          <span className="text-xs text-slate-400 group-hover:text-white transition-colors font-medium">{sol.title}</span>
+                          <span className="text-xs text-slate-400 group-hover:text-white transition-colors font-medium leading-tight">{sol.title}</span>
                         </button>
                       );
                     })}
@@ -296,6 +309,34 @@ export default function SolutionsPage() {
                 </div>
               )}
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Overview List */}
+      <section className="py-16 bg-slate-900">
+        <div className="max-w-5xl mx-auto px-4">
+          <div className="text-center mb-12">
+            <div className="w-16 h-1 bg-cyan-400 mx-auto mb-6 rounded-full" />
+            <h2 className="text-3xl font-black text-white uppercase tracking-tight mb-4">
+              Solutions <span className="text-cyan-400">Overview</span>
+            </h2>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {solutions.map((sol, i) => {
+              const Icon = sol.icon;
+              return (
+                <div key={i} className="flex items-start gap-5 p-6 rounded-2xl bg-slate-950 border border-slate-800 hover:border-cyan-500/30 transition-all group">
+                  <div className="w-12 h-12 rounded-full bg-blue-900/30 border border-blue-800/50 flex items-center justify-center shrink-0 group-hover:border-cyan-500/40 transition-colors">
+                    <Icon className="w-6 h-6 text-cyan-400 stroke-[1.5]" />
+                  </div>
+                  <div>
+                    <h3 className="text-base font-black text-white uppercase tracking-tight mb-2">{sol.fullTitle}</h3>
+                    <p className="text-sm text-slate-500 leading-relaxed">{sol.description}</p>
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
