@@ -7,11 +7,13 @@ import { servicesData } from '@/lib/services-data';
 export function Footer() {
   const currentYear = new Date().getFullYear();
 
-  const companyLinks = [
-    { label: 'ITSEC Portal', href: '/contact' },
-    { label: 'About Us', href: '/#about' },
-    { label: 'Our Process', href: '/process' },
-    { label: 'Technology', href: '#technology' },
+  const quickLinks = [
+    { label: 'Home', href: '/' },
+    { label: 'About', href: '/about' },
+    { label: 'Services', href: '/services' },
+    { label: 'Solutions', href: '/solutions' },
+    { label: 'Insights', href: '/#news' },
+    { label: 'Contact', href: '/contact' },
   ];
 
   const socialLinks = [
@@ -83,9 +85,9 @@ export function Footer() {
           </div>
 
           <div>
-            <h3 className="font-bold text-white mb-6 uppercase tracking-wider text-sm">Company</h3>
+            <h3 className="font-bold text-white mb-6 uppercase tracking-wider text-sm">Quick Links</h3>
             <ul className="space-y-3">
-              {companyLinks.map((link, index) => (
+              {quickLinks.map((link, index) => (
                 <li key={index}>
                   <Link
                     href={link.href}
