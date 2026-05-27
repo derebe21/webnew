@@ -58,9 +58,9 @@ export function About({ showOnlyAboutUs = false }: { showOnlyAboutUs?: boolean }
             {[
               { title: 'Integrity and professionalism', icon: Shield, color: 'text-blue-600 dark:text-blue-400', bg: 'bg-blue-50 dark:bg-blue-900/20', border: 'hover:border-blue-200 dark:hover:border-blue-800' },
               { title: 'Innovation and continuous improvement', icon: Lightbulb, color: 'text-cyan-600 dark:text-cyan-400', bg: 'bg-cyan-50 dark:bg-cyan-900/20', border: 'hover:border-cyan-200 dark:hover:border-cyan-800' },
-              { title: 'Customer satisfaction and service excellence', icon: Star, color: 'text-indigo-600 dark:text-indigo-400', bg: 'bg-indigo-50 dark:bg-indigo-900/20', border: 'hover:border-indigo-200 dark:hover:border-indigo-800' },
-              { title: 'Security, reliability, and quality', icon: CheckCircle2, color: 'text-emerald-600 dark:text-emerald-400', bg: 'bg-emerald-50 dark:bg-emerald-900/20', border: 'hover:border-emerald-200 dark:hover:border-emerald-800' },
-              { title: 'Teamwork and long-term partnership', icon: Users, color: 'text-purple-600 dark:text-purple-400', bg: 'bg-purple-50 dark:bg-purple-900/20', border: 'hover:border-purple-200 dark:hover:border-purple-800' },
+              { title: 'Customer satisfaction and service excellence', icon: Star, color: 'text-blue-600 dark:text-blue-400', bg: 'bg-blue-50 dark:bg-blue-900/20', border: 'hover:border-blue-200 dark:hover:border-blue-800' },
+              { title: 'Security, reliability, and quality', icon: CheckCircle2, color: 'text-cyan-600 dark:text-cyan-400', bg: 'bg-cyan-50 dark:bg-cyan-900/20', border: 'hover:border-cyan-200 dark:hover:border-cyan-800' },
+              { title: 'Teamwork and long-term partnership', icon: Users, color: 'text-blue-600 dark:text-blue-400', bg: 'bg-blue-50 dark:bg-blue-900/20', border: 'hover:border-blue-200 dark:hover:border-blue-800' },
             ].map((value, idx) => (
               <div key={idx} className={`bg-white dark:bg-slate-900 rounded-2xl shadow-sm hover:shadow-[0_8px_30px_rgb(0,0,0,0.06)] dark:hover:shadow-[0_8px_30px_rgb(0,0,0,0.2)] hover:-translate-y-1 transition-all duration-300 p-6 md:p-8 border border-slate-100 dark:border-slate-800 flex items-center gap-5 ${value.border}`}>
                 <div className={`w-14 h-14 rounded-2xl flex items-center justify-center shrink-0 ${value.bg} ${value.color}`}>
