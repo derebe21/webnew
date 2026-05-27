@@ -34,11 +34,11 @@ export function Products() {
     }, []);
 
     return (
-        <section id="technology" className="py-24 md:py-32 bg-white dark:bg-slate-950 transition-colors duration-500">
+        <section id="solutions" className="py-24 md:py-32 bg-white dark:bg-slate-950 transition-colors duration-500">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="text-center mb-20">
                     <h2 className="text-4xl md:text-5xl font-black text-slate-900 dark:text-white tracking-tighter uppercase italic mb-6">
-                        OUR <span className="text-primary">TECHNOLOGY</span>
+                        OUR <span className="text-primary">SOLUTIONS</span>
                     </h2>
                     <div className="w-24 h-1.5 bg-slate-900 dark:bg-white mx-auto rounded-full" />
                 </div>
