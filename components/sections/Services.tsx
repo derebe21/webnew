@@ -26,7 +26,9 @@ export function Services({ variant = 'grid' }: ServicesProps) {
         'data-center-solutions',
         'cloud-virtualization',
         'unified-communications',
-        'smart-systems'
+        'smart-systems',
+        'engineering-critical',   // Maps to Critical Power & Infrastructure Systems
+        'enterprise-platforms'    // Maps to Enterprise Platforms & Applications
       ];
       const allServices = servicesStore.getAll();
       setServicesData(
@@ -95,39 +97,32 @@ export function Services({ variant = 'grid' }: ServicesProps) {
 
           {variant === 'grid' ? (
             /* Static Grid Container (Home Page) */
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-4 md:px-12 w-full max-w-7xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 px-4 md:px-6 w-full max-w-7xl mx-auto">
               {servicesData.map((service, index) => {
+                const Icon = service.icon;
                 return (
                   <div key={index} className="w-full">
                     <Link href={`/services/${service.slug}`} className="block group h-full">
                       <Card
-                        className="h-full overflow-hidden border-0 shadow-xl transition-all duration-500 bg-white dark:bg-slate-900 flex flex-col group-hover:-translate-y-2 group-hover:shadow-[0_20px_40px_rgba(0,0,0,0.12)] dark:group-hover:shadow-[0_20px_40px_rgba(34,211,238,0.08)]"
+                        className="h-full border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-xl transition-all duration-300 bg-white dark:bg-slate-900/80 backdrop-blur-sm flex flex-col group-hover:-translate-y-1 p-6"
                       >
-                        {/* Rich Image Cover Area */}
-                        <div className="relative h-56 w-full overflow-hidden flex-shrink-0">
-                          <img
-                            src={service.bannerImage || service.logoImage || "/images/data-center-final.png"}
-                            alt={service.title}
-                            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                          />
-                          <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/40 to-transparent transition-opacity duration-500" />
-                          <div className="absolute top-4 left-4 w-10 h-10 rounded-full bg-blue-600/90 backdrop-blur-sm flex items-center justify-center text-white border border-blue-400/30">
-                            {service.icon && <service.icon className="w-5 h-5" />}
-                          </div>
+                        {/* Icon Area */}
+                        <div className="w-12 h-12 rounded-lg bg-blue-50 dark:bg-blue-900/20 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300">
+                          {Icon && <Icon className="w-6 h-6 text-blue-600 dark:text-cyan-400" />}
                         </div>
 
                         {/* Text Content Area */}
-                        <div className="flex-grow flex flex-col p-6 z-10 relative">
-                          <CardTitle className="text-xl font-bold tracking-tight text-slate-900 dark:text-white mb-3 line-clamp-2">
+                        <div className="flex-grow flex flex-col">
+                          <CardTitle className="text-lg font-bold tracking-tight text-slate-900 dark:text-white mb-2 line-clamp-2">
                             {service.title}
                           </CardTitle>
-                          <p className="text-sm text-slate-600 dark:text-slate-400 line-clamp-2 mb-4 flex-grow">
+                          <p className="text-sm text-slate-600 dark:text-slate-400 line-clamp-3 mb-6 flex-grow">
                             {service.description}
                           </p>
                           
-                          {/* Explore Link */}
-                          <div className="flex items-center gap-2 text-sm font-semibold text-blue-600 dark:text-cyan-400 group-hover:text-blue-500 transition-colors mt-auto">
-                            <span>Explore Service</span>
+                          {/* Learn More Link */}
+                          <div className="flex items-center gap-1.5 text-sm font-bold text-blue-600 dark:text-cyan-400 group-hover:text-blue-700 dark:group-hover:text-cyan-300 transition-colors mt-auto">
+                            <span>Learn More</span>
                             <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
                           </div>
                         </div>
