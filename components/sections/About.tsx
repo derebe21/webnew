@@ -1,6 +1,6 @@
 'use client';
 
-import { Shield, CheckCircle2, Target, Eye, Users, Lightbulb, Star } from 'lucide-react';
+import { Shield, CheckCircle2, Target, Eye } from 'lucide-react';
 
 export function About({ showOnlyAboutUs = false }: { showOnlyAboutUs?: boolean }) {
   return (
@@ -57,10 +57,10 @@ export function About({ showOnlyAboutUs = false }: { showOnlyAboutUs?: boolean }
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
             {[
               { title: 'Integrity and professionalism', icon: Shield, color: 'text-blue-600 dark:text-blue-400', bg: 'bg-blue-50 dark:bg-blue-900/20', border: 'hover:border-blue-200 dark:hover:border-blue-800' },
-              { title: 'Innovation and continuous improvement', icon: Lightbulb, color: 'text-cyan-600 dark:text-cyan-400', bg: 'bg-cyan-50 dark:bg-cyan-900/20', border: 'hover:border-cyan-200 dark:hover:border-cyan-800' },
-              { title: 'Customer satisfaction and service excellence', icon: Star, color: 'text-blue-600 dark:text-blue-400', bg: 'bg-blue-50 dark:bg-blue-900/20', border: 'hover:border-blue-200 dark:hover:border-blue-800' },
-              { title: 'Security, reliability, and quality', icon: CheckCircle2, color: 'text-cyan-600 dark:text-cyan-400', bg: 'bg-cyan-50 dark:bg-cyan-900/20', border: 'hover:border-cyan-200 dark:hover:border-cyan-800' },
-              { title: 'Teamwork and long-term partnership', icon: Users, color: 'text-blue-600 dark:text-blue-400', bg: 'bg-blue-50 dark:bg-blue-900/20', border: 'hover:border-blue-200 dark:hover:border-blue-800' },
+              { title: 'Innovation and continuous improvement', icon: CheckCircle2, color: 'text-cyan-600 dark:text-cyan-400', bg: 'bg-cyan-50 dark:bg-cyan-900/20', border: 'hover:border-cyan-200 dark:hover:border-cyan-800' },
+              { title: 'Customer satisfaction and service excellence', icon: CheckCircle2, color: 'text-blue-600 dark:text-blue-400', bg: 'bg-blue-50 dark:bg-blue-900/20', border: 'hover:border-blue-200 dark:hover:border-blue-800' },
+              { title: 'Security, reliability, and quality', icon: Shield, color: 'text-cyan-600 dark:text-cyan-400', bg: 'bg-cyan-50 dark:bg-cyan-900/20', border: 'hover:border-cyan-200 dark:hover:border-cyan-800' },
+              { title: 'Teamwork and long-term partnership', icon: CheckCircle2, color: 'text-blue-600 dark:text-blue-400', bg: 'bg-blue-50 dark:bg-blue-900/20', border: 'hover:border-blue-200 dark:hover:border-blue-800' },
             ].map((value, idx) => (
               <div key={idx} className={`bg-white dark:bg-slate-900 rounded-2xl shadow-sm hover:shadow-[0_8px_30px_rgb(0,0,0,0.06)] dark:hover:shadow-[0_8px_30px_rgb(0,0,0,0.2)] hover:-translate-y-1 transition-all duration-300 p-6 md:p-8 border border-slate-100 dark:border-slate-800 flex items-center gap-5 ${value.border}`}>
                 <div className={`w-14 h-14 rounded-2xl flex items-center justify-center shrink-0 ${value.bg} ${value.color}`}>
