@@ -117,30 +117,33 @@ export default function SolutionsPage() {
               return (
                 <div key={index} className="w-full">
                   <Link href={`/services`} className="block group h-full">
-                    <Card
-                      className="h-full border border-slate-100 dark:border-slate-800 shadow-sm hover:shadow-2xl transition-all duration-300 bg-white dark:bg-slate-900 flex flex-col group-hover:-translate-y-2 p-8 rounded-2xl"
+                    <div
+                      className="relative w-full aspect-square border-2 border-slate-100 dark:border-slate-800 shadow-[0_0_15px_rgba(0,0,0,0.05)] hover:shadow-[0_0_40px_rgba(34,211,238,0.15)] hover:border-cyan-500/30 transition-all duration-500 bg-white dark:bg-slate-900 flex flex-col items-center justify-center text-center p-6 md:p-8 rounded-full group-hover:-translate-y-2 overflow-hidden"
                     >
-                      {/* Circular Icon Area */}
-                      <div className="w-16 h-16 rounded-full bg-blue-50 dark:bg-blue-900/20 border border-blue-100 dark:border-blue-800/50 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 group-hover:bg-blue-100 dark:group-hover:bg-blue-900/40">
-                        <Icon className="w-8 h-8 text-blue-600 dark:text-cyan-400 stroke-[1.5]" />
-                      </div>
+                      {/* Abstract hover background */}
+                      <div className="absolute inset-0 bg-gradient-to-br from-blue-900/0 to-cyan-900/0 group-hover:from-blue-900/5 group-hover:to-cyan-900/10 transition-colors duration-500" />
+                      
+                      <div className="relative z-10 flex flex-col items-center justify-center w-full h-full max-w-[85%] mx-auto">
+                        {/* Circular Icon Area */}
+                        <div className="w-16 h-16 rounded-full bg-blue-50 dark:bg-blue-900/30 border border-blue-100 dark:border-blue-800/50 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300 shadow-inner shrink-0">
+                          <Icon className="w-8 h-8 text-blue-600 dark:text-cyan-400 stroke-[1.5]" />
+                        </div>
 
-                      {/* Text Content Area */}
-                      <div className="flex-grow flex flex-col">
-                        <CardTitle className="text-xl font-black tracking-tight text-slate-900 dark:text-white mb-4 line-clamp-2">
+                        {/* Text Content Area */}
+                        <h3 className="text-lg md:text-xl font-black tracking-tight text-slate-900 dark:text-white mb-2 line-clamp-2">
                           {solution.title}
-                        </CardTitle>
-                        <p className="text-sm text-slate-600 dark:text-slate-400 line-clamp-4 mb-8 flex-grow leading-relaxed">
+                        </h3>
+                        <p className="text-xs md:text-sm text-slate-600 dark:text-slate-400 line-clamp-3 mb-4 leading-relaxed hidden sm:block">
                           {solution.description}
                         </p>
                         
                         {/* Learn More Link */}
-                        <div className="flex items-center gap-2 text-sm font-black uppercase tracking-widest text-blue-600 dark:text-cyan-400 group-hover:text-blue-800 dark:group-hover:text-cyan-300 transition-colors mt-auto">
+                        <div className="flex items-center gap-2 text-xs font-black uppercase tracking-widest text-blue-600 dark:text-cyan-400 group-hover:text-blue-800 dark:group-hover:text-cyan-300 transition-colors mt-auto shrink-0">
                           <span>Learn More</span>
                           <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-2" />
                         </div>
                       </div>
-                    </Card>
+                    </div>
                   </Link>
                 </div>
               );
