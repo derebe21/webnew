@@ -125,7 +125,15 @@ export function Contact() {
     }
   };
 
-  const [dynamicContactInfo, setDynamicContactInfo] = useState<any[]>([]);
+  interface ContactInfoItem {
+    icon: any;
+    label: string;
+    value?: string;
+    values?: string[];
+    href?: string;
+  }
+
+  const [dynamicContactInfo, setDynamicContactInfo] = useState<ContactInfoItem[]>([]);
 
   useEffect(() => {
     const raw = contactStore.getAll();
@@ -134,9 +142,9 @@ export function Contact() {
     const address = raw.find(c => c.key === 'address');
 
     setDynamicContactInfo([
-      ...phones.map(p => ({ icon: Phone, label: p.label, value: p.value, href: p.href })),
+      ...phones.map(p => ({ icon: Phone, label: p.label, value: p.value as string, href: p.href })),
       { icon: Mail, label: 'Email', values: emails.map(e => e.value) },
-      ...(address ? [{ icon: MapPin, label: address.label, value: address.value, href: address.href }] : [])
+      ...(address ? [{ icon: MapPin, label: address.label, value: address.value as string, href: address.href }] : [])
     ]);
   }, []);
 
@@ -368,7 +376,7 @@ export function Contact() {
                           <a href={info.href} className="font-bold text-slate-800 hover:text-blue-600 transition-colors block text-lg mr-2">
                             {info.value}
                           </a>
-                          <button onClick={() => copyToClipboard(info.value)} className="opacity-0 group-hover/item:opacity-100 transition-opacity p-1 hover:text-blue-600" title="Copy to clipboard">
+                          <button onClick={() => copyToClipboard(info.value || '')} className="opacity-0 group-hover/item:opacity-100 transition-opacity p-1 hover:text-blue-600" title="Copy to clipboard">
                             <Send className="w-4 h-4 rotate-45" />
                           </button>
                         </div>

@@ -4,6 +4,7 @@ import { servicesStore } from '@/lib/data-store';
 import { Card, CardTitle } from '@/components/ui/card';
 import { ArrowRight } from 'lucide-react';
 import Link from 'next/link';
+import { type Service } from '@/lib/services-data';
 
 import { useState, useRef, useEffect } from 'react';
 
@@ -14,7 +15,7 @@ interface ServicesProps {
 export function Services({ variant = 'grid' }: ServicesProps) {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
-  const [servicesData, setServicesData] = useState<any[]>([]);
+  const [servicesData, setServicesData] = useState<Service[]>([]);
 
   useEffect(() => {
     setServicesData(servicesStore.getAll());
@@ -53,7 +54,7 @@ export function Services({ variant = 'grid' }: ServicesProps) {
     }, 4000); // Auto-rotate every 4 seconds
 
     return () => clearInterval(interval);
-  }, [variant, isHovered, activeIndex]);
+  }, [variant, isHovered, activeIndex, servicesData.length]);
 
   return (
     <section
@@ -150,7 +151,7 @@ export function Services({ variant = 'grid' }: ServicesProps) {
                           </CardTitle>
 
                           <ul className="space-y-4 flex-grow flex flex-col justify-center">
-                            {service.features.slice(0, 3).map((feature, fIndex) => (
+                            {service.features.slice(0, 3).map((feature: string, fIndex: number) => (
                               <li key={fIndex} className="flex items-start gap-3 text-sm text-slate-700 dark:text-slate-300">
                                 <div className="w-2 h-2 rounded-full bg-blue-500 mt-1.5 flex-shrink-0 shadow-[0_0_8px_rgba(59,130,246,0.6)]" />
                                 <span className="leading-relaxed text-left font-medium">{feature.split(':')[0]}</span>

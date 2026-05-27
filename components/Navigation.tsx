@@ -21,10 +21,11 @@ export function Navigation() {
 
   const navLinks = [
     { label: 'Home', href: '/' },
-    { label: 'About Us', href: '/about' },
+    { label: 'About', href: '/about' },
     { label: 'Services', href: '/services' },
-    { label: 'Technology', href: '/technology' },
-    { label: 'Contact Us', href: '/contact' },
+    { label: 'Solutions', href: '/#technology' },
+    { label: 'Insights', href: '/#news' },
+    { label: 'Contact', href: '/contact' },
   ];
 
   const isActive = (href: string) => pathname === href;

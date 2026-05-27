@@ -25,9 +25,9 @@ export function ServicesManager() {
       title: '',
       slug: '',
       description: '',
-      long_description: '',
-      logo_image: '',
-      banner_image: '',
+      longDescription: '',
+      logoImage: '',
+      bannerImage: '',
       features: []
     });
     setIsEditing(true);
@@ -77,7 +77,7 @@ export function ServicesManager() {
         {items.map((item) => (
           <Card key={item.slug} className="p-4 flex flex-col md:flex-row gap-4 items-center">
             <div className="w-16 h-16 bg-slate-100 rounded flex items-center justify-center overflow-hidden shrink-0">
-                {item.logo_image && <img src={item.logo_image} className="max-w-full max-h-full object-contain p-2" />}
+                {item.logoImage && <img src={item.logoImage} className="max-w-full max-h-full object-contain p-2" />}
             </div>
             <div className="flex-1">
               <h3 className="font-bold text-lg">{item.title}</h3>
@@ -111,16 +111,16 @@ export function ServicesManager() {
             </div>
             <div>
                 <label className="text-xs font-bold uppercase text-slate-500">Long Description</label>
-                <Textarea value={currentItem.long_description || ''} onChange={e => setCurrentItem({...currentItem, long_description: e.target.value})} placeholder="Long Description" rows={4} />
+                <Textarea value={currentItem.longDescription || ''} onChange={e => setCurrentItem({...currentItem, longDescription: e.target.value})} placeholder="Long Description" rows={4} />
             </div>
             <div className="grid grid-cols-2 gap-4">
                 <div>
                     <label className="text-xs font-bold uppercase text-slate-500">Logo Image URL</label>
-                    <Input value={currentItem.logo_image || ''} onChange={e => setCurrentItem({...currentItem, logo_image: e.target.value})} />
+                    <Input value={currentItem.logoImage || ''} onChange={e => setCurrentItem({...currentItem, logoImage: e.target.value})} />
                 </div>
                 <div>
                     <label className="text-xs font-bold uppercase text-slate-500">Banner Image URL</label>
-                    <Input value={currentItem.banner_image || ''} onChange={e => setCurrentItem({...currentItem, banner_image: e.target.value})} />
+                    <Input value={currentItem.bannerImage || ''} onChange={e => setCurrentItem({...currentItem, bannerImage: e.target.value})} />
                 </div>
             </div>
             <div>
