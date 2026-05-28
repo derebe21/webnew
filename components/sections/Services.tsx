@@ -18,25 +18,8 @@ export function Services({ variant = 'grid' }: ServicesProps) {
   const [servicesData, setServicesData] = useState<Service[]>([]);
 
   useEffect(() => {
-    if (variant === 'grid') {
-      // Show only the 6 core services requested for the home page
-      const coreSlugs = [
-        'cybersecurity',
-        'digital-infrastructure', // Maps to Network Infrastructure
-        'data-center-solutions',
-        'cloud-virtualization',
-        'unified-communications',
-        'smart-systems',
-        'engineering-critical',   // Maps to Critical Power & Infrastructure Systems
-        'enterprise-platforms'    // Maps to Enterprise Platforms & Applications
-      ];
-      const allServices = servicesStore.getAll();
-      setServicesData(
-        coreSlugs.map(slug => allServices.find(s => s.slug === slug)).filter(Boolean) as Service[]
-      );
-    } else {
-      setServicesData(servicesStore.getAll());
-    }
+    // Show all 10 services for the home page grid
+    setServicesData(servicesStore.getAll());
   }, [variant]);
 
   const handleScroll = () => {
@@ -97,7 +80,7 @@ export function Services({ variant = 'grid' }: ServicesProps) {
 
           {variant === 'grid' ? (
             /* Static Grid Container (Home Page) */
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 px-4 md:px-6 w-full max-w-7xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 px-4 md:px-6 w-full max-w-[90rem] mx-auto">
               {servicesData.map((service, index) => {
                 const Icon = service.icon;
                 return (

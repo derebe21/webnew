@@ -11,6 +11,9 @@ import {
     MessageSquare,
     Flame,
     Target,
+    Network,
+    Camera,
+    Wrench
 } from 'lucide-react';
 
 export interface Service {
@@ -36,8 +39,8 @@ export const servicesData: Service[] = [
         sidebarImage: '',
         bannerImage: '/images/custom-cybersecurity.png',
         bgColor: '#0F172A',
-        title: 'Cybersecurity',
-        description: 'Comprehensive digital security solutions to protect enterprise systems, networks, and data.',
+        title: 'Cybersecurity Services',
+        description: 'Professional cybersecurity assessment, protection, monitoring, and security management services.',
         longDescription: 'Professional-grade security operations and policy enforcement to safeguard your digital assets.',
         features: [
             'SOC with IDS/IPS and SIEM: Dedicated facility for real-time monitoring, threat detection, and response.',
@@ -48,38 +51,14 @@ export const servicesData: Service[] = [
         benefits: [],
     },
     {
-        slug: 'unified-communications',
-        icon: MessageSquare,
-        logoImage: '/images/unified-communications-new.png',
-        sidebarImage: '',
-        bannerImage: '/images/unified-communications-new.png',
-        bgColor: '#1E293B',
-        title: 'Unified Communications',
-        description: 'Integrated communication solutions combining voice, video, messaging, and collaboration platforms.',
-        longDescription: 'IP-based VoIP, video conferencing, and collaboration platforms for seamless communication and connection.',
-        features: [
-            'Voice, Video & Messaging Platforms: Seamless enterprise-grade communication tools for collaboration.',
-            'Collaboration Tools: Secure platforms for team interaction, project management, and document sharing.',
-            'Scalable Communication Networks: Reliable and expandable networks supporting voice, video, and data traffic.',
-            'Infrastructure Integration: Seamless connection of communication systems with existing enterprise IT environments.'
-        ],
-        benefits: [],
-        partners: [
-            { name: 'Cisco', logo: '/images/ciscoo.png', url: 'https://www.cisco.com/c/en/us/solutions/collaboration/index.html', color: '1BA0D7', description: 'Comprehensive collaboration, IP telephony, and video conferencing.' },
-            { name: 'Dinstar', logo: '/images/partners/dinstar_new_v2.png', url: 'https://www.dinstar.com/', description: 'IP unified communications and VoIP gateway solutions.' },
-            { name: 'VaxVoIP', logo: '/images/partners/vaxvoip_new_v2.png', url: 'https://www.vaxvoip.com/', description: 'Specialized SIP-based voice and video communication technologies.' },
-            { name: 'Grandstream', logo: '/images/partners/grandstream_new_v2.png', url: 'http://www.grandstream.com/', description: 'High-quality IP voice, video, data, and mobility solutions.' }
-        ]
-    },
-    {
         slug: 'digital-infrastructure',
-        icon: Server,
+        icon: Network,
         logoImage: '/images/digital-infrastructure-logo-new.png',
         sidebarImage: '',
         bannerImage: '/images/digital-infrastructure-final.png',
         bgColor: '#2E3A59',
-        title: 'Digital Infrastructure',
-        description: 'Robust and scalable foundational network and ICT design to support enterprise growth and security.',
+        title: 'Network Infrastructure Services',
+        description: 'Enterprise network design, deployment, optimization, and infrastructure management services.',
         longDescription: 'End-to-end ICT infrastructure design and deployment for maximum efficiency, security, and reliability.',
         features: [
             'Enterprise Networking: LAN/WAN, wireless mobility, VPNs, firewalls, and IDS/IPS for optimized connectivity.',
@@ -96,68 +75,14 @@ export const servicesData: Service[] = [
         sidebarImage: '',
         bannerImage: '/images/data-center-final.png',
         bgColor: '#1E293B',
-        title: 'Data Center Solutions',
-        description: 'Comprehensive data center design, power, cooling, and management for maximum uptime and efficiency.',
+        title: 'Data Center Services',
+        description: 'Data center infrastructure design, implementation, monitoring, and operational support services.',
         longDescription: 'Installation and configuration of high-availability data center facilities and virtualization platforms.',
         features: [
             'Server & Storage Solutions: Performance-optimized server deployment and scalable enterprise storage.',
             'Virtualization Platforms: Advanced cloud-ready virtualization for maximized resource utilization.',
             'Power & Cooling: Redundant power systems and precision cooling for equipment integrity.',
             'Disaster Recovery: Business continuity planning and automated failover for critical facility operations.'
-        ],
-        benefits: [],
-    },
-    {
-        slug: 'integrated-security',
-        icon: Shield,
-        logoImage: '/images/partners/hikvision.png',
-        sidebarImage: '',
-        bannerImage: '/images/custom-cctv.jpg',
-        bgColor: '#22C55E',
-        title: 'Integrated Security Systems',
-        description: 'Multi-layered cybersecurity and physical security solutions protecting digital assets and facilities.',
-        longDescription: 'Comprehensive deployment of physical security frameworks integrated with digital identity management.',
-        features: [
-            'IP Surveillance (CCTV): High-definition PTZ and fixed cameras with centralized intelligent recording.',
-            'One Card System: Unified solution for identity, access, attendance, and visitor management using smart cards.',
-            'Video Analytics & AI: Proactive monitoring with automated object recognition and security alerts.',
-            'Access Control: Hardware-software integration for managed facility entry and real-time reporting.'
-        ],
-        benefits: [],
-    },
-    {
-        slug: 'enterprise-platforms',
-        icon: Code,
-        logoImage: '/images/enterprise-apps-logo.png',
-        sidebarImage: '',
-        bannerImage: '/images/custom-enterprise-v2.jpg',
-        bgColor: '#3B82F6',
-        title: 'Enterprise Platforms & Applications',
-        description: 'Business-critical ERP, collaboration, databases, and platforms designed for operational excellence.',
-        longDescription: 'Deployment and integration of modern, scalable, and business-alined enterprise applications.',
-        features: [
-            'ERP & CRM Solutions: Deployment of integrated business process and customer management platforms.',
-            'Custom Software Development: Tailored applications designed for unique organizational requirements.',
-            'System Integration: Seamless connection of enterprise software with ICT and business infrastructure.',
-            'Mobile & Web Applications: Secure, scalable, and user-friendly cross-platform application development.'
-        ],
-        benefits: [],
-    },
-    {
-        slug: 'technology-advisory',
-        icon: Lightbulb,
-        logoImage: '/images/technology-advisory-logo-new.png',
-        sidebarImage: '',
-        bannerImage: '/images/technology-advisory-final.jpg',
-        bgColor: '#8B5CF6',
-        title: 'Technology Advisory & Integration',
-        description: 'Strategic consulting for digital transformation, IT roadmap, and technology optimization.',
-        longDescription: 'Guidance in aligning ICT investments with business objectives while providing hands-on deployment support.',
-        features: [
-            'Digital Transformation: Strategic roadmaps for technology-driven growth and modernization.',
-            'Managed ICT Deployment: Full-cycle deployment and maintenance of enterprise IT systems.',
-            'ICT Strategy Consulting: Aligning technology solutions with long-term organizational goals.',
-            'Support & Maintenance: 24/7 technical assistance with specialized SLA-based service contracts.'
         ],
         benefits: [],
     },
@@ -169,7 +94,7 @@ export const servicesData: Service[] = [
         bannerImage: '/images/custom-cloud.jpg',
         bgColor: '#38BDF8',
         title: 'Cloud & Virtualization Services',
-        description: 'Flexible cloud deployments and virtualization to enhance scalability, backup, and continuity.',
+        description: 'Cloud deployment, virtualization, migration, and infrastructure management services.',
         longDescription: 'Building cloud-ready infrastructures to deliver enterprise-grade flexibility, scalability, and resilience.',
         features: [
             'Public, Private & Hybrid Cloud: Tailored cloud deployment solutions to meet organizational needs.',
@@ -180,14 +105,56 @@ export const servicesData: Service[] = [
         benefits: [],
     },
     {
+        slug: 'unified-communications',
+        icon: MessageSquare,
+        logoImage: '/images/unified-communications-new.png',
+        sidebarImage: '',
+        bannerImage: '/images/unified-communications-new.png',
+        bgColor: '#1E293B',
+        title: 'Unified Communications Services',
+        description: 'Integrated enterprise communication, collaboration, VoIP, and conferencing services.',
+        longDescription: 'IP-based VoIP, video conferencing, and collaboration platforms for seamless communication and connection.',
+        features: [
+            'Voice, Video & Messaging Platforms: Seamless enterprise-grade communication tools for collaboration.',
+            'Collaboration Tools: Secure platforms for team interaction, project management, and document sharing.',
+            'Scalable Communication Networks: Reliable and expandable networks supporting voice, video, and data traffic.',
+            'Infrastructure Integration: Seamless connection of communication systems with existing enterprise IT environments.'
+        ],
+        benefits: [],
+        partners: [
+            { name: 'Cisco', logo: '/images/ciscoo.png', url: 'https://www.cisco.com/c/en/us/solutions/collaboration/index.html', color: '1BA0D7', description: 'Comprehensive collaboration, IP telephony, and video conferencing.' },
+            { name: 'Dinstar', logo: '/images/partners/dinstar_new_v2.png', url: 'https://www.dinstar.com/', description: 'IP unified communications and VoIP gateway solutions.' },
+            { name: 'VaxVoIP', logo: '/images/partners/vaxvoip_new_v2.png', url: 'https://www.vaxvoip.com/', description: 'Specialized SIP-based voice and video communication technologies.' },
+            { name: 'Grandstream', logo: '/images/partners/grandstream_new_v2.png', url: 'http://www.grandstream.com/', description: 'High-quality IP voice, video, data, and mobility solutions.' }
+        ]
+    },
+    {
+        slug: 'integrated-security',
+        icon: Camera,
+        logoImage: '/images/partners/hikvision.png',
+        sidebarImage: '',
+        bannerImage: '/images/custom-cctv.jpg',
+        bgColor: '#22C55E',
+        title: 'Integrated Security System Services',
+        description: 'Professional CCTV, access control, biometric, and intelligent security system implementation services.',
+        longDescription: 'Comprehensive deployment of physical security frameworks integrated with digital identity management.',
+        features: [
+            'IP Surveillance (CCTV): High-definition PTZ and fixed cameras with centralized intelligent recording.',
+            'One Card System: Unified solution for identity, access, attendance, and visitor management using smart cards.',
+            'Video Analytics & AI: Proactive monitoring with automated object recognition and security alerts.',
+            'Access Control: Hardware-software integration for managed facility entry and real-time reporting.'
+        ],
+        benefits: [],
+    },
+    {
         slug: 'smart-systems',
         icon: Cpu,
         logoImage: '/images/smart-systems-final.png',
         sidebarImage: '',
         bannerImage: '/images/smart-systems-final.png',
         bgColor: '#FACC15',
-        title: 'Smart Systems & Automation',
-        description: 'IoT-enabled building automation, energy management, intelligent security, and network optimization.',
+        title: 'Smart Systems & Automation Services',
+        description: 'Smart building integration, automation, IoT deployment, and intelligent monitoring services.',
         longDescription: 'Intelligent, automated, and connected facilities for modern, efficient enterprise operations.',
         features: [
             'Building Automation: Integration and optimization of lighting, HVAC, and energy monitoring.',
@@ -198,14 +165,32 @@ export const servicesData: Service[] = [
         benefits: [],
     },
     {
+        slug: 'technology-advisory',
+        icon: Lightbulb,
+        logoImage: '/images/technology-advisory-logo-new.png',
+        sidebarImage: '',
+        bannerImage: '/images/technology-advisory-final.jpg',
+        bgColor: '#8B5CF6',
+        title: 'Technology Advisory & Consultancy Services',
+        description: 'ICT consulting, digital transformation advisory, systems integration, and technology planning services.',
+        longDescription: 'Guidance in aligning ICT investments with business objectives while providing hands-on deployment support.',
+        features: [
+            'Digital Transformation: Strategic roadmaps for technology-driven growth and modernization.',
+            'Managed ICT Deployment: Full-cycle deployment and maintenance of enterprise IT systems.',
+            'ICT Strategy Consulting: Aligning technology solutions with long-term organizational goals.',
+            'Support & Maintenance: 24/7 technical assistance with specialized SLA-based service contracts.'
+        ],
+        benefits: [],
+    },
+    {
         slug: 'engineering-critical',
         icon: Zap,
         logoImage: '/images/engineering-electrical-final.jpg',
         sidebarImage: '',
         bannerImage: '/images/engineering-electrical-final.jpg',
         bgColor: '#1C1C1C',
-        title: 'Critical Power & Infrastructure Systems',
-        description: 'Engineering solutions including facility design, power optimization, cooling, and environmental controls.',
+        title: 'Critical Power & Electrical Services',
+        description: 'UPS deployment, backup power integration, electrical infrastructure, and critical power management services.',
         longDescription: 'Mission-critical power and infrastructure solutions for operational reliability.',
         features: [
             'Power Optimization: Efficient electrical systems designed for stable and reliable power delivery.',
@@ -214,6 +199,24 @@ export const servicesData: Service[] = [
             'Environmental Controls: Precision monitoring of temperature, humidity, and airflow for operational safety.',
             'Facility Engineering Support: Expert installation, configuration, and integration of critical systems.',
             'Monitoring & Performance Enhancement: Continuous oversight and optimization of infrastructure performance.'
+        ],
+        benefits: [],
+    },
+    {
+        slug: 'support-maintenance',
+        icon: Wrench,
+        logoImage: '/images/enterprise-apps-logo.png', // Fallback, could be updated later
+        sidebarImage: '',
+        bannerImage: '/images/custom-enterprise-v2.jpg', // Fallback
+        bgColor: '#3B82F6',
+        title: 'Support & Maintenance Services',
+        description: 'Preventive maintenance, technical support, monitoring, updates, and SLA-based support services.',
+        longDescription: 'Comprehensive SLA-based technical support to ensure continuous operation of all enterprise systems.',
+        features: [
+            'Preventive Maintenance: Scheduled health checks and system optimization.',
+            '24/7 Technical Support: Dedicated helpdesk and rapid-response technical assistance.',
+            'SLA-Based Contracts: Guaranteed response times and resolution metrics.',
+            'System Updates & Patching: Continuous security and feature updates across all infrastructure.'
         ],
         benefits: [],
     }
