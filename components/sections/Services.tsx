@@ -60,13 +60,38 @@ export function Services({ variant = 'grid' }: ServicesProps) {
   return (
     <section
       id="services"
-      className="relative py-24 md:py-32 bg-slate-50 dark:bg-slate-950 overflow-hidden"
+      className="relative py-24 md:py-32 bg-[#020617] text-white overflow-hidden"
     >
+      {/* ── BACKGROUND VISUAL EFFECTS ───────────────────── */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        {/* Tech Grid */}
+        <svg className="absolute inset-0 w-full h-full opacity-[0.02]"><defs>
+          <pattern id="services-grid" width="40" height="40" patternUnits="userSpaceOnUse">
+            <path d="M40 0L0 0 0 40" fill="none" stroke="#3B82F6" strokeWidth="0.5"/>
+          </pattern></defs>
+          <rect width="100%" height="100%" fill="url(#services-grid)"/>
+        </svg>
+        {/* Soft glowing ambient gradients */}
+        <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] rounded-full bg-blue-600/5 blur-[120px]" />
+        <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] rounded-full bg-cyan-600/5 blur-[120px]" />
+      </div>
+
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16 text-center">
-        <h2 className="text-4xl md:text-5xl font-black text-slate-900 dark:text-white tracking-tighter uppercase italic mb-6">
-          OUR <span className="text-primary">SERVICES</span>
+        {/* Pulsing Badge */}
+        <div className="flex items-center gap-2.5 w-fit px-4 py-2 rounded-full border border-cyan-500/30 bg-cyan-950/20 backdrop-blur-md mx-auto mb-6">
+          <span className="relative flex h-2 w-2">
+            <span className="animate-ping absolute inset-0 rounded-full bg-cyan-400 opacity-70"/>
+            <span className="relative rounded-full h-2 w-2 bg-cyan-400"/>
+          </span>
+          <span className="text-[10px] font-bold text-cyan-400 tracking-[0.2em] uppercase">
+            Core Expertise & Solutions
+          </span>
+        </div>
+
+        <h2 className="text-4xl md:text-5xl font-black text-white tracking-tighter uppercase italic mb-6" style={{fontFamily:'var(--font-montserrat,Montserrat,sans-serif)'}}>
+          OUR <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">SERVICES</span>
         </h2>
-        <div className="w-24 h-1.5 bg-slate-900 dark:bg-white mx-auto rounded-full" />
+        <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-cyan-500 mx-auto rounded-full shadow-[0_0_8px_rgba(6,182,212,0.5)]" />
       </div>
 
       <div className="max-w-[100vw]">
@@ -75,8 +100,8 @@ export function Services({ variant = 'grid' }: ServicesProps) {
           className="relative flex overflow-hidden group/slider"
         >
           {/* Subtle Gradient Overlays */}
-          <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-slate-50 dark:from-slate-950 to-transparent z-20 pointer-events-none" />
-          <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-slate-50 dark:from-slate-950 to-transparent z-20 pointer-events-none" />
+          <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-[#020617] to-transparent z-20 pointer-events-none" />
+          <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-[#020617] to-transparent z-20 pointer-events-none" />
 
           {variant === 'grid' ? (
             /* Static Grid Container (Home Page) */
@@ -87,24 +112,24 @@ export function Services({ variant = 'grid' }: ServicesProps) {
                   <div key={index} className="w-full">
                     <Link href={`/services/${service.slug}`} className="block group h-full">
                       <Card
-                        className="h-full border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-xl transition-all duration-300 bg-white dark:bg-slate-900/80 backdrop-blur-sm flex flex-col group-hover:-translate-y-1 p-6"
+                        className="h-full border border-slate-800/80 hover:border-blue-500/40 shadow-lg hover:shadow-[0_15px_30px_rgba(0,0,0,0.4)] transition-all duration-300 bg-gradient-to-b from-slate-900/70 to-slate-950/70 backdrop-blur-md flex flex-col group-hover:-translate-y-1.5 p-6"
                       >
                         {/* Icon Area */}
-                        <div className="w-12 h-12 rounded-lg bg-blue-50 dark:bg-blue-900/20 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300">
-                          {Icon && <Icon className="w-6 h-6 text-blue-600 dark:text-cyan-400" />}
+                        <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-blue-600/20 to-blue-500/5 text-blue-400 border border-blue-500/30 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300">
+                          {Icon && <Icon className="w-6 h-6 text-blue-400 dark:text-cyan-400" />}
                         </div>
 
                         {/* Text Content Area */}
                         <div className="flex-grow flex flex-col">
-                          <CardTitle className="text-lg font-bold tracking-tight text-slate-900 dark:text-white mb-2 line-clamp-2">
+                          <CardTitle className="text-lg font-bold tracking-tight text-white group-hover:text-cyan-400 transition-colors mb-2 line-clamp-2" style={{fontFamily:'var(--font-montserrat,Montserrat,sans-serif)'}}>
                             {service.title}
                           </CardTitle>
-                          <p className="text-sm text-slate-600 dark:text-slate-400 line-clamp-3 mb-6 flex-grow">
+                          <p className="text-sm text-slate-400 line-clamp-3 mb-6 flex-grow">
                             {service.description}
                           </p>
                           
                           {/* Learn More Link */}
-                          <div className="flex items-center gap-1.5 text-sm font-bold text-blue-600 dark:text-cyan-400 group-hover:text-blue-700 dark:group-hover:text-cyan-300 transition-colors mt-auto">
+                          <div className="flex items-center gap-1.5 text-sm font-bold text-blue-400 group-hover:text-cyan-300 transition-colors mt-auto">
                             <span>Learn More</span>
                             <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
                           </div>
@@ -130,7 +155,7 @@ export function Services({ variant = 'grid' }: ServicesProps) {
                   <div key={index} className="w-[85vw] md:w-[60vw] lg:w-[480px] flex-shrink-0 snap-center">
                     <Link href={`/services/${service.slug}`} className="block group h-full">
                       <Card
-                        className={`h-full overflow-hidden border border-white/20 dark:border-slate-800/50 shadow-2xl transition-all duration-700 bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl flex flex-col group-hover:-translate-y-4 group-hover:shadow-[0_20px_40px_rgba(37,99,235,0.2)]`}
+                        className="h-full overflow-hidden border border-slate-800 hover:border-blue-500/40 shadow-2xl transition-all duration-700 bg-gradient-to-b from-slate-900/80 via-slate-900/90 to-slate-950/90 backdrop-blur-xl flex flex-col group-hover:-translate-y-3 group-hover:shadow-[0_20px_40px_rgba(37,99,235,0.15)]"
                       >
                         {/* Specific Image Area */}
                         {service.bannerImage && (
@@ -145,15 +170,15 @@ export function Services({ variant = 'grid' }: ServicesProps) {
                         )}
 
                         {/* Text Content Area - With Bullets */}
-                        <div className="flex-grow flex flex-col p-8 bg-white dark:bg-slate-900/90 z-10 min-h-[260px]">
-                          <CardTitle className="text-2xl font-black tracking-tight text-slate-900 dark:text-white mb-6 text-center line-clamp-2">
+                        <div className="flex-grow flex flex-col p-8 bg-gradient-to-b from-slate-900/95 to-slate-950/95 z-10 min-h-[260px]">
+                          <CardTitle className="text-2xl font-black tracking-tight text-white group-hover:text-cyan-400 transition-colors mb-6 text-center line-clamp-2" style={{fontFamily:'var(--font-montserrat,Montserrat,sans-serif)'}}>
                             {service.title}
                           </CardTitle>
 
                           <ul className="space-y-4 flex-grow flex flex-col justify-center">
                             {service.features.slice(0, 3).map((feature: string, fIndex: number) => (
-                              <li key={fIndex} className="flex items-start gap-3 text-sm text-slate-700 dark:text-slate-300">
-                                <div className="w-2 h-2 rounded-full bg-blue-500 mt-1.5 flex-shrink-0 shadow-[0_0_8px_rgba(59,130,246,0.6)]" />
+                              <li key={fIndex} className="flex items-start gap-3 text-sm text-slate-300">
+                                <div className="w-2 h-2 rounded-full bg-cyan-500 mt-1.5 flex-shrink-0 shadow-[0_0_8px_rgba(6,182,212,0.6)]" />
                                 <span className="leading-relaxed text-left font-medium">{feature.split(':')[0]}</span>
                               </li>
                             ))}
@@ -161,7 +186,7 @@ export function Services({ variant = 'grid' }: ServicesProps) {
                         </div>
 
                         {/* Explore Domain Button */}
-                        <div className="relative overflow-hidden bg-gradient-to-r from-blue-700 to-blue-500 group-hover:from-blue-600 group-hover:to-blue-400 transition-all py-5 px-8 flex items-center justify-center text-white font-black uppercase tracking-widest text-[16px] gap-3 group/btn cursor-pointer">
+                        <div className="relative overflow-hidden bg-gradient-to-r from-blue-600 via-indigo-600 to-cyan-500 hover:from-blue-500 hover:via-indigo-500 hover:to-cyan-400 transition-all py-5 px-8 flex items-center justify-center text-white font-black uppercase tracking-widest text-[16px] gap-3 group/btn cursor-pointer">
                           <span className="relative z-10">Explore Service</span>
                           <ArrowRight className="w-5 h-5 relative z-10 transition-transform group-hover/btn:translate-x-2" />
                         </div>
@@ -183,7 +208,7 @@ export function Services({ variant = 'grid' }: ServicesProps) {
                 onClick={() => scrollTo(i)}
                 className={`h-2.5 rounded-full transition-all duration-500 cursor-pointer ${i === activeIndex
                   ? 'w-10 bg-blue-500 shadow-[0_0_10px_rgba(59,130,246,0.6)]'
-                  : 'w-2.5 bg-slate-300 dark:bg-slate-700 hover:bg-blue-400/50'
+                  : 'w-2.5 bg-slate-700 hover:bg-blue-400/50'
                   }`}
                 aria-label={`Scroll to ${servicesData[i].title}`}
               />
