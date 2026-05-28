@@ -65,14 +65,6 @@ export function About({ showOnlyAboutUs = false }: { showOnlyAboutUs?: boolean }
     }
   ];
 
-  // Stats for the Right Column of the Intro section
-  const stats = [
-    { label: 'Uptime & Defense Rate', value: '99.99%', sub: 'Zero breaches recorded' },
-    { label: 'Enterprise Clients', value: '250+', sub: 'Government & Finance' },
-    { label: 'Security Operations', value: '24/7', sub: 'Active threat hunting' },
-    { label: 'Certified Engineers', value: '80+', sub: 'Global tech credentials' }
-  ];
-
   return (
     <section id="about" className="relative py-24 md:py-32 bg-[#020617] text-white overflow-hidden">
       
@@ -93,77 +85,38 @@ export function About({ showOnlyAboutUs = false }: { showOnlyAboutUs?: boolean }
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-24">
         
-        {/* ── 1. MAIN ABOUT SECTION (INTUITIVE 2-COLUMN GRID) ── */}
-        <div className="grid lg:grid-cols-12 gap-12 xl:gap-16 items-center">
-          
-          {/* Left Column: Rich Text Presentation */}
-          <div className="lg:col-span-7 flex flex-col gap-6 text-left">
-            {/* Pulsing Badge */}
-            <div className="flex items-center gap-2.5 w-fit px-4 py-2 rounded-full border border-blue-500/30 bg-blue-950/20 backdrop-blur-md">
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inset-0 rounded-full bg-blue-400 opacity-70"/>
-                <span className="relative rounded-full h-2 w-2 bg-blue-400"/>
-              </span>
-              <span className="text-[10px] font-bold text-blue-400 tracking-[0.2em] uppercase">
-                Pioneering ICT Excellence
-              </span>
-            </div>
-
-            {/* Main Headline */}
-            <h2 className="text-3xl md:text-5xl font-black tracking-tight leading-[1.1]" style={{fontFamily:'var(--font-montserrat,Montserrat,sans-serif)'}}>
-              About <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-300 to-cyan-400">ITSEC Technology</span>
-            </h2>
-
-            {/* Paragraphs */}
-            <p className="text-base md:text-lg text-slate-300 leading-relaxed font-medium">
-              ITSEC Technology is a premier provider of advanced ICT, comprehensive cybersecurity frameworks, and integrated intelligent systems. We operate at the intersection of robust digital defense and innovative engineering, helping government offices, major financial institutions, healthcare operators, telecommunication entities, and commercial enterprises thrive.
-            </p>
-            <p className="text-sm md:text-base text-slate-400 leading-relaxed">
-              By aligning our methodologies with global frameworks like ISO, NIST, and CIS, we build and support resilient infrastructure architectures that protect sovereign assets and empower private sector growth. Our engineering teams possess the elite training and global credentials required to implement intelligent systems that stay ahead of complex cybersecurity threats.
-            </p>
-
-            {/* Action link */}
-            <div className="pt-2">
-              <a href="/contact" className="group flex items-center gap-2 text-sm font-semibold text-cyan-400 hover:text-cyan-300 transition-colors">
-                Partner with us for digital transformation
-                <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-              </a>
-            </div>
+        {/* ── 1. MAIN ABOUT SECTION (CENTERED HIGH-TECH PRESENTATION) ── */}
+        <div className="max-w-4xl mx-auto flex flex-col gap-6 text-left">
+          {/* Pulsing Badge */}
+          <div className="flex items-center gap-2.5 w-fit px-4 py-2 rounded-full border border-blue-500/30 bg-blue-950/20 backdrop-blur-md">
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inset-0 rounded-full bg-blue-400 opacity-70"/>
+              <span className="relative rounded-full h-2 w-2 bg-blue-400"/>
+            </span>
+            <span className="text-[10px] font-bold text-blue-400 tracking-[0.2em] uppercase">
+              Pioneering ICT Excellence
+            </span>
           </div>
 
-          {/* Right Column: Dynamic Statistics Card HUD */}
-          <div className="lg:col-span-5 relative">
-            <div className="absolute inset-0 -m-4 bg-gradient-to-tr from-blue-500/10 to-cyan-500/10 blur-xl rounded-[2.5rem] opacity-70" />
-            <div className="relative p-8 md:p-10 rounded-[2.5rem] border border-slate-800 bg-gradient-to-b from-slate-900/90 to-slate-950/90 backdrop-blur-xl shadow-2xl flex flex-col gap-8">
-              
+          {/* Main Headline */}
+          <h2 className="text-3xl md:text-5xl font-black tracking-tight leading-[1.1]" style={{fontFamily:'var(--font-montserrat,Montserrat,sans-serif)'}}>
+            About <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-300 to-cyan-400">ITSEC Technology</span>
+          </h2>
 
-              {/* Statistics Grid */}
-              <div className="grid grid-cols-2 gap-6 md:gap-8">
-                {stats.map((stat, index) => (
-                  <div key={index} className="flex flex-col gap-1.5 font-mono">
-                    <span className="text-2xl md:text-3.5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-br from-white via-slate-100 to-slate-300">
-                      {stat.value}
-                    </span>
-                    <div className="flex flex-col font-sans">
-                      <span className="text-[11px] font-bold text-slate-400 uppercase tracking-wider leading-snug">
-                        {stat.label}
-                      </span>
-                      <span className="text-[9px] text-slate-500 italic mt-0.5">
-                        {stat.sub}
-                      </span>
-                    </div>
-                  </div>
-                ))}
-              </div>
+          {/* Paragraphs */}
+          <p className="text-base md:text-lg text-slate-300 leading-relaxed font-medium">
+            ITSEC Technology is a premier provider of advanced ICT, comprehensive cybersecurity frameworks, and integrated intelligent systems. We operate at the intersection of robust digital defense and innovative engineering, helping government offices, major financial institutions, healthcare operators, telecommunication entities, and commercial enterprises thrive.
+          </p>
+          <p className="text-sm md:text-base text-slate-400 leading-relaxed">
+            By aligning our methodologies with global frameworks like ISO, NIST, and CIS, we build and support resilient infrastructure architectures that protect sovereign assets and empower private sector growth. Our engineering teams possess the elite training and global credentials required to implement intelligent systems that stay ahead of complex cybersecurity threats.
+          </p>
 
-              {/* Secure Systems Label */}
-              <div className="mt-2 p-3.5 rounded-xl bg-blue-950/20 border border-blue-500/10 flex items-center gap-3.5">
-                <Shield className="w-6 h-6 text-blue-400 shrink-0" />
-                <span className="text-[11px] text-slate-400 leading-snug font-medium">
-                  All enterprise nodes operate under a fully hardened Zero-Trust Network Access (ZTNA) model.
-                </span>
-              </div>
-            </div>
+          {/* Action link */}
+          <div className="pt-2">
+            <a href="/contact" className="group flex items-center gap-2 text-sm font-semibold text-cyan-400 hover:text-cyan-300 transition-colors">
+              Partner with us for digital transformation
+              <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+            </a>
           </div>
         </div>
 
