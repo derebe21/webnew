@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { ExternalLink, ShieldCheck, Network, Cloud, Server } from 'lucide-react';
+import { ExternalLink, ShieldCheck, Network, Cloud, Server, X, ArrowRight, Zap } from 'lucide-react';
 import Link from 'next/link';
 import { technologyStore, TechnologyPartner } from '@/lib/data-store';
 import { cn } from '@/lib/utils';
@@ -18,10 +18,32 @@ const categories: { id: CategoryKey; label: string; icon: React.ElementType }[] 
 export function Products() {
     const [activeTab, setActiveTab] = useState<CategoryKey>('cyberSecurity');
     const [partners, setPartners] = useState<TechnologyPartner[]>([]);
+    const [selectedPartner, setSelectedPartner] = useState<TechnologyPartner | null>(null);
 
     useEffect(() => {
         setPartners(technologyStore.getByCategory(activeTab));
     }, [activeTab]);
+
+    // Close modal on escape key
+    useEffect(() => {
+        const handleEsc = (e: KeyboardEvent) => {
+            if (e.key === 'Escape') setSelectedPartner(null);
+        };
+        window.addEventListener('keydown', handleEsc);
+        return () => window.removeEventListener('keydown', handleEsc);
+    }, []);
+
+    // Prevent body scroll when modal is open
+    useEffect(() => {
+        if (selectedPartner) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = 'unset';
+        }
+        return () => {
+            document.body.style.overflow = 'unset';
+        };
+    }, [selectedPartner]);
 
     return (
         <section id="technology" className="py-24 md:py-32 bg-[#0B1220] min-h-screen relative overflow-hidden transition-colors duration-500">
@@ -69,9 +91,9 @@ export function Products() {
                     {partners.map((partner) => (
                         <div
                             key={partner.name}
-                            className="group relative flex flex-col p-8 rounded-2xl bg-[#0F172A]/80 backdrop-blur-xl border border-[#1E293B] hover:border-[#2563EB]/50 transition-all duration-500 hover:-translate-y-2 overflow-hidden"
+                            className="group relative flex flex-col p-8 rounded-2xl bg-[#0F172A]/80 backdrop-blur-xl border border-[#1E293B] hover:border-[#2563EB]/50 transition-all duration-500 hover:-translate-y-2 overflow-hidden cursor-pointer"
+                            onClick={() => setSelectedPartner(partner)}
                             style={{
-                                // Injecting dynamic hover glow based on the brand's primary color
                                 '--brand-color': `#${partner.color || '2563EB'}`
                             } as React.CSSProperties}
                         >
@@ -85,7 +107,6 @@ export function Products() {
                                     src={partner.logo.startsWith('/') ? partner.logo : `https://cdn.simpleicons.org/${partner.logo}/white`}
                                     alt={partner.name}
                                     className="max-w-full max-h-full object-contain filter drop-shadow-[0_4px_8px_rgba(0,0,0,0.5)]"
-                                    // If local PNGs are used and they aren't white, we can force them to white using CSS: filter brightness-0 invert
                                     style={partner.logo.startsWith('/') ? { filter: 'brightness(0) invert(1)' } : undefined}
                                 />
                             </div>
@@ -99,21 +120,89 @@ export function Products() {
                                     {partner.description}
                                 </p>
 
-                                {/* Visit Website Button */}
-                                <Link
-                                    href={partner.url}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="inline-flex items-center justify-center w-full px-6 py-3 bg-[#111827] hover:bg-[#2563EB] border border-[#1E293B] hover:border-transparent text-white text-sm font-bold rounded-lg transition-all duration-300 group/btn"
-                                >
-                                    Visit Website
-                                    <ExternalLink className="ml-2 w-4 h-4 transition-transform group-hover/btn:translate-x-1" />
-                                </Link>
+                                {/* View Details Button */}
+                                <div className="inline-flex items-center justify-center w-full px-6 py-3 bg-[#111827] group-hover:bg-[#2563EB] border border-[#1E293B] group-hover:border-transparent text-white text-sm font-bold rounded-lg transition-all duration-300">
+                                    VIEW DETAILS
+                                    <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />
+                                </div>
                             </div>
                         </div>
                     ))}
                 </div>
             </div>
+
+            {/* Premium Dark Modal for Partner Details */}
+            {selectedPartner && (
+                <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6">
+                    {/* Backdrop */}
+                    <div
+                        className="absolute inset-0 bg-[#020617]/80 backdrop-blur-md transition-opacity"
+                        onClick={() => setSelectedPartner(null)}
+                    />
+
+                    {/* Modal Content */}
+                    <div 
+                        className="relative bg-[#0F172A] w-full max-w-4xl rounded-2xl shadow-[0_0_50px_rgba(0,0,0,0.5)] overflow-hidden transform transition-all border border-[#1E293B] flex flex-col md:flex-row z-10"
+                        style={{
+                            '--brand-color': `#${selectedPartner.color || '2563EB'}`
+                        } as React.CSSProperties}
+                    >
+                        {/* Top Gradient Line */}
+                        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[var(--brand-color)] to-transparent" />
+                        
+                        <button
+                            onClick={() => setSelectedPartner(null)}
+                            className="absolute top-4 right-4 p-2 rounded-full bg-[#1E293B] hover:bg-[#334155] text-white transition-colors z-20"
+                        >
+                            <X className="w-5 h-5" />
+                        </button>
+
+                        {/* Logo Section */}
+                        <div className="md:w-2/5 bg-[#0B1220] p-12 flex items-center justify-center relative overflow-hidden">
+                            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 bg-[var(--brand-color)] rounded-full blur-[100px] opacity-20 pointer-events-none" />
+                            <div className="w-48 h-48 relative z-10">
+                                <img
+                                    src={selectedPartner.logo.startsWith('/') ? selectedPartner.logo : `https://cdn.simpleicons.org/${selectedPartner.logo}/white`}
+                                    alt={selectedPartner.name}
+                                    className="w-full h-full object-contain filter drop-shadow-[0_10px_20px_rgba(0,0,0,0.5)]"
+                                    style={selectedPartner.logo.startsWith('/') ? { filter: 'brightness(0) invert(1)' } : undefined}
+                                />
+                            </div>
+                        </div>
+
+                        {/* Info Section */}
+                        <div className="md:w-3/5 p-8 md:p-12 flex flex-col justify-center bg-gradient-to-br from-[#0F172A] to-[#0B1220]">
+                            <div className="inline-flex items-center gap-2 text-[#06B6D4] text-xs font-bold uppercase tracking-widest mb-4 font-['Inter',sans-serif]">
+                                <Zap className="w-4 h-4 fill-current" />
+                                Official Technology Partner
+                            </div>
+                            <h3 className="text-3xl md:text-4xl font-black text-white mb-6 uppercase tracking-tight font-['Montserrat',sans-serif]">
+                                {selectedPartner.name}
+                            </h3>
+                            <p className="text-lg text-[#CBD5E1] leading-relaxed mb-10 font-['Inter',sans-serif]">
+                                {selectedPartner.description}
+                            </p>
+
+                            <div className="flex flex-wrap items-center gap-4 mt-auto">
+                                <Link
+                                    href={selectedPartner.url}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="inline-flex items-center px-8 py-4 bg-[#2563EB] hover:bg-[#1D4ED8] text-white rounded-xl font-bold transition-all transform hover:scale-105 shadow-[0_0_20px_rgba(37,99,235,0.4)]"
+                                >
+                                    Visit Website <ExternalLink className="ml-2 w-5 h-5" />
+                                </Link>
+                                <button
+                                    onClick={() => setSelectedPartner(null)}
+                                    className="inline-flex items-center px-8 py-4 bg-transparent border-2 border-[#1E293B] text-white rounded-xl font-bold hover:border-[#334155] hover:bg-[#1E293B] transition-all"
+                                >
+                                    Close Details
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            )}
         </section>
     );
 }
