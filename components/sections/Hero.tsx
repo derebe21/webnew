@@ -285,22 +285,22 @@ export function Hero() {
   useEffect(() => { setMounted(true); }, []);
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center overflow-hidden"
-             style={{background:'linear-gradient(135deg,#0B1220 0%,#0F172A 55%,#020617 100%)'}}>
+    <section id="home" className="relative min-h-screen flex items-center overflow-hidden bg-[#0B1220]">
 
       {/* ── CINEMATIC VIDEO BACKGROUND ───────────────────── */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         <video ref={videoRef} autoPlay muted loop playsInline
-               className="absolute inset-0 w-full h-full object-cover opacity-20"
+               className="absolute inset-0 w-full h-full object-cover opacity-60 mix-blend-screen"
                poster="/images/data-center-main.jpg">
           {/* Enterprise dark tech footage from Pexels — data center + network */}
           <source src="https://videos.pexels.com/video-files/3130284/3130284-hd_1920_1080_30fps.mp4" type="video/mp4"/>
           <source src="https://videos.pexels.com/video-files/3129671/3129671-hd_1920_1080_30fps.mp4" type="video/mp4"/>
         </video>
         {/* Layered dark overlays for text readability */}
-        <div className="absolute inset-0" style={{background:'rgba(11,18,32,.70)'}}/>
-        <div className="absolute inset-0" style={{background:'linear-gradient(90deg,rgba(11,18,32,.92) 0%,rgba(11,18,32,.55) 55%,rgba(11,18,32,.20) 100%)'}}/>
-        <div className="absolute inset-0" style={{background:'linear-gradient(180deg,rgba(11,18,32,.35) 0%,transparent 45%,rgba(2,6,23,.85) 100%)'}}/>
+        {/* Left-side dark gradient to ensure text readability */}
+        <div className="absolute inset-0" style={{background:'linear-gradient(90deg, rgba(11,18,32,0.95) 0%, rgba(11,18,32,0.80) 40%, rgba(11,18,32,0.20) 100%)'}}/>
+        {/* Bottom dark gradient to blend into the next section */}
+        <div className="absolute inset-0" style={{background:'linear-gradient(180deg, transparent 60%, rgba(2,6,23,0.95) 100%)'}}/>
       </div>
 
       {/* ── BACKGROUND EFFECTS ───────────────────────────── */}
