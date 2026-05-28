@@ -5,20 +5,20 @@ import { ArrowRight, Shield, Server, Cloud, Globe, Cpu, Lock, ChevronDown } from
 import Link from 'next/link';
 
 /* ═══════════════════════════════════════════════════════════
-   6-SCENE LABELS
-═══════════════════════════════════════════════════════════ */
+   6-SCENE LABELS - MATCHING USER SPECIFICATION EXACTLY
+   ═══════════════════════════════════════════════════════════ */
 const SCENES = [
-  { id: 1, label: 'Enterprise City & Digital Network' },
-  { id: 2, label: 'Data Center — Rack Systems' },
-  { id: 3, label: 'Cybersecurity SOC & HUD' },
-  { id: 4, label: 'Cloud Infrastructure & Secure Data' },
-  { id: 5, label: 'Smart Building & Intelligent Systems' },
-  { id: 6, label: 'Global Enterprise Connectivity' },
+  { id: 1, label: 'AI & Digital Network Graphics' },
+  { id: 2, label: 'Futuristic Data Center' },
+  { id: 3, label: 'Cybersecurity Dashboard Animations' },
+  { id: 4, label: 'Cloud Infrastructure Visualization' },
+  { id: 5, label: 'Smart Systems Technology' },
+  { id: 6, label: 'Global Digital Connectivity' },
 ];
 
 /* ═══════════════════════════════════════════════════════════
    RIGHT PANEL — ANIMATED ENTERPRISE VISUALIZATION
-═══════════════════════════════════════════════════════════ */
+   ═══════════════════════════════════════════════════════════ */
 function TechVisualization() {
   const [tick, setTick] = useState(0);
   const [scene, setScene] = useState(0);
@@ -32,7 +32,10 @@ function TechVisualization() {
   useEffect(() => {
     const t = setInterval(() => {
       setVisible(false);
-      setTimeout(() => { setScene(s => (s + 1) % SCENES.length); setVisible(true); }, 400);
+      setTimeout(() => { 
+        setScene(s => (s + 1) % SCENES.length); 
+        setVisible(true); 
+      }, 400);
     }, 4500);
     return () => clearInterval(t);
   }, []);
@@ -80,7 +83,7 @@ function TechVisualization() {
         {/* scene label */}
         <div className="absolute top-9 left-0 right-0 flex justify-center"
              style={{ opacity: visible ? 1 : 0, transition:'opacity .4s ease' }}>
-          <span className="text-[8px] font-mono tracking-[.18em] text-cyan-500/70 uppercase">
+          <span className="text-[8px] font-mono tracking-[.18em] text-cyan-500/75 uppercase">
             SCENE {SCENES[scene].id}/6 — {SCENES[scene].label}
           </span>
         </div>
@@ -277,30 +280,45 @@ function TechVisualization() {
 
 /* ═══════════════════════════════════════════════════════════
    MAIN HERO
-═══════════════════════════════════════════════════════════ */
+   ═══════════════════════════════════════════════════════════ */
 export function Hero() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [mounted, setMounted] = useState(false);
 
-  useEffect(() => { setMounted(true); }, []);
+  useEffect(() => {
+    setMounted(true);
+    // Explicitly guarantee autoplay execution on component mount
+    if (videoRef.current) {
+      videoRef.current.play().catch(err => {
+        console.warn("Autoplay was prevented, requires user interaction or correct attributes:", err);
+      });
+    }
+  }, []);
 
   return (
     <section id="home" className="relative min-h-screen flex items-center overflow-hidden bg-[#0B1220]">
 
       {/* ── CINEMATIC VIDEO BACKGROUND ───────────────────── */}
       <div className="absolute inset-0 z-0 pointer-events-none">
-        <video ref={videoRef} autoPlay muted loop playsInline
-               className="absolute inset-0 w-full h-full object-cover opacity-60 mix-blend-screen"
-               poster="/images/data-center-main.jpg">
-          {/* Enterprise dark tech footage from Pexels — data center + network */}
+        <video 
+          ref={videoRef} 
+          autoPlay 
+          muted 
+          loop 
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover opacity-50"
+          poster="/images/data-center-main.jpg"
+        >
+          {/* Local high-performance standard-named video */}
+          <source src="/videos/hero-bg.mp4" type="video/mp4"/>
+          {/* High-quality fallback tech footage */}
           <source src="https://videos.pexels.com/video-files/3130284/3130284-hd_1920_1080_30fps.mp4" type="video/mp4"/>
-          <source src="https://videos.pexels.com/video-files/3129671/3129671-hd_1920_1080_30fps.mp4" type="video/mp4"/>
         </video>
-        {/* Layered dark overlays for text readability */}
+        {/* Layered dark overlays for text readability and cinematic depth */}
         {/* Left-side dark gradient to ensure text readability */}
-        <div className="absolute inset-0" style={{background:'linear-gradient(90deg, rgba(11,18,32,0.95) 0%, rgba(11,18,32,0.80) 40%, rgba(11,18,32,0.20) 100%)'}}/>
+        <div className="absolute inset-0 z-10" style={{background:'linear-gradient(90deg, rgba(11,18,32,0.96) 0%, rgba(11,18,32,0.85) 45%, rgba(11,18,32,0.30) 100%)'}}/>
         {/* Bottom dark gradient to blend into the next section */}
-        <div className="absolute inset-0" style={{background:'linear-gradient(180deg, transparent 60%, rgba(2,6,23,0.95) 100%)'}}/>
+        <div className="absolute inset-0 z-10" style={{background:'linear-gradient(180deg, transparent 60%, rgba(2,6,23,0.98) 100%)'}}/>
       </div>
 
       {/* ── BACKGROUND EFFECTS ───────────────────────────── */}
@@ -326,6 +344,32 @@ export function Hero() {
 
           {/* ── LEFT SIDE ──────────────────────────────── */}
           <div className={`flex flex-col gap-8 transition-all duration-1000 ${mounted?'opacity-100 translate-y-0':'opacity-0 translate-y-10'}`}>
+
+            {/* ── PREMIUM COMPANY BRAND & LOGO ── */}
+            <div className="flex items-center gap-3.5 w-fit px-4 py-2.5 rounded-2xl border transition-all duration-300 hover:border-cyan-400/40"
+                 style={{
+                   borderColor: 'rgba(6,182,212,0.25)',
+                   background: 'linear-gradient(135deg, rgba(8,47,73,0.35) 0%, rgba(15,23,42,0.45) 100%)',
+                   backdropFilter: 'blur(12px)',
+                   boxShadow: '0 4px 20px -2px rgba(6,182,212,0.1)'
+                 }}>
+              <div className="relative flex items-center justify-center w-11 h-11 rounded-xl bg-gradient-to-br from-blue-600/20 to-cyan-500/20 border border-cyan-400/30">
+                <div className="absolute inset-0 rounded-xl bg-cyan-400/10 animate-pulse" />
+                <img
+                  src="https://res.cloudinary.com/dlc8bgysp/image/upload/e_make_transparent/v1767612094/logo_fn47rb.png"
+                  alt="ITSEC Technology Logo"
+                  className="relative w-8 h-8 object-contain brightness-0 invert"
+                />
+              </div>
+              <div className="flex flex-col">
+                <span className="font-black text-sm md:text-base text-white tracking-[0.2em]" style={{fontFamily:'var(--font-montserrat,Montserrat,sans-serif)'}}>
+                  ITSEC TECHNOLOGY
+                </span>
+                <span className="text-[9px] font-bold text-cyan-400/90 tracking-[0.35em] uppercase" style={{fontFamily:'var(--font-inter,Inter,sans-serif)'}}>
+                  Secure Enterprise ICT
+                </span>
+              </div>
+            </div>
 
             {/* Live badge */}
             <div className="flex items-center gap-2.5 w-fit px-4 py-2 rounded-full border"
