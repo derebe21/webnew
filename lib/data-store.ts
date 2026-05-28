@@ -153,7 +153,7 @@ const defaultContactInfo: ContactInfo[] = [
 
 // --- TECHNOLOGY ---
 const defaultTechnology: TechnologyPartner[] = [
-  // Cyber Security
+  // Cyber Security & IT Security
   { id: 't1', name: 'Cisco', category: 'cyberSecurity', color: '1BA0D7', logo: 'cisco', url: 'https://www.cisco.com', description: 'Network security, firewalls, intrusion prevention, and secure access solutions.', sort_order: 1 },
   { id: 't2', name: 'Palo Alto Networks', category: 'cyberSecurity', color: 'FA582D', logo: 'paloaltonetworks', url: 'https://www.paloaltonetworks.com', description: 'Next-generation firewalls, advanced threat prevention, and cloud security.', sort_order: 2 },
   { id: 't3', name: 'Fortinet', category: 'cyberSecurity', color: 'EE3124', logo: 'fortinet', url: 'https://www.fortinet.com', description: 'High-performance firewalls, secure SD-WAN, and integrated security platforms.', sort_order: 3 },
@@ -189,20 +189,6 @@ const defaultTechnology: TechnologyPartner[] = [
   { id: 't27', name: 'NetApp', category: 'dataCenter', color: '0067C5', logo: 'netapp', url: 'https://www.netapp.com', description: 'Advanced data management and cloud-integrated storage solutions.', sort_order: 6 },
   { id: 't28', name: 'Synology', category: 'dataCenter', color: '121212', logo: 'synology', url: 'https://www.synology.com', description: 'Reliable network-attached storage (NAS) and data backup solutions.', sort_order: 7 },
   { id: 't29', name: 'Supermicro', category: 'dataCenter', color: '000000', logo: 'supermicro', url: 'https://www.supermicro.com', description: 'High-efficiency, green computing server and storage solutions.', sort_order: 8 },
-
-  // Integrated Security Systems
-  { id: 't30', name: 'Hikvision', category: 'integratedSecurity', color: 'E22137', logo: 'hikvision', url: 'https://www.hikvision.com', description: 'Global leader in video surveillance and smart security solutions.', sort_order: 1 },
-  { id: 't31', name: 'Dahua', category: 'integratedSecurity', color: 'F51322', logo: 'dahua', url: 'https://www.dahuasecurity.com', description: 'Innovative video-centric smart IoT solutions and services.', sort_order: 2 },
-  { id: 't32', name: 'Axis', category: 'integratedSecurity', color: '000000', logo: 'axis', url: 'https://www.axis.com', description: 'Network-based video surveillance, access control and audio systems.', sort_order: 3 },
-  { id: 't33', name: 'Honeywell', category: 'integratedSecurity', color: 'E01A22', logo: 'honeywell', url: 'https://www.honeywell.com', description: 'Integrated building security and advanced fire safety systems.', sort_order: 4 },
-  { id: 't34', name: 'Suprema', category: 'integratedSecurity', color: 'E3000F', logo: 'suprema', url: 'https://www.supremainc.com', description: 'Biometric access control and time & attendance solutions.', sort_order: 5 },
-  { id: 't35', name: 'ZKTeco', category: 'integratedSecurity', color: '00A231', logo: 'zkteco', url: 'https://www.zkteco.com', description: 'Global provider of biometric and security management technology.', sort_order: 6 },
-
-  // Unified Communications
-  { id: 't36', name: 'Cisco', category: 'unifiedCommunications', color: '1BA0D7', logo: 'cisco', url: 'https://www.cisco.com', description: 'Comprehensive collaboration, IP telephony, and video conferencing.', sort_order: 1 },
-  { id: 't37', name: 'Dinstar', category: 'unifiedCommunications', color: '0055A5', logo: 'dinstar', url: 'https://www.dinstar.com', description: 'IP unified communications and VoIP gateway solutions.', sort_order: 2 },
-  { id: 't38', name: 'VaxVoIP', category: 'unifiedCommunications', color: '286CA9', logo: 'vaxvoip', url: 'https://www.vaxvoip.com', description: 'Specialized SIP-based voice and video communication technologies.', sort_order: 3 },
-  { id: 't39', name: 'Grandstream', category: 'unifiedCommunications', color: 'D9232B', logo: 'grandstream', url: 'https://www.grandstream.com', description: 'High-quality IP voice, video, data, and mobility solutions.', sort_order: 4 },
 ];
 
 // ============ STORAGE HELPERS ============

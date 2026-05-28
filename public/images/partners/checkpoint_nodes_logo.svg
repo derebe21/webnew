@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Large Pink/Magenta Circle -->
+  <circle cx="45" cy="55" r="40" fill="#FF0066"/>
+  
+  <!-- Connected Nodes Inside -->
+  <g stroke="#FFFFFF" stroke-width="6" stroke-linecap="round">
+    <line x1="25" y1="55" x2="45" y2="75" />
+    <line x1="45" y1="75" x2="65" y2="55" />
+  </g>
+  
+  <!-- Node Shapes -->
+  <rect x="20" y="50" width="10" height="10" fill="#FFFFFF" transform="rotate(20 25 55)"/>
+  <circle cx="45" cy="75" r="7" fill="#FFFFFF"/>
+  
+  <!-- Separate Black Circle Outside -->
+  <circle cx="85" cy="15" r="12" fill="#000000"/>
+</svg>
