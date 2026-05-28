@@ -98,10 +98,13 @@ export function About({ showOnlyAboutUs = false }: { showOnlyAboutUs?: boolean }
 
             {/* Paragraphs */}
             <p className="text-base md:text-lg text-slate-300 leading-relaxed font-medium">
-              ITSEC Technology is a premier provider of advanced ICT, comprehensive cybersecurity frameworks, and integrated intelligent systems. We operate at the intersection of robust digital defense and innovative engineering, helping government offices, major financial institutions, healthcare operators, telecommunication entities, and commercial enterprises thrive.
+              ITSEC Technology is a premier provider of advanced Information and Communication Technology (ICT), cybersecurity solutions, and integrated intelligent systems. We operate at the intersection of digital security and innovative engineering, delivering secure, scalable, and future-ready technology solutions for government institutions, financial organizations, healthcare providers, telecommunications companies, and commercial enterprises.
             </p>
             <p className="text-sm md:text-base text-slate-400 leading-relaxed">
-              By aligning our methodologies with global frameworks like ISO, NIST, and CIS, we build and support resilient infrastructure architectures that protect sovereign assets and empower private sector growth. Our engineering teams possess the elite training and global credentials required to implement intelligent systems that stay ahead of complex cybersecurity threats.
+              By aligning our operations with internationally recognized frameworks and standards such as ISO, NIST, and CIS, we design, implement, and support resilient infrastructure architectures that protect critical assets and strengthen organizational resilience.
+            </p>
+            <p className="text-sm md:text-base text-slate-400 leading-relaxed">
+              Our engineering and cybersecurity teams possess advanced technical expertise, internationally recognized certifications, and extensive industry experience, enabling us to deploy intelligent, secure, and high-performance systems that address evolving cyber threats and modern operational challenges.
             </p>
           </div>
         </div>
