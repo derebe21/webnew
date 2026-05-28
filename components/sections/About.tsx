@@ -85,22 +85,25 @@ export function About({ showOnlyAboutUs = false }: { showOnlyAboutUs?: boolean }
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-24">
         
-        {/* ── 1. MAIN ABOUT SECTION (CENTERED HIGH-TECH PRESENTATION) ── */}
-        <div className="max-w-4xl mx-auto flex flex-col gap-6 text-left">
-          {/* Main Headline */}
-          <h2 className="text-3xl md:text-5xl font-black tracking-tight leading-[1.1]" style={{fontFamily:'var(--font-montserrat,Montserrat,sans-serif)'}}>
-            About <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-300 to-cyan-400">ITSEC Technology</span>
-          </h2>
+        {/* ── 1. MAIN ABOUT SECTION (CENTERED HIGH-TECH PRESENTATION IN A PREMIUM LONG BOX) ── */}
+        <div className="max-w-4xl mx-auto">
+          <div className="relative p-8 md:p-12 rounded-[2.5rem] border border-slate-800 bg-gradient-to-b from-slate-900/60 via-slate-900/80 to-slate-950/90 backdrop-blur-xl shadow-2xl flex flex-col gap-6 text-left hover:border-blue-500/20 transition-all duration-300">
+            {/* Subtle glow effect behind card */}
+            <div className="absolute inset-0 -z-10 bg-gradient-to-r from-blue-500/5 to-cyan-500/5 blur-2xl rounded-[2.5rem] pointer-events-none" />
 
-          {/* Paragraphs */}
-          <p className="text-base md:text-lg text-slate-300 leading-relaxed font-medium">
-            ITSEC Technology is a premier provider of advanced ICT, comprehensive cybersecurity frameworks, and integrated intelligent systems. We operate at the intersection of robust digital defense and innovative engineering, helping government offices, major financial institutions, healthcare operators, telecommunication entities, and commercial enterprises thrive.
-          </p>
-          <p className="text-sm md:text-base text-slate-400 leading-relaxed">
-            By aligning our methodologies with global frameworks like ISO, NIST, and CIS, we build and support resilient infrastructure architectures that protect sovereign assets and empower private sector growth. Our engineering teams possess the elite training and global credentials required to implement intelligent systems that stay ahead of complex cybersecurity threats.
-          </p>
+            {/* Main Headline */}
+            <h2 className="text-3xl md:text-5xl font-black tracking-tight leading-[1.1]" style={{fontFamily:'var(--font-montserrat,Montserrat,sans-serif)'}}>
+              About <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-300 to-cyan-400">ITSEC Technology</span>
+            </h2>
 
-
+            {/* Paragraphs */}
+            <p className="text-base md:text-lg text-slate-300 leading-relaxed font-medium">
+              ITSEC Technology is a premier provider of advanced ICT, comprehensive cybersecurity frameworks, and integrated intelligent systems. We operate at the intersection of robust digital defense and innovative engineering, helping government offices, major financial institutions, healthcare operators, telecommunication entities, and commercial enterprises thrive.
+            </p>
+            <p className="text-sm md:text-base text-slate-400 leading-relaxed">
+              By aligning our methodologies with global frameworks like ISO, NIST, and CIS, we build and support resilient infrastructure architectures that protect sovereign assets and empower private sector growth. Our engineering teams possess the elite training and global credentials required to implement intelligent systems that stay ahead of complex cybersecurity threats.
+            </p>
+          </div>
         </div>
 
         {/* ── 2. MISSION & VISION (GLOWING GLASSMORPHIC CARDS) ── */}
