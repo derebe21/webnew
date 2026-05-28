@@ -1,11 +1,12 @@
 import './globals.css';
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { Inter, Montserrat } from 'next/font/google';
 import { Toaster } from '@/components/ui/toaster';
 import Script from 'next/script';
 import { WhatsAppButton } from '@/components/WhatsAppButton';
 
-const inter = Inter({ subsets: ['latin'] });
+const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
+const montserrat = Montserrat({ subsets: ['latin'], variable: '--font-montserrat', weight: ['400','600','700','800','900'] });
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://itsectechnology.com'),
@@ -179,7 +180,7 @@ export default function RootLayout({
           `}
         </Script>
       </head>
-      <body className={inter.className}>
+      <body className={`${inter.variable} ${montserrat.variable} ${inter.className}`}>
         {children}
         <WhatsAppButton />
         <Toaster />
