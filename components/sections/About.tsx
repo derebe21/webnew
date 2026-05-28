@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { Shield, Target, Eye, Cpu, Users, Award, Zap, Compass, Activity, ArrowUpRight } from 'lucide-react';
+import { Shield, Target, Eye, Cpu, Users, Award, Zap, Compass, ArrowUpRight } from 'lucide-react';
 
 export function About({ showOnlyAboutUs = false }: { showOnlyAboutUs?: boolean }) {
   const [mounted, setMounted] = useState(false);
@@ -111,7 +111,7 @@ export function About({ showOnlyAboutUs = false }: { showOnlyAboutUs?: boolean }
 
             {/* Main Headline */}
             <h2 className="text-3xl md:text-5xl font-black tracking-tight leading-[1.1]" style={{fontFamily:'var(--font-montserrat,Montserrat,sans-serif)'}}>
-              Securing <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-300 to-cyan-400">Digital Progress</span> For Global Enterprise
+              About <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-300 to-cyan-400">ITSEC Technology</span>
             </h2>
 
             {/* Paragraphs */}
@@ -136,24 +136,6 @@ export function About({ showOnlyAboutUs = false }: { showOnlyAboutUs?: boolean }
             <div className="absolute inset-0 -m-4 bg-gradient-to-tr from-blue-500/10 to-cyan-500/10 blur-xl rounded-[2.5rem] opacity-70" />
             <div className="relative p-8 md:p-10 rounded-[2.5rem] border border-slate-800 bg-gradient-to-b from-slate-900/90 to-slate-950/90 backdrop-blur-xl shadow-2xl flex flex-col gap-8">
               
-              {/* Card Header HUD */}
-              <div className="flex items-center justify-between border-b border-slate-800 pb-5">
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-600/20 to-cyan-500/20 border border-blue-500/30 flex items-center justify-center">
-                    <Activity className="w-5 h-5 text-cyan-400" />
-                  </div>
-                  <div>
-                    <h4 className="text-xs font-mono text-slate-500 tracking-wider">ITSEC AUDIT STATUS</h4>
-                    <span className="text-xs font-bold text-emerald-400 flex items-center gap-1.5 mt-0.5">
-                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                      ACTIVE OPERATION
-                    </span>
-                  </div>
-                </div>
-                <span className="text-[10px] font-mono text-blue-500 bg-blue-950/40 border border-blue-900/30 px-2.5 py-1 rounded-md">
-                  EST. 2016
-                </span>
-              </div>
 
               {/* Statistics Grid */}
               <div className="grid grid-cols-2 gap-6 md:gap-8">
