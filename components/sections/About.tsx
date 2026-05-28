@@ -87,23 +87,6 @@ export function About({ showOnlyAboutUs = false }: { showOnlyAboutUs?: boolean }
         
         {/* ── 1. MAIN ABOUT SECTION (CENTERED HIGH-TECH PRESENTATION) ── */}
         <div className="max-w-4xl mx-auto flex flex-col gap-6 text-left">
-          {/* Long Box about ITSEC Technology */}
-          <div className="w-full py-4 px-6 rounded-2xl border border-blue-500/20 bg-gradient-to-r from-blue-950/40 via-slate-900/40 to-cyan-950/40 backdrop-blur-xl flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 shadow-[0_8px_32px_rgba(0,0,0,0.3)]">
-            <div className="flex items-center gap-3">
-              <span className="relative flex h-2.5 w-2.5 shrink-0">
-                <span className="animate-ping absolute inset-0 rounded-full bg-cyan-400 opacity-70"/>
-                <span className="relative rounded-full h-2.5 w-2.5 bg-cyan-400 shadow-[0_0_8px_rgba(34,211,238,0.8)]"/>
-              </span>
-              <span className="text-xs font-mono font-bold tracking-[0.15em] text-cyan-400 uppercase">
-                Enterprise Profile
-              </span>
-            </div>
-            <div className="text-xs font-sans text-slate-300 font-semibold tracking-wide sm:text-right leading-relaxed">
-              ITSEC Technology — Elite ICT Solutions, Advanced Cybersecurity Operations & Intelligent Automation Systems.
-            </div>
-          </div>
-
-
           {/* Main Headline */}
           <h2 className="text-3xl md:text-5xl font-black tracking-tight leading-[1.1]" style={{fontFamily:'var(--font-montserrat,Montserrat,sans-serif)'}}>
             About <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-300 to-cyan-400">ITSEC Technology</span>
