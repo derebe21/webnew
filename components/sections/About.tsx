@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { Shield, Target, Eye, Cpu, Users, Award, Zap, Compass, ArrowUpRight } from 'lucide-react';
+import { Shield, Target, Eye, Cpu, Users, Award, Zap, Compass } from 'lucide-react';
 
 export function About({ showOnlyAboutUs = false }: { showOnlyAboutUs?: boolean }) {
   const [mounted, setMounted] = useState(false);
@@ -100,13 +100,7 @@ export function About({ showOnlyAboutUs = false }: { showOnlyAboutUs?: boolean }
             By aligning our methodologies with global frameworks like ISO, NIST, and CIS, we build and support resilient infrastructure architectures that protect sovereign assets and empower private sector growth. Our engineering teams possess the elite training and global credentials required to implement intelligent systems that stay ahead of complex cybersecurity threats.
           </p>
 
-          {/* Action link */}
-          <div className="pt-2">
-            <a href="/contact" className="group flex items-center gap-2 text-sm font-semibold text-cyan-400 hover:text-cyan-300 transition-colors">
-              Partner with us for digital transformation
-              <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-            </a>
-          </div>
+
         </div>
 
         {/* ── 2. MISSION & VISION (GLOWING GLASSMORPHIC CARDS) ── */}
