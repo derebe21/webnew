@@ -1,75 +1,274 @@
 'use client';
 
-import { Shield, CheckCircle2, Target, Eye } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Shield, Target, Eye, Cpu, Users, Award, Zap, Compass, Activity, ArrowUpRight } from 'lucide-react';
 
 export function About({ showOnlyAboutUs = false }: { showOnlyAboutUs?: boolean }) {
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => { setMounted(true); }, []);
+
+  // Professional Core Values with standard definitions
+  const values = [
+    {
+      title: 'Integrity & Transparency',
+      desc: 'We maintain absolute confidentiality, trust, and ethical transparency in every deployment, serving as a reliable partner for national security and enterprise assets.',
+      icon: Shield,
+      color: 'text-blue-400',
+      bg: 'from-blue-600/10 to-blue-500/5',
+      glow: 'rgba(37,99,235,0.15)',
+      border: 'border-blue-500/20 hover:border-blue-400/40'
+    },
+    {
+      title: 'Continuous Innovation',
+      desc: 'We aggressively research and integrate cutting-edge artificial intelligence, machine learning algorithms, and next-generation zero-trust architecture to keep you ahead of evolving threats.',
+      icon: Cpu,
+      color: 'text-cyan-400',
+      bg: 'from-cyan-600/10 to-cyan-500/5',
+      glow: 'rgba(6,182,212,0.15)',
+      border: 'border-cyan-500/20 hover:border-cyan-400/40'
+    },
+    {
+      title: 'Customer Satisfaction',
+      desc: 'We deliver tailored, high-performance IT and security architectures customized to specific enterprise workloads, ensuring seamless user experience and maximum return on investment.',
+      icon: Users,
+      color: 'text-indigo-400',
+      bg: 'from-indigo-600/10 to-indigo-500/5',
+      glow: 'rgba(99,102,241,0.15)',
+      border: 'border-indigo-500/20 hover:border-indigo-400/40'
+    },
+    {
+      title: 'Reliability & Quality',
+      desc: 'Uncompromising engineering standards are woven into the fabric of everything we build, guaranteeing uptime, extreme speed, and military-grade network security.',
+      icon: Zap,
+      color: 'text-emerald-400',
+      bg: 'from-emerald-600/10 to-emerald-500/5',
+      glow: 'rgba(16,185,129,0.15)',
+      border: 'border-emerald-500/20 hover:border-emerald-400/40'
+    },
+    {
+      title: 'Empowering Partnerships',
+      desc: 'We collaborate closely with government, commercial, and financial agencies to build long-term relationships that foster digital literacy and sovereign technology growth.',
+      icon: Compass,
+      color: 'text-amber-400',
+      bg: 'from-amber-600/10 to-amber-500/5',
+      glow: 'rgba(245,158,11,0.15)',
+      border: 'border-amber-500/20 hover:border-amber-400/40'
+    },
+    {
+      title: 'Global Compliance',
+      desc: 'All our solutions strictly adhere to international quality benchmarks and regulatory frameworks, including ISO/IEC 27001, NIST, GDPR, and CIS critical controls.',
+      icon: Award,
+      color: 'text-rose-400',
+      bg: 'from-rose-600/10 to-rose-500/5',
+      glow: 'rgba(244,63,94,0.15)',
+      border: 'border-rose-500/20 hover:border-rose-400/40'
+    }
+  ];
+
+  // Stats for the Right Column of the Intro section
+  const stats = [
+    { label: 'Uptime & Defense Rate', value: '99.99%', sub: 'Zero breaches recorded' },
+    { label: 'Enterprise Clients', value: '250+', sub: 'Government & Finance' },
+    { label: 'Security Operations', value: '24/7', sub: 'Active threat hunting' },
+    { label: 'Certified Engineers', value: '80+', sub: 'Global tech credentials' }
+  ];
+
   return (
-    <section id="about" className="relative py-20 md:py-28 bg-slate-50 dark:bg-slate-950 overflow-hidden">
-      {/* Subtle Background Glows */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-[500px] bg-blue-100/50 dark:bg-blue-900/20 blur-3xl rounded-full -z-10 pointer-events-none" />
+    <section id="about" className="relative py-24 md:py-32 bg-[#020617] text-white overflow-hidden">
+      
+      {/* ── BACKGROUND VISUAL EFFECTS ───────────────────── */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        {/* Tech Grid */}
+        <svg className="absolute inset-0 w-full h-full opacity-[0.02]"><defs>
+          <pattern id="about-grid" width="40" height="40" patternUnits="userSpaceOnUse">
+            <path d="M40 0L0 0 0 40" fill="none" stroke="#3B82F6" strokeWidth="0.5"/>
+          </pattern></defs>
+          <rect width="100%" height="100%" fill="url(#about-grid)"/>
+        </svg>
+        {/* Soft glowing ambient gradients */}
+        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[600px] h-[600px] rounded-full bg-blue-600/5 blur-[120px]" />
+        <div className="absolute bottom-1/4 right-0 w-[400px] h-[400px] rounded-full bg-cyan-600/5 blur-[100px]" />
+        <div className="absolute top-1/2 left-0 w-[400px] h-[400px] rounded-full bg-indigo-600/5 blur-[100px]" />
+      </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-24">
         
-        {/* 1. Main About Box (Full Width Card) */}
-        <div className="bg-white dark:bg-slate-900 rounded-[2rem] shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:shadow-[0_8px_30px_rgb(0,0,0,0.2)] p-10 md:p-16 border border-slate-100 dark:border-slate-800 hover:border-blue-100 dark:hover:border-blue-900/50 transition-colors">
-          <div className="text-center mb-8">
-            <h2 className="text-3xl md:text-5xl font-bold text-slate-900 dark:text-white mb-6">
-              About ITSEC Technology
+        {/* ── 1. MAIN ABOUT SECTION (INTUITIVE 2-COLUMN GRID) ── */}
+        <div className="grid lg:grid-cols-12 gap-12 xl:gap-16 items-center">
+          
+          {/* Left Column: Rich Text Presentation */}
+          <div className="lg:col-span-7 flex flex-col gap-6 text-left">
+            {/* Pulsing Badge */}
+            <div className="flex items-center gap-2.5 w-fit px-4 py-2 rounded-full border border-blue-500/30 bg-blue-950/20 backdrop-blur-md">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inset-0 rounded-full bg-blue-400 opacity-70"/>
+                <span className="relative rounded-full h-2 w-2 bg-blue-400"/>
+              </span>
+              <span className="text-[10px] font-bold text-blue-400 tracking-[0.2em] uppercase">
+                Pioneering ICT Excellence
+              </span>
+            </div>
+
+            {/* Main Headline */}
+            <h2 className="text-3xl md:text-5xl font-black tracking-tight leading-[1.1]" style={{fontFamily:'var(--font-montserrat,Montserrat,sans-serif)'}}>
+              Securing <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-300 to-cyan-400">Digital Progress</span> For Global Enterprise
             </h2>
-            <div className="w-24 h-1.5 bg-gradient-to-r from-blue-600 to-cyan-500 mx-auto rounded-full" />
-          </div>
-          <p className="text-lg md:text-xl text-slate-600 dark:text-slate-300 leading-relaxed text-center max-w-5xl mx-auto font-medium">
-            ITSEC Technology is a leading provider of ICT, cybersecurity, and integrated technology solutions, delivering secure, scalable, and innovative enterprise services for government, financial, healthcare, education, telecom, and commercial sectors. The company designs, implements, and supports advanced digital infrastructure and intelligent systems aligned with international standards and global best practices.
-          </p>
-        </div>
 
-        {/* 2. Mission & Vision (Two Side Boxes) */}
-        <div className="grid md:grid-cols-2 gap-8">
-          {/* Mission */}
-          <div className="bg-white dark:bg-slate-900 rounded-[2rem] shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:shadow-[0_8px_30px_rgb(0,0,0,0.2)] p-10 md:p-12 border border-slate-100 dark:border-slate-800 flex flex-col items-center text-center group hover:-translate-y-2 transition-all duration-300">
-            <div className="w-24 h-24 bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-900/20 dark:to-blue-800/30 text-blue-600 dark:text-blue-400 rounded-3xl flex items-center justify-center mb-8 group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300 shadow-inner">
-              <Target className="w-12 h-12" />
-            </div>
-            <h3 className="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-6">Our Mission</h3>
-            <p className="text-lg text-slate-600 dark:text-slate-300 leading-relaxed">
-              Deliver secure, innovative, and world-class ICT & cybersecurity solutions.
+            {/* Paragraphs */}
+            <p className="text-base md:text-lg text-slate-300 leading-relaxed font-medium">
+              ITSEC Technology is a premier provider of advanced ICT, comprehensive cybersecurity frameworks, and integrated intelligent systems. We operate at the intersection of robust digital defense and innovative engineering, helping government offices, major financial institutions, healthcare operators, telecommunication entities, and commercial enterprises thrive.
             </p>
-          </div>
-
-          {/* Vision */}
-          <div className="bg-white dark:bg-slate-900 rounded-[2rem] shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:shadow-[0_8px_30px_rgb(0,0,0,0.2)] p-10 md:p-12 border border-slate-100 dark:border-slate-800 flex flex-col items-center text-center group hover:-translate-y-2 transition-all duration-300">
-            <div className="w-24 h-24 bg-gradient-to-br from-cyan-50 to-cyan-100 dark:from-cyan-900/20 dark:to-cyan-800/30 text-cyan-600 dark:text-cyan-400 rounded-3xl flex items-center justify-center mb-8 group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-300 shadow-inner">
-              <Eye className="w-12 h-12" />
-            </div>
-            <h3 className="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-6">Our Vision</h3>
-            <p className="text-lg text-slate-600 dark:text-slate-300 leading-relaxed">
-              Become a globally trusted leader in intelligent digital transformation, ICT infrastructure, and cybersecurity solutions.
+            <p className="text-sm md:text-base text-slate-400 leading-relaxed">
+              By aligning our methodologies with global frameworks like ISO, NIST, and CIS, we build and support resilient infrastructure architectures that protect sovereign assets and empower private sector growth. Our engineering teams possess the elite training and global credentials required to implement intelligent systems that stay ahead of complex cybersecurity threats.
             </p>
-          </div>
-        </div>
 
-        {/* 3. Core Values (Grid Box Section) */}
-        <div className="pt-10">
-          <div className="text-center mb-12">
-            <h3 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-6">Core Values</h3>
-            <div className="w-20 h-1.5 bg-gradient-to-r from-blue-600 to-cyan-500 mx-auto rounded-full" />
+            {/* Action link */}
+            <div className="pt-2">
+              <a href="/contact" className="group flex items-center gap-2 text-sm font-semibold text-cyan-400 hover:text-cyan-300 transition-colors">
+                Partner with us for digital transformation
+                <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+              </a>
+            </div>
           </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
-            {[
-              { title: 'Integrity and professionalism', icon: Shield, color: 'text-blue-600 dark:text-blue-400', bg: 'bg-blue-50 dark:bg-blue-900/20', border: 'hover:border-blue-200 dark:hover:border-blue-800' },
-              { title: 'Innovation and continuous improvement', icon: CheckCircle2, color: 'text-cyan-600 dark:text-cyan-400', bg: 'bg-cyan-50 dark:bg-cyan-900/20', border: 'hover:border-cyan-200 dark:hover:border-cyan-800' },
-              { title: 'Customer satisfaction and service excellence', icon: CheckCircle2, color: 'text-blue-600 dark:text-blue-400', bg: 'bg-blue-50 dark:bg-blue-900/20', border: 'hover:border-blue-200 dark:hover:border-blue-800' },
-              { title: 'Security, reliability, and quality', icon: Shield, color: 'text-cyan-600 dark:text-cyan-400', bg: 'bg-cyan-50 dark:bg-cyan-900/20', border: 'hover:border-cyan-200 dark:hover:border-cyan-800' },
-              { title: 'Teamwork and long-term partnership', icon: CheckCircle2, color: 'text-blue-600 dark:text-blue-400', bg: 'bg-blue-50 dark:bg-blue-900/20', border: 'hover:border-blue-200 dark:hover:border-blue-800' },
-            ].map((value, idx) => (
-              <div key={idx} className={`bg-white dark:bg-slate-900 rounded-2xl shadow-sm hover:shadow-[0_8px_30px_rgb(0,0,0,0.06)] dark:hover:shadow-[0_8px_30px_rgb(0,0,0,0.2)] hover:-translate-y-1 transition-all duration-300 p-6 md:p-8 border border-slate-100 dark:border-slate-800 flex items-center gap-5 ${value.border}`}>
-                <div className={`w-14 h-14 rounded-2xl flex items-center justify-center shrink-0 ${value.bg} ${value.color}`}>
-                  <value.icon className="w-7 h-7" />
+
+          {/* Right Column: Dynamic Statistics Card HUD */}
+          <div className="lg:col-span-5 relative">
+            <div className="absolute inset-0 -m-4 bg-gradient-to-tr from-blue-500/10 to-cyan-500/10 blur-xl rounded-[2.5rem] opacity-70" />
+            <div className="relative p-8 md:p-10 rounded-[2.5rem] border border-slate-800 bg-gradient-to-b from-slate-900/90 to-slate-950/90 backdrop-blur-xl shadow-2xl flex flex-col gap-8">
+              
+              {/* Card Header HUD */}
+              <div className="flex items-center justify-between border-b border-slate-800 pb-5">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-600/20 to-cyan-500/20 border border-blue-500/30 flex items-center justify-center">
+                    <Activity className="w-5 h-5 text-cyan-400" />
+                  </div>
+                  <div>
+                    <h4 className="text-xs font-mono text-slate-500 tracking-wider">ITSEC AUDIT STATUS</h4>
+                    <span className="text-xs font-bold text-emerald-400 flex items-center gap-1.5 mt-0.5">
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                      ACTIVE OPERATION
+                    </span>
+                  </div>
                 </div>
-                <div className="flex-1">
-                  <h4 className="text-lg font-bold text-slate-800 dark:text-slate-100 leading-tight">
-                    {value.title}
+                <span className="text-[10px] font-mono text-blue-500 bg-blue-950/40 border border-blue-900/30 px-2.5 py-1 rounded-md">
+                  EST. 2016
+                </span>
+              </div>
+
+              {/* Statistics Grid */}
+              <div className="grid grid-cols-2 gap-6 md:gap-8">
+                {stats.map((stat, index) => (
+                  <div key={index} className="flex flex-col gap-1.5 font-mono">
+                    <span className="text-2xl md:text-3.5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-br from-white via-slate-100 to-slate-300">
+                      {stat.value}
+                    </span>
+                    <div className="flex flex-col font-sans">
+                      <span className="text-[11px] font-bold text-slate-400 uppercase tracking-wider leading-snug">
+                        {stat.label}
+                      </span>
+                      <span className="text-[9px] text-slate-500 italic mt-0.5">
+                        {stat.sub}
+                      </span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              {/* Secure Systems Label */}
+              <div className="mt-2 p-3.5 rounded-xl bg-blue-950/20 border border-blue-500/10 flex items-center gap-3.5">
+                <Shield className="w-6 h-6 text-blue-400 shrink-0" />
+                <span className="text-[11px] text-slate-400 leading-snug font-medium">
+                  All enterprise nodes operate under a fully hardened Zero-Trust Network Access (ZTNA) model.
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* ── 2. MISSION & VISION (GLOWING GLASSMORPHIC CARDS) ── */}
+        <div className="grid md:grid-cols-2 gap-8 pt-8">
+          
+          {/* Mission Card */}
+          <div className="group relative rounded-[2rem] overflow-hidden border border-slate-800 hover:border-blue-500/40 bg-gradient-to-br from-slate-900/80 via-slate-900/90 to-slate-950/90 backdrop-blur-xl p-8 md:p-12 transition-all duration-500 hover:-translate-y-1.5 shadow-[0_15px_40px_-15px_rgba(0,0,0,0.5)]">
+            <div className="absolute top-0 right-0 w-36 h-36 bg-blue-500/5 blur-2xl rounded-full group-hover:bg-blue-500/10 transition-colors duration-500" />
+            <div className="flex flex-col items-start gap-6">
+              <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-600/20 to-blue-500/5 text-blue-400 border border-blue-500/30 flex items-center justify-center group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300 shadow-lg">
+                <Target className="w-8 h-8" />
+              </div>
+              <div className="flex flex-col gap-3">
+                <h3 className="text-2xl font-bold text-white tracking-tight" style={{fontFamily:'var(--font-montserrat,Montserrat,sans-serif)'}}>
+                  Our Mission
+                </h3>
+                <p className="text-base text-slate-300 leading-relaxed font-medium">
+                  To equip governments, financial hubs, and global enterprises with highly resilient digital foundations, impenetrable cybersecurity architecture, and seamless cloud optimization. We dedicate our expert knowledge to safeguarding assets and enabling frictionless operational continuity.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Vision Card */}
+          <div className="group relative rounded-[2rem] overflow-hidden border border-slate-800 hover:border-cyan-500/40 bg-gradient-to-br from-slate-900/80 via-slate-900/90 to-slate-950/90 backdrop-blur-xl p-8 md:p-12 transition-all duration-500 hover:-translate-y-1.5 shadow-[0_15px_40px_-15px_rgba(0,0,0,0.5)]">
+            <div className="absolute top-0 right-0 w-36 h-36 bg-cyan-500/5 blur-2xl rounded-full group-hover:bg-cyan-500/10 transition-colors duration-500" />
+            <div className="flex flex-col items-start gap-6">
+              <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-cyan-600/20 to-cyan-500/5 text-cyan-400 border border-cyan-500/30 flex items-center justify-center group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-300 shadow-lg">
+                <Eye className="w-8 h-8" />
+              </div>
+              <div className="flex flex-col gap-3">
+                <h3 className="text-2xl font-bold text-white tracking-tight" style={{fontFamily:'var(--font-montserrat,Montserrat,sans-serif)'}}>
+                  Our Vision
+                </h3>
+                <p className="text-base text-slate-300 leading-relaxed font-medium">
+                  To serve as a globally recognized beacon of intelligent digital transformation and zero-trust cybersecurity solutions, pioneering sovereign technological self-reliance, smart infrastructural integration, and automated defense mechanisms that empower future generations.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* ── 3. CORE VALUES (PREMIUM GRID WITH COMPREHENSIVE DESCRIPTIONS) ── */}
+        <div className="pt-10 flex flex-col gap-12">
+          
+          {/* Header */}
+          <div className="text-center flex flex-col items-center gap-3">
+            <div className="h-0.5 w-12 bg-cyan-500 mb-2" />
+            <h3 className="text-3xl md:text-4xl font-extrabold tracking-tight" style={{fontFamily:'var(--font-montserrat,Montserrat,sans-serif)'}}>
+              Our Core Principles
+            </h3>
+            <p className="text-sm md:text-base text-slate-400 max-w-xl mx-auto leading-relaxed">
+              The fundamental standards and uncompromising values that guide every action we take and every system we build.
+            </p>
+          </div>
+
+          {/* Grid Layout */}
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto w-full">
+            {values.map((val, idx) => (
+              <div 
+                key={idx} 
+                className={`group relative rounded-2xl border transition-all duration-300 p-6 md:p-8 flex flex-col gap-5 overflow-hidden bg-gradient-to-b from-slate-900/70 to-slate-950/70 backdrop-blur-md shadow-lg ${val.border}`}
+                style={{
+                  boxShadow: `0 4px 30px -10px rgba(0,0,0,0.3)`
+                }}
+              >
+                {/* Micro Ambient Hover Glow on Card Corner */}
+                <div 
+                  className="absolute -top-12 -right-12 w-24 h-24 rounded-full opacity-0 group-hover:opacity-40 blur-xl transition-opacity duration-300"
+                  style={{ backgroundColor: val.glow }}
+                />
+
+                {/* Glowing Icon Frame */}
+                <div className={`w-14 h-14 rounded-xl flex items-center justify-center shrink-0 border bg-gradient-to-br ${val.bg} ${val.color}`}
+                     style={{ borderColor: 'rgba(255,255,255,0.05)' }}>
+                  <val.icon className="w-7 h-7" />
+                </div>
+
+                {/* Text Content */}
+                <div className="flex flex-col gap-2.5">
+                  <h4 className="text-lg font-bold text-white tracking-tight leading-tight group-hover:text-cyan-400 transition-colors">
+                    {val.title}
                   </h4>
+                  <p className="text-xs md:text-sm text-slate-400 leading-relaxed">
+                    {val.desc}
+                  </p>
                 </div>
               </div>
             ))}
