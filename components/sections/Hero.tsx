@@ -300,9 +300,7 @@ export function Hero() {
           <div className="animate-fade-up flex flex-col items-center justify-center mb-8 mt-12">
             
             
-            <h1 className="text-5xl md:text-7xl font-black text-white tracking-widest uppercase drop-shadow-[0_0_15px_rgba(20,174,180,0.5)] text-center max-w-6xl leading-tight">
-              secure enterprise ict
-            </h1>
+
 
           </div>
           

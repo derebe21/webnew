@@ -59,9 +59,6 @@ export function Navigation() {
                     style={{fontFamily:'var(--font-montserrat,Montserrat,sans-serif)'}}>
                 ITSEC TECHNOLOGY
               </span>
-              <span className="text-[8px] font-bold text-cyan-400/70 tracking-[0.3em] uppercase hidden md:block">
-                Secure Enterprise ICT
-              </span>
             </div>
           </Link>
 
