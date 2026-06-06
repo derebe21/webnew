@@ -61,10 +61,10 @@ const config: Config = {
           '5': 'hsl(var(--chart-5))',
         },
         insa: {
-          primary: 'rgb(var(--insa-primary))',
-          dark: 'rgb(var(--insa-primary-dark))',
-          ink: 'rgb(var(--insa-ink))',
-          muted: 'rgb(var(--insa-muted))',
+          primary: 'rgb(var(--itsec-primary))',
+          dark: 'rgb(var(--itsec-primary-dark))',
+          ink: 'rgb(var(--itsec-ink))',
+          muted: 'rgb(var(--itsec-muted))',
         }
       },
       'accordion-down': 'accordion-down 0.2s ease-out',

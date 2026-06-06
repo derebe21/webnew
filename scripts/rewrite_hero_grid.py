@@ -1,4 +1,28 @@
-'use client';
+import re
+
+globals_path = 'C:/Users/DEREBE/itsec-latest-fresh/app/globals.css'
+with open(globals_path, 'r', encoding='utf-8') as f:
+    globals_css = f.read()
+
+# Add the grid animation keyframes to globals.css
+grid_keyframes = """
+@keyframes itsecPageGrid {
+    0% { background-position: 0 0, 0 0; }
+    100% { background-position: 44px 44px, 44px 44px; }
+}
+.bg-grid-animated {
+    background-image: linear-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px), 
+                      linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+    background-size: 50px 50px;
+    animation: itsecPageGrid 20s linear infinite;
+}
+"""
+if '.bg-grid-animated' not in globals_css:
+    with open(globals_path, 'a', encoding='utf-8') as f:
+        f.write(grid_keyframes)
+
+# Completely rewrite Hero.tsx to use the new grid layout
+hero_content = """'use client';
 
 import { useEffect, useState } from 'react';
 import { ChevronDown, Shield, ArrowRight } from 'lucide-react';
@@ -82,3 +106,9 @@ export function Hero() {
     </section>
   );
 }
+"""
+
+with open('C:/Users/DEREBE/itsec-latest-fresh/components/sections/Hero.tsx', 'w', encoding='utf-8') as f:
+    f.write(hero_content)
+
+print("Hero.tsx rewritten and grid animation added to globals.css")

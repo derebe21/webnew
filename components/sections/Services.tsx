@@ -78,12 +78,12 @@ export function Services({ variant = 'grid' }: ServicesProps) {
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16 text-center">
         {/* Pulsing Badge */}
-        <div className="flex items-center gap-2.5 w-fit px-4 py-2 rounded-full border border-insa-primary/30 bg-cyan-950/20 backdrop-blur-md mx-auto mb-6">
+        <div className="flex items-center gap-2.5 w-fit px-4 py-2 rounded-full border border-itsec-primary/30 bg-cyan-950/20 backdrop-blur-md mx-auto mb-6">
           <span className="relative flex h-2 w-2">
-            <span className="animate-ping absolute inset-0 rounded-full bg-insa-primary opacity-70"/>
-            <span className="relative rounded-full h-2 w-2 bg-insa-primary"/>
+            <span className="animate-ping absolute inset-0 rounded-full bg-itsec-primary opacity-70"/>
+            <span className="relative rounded-full h-2 w-2 bg-itsec-primary"/>
           </span>
-          <span className="text-[10px] font-bold text-insa-primary tracking-[0.2em] uppercase">
+          <span className="text-[10px] font-bold text-itsec-primary tracking-[0.2em] uppercase">
             Core Expertise & Solutions
           </span>
         </div>
@@ -115,13 +115,13 @@ export function Services({ variant = 'grid' }: ServicesProps) {
                         className="h-full border border-slate-800/80 hover:border-blue-500/40 shadow-lg hover:shadow-[0_15px_30px_rgba(0,0,0,0.4)] transition-all duration-300 bg-gradient-to-b from-slate-900/70 to-slate-950/70 backdrop-blur-md flex flex-col group-hover:-translate-y-1.5 p-6"
                       >
                         {/* Icon Area */}
-                        <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-blue-600/20 to-blue-500/5 text-insa-primary border border-insa-primary/30 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300">
-                          {Icon && <Icon className="w-6 h-6 text-insa-primary dark:text-insa-primary" />}
+                        <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-blue-600/20 to-blue-500/5 text-itsec-primary border border-itsec-primary/30 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300">
+                          {Icon && <Icon className="w-6 h-6 text-itsec-primary dark:text-itsec-primary" />}
                         </div>
 
                         {/* Text Content Area */}
                         <div className="flex-grow flex flex-col">
-                          <CardTitle className="text-lg font-bold tracking-tight text-white group-hover:text-insa-primary transition-colors mb-2 line-clamp-2" style={{fontFamily:'var(--font-montserrat,Montserrat,sans-serif)'}}>
+                          <CardTitle className="text-lg font-bold tracking-tight text-white group-hover:text-itsec-primary transition-colors mb-2 line-clamp-2" style={{fontFamily:'var(--font-montserrat,Montserrat,sans-serif)'}}>
                             {service.title}
                           </CardTitle>
                           <p className="text-sm text-slate-400 line-clamp-3 mb-6 flex-grow">
@@ -129,7 +129,7 @@ export function Services({ variant = 'grid' }: ServicesProps) {
                           </p>
                           
                           {/* Learn More Link */}
-                          <div className="flex items-center gap-1.5 text-sm font-bold text-insa-primary group-hover:text-cyan-300 transition-colors mt-auto">
+                          <div className="flex items-center gap-1.5 text-sm font-bold text-itsec-primary group-hover:text-cyan-300 transition-colors mt-auto">
                             <span>Learn More</span>
                             <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
                           </div>
@@ -155,7 +155,7 @@ export function Services({ variant = 'grid' }: ServicesProps) {
                   <div key={index} className="w-[85vw] md:w-[60vw] lg:w-[480px] flex-shrink-0 snap-center">
                     <Link href={`/services/${service.slug}`} className="block group h-full">
                       <Card
-                        className="h-full overflow-hidden border border-slate-800 hover:border-blue-500/40 shadow-2xl transition-all duration-700 bg-gradient-to-b from-slate-900/80 via-slate-900/90 to-slate-950/90 backdrop-blur-xl flex flex-col group-hover:-translate-y-3 group-hover:shadow-[0_20px_40px_rgba(var(--insa-primary),0.15)]"
+                        className="h-full overflow-hidden border border-slate-800 hover:border-blue-500/40 shadow-2xl transition-all duration-700 bg-gradient-to-b from-slate-900/80 via-slate-900/90 to-slate-950/90 backdrop-blur-xl flex flex-col group-hover:-translate-y-3 group-hover:shadow-[0_20px_40px_rgba(var(--itsec-primary),0.15)]"
                       >
                         {/* Specific Image Area */}
                         {service.bannerImage && (
@@ -171,14 +171,14 @@ export function Services({ variant = 'grid' }: ServicesProps) {
 
                         {/* Text Content Area - With Bullets */}
                         <div className="flex-grow flex flex-col p-8 bg-gradient-to-b from-slate-900/95 to-slate-950/95 z-10 min-h-[260px]">
-                          <CardTitle className="text-2xl font-black tracking-tight text-white group-hover:text-insa-primary transition-colors mb-6 text-center line-clamp-2" style={{fontFamily:'var(--font-montserrat,Montserrat,sans-serif)'}}>
+                          <CardTitle className="text-2xl font-black tracking-tight text-white group-hover:text-itsec-primary transition-colors mb-6 text-center line-clamp-2" style={{fontFamily:'var(--font-montserrat,Montserrat,sans-serif)'}}>
                             {service.title}
                           </CardTitle>
 
                           <ul className="space-y-4 flex-grow flex flex-col justify-center">
                             {service.features.slice(0, 3).map((feature: string, fIndex: number) => (
                               <li key={fIndex} className="flex items-start gap-3 text-sm text-slate-300">
-                                <div className="w-2 h-2 rounded-full bg-insa-primary mt-1.5 flex-shrink-0 shadow-[0_0_8px_rgba(6,182,212,0.6)]" />
+                                <div className="w-2 h-2 rounded-full bg-itsec-primary mt-1.5 flex-shrink-0 shadow-[0_0_8px_rgba(6,182,212,0.6)]" />
                                 <span className="leading-relaxed text-left font-medium">{feature.split(':')[0]}</span>
                               </li>
                             ))}
