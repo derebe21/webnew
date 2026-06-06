@@ -1,4 +1,10 @@
-'use client';
+import re
+
+hero_path = 'C:/Users/DEREBE/itsec-latest-fresh/components/sections/Hero.tsx'
+with open(hero_path, 'r', encoding='utf-8') as f:
+    content = f.read()
+
+new_hero = """'use client';
 
 import { useEffect, useState } from 'react';
 import { ChevronDown, ShieldAlert, Server, Video, Lock, Network } from 'lucide-react';
@@ -8,11 +14,11 @@ import { ChevronDown, ShieldAlert, Server, Video, Lock, Network } from 'lucide-r
    ═══════════════════════════════════════════════════════════ */
 
 const SLIDES = [
-  { image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80", label: "Cybersecurity Solution", icon: ShieldAlert },
-  { image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&q=80", label: "Datacenter Solution", icon: Server },
-  { image: "https://images.unsplash.com/photo-1551808525-51a94da548ce?auto=format&fit=crop&q=80", label: "Surveillance System", icon: Video },
-  { image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&q=80", label: "Access Control", icon: Lock },
-  { image: "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&q=80", label: "Digital Infrastructure", icon: Network }
+  { image: "/soc-bg-1.png", label: "Cybersecurity Solution", icon: ShieldAlert },
+  { image: "/soc-bg-2.png", label: "Datacenter Solution", icon: Server },
+  { image: "/soc-bg-3.png", label: "Surveillance System", icon: Video },
+  { image: "/soc-bg-4.png", label: "Access Control", icon: Lock },
+  { image: "/soc-bg-5.png", label: "Digital Infrastructure", icon: Network }
 ];
 
 export function Hero() {
@@ -104,3 +110,27 @@ export function Hero() {
     </section>
   );
 }
+"""
+
+with open(hero_path, 'w', encoding='utf-8') as f:
+    f.write(new_hero)
+
+# Ensure the animate-fade-in-up keyframe exists in globals.css
+css_path = 'C:/Users/DEREBE/itsec-latest-fresh/app/globals.css'
+with open(css_path, 'r', encoding='utf-8') as f:
+    css_content = f.read()
+
+if 'animate-fade-in-up' not in css_content:
+    new_css = """
+@keyframes fadeInUp {
+  0% { opacity: 0; transform: translateY(10px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in-up {
+  animation: fadeInUp 0.5s ease-out forwards;
+}
+"""
+    with open(css_path, 'a', encoding='utf-8') as f:
+        f.write(new_css)
+
+print("Hero.tsx successfully updated with slide labels and reverted logo.")
