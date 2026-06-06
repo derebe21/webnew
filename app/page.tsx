@@ -17,6 +17,7 @@ export default function Home() {
       <About />
       <Services variant="grid" />
       <Products />
+      <News />
       <Contact />
       <Footer />
     </div>

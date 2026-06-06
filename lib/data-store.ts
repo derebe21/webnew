@@ -88,7 +88,7 @@ const defaultNews: NewsItem[] = [
     title: 'New Cybersecurity Partnership with Palo Alto Networks',
     summary: 'ITSEC Technology has partnered with Palo Alto Networks to deliver next-generation firewall and threat prevention solutions to enterprise clients in Ethiopia.',
     body: '',
-    image_url: '/images/custom-cybersecurity.png',
+    image_url: '/images/integrated-security-final.jpg',
     category: 'Partnership',
     published_at: '2026-05-15T00:00:00Z',
     created_at: '2026-05-15T00:00:00Z',
