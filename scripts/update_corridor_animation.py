@@ -1,15 +1,9 @@
-'use client';
+import re
 
-import React, { useState, useEffect, useRef } from 'react';
-import { ArrowRight, Shield, ChevronDown } from 'lucide-react';
-import Link from 'next/link';
+with open('C:/Users/DEREBE/itsec-latest-fresh/components/sections/Hero.tsx', 'r', encoding='utf-8') as f:
+    content = f.read()
 
-/* ═══════════════════════════════════════════════════════════
-   CINEMATIC CYBERSECURITY CANVAS — INSA DESIGN STYLE
-   Large centered glowing shield, datacenter racks on sides,
-   horizontal light streaks, atmospheric haze, scan lines
-   ═══════════════════════════════════════════════════════════ */
-function CyberCanvas() {
+new_canvas = """function CyberCanvas() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
@@ -206,35 +200,12 @@ function CyberCanvas() {
   }, []);
 
   return <canvas ref={canvasRef} className="absolute inset-0 w-full h-full z-0 pointer-events-none" />;
-}
-/* ═══════════════════════════════════════════════════════════
-   MAIN HERO — CENTERED LAYOUT (INSA-STYLE)
-   ═══════════════════════════════════════════════════════════ */
-export function Hero() {
-  const [mounted, setMounted] = useState(false);
+}"""
 
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+pattern = re.compile(r'function CyberCanvas\(\) \{.*?(?=\n/\* ═══════════════════════════════════════════════════════════)', re.DOTALL)
+content = pattern.sub(new_canvas, content)
 
-  return (
-    <section
-      id="home"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden"
-      style={{ background: '#070b16' }}
-    >
-      {/* ── CINEMATIC CANVAS ── */}
-      <CyberCanvas />
+with open('C:/Users/DEREBE/itsec-latest-fresh/components/sections/Hero.tsx', 'w', encoding='utf-8') as f:
+    f.write(content)
 
-      {/* ── Semi-transparent overlay for text readability ── */}
-      <div className="absolute inset-0 z-[1] bg-gradient-to-b from-[#070b16]/30 via-transparent to-[#070b16]/60 pointer-events-none" />
-
-      {/* CENTERED CONTENT REMOVED FOR CLEAN BACKGROUND */}
-      {/* ── SCROLL INDICATOR ── */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 opacity-40">
-        <span className="text-[9px] font-mono text-slate-500 tracking-[.3em] uppercase">Scroll</span>
-        <ChevronDown className="w-4 h-4 text-slate-500 animate-bounce" />
-      </div>
-    </section>
-  );
-}
+print("Hero.tsx successfully updated with the new corridor animation style.")
