@@ -1,4 +1,6 @@
-'use client';
+import re
+
+new_content = """'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
 import { ArrowRight, Settings } from 'lucide-react';
@@ -237,3 +239,9 @@ export function Hero() {
     </section>
   );
 }
+"""
+
+with open('C:/Users/DEREBE/itsec-latest-fresh/components/sections/Hero.tsx', 'w', encoding='utf-8') as f:
+    f.write(new_content)
+
+print("Hero.tsx successfully fully centered and updated with the logo and new background.")
