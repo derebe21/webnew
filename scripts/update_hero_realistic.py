@@ -1,4 +1,40 @@
-'use client';
+import re
+
+# 1. Update globals.css with new animations
+css_path = 'C:/Users/DEREBE/itsec-latest-fresh/app/globals.css'
+with open(css_path, 'r', encoding='utf-8') as f:
+    css_content = f.read()
+
+if '@keyframes smoothReveal' not in css_content:
+    new_css = """
+@keyframes smoothReveal {
+  0% { opacity: 0; transform: scale(0.9) translateY(20px); filter: blur(10px); }
+  100% { opacity: 1; transform: scale(1) translateY(0); filter: blur(0); }
+}
+
+@keyframes kenBurns {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.15); }
+}
+
+.animate-smooth-reveal {
+  animation: smoothReveal 1.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+.animate-ken-burns {
+  animation: kenBurns 10s linear infinite alternate;
+}
+"""
+    with open(css_path, 'a', encoding='utf-8') as f:
+        f.write(new_css)
+
+
+# 2. Update Hero.tsx
+hero_path = 'C:/Users/DEREBE/itsec-latest-fresh/components/sections/Hero.tsx'
+with open(hero_path, 'r', encoding='utf-8') as f:
+    hero_content = f.read()
+
+new_hero = """'use client';
 
 import { useEffect, useRef, useState } from 'react';
 import { ChevronDown } from 'lucide-react';
@@ -185,3 +221,9 @@ export function Hero() {
     </section>
   );
 }
+"""
+
+with open(hero_path, 'w', encoding='utf-8') as f:
+    f.write(new_hero)
+
+print("Globals.css and Hero.tsx successfully updated with realistic background images and smooth logo reveal.")

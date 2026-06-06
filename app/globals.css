@@ -225,3 +225,20 @@
   0%, 100% { box-shadow: 0 0 8px rgba(6, 182, 212, 0.3); }
   50% { box-shadow: 0 0 20px rgba(6, 182, 212, 0.7), 0 0 40px rgba(6, 182, 212, 0.3); }
 }
+@keyframes smoothReveal {
+  0% { opacity: 0; transform: scale(0.9) translateY(20px); filter: blur(10px); }
+  100% { opacity: 1; transform: scale(1) translateY(0); filter: blur(0); }
+}
+
+@keyframes kenBurns {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.15); }
+}
+
+.animate-smooth-reveal {
+  animation: smoothReveal 1.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+.animate-ken-burns {
+  animation: kenBurns 10s linear infinite alternate;
+}
