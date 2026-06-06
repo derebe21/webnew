@@ -300,20 +300,9 @@ export function Hero() {
           <div className="animate-fade-up flex flex-col items-center justify-center mb-8 mt-12">
             
             
-            {/* MAIN HEADLINE */}
             <h1 className="text-5xl md:text-7xl font-black text-white tracking-widest uppercase drop-shadow-[0_0_15px_rgba(20,174,180,0.5)] text-center max-w-6xl leading-tight">
-              SECURE ENTERPRISE <span className="text-[#14aeb4] font-light">ICT</span>
+              secure enterprise ict
             </h1>
-
-            {/* CTA BUTTON */}
-            <div className="mt-10 flex flex-col sm:flex-row items-center gap-4">
-              <button className="group relative flex items-center gap-3 px-8 py-4 bg-[#1b75d6] hover:bg-[#145cb0] text-white font-semibold text-xl rounded-full transition-all duration-300 shadow-[0_0_20px_rgba(27,117,214,0.4)] hover:shadow-[0_0_30px_rgba(27,117,214,0.6)] hover:-translate-y-1 overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-r from-[#1b75d6] to-[#0ea5e9] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                <Shield className="w-6 h-6 relative z-10" />
-                <span className="relative z-10 tracking-wide">Get a Quote</span>
-                <ArrowRight className="w-6 h-6 relative z-10 group-hover:translate-x-1 transition-transform duration-300" />
-              </button>
-            </div>
 
           </div>
           
