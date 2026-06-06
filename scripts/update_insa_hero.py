@@ -1,4 +1,10 @@
-'use client';
+import re
+
+hero_path = 'C:/Users/DEREBE/itsec-latest-fresh/components/sections/Hero.tsx'
+with open(hero_path, 'r', encoding='utf-8') as f:
+    content = f.read()
+
+new_hero = """'use client';
 
 import { useEffect, useRef, useState } from 'react';
 import { ChevronDown } from 'lucide-react';
@@ -217,13 +223,14 @@ export function Hero() {
           </div>
           
           {/* NEW HEADLINE */}
-          <h1 className="text-5xl md:text-7xl font-black text-white tracking-widest uppercase drop-shadow-[0_0_15px_rgba(0,240,255,0.8)] text-center max-w-6xl leading-tight">
-            ITSEC <span className="text-cyan-400 font-light">Technology</span>
+          <h1 className="text-3xl md:text-5xl lg:text-6xl font-black text-white tracking-widest uppercase drop-shadow-[0_0_15px_rgba(0,240,255,0.8)] text-center max-w-6xl leading-tight">
+            Information Network <br className="hidden md:block" />
+            <span className="text-cyan-400 font-light">Security Administration</span>
           </h1>
 
           {/* NEW SLOGAN */}
-          <p className="mt-6 text-lg md:text-2xl text-cyan-100 font-medium tracking-widest uppercase drop-shadow-md text-center">
-            Secure &bull; Intelligent &bull; Future-Ready ICT Solutions
+          <p className="mt-6 text-lg md:text-2xl text-cyan-100 font-medium tracking-widest uppercase drop-shadow-md">
+            Securing Ethiopia's Digital Future
           </p>
           
         </div>
@@ -237,3 +244,9 @@ export function Hero() {
     </section>
   );
 }
+"""
+
+with open(hero_path, 'w', encoding='utf-8') as f:
+    f.write(new_hero)
+
+print("Hero.tsx successfully updated with the cinematic SOC canvas and INSA text.")
