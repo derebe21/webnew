@@ -13,16 +13,16 @@ export function About({ showOnlyAboutUs = false }: { showOnlyAboutUs?: boolean }
       title: 'Integrity & Transparency',
       desc: 'We maintain absolute confidentiality, trust, and ethical transparency in every deployment, serving as a reliable partner for national security and enterprise assets.',
       icon: Shield,
-      color: 'text-blue-400',
+      color: 'text-insa-primary',
       bg: 'from-blue-600/10 to-blue-500/5',
-      glow: 'rgba(37,99,235,0.15)',
+      glow: 'rgba(var(--insa-primary),0.15)',
       border: 'border-blue-500/20 hover:border-blue-400/40'
     },
     {
       title: 'Continuous Innovation',
       desc: 'We aggressively research and integrate cutting-edge artificial intelligence, machine learning algorithms, and next-generation zero-trust architecture to keep you ahead of evolving threats.',
       icon: Cpu,
-      color: 'text-cyan-400',
+      color: 'text-insa-primary',
       bg: 'from-cyan-600/10 to-cyan-500/5',
       glow: 'rgba(6,182,212,0.15)',
       border: 'border-cyan-500/20 hover:border-cyan-400/40'
@@ -114,9 +114,9 @@ export function About({ showOnlyAboutUs = false }: { showOnlyAboutUs?: boolean }
           
           {/* Mission Card */}
           <div className="group relative rounded-[2rem] overflow-hidden border border-slate-800 hover:border-blue-500/40 bg-gradient-to-br from-slate-900/80 via-slate-900/90 to-slate-950/90 backdrop-blur-xl p-8 md:p-12 transition-all duration-500 hover:-translate-y-1.5 shadow-[0_15px_40px_-15px_rgba(0,0,0,0.5)]">
-            <div className="absolute top-0 right-0 w-36 h-36 bg-blue-500/5 blur-2xl rounded-full group-hover:bg-blue-500/10 transition-colors duration-500" />
+            <div className="absolute top-0 right-0 w-36 h-36 bg-blue-500/5 blur-2xl rounded-full group-hover:bg-insa-primary/10 transition-colors duration-500" />
             <div className="flex flex-col items-start gap-6">
-              <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-600/20 to-blue-500/5 text-blue-400 border border-blue-500/30 flex items-center justify-center group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300 shadow-lg">
+              <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-600/20 to-blue-500/5 text-insa-primary border border-insa-primary/30 flex items-center justify-center group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300 shadow-lg">
                 <Target className="w-8 h-8" />
               </div>
               <div className="flex flex-col gap-3">
@@ -132,9 +132,9 @@ export function About({ showOnlyAboutUs = false }: { showOnlyAboutUs?: boolean }
 
           {/* Vision Card */}
           <div className="group relative rounded-[2rem] overflow-hidden border border-slate-800 hover:border-cyan-500/40 bg-gradient-to-br from-slate-900/80 via-slate-900/90 to-slate-950/90 backdrop-blur-xl p-8 md:p-12 transition-all duration-500 hover:-translate-y-1.5 shadow-[0_15px_40px_-15px_rgba(0,0,0,0.5)]">
-            <div className="absolute top-0 right-0 w-36 h-36 bg-cyan-500/5 blur-2xl rounded-full group-hover:bg-cyan-500/10 transition-colors duration-500" />
+            <div className="absolute top-0 right-0 w-36 h-36 bg-insa-primary/5 blur-2xl rounded-full group-hover:bg-insa-primary/10 transition-colors duration-500" />
             <div className="flex flex-col items-start gap-6">
-              <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-cyan-600/20 to-cyan-500/5 text-cyan-400 border border-cyan-500/30 flex items-center justify-center group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-300 shadow-lg">
+              <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-cyan-600/20 to-cyan-500/5 text-insa-primary border border-insa-primary/30 flex items-center justify-center group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-300 shadow-lg">
                 <Eye className="w-8 h-8" />
               </div>
               <div className="flex flex-col gap-3">
@@ -154,7 +154,7 @@ export function About({ showOnlyAboutUs = false }: { showOnlyAboutUs?: boolean }
           
           {/* Header */}
           <div className="text-center flex flex-col items-center gap-3">
-            <div className="h-0.5 w-12 bg-cyan-500 mb-2" />
+            <div className="h-0.5 w-12 bg-insa-primary mb-2" />
             <h3 className="text-3xl md:text-4xl font-extrabold tracking-tight" style={{fontFamily:'var(--font-montserrat,Montserrat,sans-serif)'}}>
               Our Core Principles
             </h3>
@@ -187,7 +187,7 @@ export function About({ showOnlyAboutUs = false }: { showOnlyAboutUs?: boolean }
 
                 {/* Text Content */}
                 <div className="flex flex-col gap-2.5">
-                  <h4 className="text-lg font-bold text-white tracking-tight leading-tight group-hover:text-cyan-400 transition-colors">
+                  <h4 className="text-lg font-bold text-white tracking-tight leading-tight group-hover:text-insa-primary transition-colors">
                     {val.title}
                   </h4>
                   <p className="text-xs md:text-sm text-slate-400 leading-relaxed">

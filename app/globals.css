@@ -6,6 +6,12 @@
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
+  
+  /* INSA Theme Colors */
+  --insa-primary: 104, 77, 244;
+  --insa-primary-dark: 83, 56, 216;
+  --insa-ink: 21, 18, 43;
+  --insa-muted: 92, 88, 115;
 }
 
 @media (prefers-color-scheme: dark) {

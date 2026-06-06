@@ -20,13 +20,13 @@ export function News() {
 
   const getCategoryStyle = (category: string) => {
     const styles: Record<string, { text: string; border: string; bg: string }> = {
-      'Company News':  { text: 'text-blue-400',   border: 'border-blue-500/30',   bg: 'bg-blue-500/10' },
+      'Company News':  { text: 'text-insa-primary',   border: 'border-insa-primary/30',   bg: 'bg-insa-primary/10' },
       'Partnership':   { text: 'text-emerald-400', border: 'border-emerald-500/30', bg: 'bg-emerald-500/10' },
       'Solutions':     { text: 'text-purple-400',  border: 'border-purple-500/30',  bg: 'bg-purple-500/10' },
       'Case Study':    { text: 'text-amber-400',   border: 'border-amber-500/30',   bg: 'bg-amber-500/10' },
       'Event':         { text: 'text-rose-400',    border: 'border-rose-500/30',    bg: 'bg-rose-500/10' },
     };
-    return styles[category] || { text: 'text-cyan-400', border: 'border-cyan-500/30', bg: 'bg-cyan-500/10' };
+    return styles[category] || { text: 'text-insa-primary', border: 'border-insa-primary/30', bg: 'bg-insa-primary/10' };
   };
 
   if (!loaded) return null;
@@ -55,13 +55,13 @@ export function News() {
 
         {/* ── HEADER ────────────────────────────────── */}
         <div className="text-center max-w-4xl mx-auto mb-16">
-          <div className="flex items-center gap-2.5 w-fit px-4 py-2 rounded-full border border-cyan-500/30 bg-cyan-950/20 backdrop-blur-md mx-auto mb-6">
+          <div className="flex items-center gap-2.5 w-fit px-4 py-2 rounded-full border border-insa-primary/30 bg-cyan-950/20 backdrop-blur-md mx-auto mb-6">
             <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inset-0 rounded-full bg-cyan-400 opacity-70"/>
-              <span className="relative rounded-full h-2 w-2 bg-cyan-400"/>
+              <span className="animate-ping absolute inset-0 rounded-full bg-insa-primary opacity-70"/>
+              <span className="relative rounded-full h-2 w-2 bg-insa-primary"/>
             </span>
-            <Newspaper className="w-3.5 h-3.5 text-cyan-400" />
-            <span className="text-[10px] font-bold text-cyan-400 tracking-[0.2em] uppercase">
+            <Newspaper className="w-3.5 h-3.5 text-insa-primary" />
+            <span className="text-[10px] font-bold text-insa-primary tracking-[0.2em] uppercase">
               Latest Updates
             </span>
           </div>
@@ -86,7 +86,7 @@ export function News() {
           <div className="grid lg:grid-cols-5 gap-8">
 
             {/* ── FEATURED ARTICLE (Spans 3 cols) ──── */}
-            <div className="lg:col-span-3 group relative rounded-3xl border border-slate-800/80 hover:border-blue-500/40 bg-gradient-to-b from-slate-900/70 to-slate-950/70 backdrop-blur-md overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_60px_rgba(37,99,235,0.15)] flex flex-col">
+            <div className="lg:col-span-3 group relative rounded-3xl border border-slate-800/80 hover:border-blue-500/40 bg-gradient-to-b from-slate-900/70 to-slate-950/70 backdrop-blur-md overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_60px_rgba(var(--insa-primary),0.15)] flex flex-col">
               {/* Top glow */}
               <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-blue-500/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
@@ -114,7 +114,7 @@ export function News() {
 
                 {/* Featured badge */}
                 <div className="absolute top-4 right-4">
-                  <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[10px] font-bold border border-cyan-400/30 bg-cyan-950/60 text-cyan-400 backdrop-blur-md">
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[10px] font-bold border border-insa-primary/30 bg-cyan-950/60 text-insa-primary backdrop-blur-md">
                     <Zap className="w-3 h-3" />
                     Featured
                   </span>
@@ -135,7 +135,7 @@ export function News() {
                   </span>
                 </div>
 
-                <h3 className="text-2xl md:text-3xl font-black tracking-tight text-white leading-tight group-hover:text-cyan-400 transition-colors"
+                <h3 className="text-2xl md:text-3xl font-black tracking-tight text-white leading-tight group-hover:text-insa-primary transition-colors"
                     style={{fontFamily:'var(--font-montserrat,Montserrat,sans-serif)'}}>
                   {news[0].title}
                 </h3>
@@ -144,7 +144,7 @@ export function News() {
                   {news[0].summary}
                 </p>
 
-                <div className="flex items-center gap-2 text-sm font-bold text-blue-400 group-hover:text-cyan-300 transition-colors mt-auto pt-4 border-t border-white/5">
+                <div className="flex items-center gap-2 text-sm font-bold text-insa-primary group-hover:text-cyan-300 transition-colors mt-auto pt-4 border-t border-white/5">
                   <span>Read Full Article</span>
                   <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
                 </div>
@@ -158,7 +158,7 @@ export function News() {
                 return (
                   <div
                     key={item.id}
-                    className="group relative flex gap-4 p-5 rounded-2xl border border-slate-800/80 hover:border-blue-500/30 bg-gradient-to-r from-slate-900/60 to-slate-950/60 backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_10px_30px_rgba(0,0,0,0.4)] overflow-hidden"
+                    className="group relative flex gap-4 p-5 rounded-2xl border border-slate-800/80 hover:border-insa-primary/30 bg-gradient-to-r from-slate-900/60 to-slate-950/60 backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_10px_30px_rgba(0,0,0,0.4)] overflow-hidden"
                   >
                     {/* left accent line */}
                     <div className="absolute left-0 top-4 bottom-4 w-px bg-gradient-to-b from-transparent via-blue-500/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -186,7 +186,7 @@ export function News() {
                         </span>
                       </div>
 
-                      <h4 className="text-sm font-bold text-white leading-snug line-clamp-2 group-hover:text-cyan-400 transition-colors"
+                      <h4 className="text-sm font-bold text-white leading-snug line-clamp-2 group-hover:text-insa-primary transition-colors"
                           style={{fontFamily:'var(--font-montserrat,Montserrat,sans-serif)'}}>
                         {item.title}
                       </h4>
@@ -195,7 +195,7 @@ export function News() {
                         {item.summary}
                       </p>
 
-                      <div className="flex items-center gap-1 text-[10px] font-bold text-blue-400 group-hover:text-cyan-400 transition-colors mt-auto">
+                      <div className="flex items-center gap-1 text-[10px] font-bold text-insa-primary group-hover:text-insa-primary transition-colors mt-auto">
                         Read More <ArrowRight className="w-3 h-3" />
                       </div>
                     </div>
@@ -206,7 +206,7 @@ export function News() {
               {/* View All CTA */}
               <a
                 href="/news"
-                className="flex items-center justify-center gap-2.5 p-4 rounded-2xl border border-dashed border-slate-700/60 hover:border-cyan-500/40 bg-slate-900/20 hover:bg-slate-900/60 transition-all duration-300 text-sm font-bold text-slate-400 hover:text-cyan-400 group"
+                className="flex items-center justify-center gap-2.5 p-4 rounded-2xl border border-dashed border-slate-700/60 hover:border-cyan-500/40 bg-slate-900/20 hover:bg-slate-900/60 transition-all duration-300 text-sm font-bold text-slate-400 hover:text-insa-primary group"
               >
                 <ExternalLink className="w-4 h-4" />
                 View All News &amp; Insights

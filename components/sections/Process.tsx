@@ -16,7 +16,7 @@ export function Process() {
       number: '01',
       color: 'blue',
       accent: '#2563EB',
-      glow: 'rgba(37,99,235,0.25)',
+      glow: 'rgba(var(--insa-primary),0.25)',
       border: 'border-blue-500/25 hover:border-blue-400/50',
       iconBg: 'from-blue-600/20 to-blue-500/5',
       badge: 'Discovery Phase',
@@ -31,7 +31,7 @@ export function Process() {
       color: 'cyan',
       accent: '#06B6D4',
       glow: 'rgba(6,182,212,0.25)',
-      border: 'border-cyan-500/25 hover:border-cyan-400/50',
+      border: 'border-cyan-500/25 hover:border-insa-primary/50',
       iconBg: 'from-cyan-600/20 to-cyan-500/5',
       badge: 'Execution Phase',
       highlights: ['Zero-Trust Architecture', 'Certified Engineers', 'ISO Compliance'],
@@ -79,12 +79,12 @@ export function Process() {
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-20">
           {/* Pulsing Badge */}
-          <div className="flex items-center gap-2.5 w-fit px-4 py-2 rounded-full border border-cyan-500/30 bg-cyan-950/20 backdrop-blur-md mx-auto mb-6">
+          <div className="flex items-center gap-2.5 w-fit px-4 py-2 rounded-full border border-insa-primary/30 bg-cyan-950/20 backdrop-blur-md mx-auto mb-6">
             <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inset-0 rounded-full bg-cyan-400 opacity-70"/>
-              <span className="relative rounded-full h-2 w-2 bg-cyan-400"/>
+              <span className="animate-ping absolute inset-0 rounded-full bg-insa-primary opacity-70"/>
+              <span className="relative rounded-full h-2 w-2 bg-insa-primary"/>
             </span>
-            <span className="text-[10px] font-bold text-cyan-400 tracking-[0.2em] uppercase">
+            <span className="text-[10px] font-bold text-insa-primary tracking-[0.2em] uppercase">
               How It Works
             </span>
           </div>
@@ -108,7 +108,7 @@ export function Process() {
           {/* Connector Lines (desktop only) */}
           <div className="hidden md:flex absolute top-[4.5rem] left-[33%] right-[33%] items-center justify-center pointer-events-none z-10">
             <div className="flex-1 h-px bg-gradient-to-r from-blue-500/40 via-cyan-400/40 to-indigo-500/40 relative">
-              <ArrowRight className="absolute right-0 top-1/2 -translate-y-1/2 w-3 h-3 text-cyan-400/60" />
+              <ArrowRight className="absolute right-0 top-1/2 -translate-y-1/2 w-3 h-3 text-insa-primary/60" />
             </div>
           </div>
 
@@ -152,7 +152,7 @@ export function Process() {
 
                 {/* Text */}
                 <div className="flex flex-col gap-3">
-                  <h3 className="text-xl font-bold text-white tracking-tight leading-tight group-hover:text-cyan-400 transition-colors"
+                  <h3 className="text-xl font-bold text-white tracking-tight leading-tight group-hover:text-insa-primary transition-colors"
                       style={{fontFamily:'var(--font-montserrat,Montserrat,sans-serif)'}}>
                     {step.title}
                   </h3>
@@ -179,8 +179,8 @@ export function Process() {
         <div className={`mt-20 flex flex-col sm:flex-row items-center justify-between gap-6 p-8 rounded-3xl border border-slate-800/60 bg-gradient-to-r from-slate-900/60 to-slate-950/60 backdrop-blur-md transition-all duration-1000 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}>
           <div className="flex flex-col gap-1.5 text-center sm:text-left">
             <div className="flex items-center gap-2 justify-center sm:justify-start">
-              <Zap className="w-4 h-4 text-cyan-400" />
-              <span className="text-sm font-bold text-cyan-400 tracking-widest uppercase">Ready to Start?</span>
+              <Zap className="w-4 h-4 text-insa-primary" />
+              <span className="text-sm font-bold text-insa-primary tracking-widest uppercase">Ready to Start?</span>
             </div>
             <p className="text-lg font-black text-white" style={{fontFamily:'var(--font-montserrat,Montserrat,sans-serif)'}}>
               Begin Your Security Transformation Today
@@ -192,7 +192,7 @@ export function Process() {
             className="flex items-center gap-2.5 px-8 py-4 rounded-xl text-white font-bold text-sm transition-all duration-300 hover:-translate-y-0.5 flex-shrink-0"
             style={{
               background: 'linear-gradient(135deg, #2563EB 0%, #0284C7 100%)',
-              boxShadow: '0 8px 32px rgba(37,99,235,.4)',
+              boxShadow: '0 8px 32px rgba(var(--insa-primary),.4)',
               fontFamily: 'var(--font-inter,Inter,sans-serif)'
             }}
           >

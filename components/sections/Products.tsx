@@ -75,7 +75,7 @@ export function Products() {
                                 className={cn(
                                     "flex items-center gap-2 px-6 py-4 rounded-xl font-bold transition-all duration-300 border-2 font-['Inter',sans-serif]",
                                     isActive
-                                        ? "bg-[#2563EB]/10 border-[#2563EB] text-white shadow-[0_0_20px_rgba(37,99,235,0.3)]"
+                                        ? "bg-[#2563EB]/10 border-[#2563EB] text-white shadow-[0_0_20px_rgba(var(--insa-primary),0.3)]"
                                         : "bg-transparent border-[#1E293B] text-[#CBD5E1] hover:border-[#334155] hover:text-white"
                                 )}
                             >
@@ -188,7 +188,7 @@ export function Products() {
                                     href={selectedPartner.url}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="inline-flex items-center px-8 py-4 bg-[#2563EB] hover:bg-[#1D4ED8] text-white rounded-xl font-bold transition-all transform hover:scale-105 shadow-[0_0_20px_rgba(37,99,235,0.4)]"
+                                    className="inline-flex items-center px-8 py-4 bg-[#2563EB] hover:bg-[#1D4ED8] text-white rounded-xl font-bold transition-all transform hover:scale-105 shadow-[0_0_20px_rgba(var(--insa-primary),0.4)]"
                                 >
                                     Visit Website <ExternalLink className="ml-2 w-5 h-5" />
                                 </Link>

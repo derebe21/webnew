@@ -202,7 +202,7 @@ export function Contact() {
                     <div className="p-8 pt-6 space-y-8">
                       {/* Department Context Information */}
                       <div className={`flex items-center space-x-3 text-sm font-black uppercase tracking-widest ${
-                        activeTab === 'general' ? 'text-blue-400' : 
+                        activeTab === 'general' ? 'text-insa-primary' : 
                         activeTab === 'support' ? 'text-red-400' : 
                         activeTab === 'projects' ? 'text-emerald-400' : 'text-amber-400'
                       }`}>
@@ -317,7 +317,7 @@ export function Contact() {
                           <RadioGroup defaultValue="Medium" onValueChange={(v) => updateField('urgency', v)} className="flex flex-wrap gap-4">
                             {['Low', 'Medium', 'High', 'Critical'].map(u => (
                               <div key={u} className="flex items-center space-x-2 bg-slate-950/60 px-3 py-1.5 rounded-lg border border-slate-800 shadow-inner cursor-pointer hover:bg-slate-900 transition-colors">
-                                <RadioGroupItem value={u} id={`u-${u}`} className="border-slate-700 text-blue-500" />
+                                <RadioGroupItem value={u} id={`u-${u}`} className="border-slate-700 text-insa-primary" />
                                 <label htmlFor={`u-${u}`} className="text-xs font-bold text-slate-300 cursor-pointer">{u}</label>
                               </div>
                             ))}
@@ -352,7 +352,7 @@ export function Contact() {
 
           <div className="lg:col-span-4 space-y-6 lg:sticky lg:top-24">
             {dynamicContactInfo.map((info, index) => (
-              <Card key={index} className="overflow-hidden border-slate-800 bg-slate-900/40 backdrop-blur-md shadow-xl rounded-2xl group hover:border-blue-500/30 transition-all duration-300">
+              <Card key={index} className="overflow-hidden border-slate-800 bg-slate-900/40 backdrop-blur-md shadow-xl rounded-2xl group hover:border-insa-primary/30 transition-all duration-300">
                 <CardContent className="p-6">
                   <div className="flex items-start space-x-4">
                     <div className="w-12 h-12 rounded-xl bg-blue-600 text-white flex items-center justify-center flex-shrink-0 shadow-lg group-hover:rotate-6 transition-transform">
@@ -364,10 +364,10 @@ export function Contact() {
                         <div className="flex flex-col space-y-1.5 pt-1">
                           {info.values.map(email => (
                             <div key={email} className="flex items-center group/item hover:translate-x-1 transition-transform">
-                              <a href={`mailto:${email}`} className="font-bold text-slate-200 hover:text-blue-400 transition-colors break-all text-sm leading-tight mr-2">
+                              <a href={`mailto:${email}`} className="font-bold text-slate-200 hover:text-insa-primary transition-colors break-all text-sm leading-tight mr-2">
                                 {email}
                               </a>
-                              <button onClick={() => copyToClipboard(email)} className="opacity-0 group-hover/item:opacity-100 transition-opacity p-1 text-slate-400 hover:text-blue-400" title="Copy email">
+                              <button onClick={() => copyToClipboard(email)} className="opacity-0 group-hover/item:opacity-100 transition-opacity p-1 text-slate-400 hover:text-insa-primary" title="Copy email">
                                 <Send className="w-3 h-3 rotate-45" />
                               </button>
                             </div>
@@ -375,10 +375,10 @@ export function Contact() {
                         </div>
                       ) : (
                         <div className="flex items-center group/item">
-                          <a href={info.href} className="font-bold text-slate-200 hover:text-blue-400 transition-colors block text-lg mr-2">
+                          <a href={info.href} className="font-bold text-slate-200 hover:text-insa-primary transition-colors block text-lg mr-2">
                             {info.value}
                           </a>
-                          <button onClick={() => copyToClipboard(info.value || '')} className="opacity-0 group-hover/item:opacity-100 transition-opacity p-1 text-slate-400 hover:text-blue-400" title="Copy to clipboard">
+                          <button onClick={() => copyToClipboard(info.value || '')} className="opacity-0 group-hover/item:opacity-100 transition-opacity p-1 text-slate-400 hover:text-insa-primary" title="Copy to clipboard">
                             <Send className="w-4 h-4 rotate-45" />
                           </button>
                         </div>
