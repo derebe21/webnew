@@ -302,13 +302,8 @@ export function Hero() {
             
             {/* MAIN HEADLINE */}
             <h1 className="text-5xl md:text-7xl font-black text-white tracking-widest uppercase drop-shadow-[0_0_15px_rgba(20,174,180,0.5)] text-center max-w-6xl leading-tight">
-              ITSEC <span className="text-[#14aeb4] font-light">Technology</span>
+              SECURE ENTERPRISE <span className="text-[#14aeb4] font-light">ICT</span>
             </h1>
-
-            {/* NEW REQUIRED SLOGAN */}
-            <h2 className="mt-6 text-xl md:text-2xl text-[#14aeb4] font-bold tracking-[0.1em] uppercase drop-shadow-md text-center">
-              Secure • Intelligent • Future-Ready ICT Solutions
-            </h2>
 
             {/* CTA BUTTON */}
             <div className="mt-10 flex flex-col sm:flex-row items-center gap-4">
