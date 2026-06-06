@@ -1,4 +1,8 @@
-'use client';
+import re
+
+hero_path = 'C:/Users/DEREBE/itsec-latest-fresh/components/sections/Hero.tsx'
+
+new_hero_content = """'use client';
 
 import { useEffect, useRef, useState } from 'react';
 import { ChevronDown, Shield, ArrowRight } from 'lucide-react';
@@ -108,20 +112,8 @@ export function Hero() {
       id="home"
       className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#020611]"
     >
-      {/* ── LIVE CINEMATIC BACKGROUND VIDEO ── */}
-      <div className="absolute inset-0 w-full h-full">
-        <video 
-          autoPlay 
-          loop 
-          muted 
-          playsInline
-          className="absolute top-0 left-0 w-full h-full object-cover filter brightness-[0.3]"
-        >
-          {/* Using a live, high-quality, royalty-free tech background video so it shows instantly */}
-          <source src="https://cdn.pixabay.com/video/2020/07/28/45885-445892520_large.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
-      </div>
+      {/* ── CINEMATIC ENTERPRISE CANVAS BACKGROUND ── */}
+      <EnterpriseCanvas />
 
       {/* ── DARK OVERLAY FOR TEXT READABILITY ── */}
       <div className="absolute inset-0 z-[1] bg-gradient-to-b from-[#020611]/70 via-transparent to-[#020611]/90 pointer-events-none" />
@@ -145,7 +137,7 @@ export function Hero() {
               ITSEC <span className="text-blue-500 font-light">Technology</span>
             </h1>
 
-            {/* NEW SLOGAN (Teal Color) */}
+            {/* NEW SLOGAN (Teal Color matching screenshot) */}
             <h2 className="mt-6 text-xl md:text-3xl text-[#14aeb4] font-bold tracking-[0.2em] uppercase drop-shadow-md text-center">
               Secure Enterprise ICT
             </h2>
@@ -173,3 +165,9 @@ export function Hero() {
     </section>
   );
 }
+"""
+
+with open(hero_path, 'w', encoding='utf-8') as f:
+    f.write(new_hero_content)
+
+print("Hero.tsx successfully updated with EnterpriseCanvas, Teal Slogan, and Get a Quote CTA.")
