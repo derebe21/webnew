@@ -60,7 +60,7 @@ const config: Config = {
           '4': 'hsl(var(--chart-4))',
           '5': 'hsl(var(--chart-5))',
         },
-        insa: {
+        itsec: {
           primary: 'rgb(var(--itsec-primary))',
           dark: 'rgb(var(--itsec-primary-dark))',
           ink: 'rgb(var(--itsec-ink))',
