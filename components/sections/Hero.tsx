@@ -7,51 +7,32 @@ import { ChevronDown, ShieldAlert, Server, Video, Lock, Network } from 'lucide-r
    MAIN HERO — AI GENERATED CINEMATIC SOC WITH LABELS
    ═══════════════════════════════════════════════════════════ */
 
-const SLIDES = [
-  { image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80", label: "Cybersecurity Solution", icon: ShieldAlert },
-  { image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&q=80", label: "Datacenter Solution", icon: Server },
-  { image: "https://images.unsplash.com/photo-1551808525-51a94da548ce?auto=format&fit=crop&q=80", label: "Surveillance System", icon: Video },
-  { image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&q=80", label: "Access Control", icon: Lock },
-  { image: "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&q=80", label: "Digital Infrastructure", icon: Network }
-];
-
 export function Hero() {
   const [mounted, setMounted] = useState(false);
-  const [currentSlide, setCurrentSlide] = useState(0);
 
   useEffect(() => {
     setMounted(true);
-    
-    // Crossfade slideshow every 6 seconds
-    const interval = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % SLIDES.length);
-    }, 6000);
-    
-    return () => clearInterval(interval);
   }, []);
-
-  const SlideIcon = SLIDES[currentSlide].icon;
 
   return (
     <section
       id="home"
       className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#030b14]"
     >
-      {/* ── CUSTOM AI GENERATED SOC BACKGROUNDS ── */}
-      {SLIDES.map((slide, index) => (
-        <div 
-          key={slide.image}
-          className={`absolute inset-0 transition-opacity duration-[3000ms] ease-in-out ${
-            index === currentSlide ? 'opacity-100 z-0' : 'opacity-0 -z-10'
-          }`}
+      {/* ── CINEMATIC BACKGROUND VIDEO ── */}
+      <div className="absolute inset-0 w-full h-full">
+        <video 
+          autoPlay 
+          loop 
+          muted 
+          playsInline
+          className="absolute top-0 left-0 w-full h-full object-cover filter brightness-[0.4]"
         >
-          {/* Ken Burns Slow Zoom Effect */}
-          <div 
-            className="absolute inset-0 bg-cover bg-center animate-ken-burns filter brightness-[0.6]"
-            style={{ backgroundImage: `url(${slide.image})` }}
-          />
-        </div>
-      ))}
+          {/* We point to a local video file. The user must place hero-background.mp4 in the public folder */}
+          <source src="/hero-background.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </div>
 
       {/* ── DARK GRADIENT OVERLAY FOR READABILITY ── */}
       <div className="absolute inset-0 z-[1] bg-gradient-to-b from-[#030b14]/70 via-transparent to-[#030b14]/90 pointer-events-none" />
@@ -62,7 +43,7 @@ export function Hero() {
           
           {/* STATIC HERO CONTENT */}
           <div className="animate-smooth-reveal flex flex-col items-center justify-center mb-12">
-            {/* LOGO CONTAINER (Reverted to use the user's exact image file) */}
+            {/* LOGO CONTAINER */}
             <div className="relative w-32 h-32 md:w-48 md:h-48 mb-6 flex items-center justify-center filter drop-shadow-[0_0_20px_rgba(0,120,255,0.8)]">
               <img 
                 src="/shield-logo.png" 
@@ -80,17 +61,6 @@ export function Hero() {
             <p className="mt-6 text-lg md:text-2xl text-cyan-100 font-medium tracking-widest uppercase drop-shadow-md text-center">
               Secure &bull; Intelligent &bull; Future-Ready ICT Solutions
             </p>
-          </div>
-
-          {/* DYNAMIC SLIDE LABEL */}
-          <div className="absolute bottom-24 left-1/2 -translate-x-1/2 flex items-center gap-3 px-6 py-3 bg-[#0a192f]/60 backdrop-blur-md border border-cyan-500/30 rounded-full shadow-[0_0_20px_rgba(0,240,255,0.2)]">
-            <SlideIcon className="w-5 h-5 text-cyan-400" />
-            <span 
-              key={SLIDES[currentSlide].label} // Forces re-render animation on change
-              className="text-sm md:text-lg text-white tracking-widest uppercase font-semibold animate-fade-in-up"
-            >
-              {SLIDES[currentSlide].label}
-            </span>
           </div>
           
         </div>
