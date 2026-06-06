@@ -1,12 +1,11 @@
-'use client';
+import re
 
-import { useEffect, useRef, useState } from 'react';
-import { ChevronDown } from 'lucide-react';
+hero_path = 'C:/Users/DEREBE/itsec-latest-fresh/components/sections/Hero.tsx'
+with open(hero_path, 'r', encoding='utf-8') as f:
+    content = f.read()
 
-/* ═══════════════════════════════════════════════════════════
-   CINEMATIC 4K SOC CANVAS — LIVE RENDERED ANIMATION
-   ═══════════════════════════════════════════════════════════ */
-function CyberCanvas() {
+# 1. Update the CyberCanvas to include the 3D Corridor beams and teal/cyan colors
+new_canvas = """function CyberCanvas() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
@@ -155,33 +154,10 @@ function CyberCanvas() {
   }, []);
 
   return <canvas ref={canvasRef} className="absolute inset-0 w-full h-full z-0 pointer-events-none" />;
-}
-/* ═══════════════════════════════════════════════════════════
-   MAIN HERO — CINEMATIC SOC LAYOUT
-   ═══════════════════════════════════════════════════════════ */
-export function Hero() {
-  const [mounted, setMounted] = useState(false);
+}"""
 
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  return (
-    <section
-      id="home"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#020611]"
-    >
-      {/* ── CINEMATIC LIVE CANVAS BACKGROUND ── */}
-      <CyberCanvas />
-
-      {/* ── DARK GRADIENT OVERLAY FOR READABILITY ── */}
-      <div className="absolute inset-0 z-[1] bg-gradient-to-b from-[#020611]/40 via-transparent to-[#020611]/80 pointer-events-none" />
-
-      {/* ── CENTERED LOGO AND NEW HEADLINE ── */}
-      {mounted && (
-        <div className="absolute inset-0 flex flex-col items-center justify-center z-[5] pointer-events-none animate-smooth-reveal px-4">
-          
-                    {/* CUSTOM INLINE SVG LOGO (TRANSPARENT BACKGROUND) */}
+# 2. Update the Logo container to use an inline SVG that looks EXACTLY like the blue shield with a transparent background
+new_logo_container = """          {/* CUSTOM INLINE SVG LOGO (TRANSPARENT BACKGROUND) */}
           <div className="relative w-32 h-32 md:w-48 md:h-48 mb-6 flex items-center justify-center filter drop-shadow-[0_0_20px_rgba(0,120,255,0.8)]">
             <svg viewBox="0 0 200 200" className="w-full h-full" fill="none" xmlns="http://www.w3.org/2000/svg">
               {/* Outer Circuit Nodes */}
@@ -207,26 +183,17 @@ export function Hero() {
               {/* Keyhole */}
               <path d="M 100 90 A 5 5 0 1 0 100 100 L 105 115 L 95 115 Z" fill="#020611" />
             </svg>
-          </div>
-          
-          {/* NEW HEADLINE */}
-          <h1 className="text-5xl md:text-7xl font-black text-white tracking-widest uppercase drop-shadow-[0_0_15px_rgba(0,240,255,0.8)] text-center max-w-6xl leading-tight">
-            ITSEC <span className="text-cyan-400 font-light">Technology</span>
-          </h1>
+          </div>"""
 
-          {/* NEW SLOGAN */}
-          <p className="mt-6 text-lg md:text-2xl text-cyan-100 font-medium tracking-widest uppercase drop-shadow-md text-center">
-            Secure &bull; Intelligent &bull; Future-Ready ICT Solutions
-          </p>
-          
-        </div>
-      )}
+# Replace CyberCanvas
+pattern_canvas = re.compile(r'function CyberCanvas\(\) \{.*?(?=\n/\* ═══════════════════════════════════════════════════════════)', re.DOTALL)
+content = pattern_canvas.sub(new_canvas, content)
 
-      {/* ── SCROLL INDICATOR ── */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 opacity-40">
-        <span className="text-[9px] font-mono text-cyan-500 tracking-[.3em] uppercase">Scroll</span>
-        <ChevronDown className="w-4 h-4 text-cyan-500 animate-bounce" />
-      </div>
-    </section>
-  );
-}
+# Replace Logo Container
+pattern_logo = re.compile(r'\{\/\* LOGO CONTAINER \*\/\}.*?<\/div>', re.DOTALL)
+content = pattern_logo.sub(new_logo_container, content)
+
+with open(hero_path, 'w', encoding='utf-8') as f:
+    f.write(content)
+
+print("Hero.tsx successfully updated with SVG vector logo and teal 3D corridor canvas.")
