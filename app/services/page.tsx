@@ -134,7 +134,7 @@ export default function ServicesPage() {
               Our <span className="text-cyan-400">Services</span>
             </h2>
             <p className="text-slate-400 text-lg max-w-2xl mx-auto">
-              Hover over each segment to explore our enterprise ICT services
+              Tap or hover over each segment to explore our enterprise ICT services
             </p>
           </div>
 
@@ -249,7 +249,7 @@ export default function ServicesPage() {
                     {services[activeIndex].description}
                   </p>
                   <Link
-                    href="/contact"
+                    href={`/services/${services[activeIndex].slug}`}
                     className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white rounded-xl font-black uppercase tracking-widest transition-all transform hover:scale-105 text-sm shadow-lg"
                   >
                     Learn More <ArrowRight className="w-4 h-4" />
@@ -308,7 +308,7 @@ export default function ServicesPage() {
                     <Icon className="w-6 h-6 text-cyan-400 stroke-[1.5]" />
                   </div>
                   <div>
-                    <h3 className="text-base font-black text-white uppercase tracking-tight mb-2">⭕ {svc.title}</h3>
+                    <h3 className="text-base font-black text-white uppercase tracking-tight mb-2">{svc.title}</h3>
                     <p className="text-sm text-slate-500 leading-relaxed">{svc.description}</p>
                   </div>
                 </div>

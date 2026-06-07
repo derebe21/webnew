@@ -135,7 +135,7 @@ export default function SolutionsPage() {
               Our <span className="text-cyan-400">Solutions</span>
             </h2>
             <p className="text-slate-400 text-lg max-w-2xl mx-auto">
-              Hover over each segment to explore our enterprise technology solutions
+              Tap or hover over each segment to explore our enterprise technology solutions
             </p>
           </div>
 
@@ -286,7 +286,7 @@ export default function SolutionsPage() {
                     Select a Solution
                   </h3>
                   <p className="text-slate-600 text-sm leading-relaxed mb-8">
-                    Hover over any segment of the circle to explore ITSEC Technology enterprise solutions.
+                    Tap or hover over any segment of the circle to explore ITSEC Technology enterprise solutions.
                   </p>
                   {/* Quick-access list */}
                   <div className="grid grid-cols-2 gap-2">

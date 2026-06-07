@@ -48,7 +48,7 @@ export const servicesData: Service[] = [
             'Security Assessments: Auditing, penetration testing, and AI-driven threat analysis for proactive defense.',
             'Endpoint & Network Protection: Comprehensive security layering for users, servers, and infrastructure.'
         ],
-        benefits: [],
+        benefits: ['Reduced breach risk', '24/7 threat monitoring', 'Regulatory compliance', 'Proactive defense posture'],
     },
     {
         slug: 'digital-infrastructure',
@@ -66,7 +66,7 @@ export const servicesData: Service[] = [
             'High Availability: Redundancy, load balancing, and real-time monitoring to ensure zero-disruption operations.',
             'Digital Transformation: Scalable ICT foundations built for enterprise-grade growth and regulatory compliance.'
         ],
-        benefits: [],
+        benefits: ['99.99% network uptime', 'Scalable bandwidth', 'Reduced latency', 'Enterprise-grade reliability'],
     },
     {
         slug: 'data-center-solutions',
@@ -84,7 +84,7 @@ export const servicesData: Service[] = [
             'Power & Cooling: Redundant power systems and precision cooling for equipment integrity.',
             'Disaster Recovery: Business continuity planning and automated failover for critical facility operations.'
         ],
-        benefits: [],
+        benefits: ['High availability', 'Optimized cooling efficiency', 'Rapid disaster recovery', 'Scalable storage'],
     },
     {
         slug: 'cloud-virtualization',
@@ -102,7 +102,7 @@ export const servicesData: Service[] = [
             'Virtualization Platforms: High-density server and desktop virtualization for resource efficiency.',
             'Disaster Recovery & Backup: Robust data protection systems ensuring seamless business continuity.'
         ],
-        benefits: [],
+        benefits: ['Reduced infrastructure costs', 'Elastic scalability', 'Faster deployment', 'Seamless migration'],
     },
     {
         slug: 'unified-communications',
@@ -120,7 +120,7 @@ export const servicesData: Service[] = [
             'Scalable Communication Networks: Reliable and expandable networks supporting voice, video, and data traffic.',
             'Infrastructure Integration: Seamless connection of communication systems with existing enterprise IT environments.'
         ],
-        benefits: [],
+        benefits: ['Seamless collaboration', 'Reduced communication costs', 'Remote-ready infrastructure', 'Unified platform'],
         partners: [
             { name: 'Cisco', logo: '/images/ciscoo.png', url: 'https://www.cisco.com/c/en/us/solutions/collaboration/index.html', color: '1BA0D7', description: 'Comprehensive collaboration, IP telephony, and video conferencing.' },
             { name: 'Dinstar', logo: '/images/partners/dinstar_new_v2.png', url: 'https://www.dinstar.com/', description: 'IP unified communications and VoIP gateway solutions.' },
@@ -144,7 +144,7 @@ export const servicesData: Service[] = [
             'Video Analytics & AI: Proactive monitoring with automated object recognition and security alerts.',
             'Access Control: Hardware-software integration for managed facility entry and real-time reporting.'
         ],
-        benefits: [],
+        benefits: ['Real-time threat detection', 'Centralized monitoring', 'Reduced security incidents', 'AI-powered analytics'],
     },
     {
         slug: 'smart-systems',
@@ -162,7 +162,7 @@ export const servicesData: Service[] = [
             'Energy Management: Automated controls designed for operational efficiency and sustainability.',
             'Intelligent Security: AI-driven surveillance and automated facility response systems.'
         ],
-        benefits: [],
+        benefits: ['Energy savings up to 40%', 'Automated facility control', 'Real-time IoT analytics', 'Predictive maintenance'],
     },
     {
         slug: 'technology-advisory',
@@ -180,7 +180,7 @@ export const servicesData: Service[] = [
             'ICT Strategy Consulting: Aligning technology solutions with long-term organizational goals.',
             'Support & Maintenance: 24/7 technical assistance with specialized SLA-based service contracts.'
         ],
-        benefits: [],
+        benefits: ['Aligned IT strategy', 'Faster digital transformation', 'Cost-optimized solutions', 'Expert guidance'],
     },
     {
         slug: 'engineering-critical',
@@ -200,14 +200,14 @@ export const servicesData: Service[] = [
             'Facility Engineering Support: Expert installation, configuration, and integration of critical systems.',
             'Monitoring & Performance Enhancement: Continuous oversight and optimization of infrastructure performance.'
         ],
-        benefits: [],
+        benefits: ['Zero-downtime power', 'Redundant failover systems', 'Precision environmental control', 'Operational safety'],
     },
     {
         slug: 'support-maintenance',
         icon: Wrench,
-        logoImage: '/images/enterprise-apps-logo.png', // Fallback, could be updated later
+        logoImage: '/images/enterprise-apps-logo.png',
         sidebarImage: '',
-        bannerImage: '/images/custom-enterprise-v2.jpg', // Fallback
+        bannerImage: '/images/custom-enterprise-v2.jpg',
         bgColor: '#3B82F6',
         title: 'Support & Maintenance Services',
         description: 'Preventive maintenance, technical support, monitoring, updates, and SLA-based support services.',
@@ -218,6 +218,6 @@ export const servicesData: Service[] = [
             'SLA-Based Contracts: Guaranteed response times and resolution metrics.',
             'System Updates & Patching: Continuous security and feature updates across all infrastructure.'
         ],
-        benefits: [],
+        benefits: ['Guaranteed SLA response', 'Preventive issue detection', 'Continuous system updates', 'Dedicated helpdesk'],
     }
 ];

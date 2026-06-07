@@ -177,7 +177,7 @@ export function Contact() {
                   <ShieldAlert className="w-4 h-4 mr-2 hidden sm:inline" /> Support
                 </TabsTrigger>
                 <TabsTrigger value="projects" className="rounded-xl py-3 border-2 border-transparent data-[state=active]:bg-emerald-600 data-[state=active]:text-white data-[state=active]:shadow-lg hover:bg-slate-800/40 transition-all font-bold uppercase text-xs tracking-wider data-[state=inactive]:text-slate-400 data-[state=inactive]:bg-transparent">
-                  <BadgeCheck className="w-4 h-4 mr-2 hidden sm:inline" /> Contact
+                  <BadgeCheck className="w-4 h-4 mr-2 hidden sm:inline" /> Projects
                 </TabsTrigger>
                 <TabsTrigger value="sales" className="rounded-xl py-3 border-2 border-transparent data-[state=active]:bg-amber-600 data-[state=active]:text-white data-[state=active]:shadow-lg hover:bg-slate-800/40 transition-all font-bold uppercase text-xs tracking-wider data-[state=inactive]:text-slate-400 data-[state=inactive]:bg-transparent">
                   <BarChart3 className="w-4 h-4 mr-2 hidden sm:inline" /> Sales
