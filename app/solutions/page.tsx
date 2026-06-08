@@ -90,7 +90,7 @@ function describeSlice(cx: number, cy: number, outerR: number, innerR: number, s
 
 // Two alternating shades of blue
 const sliceColors = ['#1d4ed8', '#1e40af'];
-const sliceActiveColor = '#0e7490';
+const sliceActiveColor = '#1d4ed8';
 
 export default function SolutionsPage() {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
@@ -110,13 +110,13 @@ export default function SolutionsPage() {
         <div className="relative z-10 max-w-5xl mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-6xl font-black text-white uppercase tracking-tighter italic mb-6">
             Intelligent Enterprise<br />
-            <span className="text-cyan-400">Technology Solutions</span>
+            <span className="text-blue-400">Technology Solutions</span>
           </h1>
           <p className="text-lg text-slate-300 max-w-3xl mx-auto leading-relaxed mb-10">
             Delivering secure, scalable, and future-ready technology solutions that empower organizations through cybersecurity, cloud infrastructure, intelligent automation, and digital transformation.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link href="/contact" className="px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white rounded-xl font-black uppercase tracking-widest transition-all transform hover:scale-105 hover:shadow-[0_0_30px_rgba(34,211,238,0.4)]">
+            <Link href="/contact" className="px-8 py-4 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-400 hover:to-blue-500 text-white rounded-xl font-black uppercase tracking-widest transition-all transform hover:scale-105 hover:shadow-[0_0_30px_rgba(34,211,238,0.4)]">
               Request Consultation
             </Link>
             <Link href="#circle" className="px-8 py-4 bg-white/10 hover:bg-white/20 text-white backdrop-blur-md rounded-xl font-black uppercase tracking-widest transition-all border border-white/20">
@@ -130,9 +130,9 @@ export default function SolutionsPage() {
       <section id="circle" className="py-16 bg-slate-950">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-12">
-            <div className="w-16 h-1 bg-cyan-400 mx-auto mb-6 rounded-full" />
+            <div className="w-16 h-1 bg-blue-400 mx-auto mb-6 rounded-full" />
             <h2 className="text-3xl md:text-4xl font-black text-white uppercase tracking-tight mb-4">
-              Our <span className="text-cyan-400">Solutions</span>
+              Our <span className="text-blue-400">Solutions</span>
             </h2>
             <p className="text-slate-400 text-lg max-w-2xl mx-auto">
               Tap or hover over each segment to explore our enterprise technology solutions
@@ -200,7 +200,7 @@ export default function SolutionsPage() {
                         cy={iconPos.y}
                         r="18"
                         fill="rgba(255,255,255,0.12)"
-                        stroke={isActive ? '#22d3ee' : 'rgba(255,255,255,0.2)'}
+                        stroke={isActive ? '#3b82f6' : 'rgba(255,255,255,0.2)'}
                         strokeWidth="1"
                         style={{ transition: 'stroke 0.3s ease' }}
                       />
@@ -210,7 +210,7 @@ export default function SolutionsPage() {
                         y={textPos1.y}
                         textAnchor="middle"
                         dominantBaseline="middle"
-                        fill={isActive ? '#22d3ee' : 'white'}
+                        fill={isActive ? '#3b82f6' : 'white'}
                         fontSize="10"
                         fontWeight="700"
                         fontFamily="sans-serif"
@@ -243,7 +243,7 @@ export default function SolutionsPage() {
 
                 {/* Shield icon in center */}
                 <g transform={`translate(${cx - 22}, ${cy - 26})`}>
-                  <path d="M22 2L4 9v11c0 10.2 7.8 19.7 18 22 10.2-2.3 18-11.8 18-22V9L22 2z" fill="#22d3ee" opacity="0.85" />
+                  <path d="M22 2L4 9v11c0 10.2 7.8 19.7 18 22 10.2-2.3 18-11.8 18-22V9L22 2z" fill="#3b82f6" opacity="0.85" />
                   <path d="M22 9L10 14v6c0 6 4.6 11.7 12 13.2C29.4 31.7 34 26 34 20v-6L22 9z" fill="#0e7490" />
                   <path d="M17 21l4 4 8-8" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
                 </g>
@@ -256,14 +256,14 @@ export default function SolutionsPage() {
             {/* Info Panel */}
             <div className="w-full lg:max-w-[420px]">
               {activeIndex !== null ? (
-                <div className="bg-slate-900 border border-cyan-500/30 rounded-2xl p-8 shadow-[0_0_40px_rgba(34,211,238,0.08)] animate-fade-in">
-                  <div className="w-16 h-16 rounded-full bg-blue-900/40 border border-cyan-500/30 flex items-center justify-center mb-6 shadow-inner">
+                <div className="bg-slate-900 border border-blue-500/30 rounded-2xl p-8 shadow-[0_0_40px_rgba(34,211,238,0.08)] animate-fade-in">
+                  <div className="w-16 h-16 rounded-full bg-blue-900/40 border border-blue-500/30 flex items-center justify-center mb-6 shadow-inner">
                     {(() => {
                       const Icon = solutions[activeIndex].icon;
-                      return <Icon className="w-8 h-8 text-cyan-400 stroke-[1.5]" />;
+                      return <Icon className="w-8 h-8 text-blue-400 stroke-[1.5]" />;
                     })()}
                   </div>
-                  <div className="w-10 h-0.5 bg-cyan-400 mb-5 rounded-full" />
+                  <div className="w-10 h-0.5 bg-blue-400 mb-5 rounded-full" />
                   <h3 className="text-2xl font-black text-white mb-4 uppercase tracking-tight leading-tight">
                     {solutions[activeIndex].fullTitle}
                   </h3>
@@ -272,7 +272,7 @@ export default function SolutionsPage() {
                   </p>
                   <Link
                     href="/contact"
-                    className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white rounded-xl font-black uppercase tracking-widest transition-all transform hover:scale-105 text-sm shadow-lg"
+                    className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-400 hover:to-blue-500 text-white rounded-xl font-black uppercase tracking-widest transition-all transform hover:scale-105 text-sm shadow-lg"
                   >
                     Learn More <ArrowRight className="w-4 h-4" />
                   </Link>
@@ -298,9 +298,9 @@ export default function SolutionsPage() {
                           onMouseEnter={() => setActiveIndex(i)}
                           onMouseLeave={() => setActiveIndex(null)}
                           onClick={() => setActiveIndex(i)}
-                          className="flex items-center gap-2 p-3 rounded-xl bg-slate-800/50 hover:bg-slate-800 border border-slate-700 hover:border-cyan-500/30 transition-all text-left group"
+                          className="flex items-center gap-2 p-3 rounded-xl bg-slate-800/50 hover:bg-slate-800 border border-slate-700 hover:border-blue-500/30 transition-all text-left group"
                         >
-                          <Icon className="w-4 h-4 text-cyan-400 shrink-0 stroke-[1.5]" />
+                          <Icon className="w-4 h-4 text-blue-400 shrink-0 stroke-[1.5]" />
                           <span className="text-xs text-slate-400 group-hover:text-white transition-colors font-medium leading-tight">{sol.title}</span>
                         </button>
                       );
@@ -317,18 +317,18 @@ export default function SolutionsPage() {
       <section className="py-16 bg-slate-900">
         <div className="max-w-5xl mx-auto px-4">
           <div className="text-center mb-12">
-            <div className="w-16 h-1 bg-cyan-400 mx-auto mb-6 rounded-full" />
+            <div className="w-16 h-1 bg-blue-400 mx-auto mb-6 rounded-full" />
             <h2 className="text-3xl font-black text-white uppercase tracking-tight mb-4">
-              Solutions <span className="text-cyan-400">Overview</span>
+              Solutions <span className="text-blue-400">Overview</span>
             </h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {solutions.map((sol, i) => {
               const Icon = sol.icon;
               return (
-                <div key={i} className="flex items-start gap-5 p-6 rounded-2xl bg-slate-950 border border-slate-800 hover:border-cyan-500/30 transition-all group">
-                  <div className="w-12 h-12 rounded-full bg-blue-900/30 border border-blue-800/50 flex items-center justify-center shrink-0 group-hover:border-cyan-500/40 transition-colors">
-                    <Icon className="w-6 h-6 text-cyan-400 stroke-[1.5]" />
+                <div key={i} className="flex items-start gap-5 p-6 rounded-2xl bg-slate-950 border border-slate-800 hover:border-blue-500/30 transition-all group">
+                  <div className="w-12 h-12 rounded-full bg-blue-900/30 border border-blue-800/50 flex items-center justify-center shrink-0 group-hover:border-blue-500/40 transition-colors">
+                    <Icon className="w-6 h-6 text-blue-400 stroke-[1.5]" />
                   </div>
                   <div>
                     <h3 className="text-base font-black text-white uppercase tracking-tight mb-2">{sol.fullTitle}</h3>
@@ -349,7 +349,7 @@ export default function SolutionsPage() {
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
           <h2 className="text-3xl md:text-5xl font-black text-white uppercase tracking-tighter italic mb-6">
             Ready to Transform Your<br />
-            <span className="text-cyan-400">Enterprise Infrastructure?</span>
+            <span className="text-blue-400">Enterprise Infrastructure?</span>
           </h2>
           <p className="text-lg text-slate-300 mb-12 font-medium leading-relaxed max-w-2xl mx-auto">
             Contact ITSEC Technology for secure, intelligent, and scalable enterprise technology solutions tailored to your business needs.
