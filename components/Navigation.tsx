@@ -51,7 +51,7 @@ export function Navigation() {
               <img
                 src="https://res.cloudinary.com/dlc8bgysp/image/upload/e_make_transparent/v1767612094/logo_fn47rb.png"
                 alt="ITSEC Technology"
-                className="relative w-6 h-6 md:w-7 md:h-7 object-contain brightness-0 invert group-hover:scale-110 transition-transform duration-300"
+                className="relative w-6 h-6 md:w-7 md:h-7 object-contain group-hover:scale-110 transition-transform duration-300"
               />
             </div>
             <div className="flex flex-col leading-none">
