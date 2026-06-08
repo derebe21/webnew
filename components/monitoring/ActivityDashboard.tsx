@@ -73,7 +73,7 @@ export function ActivityDashboard() {
         <Card className="bg-white border-slate-200 shadow-sm hover:shadow-md transition-shadow">
           <CardHeader className="flex flex-row items-center justify-between pb-2">
             <CardTitle className="text-sm font-bold text-slate-500 uppercase">Total Requests</CardTitle>
-            <Mail className="w-4 h-4 text-purple-600" />
+            <Mail className="w-4 h-4 text-indigo-800" />
           </CardHeader>
           <CardContent>
             <div className="text-3xl font-black text-slate-900">{stats.totalEmails}</div>
