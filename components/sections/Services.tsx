@@ -77,17 +77,6 @@ export function Services({ variant = 'grid' }: ServicesProps) {
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16 text-center">
-        {/* Pulsing Badge */}
-        <div className="flex items-center gap-2.5 w-fit px-4 py-2 rounded-full border border-itsec-primary/30 bg-cyan-950/20 backdrop-blur-md mx-auto mb-6">
-          <span className="relative flex h-2 w-2">
-            <span className="animate-ping absolute inset-0 rounded-full bg-itsec-primary opacity-70"/>
-            <span className="relative rounded-full h-2 w-2 bg-itsec-primary"/>
-          </span>
-          <span className="text-[10px] font-bold text-itsec-primary tracking-[0.2em] uppercase">
-            Core Expertise & Solutions
-          </span>
-        </div>
-
         <h2 className="text-4xl md:text-5xl font-black text-white tracking-tighter uppercase italic mb-6" style={{fontFamily:'var(--font-montserrat,Montserrat,sans-serif)'}}>
           OUR <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">SERVICES</span>
         </h2>

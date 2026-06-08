@@ -22,7 +22,7 @@ export function News() {
     const styles: Record<string, { text: string; border: string; bg: string }> = {
       'Company News':  { text: 'text-itsec-primary',   border: 'border-itsec-primary/30',   bg: 'bg-itsec-primary/10' },
       'Partnership':   { text: 'text-emerald-400', border: 'border-emerald-500/30', bg: 'bg-emerald-500/10' },
-      'Solutions':     { text: 'text-purple-400',  border: 'border-purple-500/30',  bg: 'bg-purple-500/10' },
+      'Solutions':     { text: 'text-indigo-300',  border: 'border-indigo-700/40',  bg: 'bg-indigo-900/20' },
       'Case Study':    { text: 'text-amber-400',   border: 'border-amber-500/30',   bg: 'bg-amber-500/10' },
       'Event':         { text: 'text-rose-400',    border: 'border-rose-500/30',    bg: 'bg-rose-500/10' },
     };
@@ -55,17 +55,6 @@ export function News() {
 
         {/* ── HEADER ────────────────────────────────── */}
         <div className="text-center max-w-4xl mx-auto mb-16">
-          <div className="flex items-center gap-2.5 w-fit px-4 py-2 rounded-full border border-itsec-primary/30 bg-cyan-950/20 backdrop-blur-md mx-auto mb-6">
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inset-0 rounded-full bg-itsec-primary opacity-70"/>
-              <span className="relative rounded-full h-2 w-2 bg-itsec-primary"/>
-            </span>
-            <Newspaper className="w-3.5 h-3.5 text-itsec-primary" />
-            <span className="text-[10px] font-bold text-itsec-primary tracking-[0.2em] uppercase">
-              Latest Updates
-            </span>
-          </div>
-
           <h2 className="text-4xl md:text-5xl font-black text-white tracking-tighter uppercase italic mb-6"
               style={{fontFamily:'var(--font-montserrat,Montserrat,sans-serif)'}}>
             News &amp;{' '}
