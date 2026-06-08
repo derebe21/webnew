@@ -55,7 +55,7 @@ export function Navigation() {
               />
             </div>
             <div className="flex flex-col leading-none">
-              <span className="font-black text-sm md:text-base text-white tracking-[0.18em] whitespace-nowrap"
+              <span className="font-black text-sm md:text-base text-blue-400 tracking-[0.18em] whitespace-nowrap"
                     style={{fontFamily:'var(--font-montserrat,Montserrat,sans-serif)'}}>
                 ITSEC TECHNOLOGY
               </span>
