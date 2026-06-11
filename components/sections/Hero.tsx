@@ -59,11 +59,6 @@ export function Hero() {
 
       </div>
 
-      {/* ── SCROLL INDICATOR ── */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-30 flex flex-col items-center gap-2 opacity-70 hover:opacity-100 transition-opacity cursor-pointer">
-        <span className="text-[10px] font-mono text-cyan-300 tracking-[0.35em] uppercase">Scroll to explore</span>
-        <ChevronDown className="w-6 h-6 text-cyan-400 animate-bounce drop-shadow-[0_0_10px_rgba(34,211,238,1)]" />
-      </div>
     </section>
   );
 }
