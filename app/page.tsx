@@ -1,6 +1,5 @@
 'use client';
 
-import { Hero } from '@/components/sections/Hero';
 import { Services } from '@/components/sections/Services';
 import { About } from '@/components/sections/About';
 import { Products } from '@/components/sections/Products';
@@ -13,7 +12,6 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
-      <Hero />
       <About />
       <Services variant="grid" />
       <Products />
