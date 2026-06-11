@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 
 const SLIDES = [
-  '/images/cyber-security-world-bg.jpg',
+  '/images/CS.png',
   '/images/datacenter-server-racks-bg.jpg',
   '/images/integrated-security-surveillance-bg.jpg',
 ];
