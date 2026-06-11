@@ -3,39 +3,11 @@
 import { useEffect, useState } from 'react';
 import { ChevronDown, Shield, Server, Lock } from 'lucide-react';
 
-const SCENES = [
-  {
-    image: '/images/cyber-security-world-bg.jpg',
-    title: 'Cybersecurity',
-    subtitle: 'Global Protection',
-    icon: <Shield className="w-8 h-8 text-cyan-400" />
-  },
-  {
-    image: '/images/datacenter-server-racks-bg.jpg',
-    title: 'Data Center',
-    subtitle: 'Enterprise Infrastructure',
-    icon: <Server className="w-8 h-8 text-blue-400" />
-  },
-  {
-    image: '/images/integrated-security-surveillance-bg.jpg',
-    title: 'Security Systems',
-    subtitle: 'Integrated Surveillance',
-    icon: <Lock className="w-8 h-8 text-indigo-400" />
-  }
-];
-
-const SCENE_DURATION = 4000; // 4 seconds per scene
-
 export function Hero() {
   const [mounted, setMounted] = useState(false);
-  const [activeScene, setActiveScene] = useState(0);
 
   useEffect(() => {
     setMounted(true);
-    const interval = setInterval(() => {
-      setActiveScene((prev) => (prev + 1) % SCENES.length);
-    }, SCENE_DURATION);
-    return () => clearInterval(interval);
   }, []);
 
   if (!mounted) return <section className="min-h-screen bg-[#020611]" />;
@@ -45,27 +17,29 @@ export function Hero() {
       id="home"
       className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#020611] font-sans"
     >
-      {/* ── VIDEO ANIMATION BACKGROUNDS ── */}
-      {SCENES.map((scene, index) => (
-        <div 
-          key={index}
-          className={`absolute inset-0 transition-opacity duration-1000 ${
-            activeScene === index ? 'opacity-100 z-0' : 'opacity-0 -z-10'
-          }`}
+      {/* ── ACTUAL VIDEO BACKGROUND ── */}
+      <div className="absolute inset-0 z-0">
+        {/* We use a video tag here. The poster image shows while the video loads. 
+            Replace the src below with your actual video URL or local path (e.g., '/videos/my-video.mp4') */}
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          poster="/images/cyber-security-world-bg.jpg"
+          className="absolute inset-0 w-full h-full object-cover opacity-80"
         >
-          {/* Ken Burns effect: slow zoom while active */}
-          <div 
-            className="absolute inset-0 bg-cover bg-center transition-transform ease-out"
-            style={{ 
-              backgroundImage: `url(${scene.image})`,
-              transform: activeScene === index ? 'scale(1.1)' : 'scale(1)',
-              transitionDuration: '10s' 
-            }} 
+          {/* Using a reliable free tech background video as a placeholder */}
+          <source 
+            src="https://cdn.pixabay.com/video/2020/03/10/33429-397266937_large.mp4" 
+            type="video/mp4" 
           />
-          {/* Subtle gradient overlay to ensure text readability */}
-          <div className="absolute inset-0 bg-[#020611]/30 backdrop-blur-[2px]" />
-        </div>
-      ))}
+          Your browser does not support the video tag.
+        </video>
+        
+        {/* Overlay to ensure text readability */}
+        <div className="absolute inset-0 bg-[#020611]/40 backdrop-blur-[2px]" />
+      </div>
 
       {/* Edge Gradients */}
       <div className="absolute top-0 inset-x-0 h-32 bg-gradient-to-b from-[#020611] to-transparent z-[1] pointer-events-none" />
@@ -74,7 +48,7 @@ export function Hero() {
       {/* ── FOREGROUND CONTENT ── */}
       <div className="absolute inset-0 flex flex-col items-center justify-center z-10 px-4 w-full max-w-5xl mx-auto mt-16">
         
-        <div className="flex flex-col items-center text-center">
+        <div className="flex flex-col items-center text-center animate-fade-up">
           
           {/* Logo element */}
           <div className="relative w-24 h-24 md:w-32 md:h-32 mb-8 animate-[spin_10s_linear_infinite]">
@@ -97,38 +71,32 @@ export function Hero() {
               Empowering Secure Digital Transformation
             </p>
 
-            {/* Dynamic Animated Sub-content based on current scene */}
-            <div className="flex flex-col items-center justify-center h-24">
-              {SCENES.map((scene, index) => (
-                <div 
-                  key={`content-${index}`}
-                  className={`absolute flex items-center gap-4 transition-all duration-700 ${
-                    activeScene === index ? 'opacity-100 transform translate-y-0' : 'opacity-0 transform translate-y-4 pointer-events-none'
-                  }`}
-                >
-                  <div className="p-3 bg-white/10 rounded-xl border border-white/20 backdrop-blur-md">
-                    {scene.icon}
-                  </div>
-                  <div className="text-left">
-                    <div className="text-white font-bold text-2xl">{scene.title}</div>
-                    <div className="text-cyan-100/70 text-sm tracking-wider uppercase">{scene.subtitle}</div>
-                  </div>
+            {/* Static feature row */}
+            <div className="flex flex-wrap items-center justify-center gap-6 md:gap-12 mt-8">
+              <div className="flex flex-col items-center gap-2">
+                <div className="p-3 bg-white/10 rounded-xl border border-white/20 backdrop-blur-md">
+                  <Shield className="w-6 h-6 text-cyan-400" />
                 </div>
-              ))}
+                <span className="text-cyan-50 font-medium text-sm tracking-widest uppercase">Cybersecurity</span>
+              </div>
+              <div className="flex flex-col items-center gap-2">
+                <div className="p-3 bg-white/10 rounded-xl border border-white/20 backdrop-blur-md">
+                  <Server className="w-6 h-6 text-blue-400" />
+                </div>
+                <span className="text-blue-50 font-medium text-sm tracking-widest uppercase">Data Center</span>
+              </div>
+              <div className="flex flex-col items-center gap-2">
+                <div className="p-3 bg-white/10 rounded-xl border border-white/20 backdrop-blur-md">
+                  <Lock className="w-6 h-6 text-indigo-400" />
+                </div>
+                <span className="text-indigo-50 font-medium text-sm tracking-widest uppercase">Security Systems</span>
+              </div>
             </div>
 
-            <div className="h-px w-48 bg-gradient-to-r from-transparent via-cyan-400 to-transparent mx-auto mt-8" />
+            <div className="h-px w-48 bg-gradient-to-r from-transparent via-cyan-400 to-transparent mx-auto mt-10" />
           </div>
 
         </div>
-      </div>
-
-      {/* ── PROGRESS BAR FOR VIDEO LOOP ── */}
-      <div className="absolute bottom-0 left-0 w-full h-1.5 bg-[#020611] z-20">
-        <div 
-          className="h-full bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-400 transition-all duration-[4000ms] ease-linear shadow-[0_0_10px_rgba(34,211,238,0.8)]"
-          style={{ width: `${((activeScene + 1) / SCENES.length) * 100}%` }}
-        />
       </div>
 
       {/* ── SCROLL INDICATOR ── */}
