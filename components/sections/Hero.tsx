@@ -17,14 +17,11 @@ export function Hero() {
       id="home"
       className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-[#020611] font-sans"
     >
-      {/* ── ONLY THIS CYBERSECURITY GLOBE IMAGE with Ken Burns zoom ── */}
-      <div className="absolute inset-0 z-0">
-        <div
-          className="absolute inset-0 bg-cover bg-center animate-ken-burns"
-          style={{ backgroundImage: `url('/images/cyber-security-world-bg.jpg')` }}
-        />
-        {/* Minimal overlay — just enough to read text */}
-        <div className="absolute inset-0 bg-[#020611]/45" />
+      {/* ── CLEAN ANIMATED GRID BACKGROUND (No Images) ── */}
+      <div className="absolute inset-0 z-0 bg-[#020611]">
+        <div className="absolute inset-0 bg-grid-animated opacity-20" />
+        {/* Subtle radial gradient to make the center glow slightly */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(34,211,238,0.05)_0%,transparent_60%)]" />
       </div>
 
       {/* Top & Bottom fades into site */}
