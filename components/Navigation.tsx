@@ -46,11 +46,12 @@ export function Navigation() {
 
           {/* ── LOGO ──────────────────────────────── */}
           <Link href="/" className="flex items-center gap-3 group flex-shrink-0">
-            <div className="relative w-9 h-9 md:w-10 md:h-10 rounded-xl bg-blue-600 border border-blue-500 flex items-center justify-center group-hover:bg-blue-500 transition-all duration-300 shadow-lg shadow-blue-600/30">
+            <div className="relative w-9 h-9 md:w-10 md:h-10 rounded-xl bg-gradient-to-br from-blue-600/25 to-cyan-500/20 border border-cyan-500/25 flex items-center justify-center group-hover:border-cyan-400/50 transition-all duration-300">
+              <div className="absolute inset-0 rounded-xl bg-cyan-400/5 group-hover:bg-cyan-400/15 transition-colors" />
               <img
                 src="https://res.cloudinary.com/dlc8bgysp/image/upload/e_make_transparent/v1767612094/logo_fn47rb.png"
                 alt="ITSEC Technology"
-                className="relative w-6 h-6 md:w-7 md:h-7 object-contain brightness-0 invert group-hover:scale-110 transition-transform duration-300"
+                className="relative w-6 h-6 md:w-7 md:h-7 object-contain group-hover:scale-110 transition-transform duration-300"
               />
             </div>
             <div className="flex flex-col leading-none">
