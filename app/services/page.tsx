@@ -9,61 +9,61 @@ import { useState } from 'react';
 const services = [
   {
     title: 'Cybersecurity Services',
-    description: 'Professional cybersecurity assessment, protection, monitoring, and security management services.',
+    description: 'Professional-grade security operations and policy enforcement to safeguard your digital assets.',
     icon: ShieldCheck,
     slug: 'cybersecurity',
   },
   {
     title: 'Network Infrastructure Services',
-    description: 'Enterprise network design, deployment, optimization, and infrastructure management services.',
+    description: 'End-to-end ICT infrastructure design and deployment for maximum efficiency, security, and reliability.',
     icon: Network,
     slug: 'digital-infrastructure',
   },
   {
     title: 'Data Center Services',
-    description: 'Data center infrastructure design, implementation, monitoring, and operational support services.',
+    description: 'Installation and configuration of high-availability data center facilities and virtualization platforms.',
     icon: Server,
     slug: 'data-center-solutions',
   },
   {
     title: 'Cloud & Virtualization Services',
-    description: 'Cloud deployment, virtualization, migration, and infrastructure management services.',
+    description: 'Cloud-ready platforms and virtualization solutions for scalability and resource optimization.',
     icon: Cloud,
     slug: 'cloud-virtualization',
   },
   {
     title: 'Unified Communications Services',
-    description: 'Integrated enterprise communication, collaboration, VoIP, and conferencing services.',
+    description: 'Integrated voice, video, messaging, and collaboration tools for seamless connectivity.',
     icon: Phone,
     slug: 'unified-communications',
   },
   {
     title: 'Integrated Security System Services',
-    description: 'Professional CCTV, access control, biometric, and intelligent security system implementation services.',
+    description: 'Physical and digital security integration for comprehensive site and facility protection.',
     icon: Camera,
     slug: 'integrated-security',
   },
   {
     title: 'Smart Systems & Automation Services',
-    description: 'Smart building integration, automation, IoT deployment, and intelligent monitoring services.',
+    description: 'Intelligent building automation, IoT integration, and smart environment solutions.',
     icon: Building2,
     slug: 'smart-systems',
   },
   {
     title: 'Technology Advisory & Consultancy Services',
-    description: 'ICT consulting, digital transformation advisory, systems integration, and technology planning services.',
+    description: 'Strategic ICT consultancy to align technology investments with your business goals.',
     icon: Lightbulb,
     slug: 'technology-advisory',
   },
   {
     title: 'Critical Power & Electrical Services',
-    description: 'UPS deployment, backup power integration, electrical infrastructure, and critical power management services.',
+    description: 'UPS, generator systems, and precision electrical engineering for critical facilities.',
     icon: Zap,
     slug: 'engineering-critical',
   },
   {
     title: 'Support & Maintenance Services',
-    description: 'Preventive maintenance, technical support, monitoring, updates, and SLA-based support services.',
+    description: 'Ongoing technical support, SLA-backed maintenance, and proactive infrastructure monitoring.',
     icon: Wrench,
     slug: 'support-maintenance',
   },
@@ -134,7 +134,7 @@ export default function ServicesPage() {
               Our <span className="text-blue-400">Services</span>
             </h2>
             <p className="text-slate-400 text-lg max-w-2xl mx-auto">
-              Tap or hover over each segment to explore our enterprise ICT services
+              Hover over any segment to explore or click to view full details
             </p>
           </div>
 
@@ -165,8 +165,8 @@ export default function ServicesPage() {
                   const line2 = words.slice(2).join(' ');
 
                   return (
+                    <Link href={`/services/${svc.slug}`} key={i}>
                     <g
-                      key={i}
                       style={{ cursor: 'pointer', transform: `translate(${pushX}px, ${pushY}px)`, transition: 'transform 0.3s ease' }}
                       onMouseEnter={() => setActiveIndex(i)}
                       onMouseLeave={() => setActiveIndex(null)}
@@ -216,6 +216,7 @@ export default function ServicesPage() {
                         </text>
                       )}
                     </g>
+                    </Link>
                   );
                 })}
 
@@ -268,18 +269,18 @@ export default function ServicesPage() {
                     {services.map((svc, i) => {
                       const Icon = svc.icon;
                       return (
-                        <button
-                          key={i}
-                          onMouseEnter={() => setActiveIndex(i)}
-                          onMouseLeave={() => setActiveIndex(null)}
-                          onClick={() => setActiveIndex(i)}
-                          className="flex items-center gap-2 p-3 rounded-xl bg-slate-800/50 hover:bg-slate-800 border border-slate-700 hover:border-blue-500/30 transition-all text-left group"
-                        >
-                          <Icon className="w-4 h-4 text-blue-400 shrink-0 stroke-[1.5]" />
-                          <span className="text-xs text-slate-400 group-hover:text-white transition-colors font-medium leading-tight">
-                            {svc.title.replace(' Services', '')}
-                          </span>
-                        </button>
+                        <Link key={i} href={`/services/${svc.slug}`}>
+                          <button
+                            onMouseEnter={() => setActiveIndex(i)}
+                            onMouseLeave={() => setActiveIndex(null)}
+                            className="w-full flex items-center gap-2 p-3 rounded-xl bg-slate-800/50 hover:bg-slate-800 border border-slate-700 hover:border-blue-500/30 transition-all text-left group"
+                          >
+                            <Icon className="w-4 h-4 text-blue-400 shrink-0 stroke-[1.5]" />
+                            <span className="text-xs text-slate-400 group-hover:text-white transition-colors font-medium leading-tight">
+                              {svc.title.replace(' Services', '')}
+                            </span>
+                          </button>
+                        </Link>
                       );
                     })}
                   </div>
@@ -303,7 +304,7 @@ export default function ServicesPage() {
             {services.map((svc, i) => {
               const Icon = svc.icon;
               return (
-                <div key={i} className="flex items-start gap-5 p-6 rounded-2xl bg-slate-950 border border-slate-800 hover:border-blue-500/30 transition-all group">
+                <Link href={`/services/${svc.slug}`} key={i} className="flex items-start gap-5 p-6 rounded-2xl bg-slate-950 border border-slate-800 hover:border-blue-500/30 hover:bg-slate-900 transition-all group">
                   <div className="w-12 h-12 rounded-full bg-blue-900/30 border border-blue-800/50 flex items-center justify-center shrink-0 group-hover:border-blue-500/40 transition-colors">
                     <Icon className="w-6 h-6 text-blue-400 stroke-[1.5]" />
                   </div>
@@ -311,7 +312,7 @@ export default function ServicesPage() {
                     <h3 className="text-base font-black text-white uppercase tracking-tight mb-2">{svc.title}</h3>
                     <p className="text-sm text-slate-500 leading-relaxed">{svc.description}</p>
                   </div>
-                </div>
+                </Link>
               );
             })}
           </div>
@@ -335,9 +336,64 @@ export default function ServicesPage() {
             <Link href="/contact" className="w-full sm:w-auto px-8 py-4 bg-white text-slate-900 hover:bg-slate-100 rounded-xl font-black uppercase tracking-widest transition-all transform hover:scale-105 shadow-xl">
               Contact Us
             </Link>
-            <Link href="/contact" className="w-full sm:w-auto px-8 py-4 bg-transparent hover:bg-white/10 text-white rounded-xl font-black uppercase tracking-widest transition-all border-2 border-white/20">
-              Request Consultation
+            <Link href="/solutions" className="w-full sm:w-auto px-8 py-4 bg-transparent hover:bg-white/10 text-white rounded-xl font-black uppercase tracking-widest transition-all border-2 border-white/20">
+              Explore Solutions
             </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Industry Verticals */}
+      <section className="py-20 bg-[#020617] border-t border-slate-800">
+        <div className="max-w-6xl mx-auto px-4 text-center">
+          <h2 className="text-3xl font-black text-white uppercase tracking-tight mb-4">
+            Industries <span className="text-blue-400">We Serve</span>
+          </h2>
+          <p className="text-slate-400 max-w-2xl mx-auto mb-12">
+            Delivering highly specialized, compliant, and resilient infrastructure across mission-critical sectors.
+          </p>
+          
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            <div className="p-8 rounded-2xl bg-slate-900/50 border border-slate-800 hover:border-blue-500/40 transition-all group relative overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-b from-blue-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+              <div className="relative z-10">
+                <div className="w-14 h-14 mx-auto rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center mb-4 group-hover:scale-110 group-hover:border-blue-400/50 group-hover:shadow-[0_0_20px_rgba(59,130,246,0.3)] transition-all duration-300">
+                  <Building2 className="w-7 h-7 text-blue-400" />
+                </div>
+                <h3 className="text-lg font-bold text-white mb-2 text-center">Government</h3>
+                <p className="text-xs text-slate-500 text-center">Sovereign infrastructure &amp; national security deployments.</p>
+              </div>
+            </div>
+            <div className="p-8 rounded-2xl bg-slate-900/50 border border-slate-800 hover:border-cyan-500/40 transition-all group relative overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-b from-cyan-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+              <div className="relative z-10">
+                <div className="w-14 h-14 mx-auto rounded-xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center mb-4 group-hover:scale-110 group-hover:border-cyan-400/50 group-hover:shadow-[0_0_20px_rgba(6,182,212,0.3)] transition-all duration-300">
+                  <ShieldCheck className="w-7 h-7 text-cyan-400" />
+                </div>
+                <h3 className="text-lg font-bold text-white mb-2 text-center">Financial</h3>
+                <p className="text-xs text-slate-500 text-center">Zero-Trust architectures for banks and fintech.</p>
+              </div>
+            </div>
+            <div className="p-8 rounded-2xl bg-slate-900/50 border border-slate-800 hover:border-indigo-500/40 transition-all group relative overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-b from-indigo-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+              <div className="relative z-10">
+                <div className="w-14 h-14 mx-auto rounded-xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center mb-4 group-hover:scale-110 group-hover:border-indigo-400/50 group-hover:shadow-[0_0_20px_rgba(99,102,241,0.3)] transition-all duration-300">
+                  <Network className="w-7 h-7 text-indigo-400" />
+                </div>
+                <h3 className="text-lg font-bold text-white mb-2 text-center">Telecom</h3>
+                <p className="text-xs text-slate-500 text-center">High-availability networking and data center ops.</p>
+              </div>
+            </div>
+            <div className="p-8 rounded-2xl bg-slate-900/50 border border-slate-800 hover:border-emerald-500/40 transition-all group relative overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-b from-emerald-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+              <div className="relative z-10">
+                <div className="w-14 h-14 mx-auto rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center mb-4 group-hover:scale-110 group-hover:border-emerald-400/50 group-hover:shadow-[0_0_20px_rgba(16,185,129,0.3)] transition-all duration-300">
+                  <Server className="w-7 h-7 text-emerald-400" />
+                </div>
+                <h3 className="text-lg font-bold text-white mb-2 text-center">Enterprise</h3>
+                <p className="text-xs text-slate-500 text-center">Scalable cloud and digital transformation.</p>
+              </div>
+            </div>
           </div>
         </div>
       </section>

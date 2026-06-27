@@ -12,18 +12,24 @@ export function Footer() {
     { label: 'About',   href: '/about' },
     { label: 'Services',href: '/services' },
     { label: 'Solutions',href: '/solutions' },
-    { label: 'Insights', href: '/#news' },
+    { label: 'Insights', href: '/insights' },
     { label: 'Contact', href: '/contact' },
   ];
 
   const socialLinks = [
-    { icon: Facebook,  href: 'https://facebook.com/ITSECTECHNOLOGY',           label: 'Facebook',   color: '#1877F2' },
-    { icon: Twitter,   href: 'https://x.com/ITSECTECHNOLOGY',                  label: 'X (Twitter)',color: '#1DA1F2' },
-    { icon: Linkedin,  href: 'https://linkedin.com/company/itsectechnology',    label: 'LinkedIn',   color: '#0A66C2' },
-    { icon: Instagram, href: 'https://instagram.com/ITSECTECHNOLOGY',           label: 'Instagram',  color: '#E1306C' },
+    { icon: Facebook,  href: 'https://facebook.com/ITSECTECHNOLOGY',        label: 'Facebook',    color: '#1877F2' },
+    { icon: Twitter,   href: 'https://x.com/ITSECTECHNOLOGY',               label: 'X (Twitter)', color: '#1DA1F2' },
+    { icon: Linkedin,  href: 'https://linkedin.com/company/itsectechnology', label: 'LinkedIn',    color: '#0A66C2' },
+    { icon: Instagram, href: 'https://instagram.com/ITSECTECHNOLOGY',        label: 'Instagram',   color: '#E1306C' },
   ];
 
-  const certBadges = ['ISO 27001', 'NIST', 'GDPR', 'CIS Controls', 'Zero-Trust'];
+  const certBadges = [
+    { label: 'ISO 27001', href: 'https://www.iso.org/isoiec-27001-information-security.html' },
+    { label: 'NIST', href: 'https://www.nist.gov/cyberframework' },
+    { label: 'GDPR', href: 'https://gdpr.eu/' },
+    { label: 'CIS Controls', href: 'https://www.cisecurity.org/controls' },
+    { label: 'Zero-Trust', href: 'https://www.ncsc.gov.uk/collection/zero-trust-architecture' }
+  ];
 
   return (
     <footer className="relative bg-[#020617] text-slate-300 overflow-hidden">
@@ -63,10 +69,13 @@ export function Footer() {
               Certified &amp; Compliant
             </div>
             {certBadges.map((badge) => (
-              <span key={badge}
-                className="px-3 py-1.5 text-[10px] font-bold rounded-lg border border-slate-800 bg-slate-900/60 text-slate-400 tracking-wider uppercase hover:border-cyan-500/40 hover:text-cyan-400 transition-colors cursor-default">
-                {badge}
-              </span>
+              <a key={badge.label}
+                 href={badge.href}
+                 target="_blank"
+                 rel="noopener noreferrer"
+                className="px-3 py-1.5 text-[10px] font-bold rounded-lg border border-slate-800 bg-slate-900/60 text-slate-400 tracking-wider uppercase hover:border-cyan-500/40 hover:text-cyan-400 hover:bg-slate-800/80 transition-all cursor-pointer">
+                {badge.label}
+              </a>
             ))}
           </div>
         </div>
@@ -114,10 +123,25 @@ export function Footer() {
                   aria-label={social.label}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group w-10 h-10 rounded-xl border border-slate-800 bg-slate-900/60 flex items-center justify-center hover:border-blue-500/40 hover:-translate-y-0.5 transition-all duration-300"
-                  style={{ '--brand': social.color } as React.CSSProperties}
+                  className="group w-11 h-11 rounded-xl border border-slate-800 bg-slate-900/60 flex items-center justify-center hover:-translate-y-1 transition-all duration-300"
+                  style={{
+                    '--brand-color': social.color,
+                  } as React.CSSProperties}
+                  onMouseEnter={(e) => {
+                    (e.currentTarget as HTMLElement).style.borderColor = social.color + '70';
+                    (e.currentTarget as HTMLElement).style.backgroundColor = social.color + '18';
+                    (e.currentTarget as HTMLElement).style.boxShadow = `0 0 16px ${social.color}40`;
+                  }}
+                  onMouseLeave={(e) => {
+                    (e.currentTarget as HTMLElement).style.borderColor = '';
+                    (e.currentTarget as HTMLElement).style.backgroundColor = '';
+                    (e.currentTarget as HTMLElement).style.boxShadow = '';
+                  }}
                 >
-                  <social.icon className="w-4 h-4 text-slate-500 group-hover:text-white transition-colors" />
+                  <social.icon
+                    className="w-4 h-4 transition-all duration-300 group-hover:scale-110"
+                    style={{ color: social.color }}
+                  />
                 </a>
               ))}
             </div>
@@ -141,7 +165,7 @@ export function Footer() {
               Our Services
             </h3>
             <ul className="space-y-2.5">
-              {servicesData.slice(0, 8).map((service, index) => (
+              {servicesData.slice(0, 10).map((service, index) => (
                 <li key={index}>
                   <Link
                     href={`/services/${service.slug}`}
@@ -244,9 +268,9 @@ export function Footer() {
               <Globe className="w-3 h-3" />
               <span>Addis Ababa, Ethiopia</span>
               <span className="mx-2 w-px h-3 bg-slate-800"/>
-              <Link href="#" className="hover:text-slate-300 transition-colors">Privacy Policy</Link>
+              <Link href="/privacy" className="hover:text-slate-300 transition-colors">Privacy Policy</Link>
               <span className="mx-2 w-px h-3 bg-slate-800"/>
-              <Link href="#" className="hover:text-slate-300 transition-colors">Terms of Service</Link>
+              <Link href="/terms" className="hover:text-slate-300 transition-colors">Terms of Service</Link>
             </div>
           </div>
         </div>

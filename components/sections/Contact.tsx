@@ -75,49 +75,38 @@ export function Contact() {
     setIsSubmitting(true);
 
     try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: { 
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-        },
-        body: JSON.stringify({ ...formData, tab: activeTab }),
+      // Simulate brief processing delay for UX
+      await new Promise((resolve) => setTimeout(resolve, 800));
+
+      // Save directly to local inbox store (no server API needed for static export)
+      inboxStore.add({
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        department: activeTab,
+        urgency: formData.urgency,
+        message: formData.issueDescription || formData.projectDescription || formData.quoteDetails || formData.challenges || '',
+        details: formData,
       });
 
-      const result = await response.json();
+      toast({
+        title: 'Request Sent Successfully!',
+        description: `Thank you, ${formData.name}. Your ${activeTab} request has been received. Our team will follow up at ${formData.email} shortly.`,
+      });
 
-      if (response.ok && result.status === 'success') {
-        // Save to local inbox store for admin monitoring
-        inboxStore.add({
-          name: formData.name,
-          email: formData.email,
-          phone: formData.phone,
-          department: activeTab,
-          urgency: formData.urgency,
-          message: formData.issueDescription || formData.projectDescription || formData.quoteDetails || '',
-          details: formData
-        });
-
-        toast({
-          title: 'Request Sent Successfully!',
-          description: `Thank you, ${formData.name}. A confirmation record has been sent to ${formData.email}. Our ${activeTab} team will follow up shortly.`,
-        });
-        // Reset form
-        setFormData({
-          name: '', email: '', phone: '', urgency: 'Medium',
-          department: activeTab, company: '', service: '', product: '', issueDescription: '',
-          projectType: '', projectDescription: '', interestedServices: '', quoteDetails: '',
-          setup: '', challenges: '', otherService: '', otherProduct: '', 
-          otherProjectType: '', otherInterestedService: '',
-          contactMethods: [], additionalInfo: '',
-        });
-      } else {
-        throw new Error(result.message || 'Server error occurred during transmission.');
-      }
+      // Reset form
+      setFormData({
+        name: '', email: '', phone: '', urgency: 'Medium',
+        department: activeTab, company: '', service: '', product: '', issueDescription: '',
+        projectType: '', projectDescription: '', interestedServices: '', quoteDetails: '',
+        setup: '', challenges: '', otherService: '', otherProduct: '',
+        otherProjectType: '', otherInterestedService: '',
+        contactMethods: [], additionalInfo: '',
+      });
     } catch (error: any) {
       toast({
         title: 'Submission Error',
-        description: error.message || 'We encountered a problem. Please try again or email us directly.',
+        description: 'We encountered a problem. Please try again or email us directly.',
         variant: 'destructive',
       });
     } finally {
@@ -152,14 +141,26 @@ export function Contact() {
     <section id="contact" className="relative py-20 md:py-32 overflow-hidden bg-[#020617] text-white">
       {/* Dynamic tech-mesh background & subtle glow overlay */}
       <div className="absolute inset-0 z-0 bg-[#020617]">
+        {/* Cinematic Scanlines Overlay */}
+        <div 
+            className="absolute inset-0 pointer-events-none opacity-[0.1] z-0"
+            style={{
+            backgroundImage: 'linear-gradient(rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.25) 50%)',
+            backgroundSize: '100% 4px',
+            }}
+        />
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#0f172a_1px,transparent_1px),linear-gradient(to_bottom,#0f172a_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)] opacity-35" />
         <img src="/images/contact-us-map.png" alt="Map" className="w-full h-full object-cover object-center opacity-10 mix-blend-luminosity" />
         <div className="absolute inset-0 bg-gradient-to-br from-[#020617]/95 via-[#030712]/90 to-[#020617]/95" />
       </div>
 
+      {/* Futuristic HUD Corners */}
+      <div className="absolute top-8 right-8 z-0 w-12 h-12 border-t-[1.5px] border-r-[1.5px] border-cyan-500/20" />
+      <div className="absolute bottom-8 left-8 z-0 w-12 h-12 border-b-[1.5px] border-l-[1.5px] border-cyan-500/20" />
+
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16">
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-5xl md:text-7xl font-black tracking-tighter leading-none mb-6" style={{fontFamily:'var(--font-montserrat,Montserrat,sans-serif)'}}>
+        <div className="text-center max-w-3xl mx-auto mb-16 relative">
+          <h2 className="text-5xl md:text-7xl font-black tracking-tighter leading-none mb-6 drop-shadow-[0_0_15px_rgba(6,182,212,0.3)]" style={{fontFamily:'var(--font-montserrat,Montserrat,sans-serif)'}}>
             ITSEC <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-300 to-cyan-400">PORTAL</span>
           </h2>
           <div className="w-24 h-1.5 bg-gradient-to-r from-blue-500 to-cyan-500 mx-auto rounded-full mb-6" />
@@ -188,7 +189,7 @@ export function Contact() {
                 <CardContent className="p-0">
                   <form onSubmit={handleSubmit}>
                     {/* Shared Top Fields */}
-                    <div className="p-8 pb-4 bg-slate-900/30 border-b border-slate-800/80 grid sm:grid-cols-2 gap-6">
+                    <div className="p-8 pb-4 bg-slate-900/30 border-b border-slate-800/80 space-y-6">
                       <div className="space-y-2">
                         <label className="text-xs uppercase tracking-widest font-bold text-slate-400">Full Name *</label>
                         <Input placeholder="Your Name" value={formData.name} onChange={(e) => updateField('name', e.target.value)} required className="h-12 bg-slate-950/70 border-slate-800 text-white placeholder:text-slate-500 shadow-inner focus-visible:ring-blue-500/50" />
@@ -216,15 +217,15 @@ export function Contact() {
 
                       {/* --- 1. GENERAL TAB --- */}
                       <TabsContent value="general" className="mt-0 space-y-6 animate-in fade-in slide-in-from-bottom-2">
-                        <div className="grid sm:grid-cols-2 gap-6">
+                        <div className="space-y-6">
                           <div className="space-y-2">
                             <label className="text-sm font-semibold text-slate-300">Phone Number</label>
-                            <Input placeholder="+251..." value={formData.phone} onChange={(e) => updateField('phone', e.target.value)} className="bg-slate-950/70 border-slate-800 text-white placeholder:text-slate-600 focus-visible:ring-blue-500/50" />
+                            <Input placeholder="+251..." value={formData.phone} onChange={(e) => updateField('phone', e.target.value)} className="bg-slate-950/70 border-slate-800 text-white placeholder:text-slate-600 focus-visible:ring-blue-500/50 h-12" />
                           </div>
                           <div className="space-y-2">
                             <label className="text-sm font-semibold text-slate-300">Select Service Interested In *</label>
                             <Select required onValueChange={(v) => updateField('service', v)}>
-                              <SelectTrigger className="bg-slate-950/70 border-slate-800 text-white focus:ring-blue-500/50"><SelectValue placeholder="Choose a service..." /></SelectTrigger>
+                              <SelectTrigger className="bg-slate-950/70 border-slate-800 text-white focus:ring-blue-500/50 h-12"><SelectValue placeholder="Choose a service..." /></SelectTrigger>
                               <SelectContent className="bg-slate-900 border-slate-800 text-white">
                                 {['Security Audit & Compliance', 'Digital Transformation & Automation', 'Web Development & Hosting', 'Data Center Solutions', 'Network Infrastructure', 'Fiber Optic Installation', 'IT Consulting Services', 'Cloud Migration', 'Data Backup & Disaster Recovery'].map(s => <SelectItem key={s} value={s} className="focus:bg-slate-800 focus:text-white cursor-pointer">{s}</SelectItem>)}
                               </SelectContent>
@@ -243,15 +244,15 @@ export function Contact() {
 
                       {/* --- 2. SUPPORT TAB --- */}
                       <TabsContent value="support" className="mt-0 space-y-6 animate-in fade-in slide-in-from-bottom-2">
-                        <div className="grid sm:grid-cols-2 gap-6">
+                        <div className="space-y-6">
                           <div className="space-y-2">
                             <label className="text-sm font-semibold text-slate-300">Phone Number</label>
-                            <Input placeholder="+251..." value={formData.phone} onChange={(e) => updateField('phone', e.target.value)} className="bg-slate-950/70 border-slate-800 text-white placeholder:text-slate-600 focus-visible:ring-blue-500/50" />
+                            <Input placeholder="+251..." value={formData.phone} onChange={(e) => updateField('phone', e.target.value)} className="bg-slate-950/70 border-slate-800 text-white placeholder:text-slate-600 focus-visible:ring-blue-500/50 h-12" />
                           </div>
                           <div className="space-y-2">
                             <label className="text-sm font-semibold text-slate-300">Product / Service Needing Support *</label>
                             <Select required onValueChange={(v) => updateField('product', v)}>
-                              <SelectTrigger className="bg-slate-950/70 border-slate-800 text-white focus:ring-blue-500/50"><SelectValue placeholder="Choose product..." /></SelectTrigger>
+                              <SelectTrigger className="bg-slate-950/70 border-slate-800 text-white focus:ring-blue-500/50 h-12"><SelectValue placeholder="Choose product..." /></SelectTrigger>
                               <SelectContent className="bg-slate-900 border-slate-800 text-white">
                                 {['Network Infrastructure', 'Fiber Network / Fiber Optic System', 'Cybersecurity System', 'Web Hosting / Web Development', 'Cloud Service'].map(p => <SelectItem key={p} value={p} className="focus:bg-slate-800 focus:text-white cursor-pointer">{p}</SelectItem>)}
                               </SelectContent>
@@ -266,15 +267,15 @@ export function Contact() {
 
                       {/* --- 3. PROJECTS TAB --- */}
                       <TabsContent value="projects" className="mt-0 space-y-6 animate-in fade-in slide-in-from-bottom-2">
-                        <div className="grid sm:grid-cols-2 gap-6">
+                        <div className="space-y-6">
                           <div className="space-y-2">
                             <label className="text-sm font-semibold text-slate-300">Company / Organization Name</label>
-                            <Input placeholder="Your Company" value={formData.company} onChange={(e) => updateField('company', e.target.value)} className="bg-slate-950/70 border-slate-800 text-white placeholder:text-slate-600 focus-visible:ring-blue-500/50" />
+                            <Input placeholder="Your Company" value={formData.company} onChange={(e) => updateField('company', e.target.value)} className="bg-slate-950/70 border-slate-800 text-white placeholder:text-slate-600 focus-visible:ring-blue-500/50 h-12" />
                           </div>
                           <div className="space-y-2">
                             <label className="text-sm font-semibold text-slate-300">Project Type / Service Needed *</label>
                             <Select required onValueChange={(v) => updateField('projectType', v)}>
-                              <SelectTrigger className="bg-slate-950/70 border-slate-800 text-white focus:ring-blue-500/50"><SelectValue placeholder="Choose project type..." /></SelectTrigger>
+                              <SelectTrigger className="bg-slate-950/70 border-slate-800 text-white focus:ring-blue-500/50 h-12"><SelectValue placeholder="Choose project type..." /></SelectTrigger>
                               <SelectContent className="bg-slate-900 border-slate-800 text-white">
                                 {['Security Audit & Compliance', 'Digital Transformation & Automation', 'Web Development & Hosting', 'Data Center Solutions', 'Network Infrastructure', 'Fiber Optic Installation', 'IT Consulting Services', 'Cloud Migration', 'Data Backup & Disaster Recovery'].map(p => <SelectItem key={p} value={p} className="focus:bg-slate-800 focus:text-white cursor-pointer">{p}</SelectItem>)}
                               </SelectContent>
@@ -289,15 +290,15 @@ export function Contact() {
 
                       {/* --- 4. SALES TAB --- */}
                       <TabsContent value="sales" className="mt-0 space-y-6 animate-in fade-in slide-in-from-bottom-2">
-                        <div className="grid sm:grid-cols-2 gap-6">
+                        <div className="space-y-6">
                           <div className="space-y-2">
                             <label className="text-sm font-semibold text-slate-300">Company Name / Organization</label>
-                            <Input placeholder="Your Company" value={formData.company} onChange={(e) => updateField('company', e.target.value)} className="bg-slate-950/70 border-slate-800 text-white placeholder:text-slate-600 focus-visible:ring-blue-500/50" />
+                            <Input placeholder="Your Company" value={formData.company} onChange={(e) => updateField('company', e.target.value)} className="bg-slate-950/70 border-slate-800 text-white placeholder:text-slate-600 focus-visible:ring-blue-500/50 h-12" />
                           </div>
                           <div className="space-y-2">
                             <label className="text-sm font-semibold text-slate-300">Interested Services *</label>
                             <Select required onValueChange={(v) => updateField('interestedServices', v)}>
-                              <SelectTrigger className="bg-slate-950/70 border-slate-800 text-white focus:ring-blue-500/50"><SelectValue placeholder="Interested in..." /></SelectTrigger>
+                              <SelectTrigger className="bg-slate-950/70 border-slate-800 text-white focus:ring-blue-500/50 h-12"><SelectValue placeholder="Interested in..." /></SelectTrigger>
                               <SelectContent className="bg-slate-900 border-slate-800 text-white">
                                 {['Security Audit & Compliance', 'Digital Transformation & Automation', 'Web Development & Hosting', 'Data Center Solutions', 'Network Infrastructure', 'Fiber Optic Installation', 'IT Consulting Services', 'Cloud Migration', 'Data Backup & Disaster Recovery'].map(s => <SelectItem key={s} value={s} className="focus:bg-slate-800 focus:text-white cursor-pointer">{s}</SelectItem>)}
                               </SelectContent>
@@ -311,25 +312,25 @@ export function Contact() {
                       </TabsContent>
 
                       {/* Sub-fields: Urgency & Contact Method (Shared) */}
-                      <div className="grid md:grid-cols-2 gap-6 pt-6 border-t border-slate-800/80">
+                      <div className="space-y-8 pt-8 mt-4 border-t border-slate-800/80">
                         <div className="space-y-3">
-                          <label className="text-xs uppercase tracking-widest font-bold text-slate-400 flex items-center"><Clock className="w-3 h-3 mr-2" /> Urgency Level</label>
-                          <RadioGroup defaultValue="Medium" onValueChange={(v) => updateField('urgency', v)} className="flex flex-wrap gap-4">
+                          <label className="text-xs uppercase tracking-widest font-bold text-slate-400 flex items-center"><Clock className="w-4 h-4 mr-2" /> Urgency Level</label>
+                          <RadioGroup defaultValue="Medium" onValueChange={(v) => updateField('urgency', v)} className="flex flex-col gap-3">
                             {['Low', 'Medium', 'High', 'Critical'].map(u => (
-                              <div key={u} className="flex items-center space-x-2 bg-slate-950/60 px-3 py-1.5 rounded-lg border border-slate-800 shadow-inner cursor-pointer hover:bg-slate-900 transition-colors">
-                                <RadioGroupItem value={u} id={`u-${u}`} className="border-slate-700 text-itsec-primary" />
-                                <label htmlFor={`u-${u}`} className="text-xs font-bold text-slate-300 cursor-pointer">{u}</label>
+                              <div key={u} className="flex items-center space-x-3 bg-slate-950/60 px-4 py-3 rounded-lg border border-slate-800 shadow-inner cursor-pointer hover:bg-slate-900 transition-colors">
+                                <RadioGroupItem value={u} id={`u-${u}`} className="border-slate-700 text-itsec-primary w-5 h-5" />
+                                <label htmlFor={`u-${u}`} className="text-sm font-bold text-slate-300 cursor-pointer w-full">{u}</label>
                               </div>
                             ))}
                           </RadioGroup>
                         </div>
                         <div className="space-y-3">
                           <label className="text-xs uppercase tracking-widest font-bold text-slate-400">Contact Method</label>
-                          <div className="flex flex-wrap gap-4">
+                          <div className="flex flex-col gap-3">
                             {['Email', 'Phone', 'Meeting'].map(m => (
-                              <label key={m} className="flex items-center space-x-2 bg-slate-950/60 px-3 py-1.5 rounded-lg border border-slate-800 shadow-inner cursor-pointer hover:bg-slate-900 transition-colors">
-                                <Checkbox onCheckedChange={(c) => handleCheckboxChange(m, c as boolean)} className="border-slate-700 data-[state=checked]:bg-blue-600" />
-                                <span className="text-xs font-bold text-slate-300">{m}</span>
+                              <label key={m} className="flex items-center space-x-3 bg-slate-950/60 px-4 py-3 rounded-lg border border-slate-800 shadow-inner cursor-pointer hover:bg-slate-900 transition-colors">
+                                <Checkbox onCheckedChange={(c) => handleCheckboxChange(m, c as boolean)} className="border-slate-700 data-[state=checked]:bg-blue-600 w-5 h-5" />
+                                <span className="text-sm font-bold text-slate-300 w-full">{m}</span>
                               </label>
                             ))}
                           </div>

@@ -9,8 +9,8 @@ const navLinks = [
   { label: 'Home',      href: '/' },
   { label: 'About',     href: '/about' },
   { label: 'Services',  href: '/services' },
-  { label: 'Solutions', href: '/solutions' },
-  { label: 'Insights',  href: '/#news' },
+  { label: 'Products',  href: '/products' },
+  { label: 'Insights',  href: '/insights' },
   { label: 'Contact',   href: '/contact' },
 ];
 
@@ -39,17 +39,26 @@ export function Navigation() {
       }`}
     >
       {/* Top accent line */}
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-cyan-500/40 to-transparent" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-cyan-500/80 to-transparent shadow-[0_0_10px_rgba(6,182,212,0.8)]" />
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Navigation Scanlines Overlay */}
+      <div 
+        className="absolute inset-0 pointer-events-none opacity-[0.05]"
+        style={{
+          backgroundImage: 'linear-gradient(rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.25) 50%)',
+          backgroundSize: '100% 4px',
+        }}
+      />
+
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
         <div className="flex justify-between items-center h-16 md:h-20">
 
           {/* ── LOGO ──────────────────────────────── */}
-          <Link href="/" className="flex items-center gap-3 group flex-shrink-0">
-            <div className="relative w-9 h-9 md:w-10 md:h-10 rounded-xl bg-gradient-to-br from-blue-600/25 to-cyan-500/20 border border-cyan-500/25 flex items-center justify-center group-hover:border-cyan-400/50 transition-all duration-300">
-              <div className="absolute inset-0 rounded-xl bg-cyan-400/5 group-hover:bg-cyan-400/15 transition-colors" />
+          <Link href="/" className="flex items-center gap-3 group flex-shrink-0 relative z-20">
+            <div className="relative w-9 h-9 md:w-10 md:h-10 rounded-xl bg-gradient-to-br from-blue-600/25 to-cyan-500/20 border border-cyan-500/40 flex items-center justify-center group-hover:border-cyan-400 transition-all duration-300 shadow-[0_0_15px_rgba(6,182,212,0.2)]">
+              <div className="absolute inset-0 rounded-xl bg-cyan-400/5 group-hover:bg-cyan-400/20 transition-colors" />
               <img
-                src="https://res.cloudinary.com/dlc8bgysp/image/upload/e_make_transparent/v1767612094/logo_fn47rb.png"
+                src="/images/secnet-logo-shield.png"
                 alt="ITSEC Technology"
                 className="relative w-6 h-6 md:w-7 md:h-7 object-contain group-hover:scale-110 transition-transform duration-300"
               />
@@ -84,18 +93,6 @@ export function Navigation() {
 
           {/* ── CTA BUTTON + MOBILE TOGGLE ─────────── */}
           <div className="flex items-center gap-3">
-            <Link
-              href="/contact"
-              className="hidden md:flex items-center gap-2 px-5 py-2.5 text-sm font-bold text-white rounded-xl transition-all duration-300 hover:-translate-y-0.5"
-              style={{
-                background: 'linear-gradient(135deg, #2563EB 0%, #0284C7 100%)',
-                boxShadow: '0 4px 20px rgba(37,99,235,0.35)',
-              }}
-            >
-              <Shield className="w-3.5 h-3.5" />
-              Get a Quote
-              <ArrowRight className="w-3.5 h-3.5" />
-            </Link>
 
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -131,19 +128,7 @@ export function Navigation() {
               </Link>
             ))}
 
-            <Link
-              href="/contact"
-              onClick={() => setIsMobileMenuOpen(false)}
-              className="flex items-center justify-center gap-2.5 mt-3 px-6 py-4 rounded-2xl text-white font-black tracking-wide"
-              style={{
-                background: 'linear-gradient(135deg, #2563EB 0%, #0284C7 100%)',
-                boxShadow: '0 4px 20px rgba(37,99,235,0.4)',
-              }}
-            >
-              <Shield className="w-4 h-4" />
-              Get a Quote
-              <ArrowRight className="w-4 h-4" />
-            </Link>
+
           </div>
         </div>
       )}

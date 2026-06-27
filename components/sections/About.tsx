@@ -1,11 +1,23 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
-import { Shield, Target, Eye, Cpu, Users, Award, Zap, Compass } from 'lucide-react';
+import React, { useState, useEffect, useRef } from 'react';
+import { Shield, Target, Eye, Cpu, Users, Award, Zap, Compass, ArrowRight } from 'lucide-react';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import Link from 'next/link';
 
 export function About({ showOnlyAboutUs = false }: { showOnlyAboutUs?: boolean }) {
   const [mounted, setMounted] = useState(false);
   useEffect(() => { setMounted(true); }, []);
+
+  const sectionRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ['start end', 'end start'],
+  });
+
+  // Optional left exit when scrolling past
+  const blockX = useTransform(scrollYProgress, [0, 0.7, 1], ['0px', '0px', '-150px']);
+  const blockOpacity = useTransform(scrollYProgress, [0, 0.8, 1], [1, 1, 0]);
 
   // Professional Core Values with standard definitions
   const values = [
@@ -66,10 +78,18 @@ export function About({ showOnlyAboutUs = false }: { showOnlyAboutUs?: boolean }
   ];
 
   return (
-    <section id="about" className="relative py-24 md:py-32 bg-[#020617] text-white overflow-hidden">
-      
+    <section ref={sectionRef} id="about" className="relative py-24 md:py-32 bg-[#020617] text-white overflow-hidden">
       {/* ── BACKGROUND VISUAL EFFECTS ───────────────────── */}
       <div className="absolute inset-0 z-0 pointer-events-none">
+        {/* Cinematic Scanlines Overlay */}
+        <div 
+            className="absolute inset-0 pointer-events-none opacity-[0.1] z-0"
+            style={{
+            backgroundImage: 'linear-gradient(rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.25) 50%)',
+            backgroundSize: '100% 4px',
+            }}
+        />
+
         {/* Tech Grid */}
         <svg className="absolute inset-0 w-full h-full opacity-[0.02]"><defs>
           <pattern id="about-grid" width="40" height="40" patternUnits="userSpaceOnUse">
@@ -83,33 +103,103 @@ export function About({ showOnlyAboutUs = false }: { showOnlyAboutUs?: boolean }
         <div className="absolute top-1/2 left-0 w-[400px] h-[400px] rounded-full bg-indigo-600/5 blur-[100px]" />
       </div>
 
+      {/* Futuristic HUD Corners */}
+      <div className="absolute top-8 left-8 z-0 w-12 h-12 border-t-[1.5px] border-l-[1.5px] border-cyan-500/20" />
+      <div className="absolute bottom-8 right-8 z-0 w-12 h-12 border-b-[1.5px] border-r-[1.5px] border-cyan-500/20" />
+
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-24">
         
-        {/* ── 1. MAIN ABOUT SECTION (CENTERED HIGH-TECH PRESENTATION IN A PREMIUM LONG BOX) ── */}
-        <div className="max-w-4xl mx-auto">
-          <div className="relative p-8 md:p-12 rounded-[2.5rem] border border-slate-800 bg-gradient-to-b from-slate-900/60 via-slate-900/80 to-slate-950/90 backdrop-blur-xl shadow-2xl flex flex-col gap-6 text-left hover:border-blue-500/20 transition-all duration-300">
+        {/* ── 1. MAIN ABOUT SECTION (CENTERED HIGH-TECH PRESENTATION) ── */}
+        <motion.div 
+          style={{ x: blockX, opacity: blockOpacity }}
+          className="max-w-4xl mx-auto"
+        >
+          <motion.div 
+            initial={{ opacity: 0, y: 50, filter: 'blur(10px)' }}
+            whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+            viewport={{ once: true, margin: '-100px' }}
+            transition={{ duration: 0.8, ease: 'easeOut' }}
+            className="relative p-8 md:p-12 rounded-[2.5rem] border border-slate-800 bg-gradient-to-b from-slate-900/60 via-slate-900/80 to-slate-950/90 backdrop-blur-xl shadow-2xl flex flex-col gap-6 text-left hover:border-blue-500/20 transition-all duration-300"
+          >
             {/* Subtle glow effect behind card */}
             <div className="absolute inset-0 -z-10 bg-gradient-to-r from-blue-500/5 to-cyan-500/5 blur-2xl rounded-[2.5rem] pointer-events-none" />
 
             {/* Main Headline */}
-            <h2 className="text-3xl md:text-5xl font-black tracking-tight leading-[1.1]" style={{fontFamily:'var(--font-montserrat,Montserrat,sans-serif)'}}>
-              About <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-300 to-cyan-400">ITSEC Technology</span>
-            </h2>
+            <motion.div 
+              className="relative"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7, ease: 'easeOut' }}
+            >
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-black tracking-tight leading-[1.1] drop-shadow-[0_0_15px_rgba(6,182,212,0.3)]" style={{fontFamily:'var(--font-montserrat,Montserrat,sans-serif)'}}>
+                About <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-300 to-cyan-400">ITSEC Technology</span>
+              </h2>
+            </motion.div>
 
-            {/* Paragraphs */}
-            <p className="text-base md:text-lg text-slate-300 leading-relaxed font-medium">
-              ITSEC Technology is a premier provider of advanced Information and Communication Technology (ICT), cybersecurity solutions, and integrated intelligent systems. We operate at the intersection of digital security and innovative engineering, delivering secure, scalable, and future-ready technology solutions for government institutions, financial organizations, healthcare providers, telecommunications companies, and commercial enterprises.
-            </p>
-            <p className="text-sm md:text-base text-slate-400 leading-relaxed">
-              By aligning our operations with internationally recognized frameworks and standards such as ISO, NIST, and CIS, we design, implement, and support resilient infrastructure architectures that protect critical assets and strengthen organizational resilience.
-            </p>
-            <p className="text-sm md:text-base text-slate-400 leading-relaxed">
-              Our engineering and cybersecurity teams possess advanced technical expertise, internationally recognized certifications, and extensive industry experience, enabling us to deploy intelligent, secure, and high-performance systems that address evolving cyber threats and modern operational challenges.
-            </p>
-          </div>
-        </div>
+            {/* First Paragraph (Intro) */}
+            {!showOnlyAboutUs && (
+              <motion.p 
+                className="text-base md:text-lg text-slate-300 leading-relaxed font-medium"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.7, delay: 0.25, ease: 'easeOut' }}
+              >
+                <strong>ITSEC Technology</strong> is a leading provider of ICT, cybersecurity, and intelligent infrastructure solutions. We help organizations design, implement, and manage secure, scalable, and future-ready technology environments across government, enterprise, financial, healthcare, and telecommunications sectors.
+              </motion.p>
+            )}
+
+            {!showOnlyAboutUs && (
+              <>
+                {/* Standards Line (Zoom/Fade) */}
+                <motion.p 
+                  className="text-base md:text-lg text-slate-300 leading-relaxed font-medium"
+                  initial={{ opacity: 0, y: 20, scale: 0.95 }}
+                  whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8, delay: 0.45, ease: 'easeOut' }}
+                >
+                  Aligned with internationally recognized frameworks including <strong>ISO, NIST, and CIS</strong>, we deliver resilient digital infrastructures that enhance security, operational efficiency, and business continuity.
+                </motion.p>
+
+                {/* Final Paragraph (Expertise) */}
+                <motion.p 
+                  className="text-base md:text-lg text-slate-300 leading-relaxed font-medium"
+                  initial={{ opacity: 0, y: 15 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.9, delay: 0.65, ease: 'easeOut' }}
+                >
+                  Our certified professionals combine <strong>deep technical expertise with industry best practices</strong> to support digital transformation and protect critical business assets.
+                </motion.p>
+              </>
+            )}
+
+            {showOnlyAboutUs && (
+              <motion.div
+                initial={{ opacity: 0, y: 15 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.9, delay: 0.3, ease: 'easeOut' }}
+                className="flex flex-col gap-6"
+              >
+                <p className="text-base md:text-lg text-slate-300 leading-relaxed font-medium">
+                  ITSEC Technology is a leading provider of ICT, cybersecurity, and intelligent infrastructure solutions. We help organizations design, implement, and manage secure, scalable, and future-ready technology environments.
+                </p>
+
+                <Link href="/about" className="inline-flex items-center gap-2 text-base font-bold text-cyan-500 hover:text-cyan-300 transition-colors group w-fit">
+                  Learn More
+                  <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
+                </Link>
+              </motion.div>
+            )}
+          </motion.div>
+        </motion.div>
 
         {/* ── 2. MISSION & VISION (GLOWING GLASSMORPHIC CARDS) ── */}
+        {!showOnlyAboutUs && (
+          <>
         <div className="grid md:grid-cols-2 gap-8 pt-8">
           
           {/* Mission Card */}
@@ -120,11 +210,11 @@ export function About({ showOnlyAboutUs = false }: { showOnlyAboutUs?: boolean }
                 <Target className="w-8 h-8" />
               </div>
               <div className="flex flex-col gap-3">
-                <h3 className="text-2xl font-bold text-white tracking-tight" style={{fontFamily:'var(--font-montserrat,Montserrat,sans-serif)'}}>
+                <h3 className="text-xl md:text-2xl font-bold text-white tracking-tight" style={{fontFamily:'var(--font-montserrat,Montserrat,sans-serif)'}}>
                   Our Mission
                 </h3>
-                <p className="text-base text-slate-300 leading-relaxed font-medium">
-                  To equip governments, financial hubs, and global enterprises with highly resilient digital foundations, impenetrable cybersecurity architecture, and seamless cloud optimization. We dedicate our expert knowledge to safeguarding assets and enabling frictionless operational continuity.
+                <p className="text-sm md:text-base text-slate-300 leading-relaxed font-medium">
+                  To empower governments, financial institutions, and global enterprises with resilient digital infrastructure, advanced cybersecurity, and optimized cloud solutions that safeguard critical assets and ensure seamless business continuity.
                 </p>
               </div>
             </div>
@@ -138,11 +228,11 @@ export function About({ showOnlyAboutUs = false }: { showOnlyAboutUs?: boolean }
                 <Eye className="w-8 h-8" />
               </div>
               <div className="flex flex-col gap-3">
-                <h3 className="text-2xl font-bold text-white tracking-tight" style={{fontFamily:'var(--font-montserrat,Montserrat,sans-serif)'}}>
+                <h3 className="text-xl md:text-2xl font-bold text-white tracking-tight" style={{fontFamily:'var(--font-montserrat,Montserrat,sans-serif)'}}>
                   Our Vision
                 </h3>
-                <p className="text-base text-slate-300 leading-relaxed font-medium">
-                  To serve as a globally recognized beacon of intelligent digital transformation and zero-trust cybersecurity solutions, pioneering sovereign technological self-reliance, smart infrastructural integration, and automated defense mechanisms that empower future generations.
+                <p className="text-sm md:text-base text-slate-300 leading-relaxed font-medium">
+                  To be a globally trusted leader in secure digital transformation, empowering organizations through innovative technology, resilient infrastructure, and world-class cybersecurity solutions.
                 </p>
               </div>
             </div>
@@ -155,11 +245,11 @@ export function About({ showOnlyAboutUs = false }: { showOnlyAboutUs?: boolean }
           {/* Header */}
           <div className="text-center flex flex-col items-center gap-3">
             <div className="h-0.5 w-12 bg-itsec-primary mb-2" />
-            <h3 className="text-3xl md:text-4xl font-extrabold tracking-tight" style={{fontFamily:'var(--font-montserrat,Montserrat,sans-serif)'}}>
+            <h3 className="text-2xl md:text-3xl lg:text-4xl font-extrabold tracking-tight" style={{fontFamily:'var(--font-montserrat,Montserrat,sans-serif)'}}>
               Our Core Principles
             </h3>
             <p className="text-sm md:text-base text-slate-400 max-w-xl mx-auto leading-relaxed">
-              The fundamental standards and uncompromising values that guide every action we take and every system we build.
+              Guiding every action we take and every system we build.
             </p>
           </div>
 
@@ -198,6 +288,95 @@ export function About({ showOnlyAboutUs = false }: { showOnlyAboutUs?: boolean }
             ))}
           </div>
         </div>
+        </>
+        )}
+
+        {/* ── 4. COMPANY HISTORY & STATS ── */}
+        {!showOnlyAboutUs && (
+          <div className="pt-16">
+            <div className="grid lg:grid-cols-2 gap-12 items-center">
+              <div>
+                <h3 className="text-3xl font-black mb-6" style={{fontFamily:'var(--font-montserrat,Montserrat,sans-serif)'}}>
+                  Our <span className="text-cyan-400">Track Record</span>
+                </h3>
+                <p className="text-slate-400 leading-relaxed mb-6">
+                  Established with a vision to secure Ethiopia's digital future, ITSEC Technology has quickly grown into a trusted partner for enterprise ICT and cybersecurity solutions.
+                </p>
+                <p className="text-slate-400 leading-relaxed">
+                  We combine local expertise with global partnerships to deliver infrastructure that performs flawlessly under pressure.
+                </p>
+              </div>
+              
+              <div className="grid grid-cols-2 gap-6">
+                <div className="p-6 rounded-2xl bg-slate-900 border border-slate-800 text-center">
+                  <div className="text-4xl font-black text-cyan-400 mb-2">1+</div>
+                  <div className="text-sm font-bold text-slate-500 uppercase tracking-widest">Projects Delivered</div>
+                </div>
+                <div className="p-6 rounded-2xl bg-slate-900 border border-slate-800 text-center">
+                  <div className="text-4xl font-black text-blue-500 mb-2">5</div>
+                  <div className="text-sm font-bold text-slate-500 uppercase tracking-widest">Enterprise Clients</div>
+                </div>
+                <div className="p-6 rounded-2xl bg-slate-900 border border-slate-800 text-center">
+                  <div className="text-4xl font-black text-emerald-400 mb-2">1+</div>
+                  <div className="text-sm font-bold text-slate-500 uppercase tracking-widest">Years Active</div>
+                </div>
+                <div className="p-6 rounded-2xl bg-slate-900 border border-slate-800 text-center">
+                  <div className="text-4xl font-black text-rose-400 mb-2">1+</div>
+                  <div className="text-sm font-bold text-slate-500 uppercase tracking-widest">Countries Served</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* ── 5. OUR EXPERTS ── */}
+        {!showOnlyAboutUs && (
+          <div className="pt-24 border-t border-slate-800">
+            <div className="text-center mb-16">
+              <h3 className="text-3xl font-black mb-4" style={{fontFamily:'var(--font-montserrat,Montserrat,sans-serif)'}}>
+                Our <span className="text-cyan-400">Experts</span>
+              </h3>
+              <p className="text-slate-400 max-w-2xl mx-auto">
+                Certified professionals dedicated to engineering secure, resilient technology solutions.
+              </p>
+            </div>
+            
+            <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+              {/* Expert 1 */}
+              <div className="group rounded-2xl border border-slate-800 bg-slate-900/50 p-6 text-center hover:border-cyan-500/30 transition-all">
+                <div className="w-24 h-24 mx-auto bg-slate-800 rounded-full mb-6 border-2 border-cyan-500/20 group-hover:border-cyan-500 overflow-hidden relative">
+                  <div className="absolute inset-0 bg-gradient-to-tr from-cyan-900/40 to-transparent" />
+                  <Users className="w-10 h-10 text-slate-600 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
+                </div>
+                <h4 className="text-lg font-bold text-white mb-1">Derebe Sinamaw</h4>
+                <p className="text-sm text-cyan-400 mb-3">Chief Technology Officer</p>
+                <p className="text-xs text-slate-500 leading-relaxed">CISSP, CISM certified with 10 years leading enterprise ICT infrastructure deployments.</p>
+              </div>
+
+              {/* Expert 2 */}
+              <div className="group rounded-2xl border border-slate-800 bg-slate-900/50 p-6 text-center hover:border-blue-500/30 transition-all">
+                <div className="w-24 h-24 mx-auto bg-slate-800 rounded-full mb-6 border-2 border-blue-500/20 group-hover:border-blue-500 overflow-hidden relative">
+                  <div className="absolute inset-0 bg-gradient-to-tr from-blue-900/40 to-transparent" />
+                  <Users className="w-10 h-10 text-slate-600 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
+                </div>
+                <h4 className="text-lg font-bold text-white mb-1">Merikat Meharu</h4>
+                <p className="text-sm text-blue-400 mb-3">Head of Cybersecurity</p>
+                <p className="text-xs text-slate-500 leading-relaxed">Specializes in Zero-Trust architecture and ISO 27001 compliance for financial institutions.</p>
+              </div>
+
+              {/* Expert 3 */}
+              <div className="group rounded-2xl border border-slate-800 bg-slate-900/50 p-6 text-center hover:border-indigo-500/30 transition-all">
+                <div className="w-24 h-24 mx-auto bg-slate-800 rounded-full mb-6 border-2 border-indigo-500/20 group-hover:border-indigo-500 overflow-hidden relative">
+                  <div className="absolute inset-0 bg-gradient-to-tr from-indigo-900/40 to-transparent" />
+                  <Users className="w-10 h-10 text-slate-600 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
+                </div>
+                <h4 className="text-lg font-bold text-white mb-1">Temesgen Wasse</h4>
+                <p className="text-sm text-indigo-400 mb-3">Solutions Architect</p>
+                <p className="text-xs text-slate-500 leading-relaxed">Expert in multi-cloud strategies, virtualization, and enterprise data center design.</p>
+              </div>
+            </div>
+          </div>
+        )}
 
       </div>
     </section>

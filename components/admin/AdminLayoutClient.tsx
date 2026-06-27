@@ -3,7 +3,11 @@
 import { useState, useEffect } from 'react';
 import { adminAuth } from '@/lib/data-store';
 import { AdminLogin } from '@/components/admin/AdminLogin';
-import { LayoutDashboard, Newspaper, Info, ShieldCheck, Cpu, Phone, LogOut, Menu, X } from 'lucide-react';
+import { 
+  LayoutDashboard, FileText, Type, Image as ImageIcon, PlaySquare, 
+  Wrench, Package, Newspaper, Users, Handshake, Phone, Navigation, 
+  UserCog, Settings, Shield, ScrollText, LogOut, Menu, X 
+} from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 export default function AdminLayout({
@@ -13,7 +17,7 @@ export default function AdminLayout({
 }) {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
-  const [activeTab, setActiveTab] = useState('news');
+  const [activeTab, setActiveTab] = useState('dashboard');
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
@@ -33,11 +37,22 @@ export default function AdminLayout({
   }
 
   const menuItems = [
-    { id: 'news', label: 'News Manager', icon: Newspaper },
-    { id: 'about', label: 'About Section', icon: Info },
-    { id: 'services', label: 'Services Manager', icon: ShieldCheck },
-    { id: 'technology', label: 'Technology Partners', icon: Cpu },
+    { id: 'dashboard', label: 'Dashboard', icon: LayoutDashboard },
+    { id: 'pages', label: 'Website Pages', icon: FileText },
+    { id: 'text', label: 'Text Management', icon: Type },
+    { id: 'images', label: 'Image Management', icon: ImageIcon },
+    { id: 'media', label: 'Media Library', icon: PlaySquare },
+    { id: 'services', label: 'Services', icon: Wrench },
+    { id: 'products', label: 'Products', icon: Package },
+    { id: 'news', label: 'News & Insights', icon: Newspaper },
+    { id: 'team', label: 'Team', icon: Users },
+    { id: 'partners', label: 'Partners & Vendors', icon: Handshake },
     { id: 'contact', label: 'Contact Info', icon: Phone },
+    { id: 'menu', label: 'Menu Management', icon: Navigation },
+    { id: 'users', label: 'Users & Roles', icon: UserCog },
+    { id: 'settings', label: 'Website Settings', icon: Settings },
+    { id: 'security', label: 'Security & Backup', icon: Shield },
+    { id: 'logs', label: 'Activity Logs', icon: ScrollText },
   ];
 
   return (
@@ -57,7 +72,7 @@ export default function AdminLayout({
           <p className="text-blue-300 text-xs font-bold uppercase tracking-wider">Content Manager</p>
         </div>
         
-        <nav className="flex-1 py-4">
+        <nav className="flex-1 py-4 overflow-y-auto custom-scrollbar">
           <ul className="space-y-1 px-3">
             {menuItems.map((item) => {
               const isActive = activeTab === item.id;

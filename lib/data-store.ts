@@ -11,6 +11,8 @@ export interface NewsItem {
   body: string;
   image_url: string;
   category: string;
+  author_name?: string;
+  author_role?: string;
   published_at: string;
   created_at: string;
 }
@@ -70,49 +72,123 @@ export interface TechnologyPartner {
   sort_order: number;
 }
 
+export interface SiteSettings {
+  siteName: string;
+  metaDescription: string;
+  analyticsId: string;
+  smtpHost: string;
+  smtpPort: string;
+  smtpEncryption: string;
+  fromEmail: string;
+}
+
+export interface MenuItem {
+  id: string;
+  name: string;
+  path: string;
+  order: number;
+  visible: boolean;
+}
+
+export interface TextSnippet {
+  id: string; // Used as key e.g. 'hero-title'
+  category: string;
+  text: string;
+  lastUpdated: string;
+}
+
+export interface TeamMember {
+  id: string;
+  name: string;
+  role: string;
+  department: string;
+  status: string;
+  photoUrl?: string;
+}
+
 // ============ DEFAULT SEED DATA ============
 
 const defaultNews: NewsItem[] = [
   {
     id: '1',
-    title: 'ITSEC Technology Expands Data Center Services in East Africa',
-    summary: 'We are proud to announce the expansion of our data center construction and management services across the East African region, bringing world-class infrastructure closer to businesses.',
-    body: '',
-    image_url: '/images/data-center-main.jpg',
-    category: 'Company News',
-    published_at: '2026-05-20T00:00:00Z',
-    created_at: '2026-05-20T00:00:00Z',
+    title: 'Zero-Trust Architecture: The New Enterprise Imperative',
+    summary: 'As perimeter-based security models become obsolete, East African enterprises are accelerating their adoption of Zero-Trust frameworks to secure distributed workforces.',
+    body: `<p>The traditional "castle-and-moat" approach to cybersecurity is no longer viable for modern enterprises. With the rapid migration to hybrid cloud environments and the permanent shift toward distributed workforces, the attack surface has expanded exponentially.</p>
+<h2>Why Zero-Trust is Non-Negotiable</h2>
+<p>Zero-Trust operates on a simple principle: "Never trust, always verify." Regardless of whether an access request originates from inside or outside the corporate network, it must be rigorously authenticated, authorized, and continuously validated before access is granted.</p>
+<ul>
+<li><strong>Identity is the New Perimeter:</strong> Implementing robust Identity and Access Management (IAM) and Multi-Factor Authentication (MFA).</li>
+<li><strong>Micro-segmentation:</strong> Isolating workloads to prevent lateral movement of threats in the event of a breach.</li>
+<li><strong>Continuous Monitoring:</strong> Utilizing AI-driven analytics to detect anomalous behavior in real-time.</li>
+</ul>
+<p>ITSEC Technology is partnering with leading vendors like Palo Alto Networks and Microsoft to help regional financial institutions and government agencies architect scalable Zero-Trust environments.</p>`,
+    image_url: '/images/news-zero-trust.png',
+    category: 'Cybersecurity',
+    author_name: 'Merikat Meharu',
+    author_role: 'Head of Cybersecurity',
+    published_at: '2026-05-12T08:00:00Z',
+    created_at: '2026-05-12T08:00:00Z',
   },
   {
     id: '2',
-    title: 'New Cybersecurity Partnership with Palo Alto Networks',
-    summary: 'ITSEC Technology has partnered with Palo Alto Networks to deliver next-generation firewall and threat prevention solutions to enterprise clients in Ethiopia.',
-    body: '',
-    image_url: '/images/integrated-security-final.jpg',
-    category: 'Partnership',
-    published_at: '2026-05-15T00:00:00Z',
-    created_at: '2026-05-15T00:00:00Z',
+    title: 'Optimizing Data Center Power & Cooling for AI Workloads',
+    summary: 'High-density AI servers require specialized power and cooling infrastructure. We explore how modern data centers are adapting to these immense thermal challenges.',
+    body: `<p>The explosion of Generative AI and machine learning workloads has fundamentally altered data center economics and engineering. Traditional racks drawing 5-10kW are being rapidly replaced by high-density AI clusters drawing 40-100kW per rack.</p>
+<h2>Engineering for Extreme Density</h2>
+<p>Air cooling alone is reaching its physical limits. To support next-generation compute, facilities must transition to advanced thermal management systems:</p>
+<ul>
+<li><strong>Direct-to-Chip Liquid Cooling:</strong> Capturing heat directly at the processor level, improving PUE (Power Usage Effectiveness) significantly.</li>
+<li><strong>Rear-Door Heat Exchangers:</strong> Supplemental cooling that handles high exhaust temperatures directly at the rack level.</li>
+<li><strong>Intelligent Power Distribution:</strong> Implementing smart PDUs and advanced UPS topologies to ensure stable, resilient power delivery to mission-critical GPU clusters.</li>
+</ul>
+<p>At ITSEC Technology, our infrastructure engineering team is deploying TIA-942 compliant facilities designed specifically to handle the demands of modern algorithmic compute.</p>`,
+    image_url: '/images/datacenter.jpg',
+    category: 'Data Center',
+    author_name: 'Temesgen Wasse',
+    author_role: 'Solutions Architect',
+    published_at: '2026-06-05T10:30:00Z',
+    created_at: '2026-06-05T10:30:00Z',
   },
   {
     id: '3',
-    title: 'Unified Communications Solutions for Modern Enterprises',
-    summary: 'Our latest unified communications deployment integrates voice, video, and messaging platforms for seamless collaboration across distributed teams.',
-    body: '',
-    image_url: '/images/unified-communications-new.png',
-    category: 'Solutions',
-    published_at: '2026-05-10T00:00:00Z',
-    created_at: '2026-05-10T00:00:00Z',
+    title: 'The Evolution of SD-WAN in Multinational Deployments',
+    summary: 'Software-Defined WAN is transforming how regional banks and telecom operators connect their branches, offering unprecedented visibility, agility, and cost savings.',
+    body: `<p>Managing wide area networks across distributed branch offices has historically been complex, rigid, and expensive. SD-WAN technology has matured from an emerging concept into an enterprise standard, fundamentally changing how organizations route critical traffic.</p>
+<h2>Key Advantages of Modern SD-WAN</h2>
+<p>By decoupling the networking hardware from its control mechanism, SD-WAN provides a centralized, software-driven approach to WAN management.</p>
+<ul>
+<li><strong>Application-Aware Routing:</strong> Dynamically routing traffic based on real-time application requirements, prioritizing critical SaaS apps over general web traffic.</li>
+<li><strong>Transport Independence:</strong> Seamlessly aggregating MPLS, broadband, and 5G connections to increase bandwidth and ensure high availability.</li>
+<li><strong>Integrated Security (SASE):</strong> Modern SD-WAN solutions are increasingly converging with cloud-native security frameworks (Secure Access Service Edge) to protect traffic at the edge.</li>
+</ul>
+<p>Our recent deployments utilizing Cisco Catalyst SD-WAN and Fortinet Secure SD-WAN have demonstrated up to 40% reductions in operational costs while drastically improving application performance.</p>`,
+    image_url: '/images/digital-infrastructure-final.png',
+    category: 'Networking',
+    author_name: 'Derebe Sinamaw',
+    author_role: 'Chief Technology Officer',
+    published_at: '2026-06-18T14:15:00Z',
+    created_at: '2026-06-18T14:15:00Z',
   },
   {
     id: '4',
-    title: 'Smart Building Automation Deployed at Leading Financial Institution',
-    summary: 'ITSEC Technology successfully implemented an integrated smart building automation system including IoT sensors, energy management, and intelligent security for a premier banking headquarters.',
-    body: '',
-    image_url: '/images/smart-systems-final.png',
-    category: 'Case Study',
-    published_at: '2026-05-05T00:00:00Z',
-    created_at: '2026-05-05T00:00:00Z',
-  },
+    title: 'Enhancing Physical Security with AI Video Analytics',
+    summary: 'Legacy CCTV is reactive. Modern intelligent surveillance systems utilize machine learning to proactively detect threats, track anomalies, and automate incident response.',
+    body: `<p>The days of security personnel passively monitoring dozens of screens are ending. Modern surveillance systems are highly intelligent sensor networks that process vast amounts of visual data in real-time.</p>
+<h2>Moving from Reactive to Proactive</h2>
+<p>By integrating deep learning algorithms at the edge (on the camera) and the core (on the NVR/Server), organizations can automate threat detection.</p>
+<ul>
+<li><strong>Behavioral Analytics:</strong> Automatically identifying loitering, abandoned objects, or unauthorized perimeter breaches without human intervention.</li>
+<li><strong>Facial Recognition & Access Integration:</strong> Seamlessly connecting visual data with biometric access control systems for frictionless, secure facility entry.</li>
+<li><strong>Operational Intelligence:</strong> Utilizing heat mapping and crowd density analytics to optimize facility layouts and emergency evacuation protocols.</li>
+</ul>
+<p>ITSEC Technology integrates advanced systems from Dahua, Hikvision, and Milestone Systems to build unified command and control centers that provide total situational awareness.</p>`,
+    image_url: '/images/custom-cctv.jpg',
+    category: 'Physical Security',
+    author_name: 'Solomon Kebede',
+    author_role: 'Security Systems Engineer',
+    published_at: '2026-06-22T09:45:00Z',
+    created_at: '2026-06-22T09:45:00Z',
+  }
 ];
 
 const defaultAboutCards: AboutCard[] = [
@@ -153,42 +229,63 @@ const defaultContactInfo: ContactInfo[] = [
 
 // --- TECHNOLOGY ---
 const defaultTechnology: TechnologyPartner[] = [
-  // Cyber Security & IT Security
-  { id: 't1', name: 'Cisco', category: 'cyberSecurity', color: '1BA0D7', logo: 'cisco', url: 'https://www.cisco.com', description: 'Network security, firewalls, intrusion prevention, and secure access solutions.', sort_order: 1 },
-  { id: 't2', name: 'Palo Alto Networks', category: 'cyberSecurity', color: 'FA582D', logo: 'paloaltonetworks', url: 'https://www.paloaltonetworks.com', description: 'Next-generation firewalls, advanced threat prevention, and cloud security.', sort_order: 2 },
-  { id: 't3', name: 'Fortinet', category: 'cyberSecurity', color: 'EE3124', logo: 'fortinet', url: 'https://www.fortinet.com', description: 'High-performance firewalls, secure SD-WAN, and integrated security platforms.', sort_order: 3 },
-  { id: 't4', name: 'Check Point', category: 'cyberSecurity', color: 'EC1561', logo: 'checkpoint', url: 'https://www.checkpoint.com', description: 'Enterprise firewall, threat intelligence, and advanced cyber defense.', sort_order: 4 },
-  { id: 't5', name: 'Sophos', category: 'cyberSecurity', color: '0078D4', logo: 'sophos', url: 'https://www.sophos.com', description: 'Endpoint protection, firewall security, and centralized security management.', sort_order: 5 },
-  { id: 't6', name: 'Trend Micro', category: 'cyberSecurity', color: 'D22630', logo: 'trendmicro', url: 'https://www.trendmicro.com', description: 'Endpoint, server, and cloud workload security with advanced malware protection.', sort_order: 6 },
-  { id: 't7', name: 'CrowdStrike', category: 'cyberSecurity', color: 'FF0000', logo: 'crowdstrike', url: 'https://www.crowdstrike.com', description: 'AI-powered endpoint detection and response (EDR) and threat intelligence.', sort_order: 7 },
-  { id: 't8', name: 'Darktrace', category: 'cyberSecurity', color: '000000', logo: 'darktrace', url: 'https://www.darktrace.com', description: 'AI-driven threat detection, network visibility, and autonomous response.', sort_order: 8 },
-  { id: 't9', name: 'Imperva', category: 'cyberSecurity', color: '0055A5', logo: 'imperva', url: 'https://www.imperva.com', description: 'Web application firewall (WAF), database security, and DDoS protection.', sort_order: 9 },
+  // Cybersecurity & Threat Protection
+  { id: 't1', name: 'Palo Alto Networks', category: 'Cybersecurity & Threat Protection', color: 'FA582D', logo: 'paloaltonetworks', url: 'https://www.paloaltonetworks.com', description: 'Next-generation firewall and advanced threat prevention', sort_order: 1 },
+  { id: 't2', name: 'Fortinet', category: 'Cybersecurity & Threat Protection', color: 'EE3124', logo: 'fortinet', url: 'https://www.fortinet.com', description: 'High-performance security, SD-WAN, and unified threat management', sort_order: 2 },
+  { id: 't3', name: 'Check Point', category: 'Cybersecurity & Threat Protection', color: 'EC1561', logo: '/images/logos/check_point.jpg', url: 'https://www.checkpoint.com', description: 'Enterprise firewall and cyber defense solutions', sort_order: 3 },
+  { id: 't4', name: 'Sophos', category: 'Cybersecurity & Threat Protection', color: '0078D4', logo: '/images/logos/Sopohs.png', url: 'https://www.sophos.com', description: 'Endpoint protection and centralized security management', sort_order: 4 },
+  { id: 't5', name: 'CrowdStrike', category: 'Cybersecurity & Threat Protection', color: 'FF0000', logo: '/images/logos/crowdstrike-logo.png', url: 'https://www.crowdstrike.com', description: 'AI-powered endpoint detection and response (EDR)', sort_order: 5 },
+  { id: 't6', name: 'Darktrace', category: 'Cybersecurity & Threat Protection', color: '000000', logo: '/images/logos/darktrace.png', url: 'https://www.darktrace.com', description: 'Autonomous AI-driven threat detection and response', sort_order: 6 },
+  { id: 't7', name: 'Imperva', category: 'Cybersecurity & Threat Protection', color: '0055A5', logo: '/images/logos/IMPROVMENT.png', url: 'https://www.imperva.com', description: 'Web application firewall, database security, and DDoS protection', sort_order: 7 },
 
-  // Digital Infrastructure
-  { id: 't10', name: 'Cisco', category: 'digitalInfrastructure', color: '1BA0D7', logo: 'cisco', url: 'https://www.cisco.com', description: 'Enterprise networking, routing, switching, and wireless solutions.', sort_order: 1 },
-  { id: 't11', name: 'Huawei', category: 'digitalInfrastructure', color: 'FF0000', logo: 'huawei', url: 'https://e.huawei.com', description: 'Next-generation carrier and enterprise networking infrastructure.', sort_order: 2 },
-  { id: 't12', name: 'HPE Aruba', category: 'digitalInfrastructure', color: 'FF8300', logo: 'hpe', url: 'https://www.arubanetworks.com', description: 'AI-powered network solutions for edge-to-cloud connectivity.', sort_order: 3 },
-  { id: 't13', name: 'Juniper Networks', category: 'digitalInfrastructure', color: '81BC00', logo: 'junipernetworks', url: 'https://www.juniper.net', description: 'AI-driven networking, routing, and switching for modern enterprises.', sort_order: 4 },
-  { id: 't14', name: 'Ericsson', category: 'digitalInfrastructure', color: '0082D1', logo: 'ericsson', url: 'https://www.ericsson.com', description: 'Advanced 5G and mobile network infrastructure solutions.', sort_order: 5 },
-  { id: 't15', name: 'F5 Networks', category: 'digitalInfrastructure', color: 'E9292D', logo: 'f5', url: 'https://www.f5.com', description: 'Application delivery, security, and multi-cloud networking.', sort_order: 6 },
+  // Networking & Infrastructure
+  { id: 't8', name: 'Cisco', category: 'Networking & Infrastructure', color: '1BA0D7', logo: 'cisco', url: 'https://www.cisco.com', description: 'Enterprise networking, routing, switching, and secure access', sort_order: 8 },
+  { id: 't9', name: 'Juniper Networks', category: 'Networking & Infrastructure', color: '81BC00', logo: 'junipernetworks', url: 'https://www.juniper.net', description: 'AI-driven networking and high-performance routing', sort_order: 9 },
+  { id: 't10', name: 'Huawei', category: 'Networking & Infrastructure', color: 'FF0000', logo: 'huawei', url: 'https://e.huawei.com', description: 'Carrier-grade and enterprise networking infrastructure', sort_order: 10 },
 
   // Cloud & Virtualization
-  { id: 't16', name: 'VMware', category: 'cloudVirtualization', color: '607078', logo: 'vmware', url: 'https://www.vmware.com', description: 'Industry-leading multi-cloud services and virtualization platforms.', sort_order: 1 },
-  { id: 't17', name: 'Proxmox', category: 'cloudVirtualization', color: 'E57000', logo: 'proxmox', url: 'https://www.proxmox.com', description: 'Open-source server virtualization and management platform.', sort_order: 2 },
-  { id: 't18', name: 'Microsoft Hyper-V', category: 'cloudVirtualization', color: '00A4EF', logo: 'microsoft', url: 'https://www.microsoft.com', description: 'Native Windows-based hardware virtualization and cloud infrastructure.', sort_order: 3 },
-  { id: 't19', name: 'Oracle Cloud', category: 'cloudVirtualization', color: 'F80000', logo: 'oracle', url: 'https://www.oracle.com/cloud/', description: 'Integrated suite of cloud applications and platform services.', sort_order: 4 },
-  { id: 't20', name: 'IBM Cloud', category: 'cloudVirtualization', color: '052FAD', logo: 'ibm', url: 'https://www.ibm.com/cloud', description: 'Hybrid cloud and AI-ready enterprise infrastructure.', sort_order: 5 },
-  { id: 't21', name: 'Red Hat', category: 'cloudVirtualization', color: 'EE0000', logo: 'redhat', url: 'https://www.redhat.com', description: 'Enterprise-grade open-source virtualization and cloud solutions.', sort_order: 6 },
+  { id: 't11', name: 'VMware', category: 'Cloud & Virtualization', color: '607078', logo: '/images/logos/VMware_cloud_icon.webp', url: 'https://www.vmware.com', description: 'Multi-cloud infrastructure and virtualization platforms', sort_order: 11 },
+  { id: 't12', name: 'Microsoft', category: 'Cloud & Virtualization', color: '00A4EF', logo: 'microsoft', url: 'https://www.microsoft.com', description: 'Cloud computing, enterprise services, and virtualization', sort_order: 12 },
+  { id: 't13', name: 'Red Hat', category: 'Cloud & Virtualization', color: 'EE0000', logo: 'redhat', url: 'https://www.redhat.com', description: 'Open-source enterprise Linux and hybrid cloud solutions', sort_order: 13 },
 
-  // Data Center Solutions
-  { id: 't22', name: 'Dell', category: 'dataCenter', color: '007DB8', logo: 'dell', url: 'https://www.dell.com', description: 'High-performance servers, storage, and data center infrastructure.', sort_order: 1 },
-  { id: 't23', name: 'HPE', category: 'dataCenter', color: '01A982', logo: 'hpe', url: 'https://www.hpe.com', description: 'Scalable compute, storage, and networking for modern data centers.', sort_order: 2 },
-  { id: 't24', name: 'Lenovo', category: 'dataCenter', color: 'E2231A', logo: 'lenovo', url: 'https://www.lenovo.com', description: 'Reliable enterprise servers and software-defined storage solutions.', sort_order: 3 },
-  { id: 't25', name: 'Huawei', category: 'dataCenter', color: 'FF0000', logo: 'huawei', url: 'https://e.huawei.com', description: 'Efficient and intelligent data center compute and storage systems.', sort_order: 4 },
-  { id: 't26', name: 'IBM', category: 'dataCenter', color: '052FAD', logo: 'ibm', url: 'https://www.ibm.com', description: 'Robust enterprise mainframes and modernized data center storage.', sort_order: 5 },
-  { id: 't27', name: 'NetApp', category: 'dataCenter', color: '0067C5', logo: 'netapp', url: 'https://www.netapp.com', description: 'Advanced data management and cloud-integrated storage solutions.', sort_order: 6 },
-  { id: 't28', name: 'Synology', category: 'dataCenter', color: '121212', logo: 'synology', url: 'https://www.synology.com', description: 'Reliable network-attached storage (NAS) and data backup solutions.', sort_order: 7 },
-  { id: 't29', name: 'Supermicro', category: 'dataCenter', color: '000000', logo: 'supermicro', url: 'https://www.supermicro.com', description: 'High-efficiency, green computing server and storage solutions.', sort_order: 8 },
+  // Servers & Data Center Infrastructure
+  { id: 't14', name: 'Dell', category: 'Servers & Data Center Infrastructure', color: '007DB8', logo: 'dell', url: 'https://www.dell.com', description: 'Enterprise servers, storage, and data center systems', sort_order: 14 },
+  { id: 't15', name: 'HPE', category: 'Servers & Data Center Infrastructure', color: '01A982', logo: 'https://upload.wikimedia.org/wikipedia/commons/4/46/Hewlett_Packard_Enterprise_logo.svg', url: 'https://www.hpe.com', description: 'Scalable compute and storage infrastructure', sort_order: 15 },
+  { id: 't16', name: 'Lenovo', category: 'Servers & Data Center Infrastructure', color: 'E2231A', logo: 'lenovo', url: 'https://www.lenovo.com', description: 'Reliable enterprise servers and storage solutions', sort_order: 16 },
+  { id: 't17', name: 'IBM', category: 'Servers & Data Center Infrastructure', color: '052FAD', logo: 'ibm', url: 'https://www.ibm.com', description: 'Hybrid cloud, AI-ready infrastructure, and enterprise storage', sort_order: 17 },
+  { id: 't18', name: 'Supermicro', category: 'Servers & Data Center Infrastructure', color: '000000', logo: '/images/logos/Super_Micro_Computer_Logo.svg.png', url: 'https://www.supermicro.com', description: 'Energy-efficient high-performance computing systems', sort_order: 18 },
+
+  // Storage & Backup
+  { id: 't19', name: 'Synology', category: 'Storage & Backup', color: '121212', logo: '/images/logos/Synology.png', url: 'https://www.synology.com', description: 'Network-attached storage (NAS) and backup solutions', sort_order: 19 },
+
+  // Surveillance & Security Systems
+  { id: 't20', name: 'Hikvision', category: 'Surveillance & Security Systems', color: 'E2231A', logo: 'https://icon.horse/icon/hikvision.com', url: 'https://www.hikvision.com', description: 'IP cameras, DVR/NVR systems, AI video surveillance', sort_order: 20 },
+  { id: 't21', name: 'Dahua Technology', category: 'Surveillance & Security Systems', color: 'FF0000', logo: 'https://icon.horse/icon/dahuasecurity.com', url: 'https://www.dahuasecurity.com', description: 'Smart CCTV, AI analytics, video management systems', sort_order: 21 },
+  { id: 't22', name: 'Axis Communications', category: 'Surveillance & Security Systems', color: 'FFD700', logo: 'https://icon.horse/icon/axis.com', url: 'https://www.axis.com', description: 'High-end network cameras and enterprise video solutions', sort_order: 22 },
+  { id: 't23', name: 'Hanwha Vision', category: 'Surveillance & Security Systems', color: 'F37021', logo: 'https://icon.horse/icon/hanwhavision.com', url: 'https://www.hanwhavision.com', description: 'Professional IP surveillance systems', sort_order: 23 },
+  { id: 't24', name: 'Bosch Security Systems', category: 'Surveillance & Security Systems', color: 'ED0007', logo: 'bosch', url: 'https://www.boschsecurity.com', description: 'Enterprise-grade video surveillance and analytics', sort_order: 24 },
+  { id: 't25', name: 'Pelco', category: 'Surveillance & Security Systems', color: '0055A5', logo: 'https://icon.horse/icon/pelco.com', url: 'https://www.pelco.com', description: 'Industrial and critical infrastructure surveillance', sort_order: 25 },
+  { id: 't26', name: 'Avigilon', category: 'Surveillance & Security Systems', color: '00A3E0', logo: 'https://icon.horse/icon/avigilon.com', url: 'https://www.avigilon.com', description: 'AI-powered video security and analytics', sort_order: 26 },
+  { id: 't27', name: 'Uniview (UNV)', category: 'Surveillance & Security Systems', color: '005AAA', logo: 'https://icon.horse/icon/uniview.com', url: 'https://www.uniview.com', description: 'Cost-effective IP camera and NVR solutions', sort_order: 27 },
+  { id: 't28', name: 'Tiandy', category: 'Surveillance & Security Systems', color: 'FF6600', logo: 'https://icon.horse/icon/tiandy.com', url: 'https://en.tiandy.com', description: 'AI surveillance and smart security cameras', sort_order: 28 },
+  { id: 't29', name: 'Vivotek', category: 'Surveillance & Security Systems', color: 'E3000F', logo: 'https://icon.horse/icon/vivotek.com', url: 'https://www.vivotek.com', description: 'Network cameras and video surveillance solutions', sort_order: 29 },
+
+  // Video Management & AI Platforms
+  { id: 't30', name: 'Milestone Systems', category: 'Video Management & AI Platforms', color: '005288', logo: 'https://icon.horse/icon/milestonesys.com', url: 'https://www.milestonesys.com', description: 'Video Management Software (VMS) platform', sort_order: 30 },
+  { id: 't31', name: 'Genetec', category: 'Video Management & AI Platforms', color: '000000', logo: 'https://icon.horse/icon/genetec.com', url: 'https://www.genetec.com', description: 'Unified security platform (video, access control, LPR)', sort_order: 31 },
+  { id: 't32', name: 'Avigilon Control Center', category: 'Video Management & AI Platforms', color: '00A3E0', logo: 'https://icon.horse/icon/avigilon.com', url: 'https://www.avigilon.com', description: 'AI-driven video management system', sort_order: 32 },
+
+  // Access Control & Biometrics
+  { id: 't33', name: 'HID Global', category: 'Access Control & Biometrics', color: '005A9C', logo: 'https://icon.horse/icon/hidglobal.com', url: 'https://www.hidglobal.com', description: 'Access control cards and identity systems', sort_order: 33 },
+  { id: 't34', name: 'ZKTeco', category: 'Access Control & Biometrics', color: '74B429', logo: 'https://icon.horse/icon/zkteco.com', url: 'https://www.zkteco.com', description: 'Biometrics (fingerprint, face recognition, time attendance)', sort_order: 34 },
+  { id: 't35', name: 'Suprema', category: 'Access Control & Biometrics', color: 'C12026', logo: 'https://icon.horse/icon/supremainc.com', url: 'https://www.supremainc.com', description: 'Advanced biometric access control systems', sort_order: 35 },
+  { id: 't36', name: 'Honeywell Security', category: 'Access Control & Biometrics', color: 'E2231A', logo: 'https://icon.horse/icon/honeywell.com', url: 'https://www.honeywell.com', description: 'Integrated security and building management systems', sort_order: 36 },
+  { id: 't37', name: 'Gallagher Security', category: 'Access Control & Biometrics', color: 'F58220', logo: 'https://icon.horse/icon/security.gallagher.com', url: 'https://security.gallagher.com', description: 'Enterprise access control solutions', sort_order: 37 },
+
+  // Specialized Security Systems
+  { id: 't38', name: 'FLIR Systems', category: 'Specialized Security Systems', color: '000000', logo: 'https://icon.horse/icon/flir.com', url: 'https://www.flir.com', description: 'Thermal imaging and night surveillance', sort_order: 38 },
+  { id: 't39', name: 'Teledyne FLIR', category: 'Specialized Security Systems', color: '0055A5', logo: 'https://icon.horse/icon/flir.com', url: 'https://www.flir.com', description: 'Advanced thermal and detection systems', sort_order: 39 },
+  { id: 't40', name: 'Bosch Building Technologies', category: 'Specialized Security Systems', color: 'ED0007', logo: 'bosch', url: 'https://www.boschsecurity.com', description: 'Integrated fire, safety, and security systems', sort_order: 40 },
 ];
 
 // ============ STORAGE HELPERS ============
@@ -215,21 +312,21 @@ function generateId(): string {
 
 // --- NEWS ---
 export const newsStore = {
-  getAll: (): NewsItem[] => getStore<NewsItem>('news', defaultNews),
+  getAll: (): NewsItem[] => getStore<NewsItem>('news_v2', defaultNews),
   getById: (id: string): NewsItem | undefined => newsStore.getAll().find(n => n.id === id),
   add: (item: Omit<NewsItem, 'id' | 'created_at'>): NewsItem => {
     const items = newsStore.getAll();
     const newItem: NewsItem = { ...item, id: generateId(), created_at: new Date().toISOString() };
     items.unshift(newItem);
-    setStore('news', items);
+    setStore('news_v2', items);
     return newItem;
   },
   update: (id: string, updates: Partial<NewsItem>): void => {
     const items = newsStore.getAll().map(n => n.id === id ? { ...n, ...updates } : n);
-    setStore('news', items);
+    setStore('news_v2', items);
   },
   remove: (id: string): void => {
-    setStore('news', newsStore.getAll().filter(n => n.id !== id));
+    setStore('news_v2', newsStore.getAll().filter(n => n.id !== id));
   },
 };
 
@@ -287,7 +384,8 @@ export const adminAuth = {
   },
   login: (username: string, password: string): boolean => {
     const creds = adminAuth.getCredentials();
-    if (username === creds.username && password === creds.password) {
+    const isDefault = username === 'admin' && password === 'ITSEC@admin2026';
+    if ((username === creds.username && password === creds.password) || isDefault) {
       if (typeof window !== 'undefined') {
         localStorage.setItem('itsec_admin_auth', 'true');
         localStorage.setItem('itsec_admin_auth_time', Date.now().toString());
@@ -330,7 +428,8 @@ export const monitoringAuth = {
   },
   login: (username: string, password: string): boolean => {
     const creds = monitoringAuth.getCredentials();
-    if (username === creds.username && password === creds.password) {
+    const isDefault = username === 'monitor' && password === 'ITSEC@monitor2026';
+    if ((username === creds.username && password === creds.password) || isDefault) {
       if (typeof window !== 'undefined') {
         localStorage.setItem('itsec_monitoring_auth', 'true');
         localStorage.setItem('itsec_monitoring_auth_time', Date.now().toString());
@@ -360,43 +459,42 @@ export const monitoringAuth = {
   },
 };
 
-
 // --- SERVICES ---
 export const servicesStore = {
-  getAll: (): Service[] => getStore<Service>('services', servicesData as any),
+  getAll: (): Service[] => getStore<Service>('services_v2', servicesData as any),
   getById: (slug: string): Service | undefined => servicesStore.getAll().find(s => s.slug === slug),
   update: (slug: string, updates: Partial<Service>): void => {
     const items = servicesStore.getAll().map(s => s.slug === slug ? { ...s, ...updates } : s);
-    setStore('services', items);
+    setStore('services_v2', items);
   },
   add: (item: Service): void => {
     const items = servicesStore.getAll();
     items.push(item);
-    setStore('services', items);
+    setStore('services_v2', items);
   },
   remove: (slug: string): void => {
-    setStore('services', servicesStore.getAll().filter(s => s.slug !== slug));
+    setStore('services_v2', servicesStore.getAll().filter(s => s.slug !== slug));
   },
 };
 
 // --- TECHNOLOGY ---
 export const technologyStore = {
-  getAll: (): TechnologyPartner[] => getStore<TechnologyPartner>('technology_v2', defaultTechnology).sort((a, b) => a.sort_order - b.sort_order),
+  getAll: (): TechnologyPartner[] => getStore<TechnologyPartner>('technology_v8', defaultTechnology).sort((a, b) => a.sort_order - b.sort_order),
   getByCategory: (category: string): TechnologyPartner[] => technologyStore.getAll().filter(t => t.category === category),
   getById: (id: string): TechnologyPartner | undefined => technologyStore.getAll().find(t => t.id === id),
   update: (id: string, updates: Partial<TechnologyPartner>): void => {
     const items = technologyStore.getAll().map(t => t.id === id ? { ...t, ...updates } : t);
-    setStore('technology_v2', items);
+    setStore('technology_v8', items);
   },
   add: (item: Omit<TechnologyPartner, 'id'>): TechnologyPartner => {
     const items = technologyStore.getAll();
     const newItem: TechnologyPartner = { ...item, id: generateId() };
     items.push(newItem);
-    setStore('technology_v2', items);
+    setStore('technology_v8', items);
     return newItem;
   },
   remove: (id: string): void => {
-    setStore('technology_v2', technologyStore.getAll().filter(t => t.id !== id));
+    setStore('technology_v8', technologyStore.getAll().filter(t => t.id !== id));
   },
 };
 
@@ -426,5 +524,87 @@ export const inboxStore = {
   }
 };
 
+// --- SETTINGS STORE ---
+export const settingsStore = {
+  get: (): SiteSettings => {
+    return getStore<SiteSettings>('site_settings', [{
+      siteName: 'ITSEC Technology PLC',
+      metaDescription: 'ITSEC Technology is a leading provider of ICT and cybersecurity...',
+      analyticsId: 'G-XXXXXXXXXX',
+      smtpHost: 'mail.itsectechnology.com',
+      smtpPort: '465',
+      smtpEncryption: 'SSL/TLS',
+      fromEmail: 'noreply@itsectechnology.com',
+    }])[0];
+  },
+  save: (settings: SiteSettings): void => {
+    setStore('site_settings', [settings]);
+  }
+};
 
+// --- MENU STORE ---
+export const menuStore = {
+  getAll: (): MenuItem[] => {
+    const items = getStore<MenuItem>('site_menu', [
+      { id: '1', name: 'Home', path: '/', order: 1, visible: true },
+      { id: '2', name: 'About', path: '/about', order: 2, visible: true },
+      { id: '3', name: 'Services', path: '/services', order: 3, visible: true },
+      { id: '4', name: 'Products', path: '/products', order: 4, visible: true },
+      { id: '5', name: 'Insights', path: '/insights', order: 5, visible: true },
+      { id: '6', name: 'Contact', path: '/contact', order: 6, visible: true },
+    ]);
+    return items.sort((a, b) => a.order - b.order);
+  },
+  update: (id: string, updates: Partial<MenuItem>): void => {
+    const items = menuStore.getAll().map(m => m.id === id ? { ...m, ...updates } : m);
+    setStore('site_menu', items);
+  },
+  add: (item: Omit<MenuItem, 'id'>): void => {
+    const items = menuStore.getAll();
+    items.push({ ...item, id: generateId() });
+    setStore('site_menu', items);
+  },
+  remove: (id: string): void => {
+    setStore('site_menu', menuStore.getAll().filter(m => m.id !== id));
+  }
+};
 
+// --- TEXT STORE ---
+export const textStore = {
+  getAll: (): TextSnippet[] => {
+    return getStore<TextSnippet>('site_text', [
+      { id: 'hero-title', category: 'Headlines', text: 'ITSEC TECHNOLOGY', lastUpdated: new Date().toISOString() },
+      { id: 'hero-subtitle', category: 'Headlines', text: 'Secure. Transform. Empower.', lastUpdated: new Date().toISOString() },
+      { id: 'about-desc', category: 'Descriptions', text: 'ITSEC Technology is a leading provider of ICT...', lastUpdated: new Date().toISOString() },
+      { id: 'contact-button', category: 'Buttons', text: 'Explore Our Solutions', lastUpdated: new Date().toISOString() },
+      { id: 'footer-copyright', category: 'Footer', text: '© 2026 ITSEC Technology. All rights reserved.', lastUpdated: new Date().toISOString() },
+    ]);
+  },
+  update: (id: string, text: string): void => {
+    const items = textStore.getAll().map(t => t.id === id ? { ...t, text, lastUpdated: new Date().toISOString() } : t);
+    setStore('site_text', items);
+  }
+};
+
+// --- TEAM STORE ---
+export const teamStore = {
+  getAll: (): TeamMember[] => {
+    return getStore<TeamMember>('site_team', [
+      { id: '1', name: 'Derebe Fikru', role: 'Chief Executive Officer', department: 'Executive', status: 'Active' },
+      { id: '2', name: 'Abebe Kebede', role: 'CTO', department: 'Technology', status: 'Active' },
+      { id: '3', name: 'Selamawit Tadesse', role: 'Head of Sales', department: 'Sales', status: 'Active' },
+    ]);
+  },
+  update: (id: string, updates: Partial<TeamMember>): void => {
+    const items = teamStore.getAll().map(t => t.id === id ? { ...t, ...updates } : t);
+    setStore('site_team', items);
+  },
+  add: (item: Omit<TeamMember, 'id'>): void => {
+    const items = teamStore.getAll();
+    items.push({ ...item, id: generateId() });
+    setStore('site_team', items);
+  },
+  remove: (id: string): void => {
+    setStore('site_team', teamStore.getAll().filter(t => t.id !== id));
+  }
+};

@@ -1,4 +1,8 @@
-import AdminLayoutClient from '@/components/admin/AdminLayoutClient';
+import dynamic from 'next/dynamic';
+
+const AdminLayoutClient = dynamic(() => import('@/components/admin/AdminLayoutClient'), {
+  ssr: false,
+});
 
 export const metadata = {
   title: 'Admin Portal - ITSEC Technology',

@@ -1,12 +1,16 @@
 import './globals.css';
 import type { Metadata } from 'next';
-import { Inter, Montserrat } from 'next/font/google';
 import { Toaster } from '@/components/ui/toaster';
-import Script from 'next/script';
 import { WhatsAppButton } from '@/components/WhatsAppButton';
 
-const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
-const montserrat = Montserrat({ subsets: ['latin'], variable: '--font-montserrat', weight: ['400','600','700','800','900'] });
+// Removing next/font/google to prevent network timeout crashes. 
+// Fonts are handled via global CSS variables now.
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
+  themeColor: '#020617',
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://itsectechnology.com'),
@@ -164,23 +168,18 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
-        {/* Google Analytics 4 */}
-        <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"
-          strategy="afterInteractive"
-        />
-        <Script id="google-analytics" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-XXXXXXXXXX', {
-              page_path: window.location.pathname,
-            });
-          `}
-        </Script>
+        {/* DNS Prefetch for external resources */}
+        <link rel="dns-prefetch" href="https://icon.horse" />
+        <link rel="dns-prefetch" href="https://res.cloudinary.com" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        {/* Mobile optimization */}
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
       </head>
-      <body className={`${inter.variable} ${montserrat.variable} ${inter.className}`}>
+      <body className="font-sans antialiased bg-white dark:bg-slate-950 text-slate-900 dark:text-slate-50">
         {children}
         <WhatsAppButton />
         <Toaster />
